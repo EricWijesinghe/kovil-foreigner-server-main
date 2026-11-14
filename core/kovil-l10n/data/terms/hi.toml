@@ -1,0 +1,362 @@
+# Terminology for Hindi (hi). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Evidence note: no Hindi-language Korean housing sources found. Danuri (liveinkorea.kr, 13 languages) and the Korean Life Guide (16 languages) have no Hindi. Indian community guides are English with romanized Korean terms. Most entries are therefore low confidence and rest on general Hindi usage plus the locale notes (everyday Hindi, keep tech words in English).
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "राष्ट्रीयता (국적): पासपोर्ट वाला देश"
+avoid = ["नागरिकता", "देश"]
+why = "राष्ट्रीयता is the passport-country sense; नागरिकता reads as citizenship or legal status, and plain देश blurs it with country."
+register_note = "Formal label. Everyday form in a question: आपका देश कौन सा है (passport country)."
+sources = ["https://www.liveinkorea.kr", "https://globalindiaconnect.blogspot.com/2026/02/jeonse-vs-wolse-korea-rental-system.html"]
+confidence = "low"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "देश (국가)"
+avoid = ["राष्ट्र", "मुल्क"]
+why = "देश is the everyday word for country; राष्ट्र sounds like a government notice (per locale notes) and मुल्क is colloquial with political overtones."
+register_note = "Use for the general country sense only. For passport country use राष्ट्रीयता."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "प्रॉपर्टी लिस्टिंग (매물): किराये के लिए विज्ञापित मकान"
+avoid = ["प्रोडक्ट", "आइटम"]
+why = "प्रॉपर्टी लिस्टिंग names a specific advertised home, while प्रोडक्ट or आइटम turns a home into goods, which is a generic MT-style choice that loses the property meaning."
+register_note = "UI label. Everyday speech: किराये का मकान."
+sources = ["https://globalindiaconnect.blogspot.com/2026/02/jeonse-vs-wolse-korea-rental-system.html"]
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "किराये का अनुरोध (임대 요청): ब्रोकर को भेजी गई शर्तों वाली मकान की मांग"
+avoid = ["आवेदन", "ऑर्डर", "मकान की तलाश"]
+why = "किराये का अनुरोध is the term the shipped bundles already use for this request; मकान की तलाश is a loose phrase for the search itself, आवेदन implies applying to a landlord, and ऑर्डर implies a shop purchase."
+register_note = "UI label: किराये का अनुरोध. Support copy may say ब्रोकर को अपनी शर्तें बताएं."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "सिक्योरिटी डिपॉजिट (보증금): लीज़ खत्म होने पर वापस मिलने वाली जमा"
+avoid = ["किराया", "जमानत", "गारंटी"]
+why = "सिक्योरिटी डिपॉजिट is returned at lease end, while किराया reads as rent paid and जमानत means bail or surety, which mislabels a refundable sum."
+register_note = "Use डिपॉजिट in UI (common in Indian usage). Formal legal text may say जमा राशि."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-guide", "https://kowork.kr/blog/howtoavoidhousingscamsinkorea"]
+confidence = "medium"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "jeonse (전세): एकमुश्त बड़ी जमा, मासिक किराया लगभग नहीं"
+avoid = ["किराया", "गिरवी", "सिक्योरिटी"]
+why = "Keep the Korean word because Korean media and guides treat it as a fixed K-term; किराया or सिक्योरिटी alone hides that the big lump sum is the whole deal and that monthly rent is near zero."
+register_note = "Always pair with the gloss on first use. गिरवी is a legal-pledge sense and is not an accurate match."
+sources = ["https://www.asiae.co.kr/en/article/2023031516284383452", "https://stay.enko.kr/blog/korean-housing-guide-for-foreigners", "https://globalindiaconnect.blogspot.com/2026/02/jeonse-vs-wolse-korea-rental-system.html"]
+confidence = "medium"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "wolse (월세): छोटी जमा के साथ मासिक किराया"
+avoid = ["जमा-रहित किराया", "EMI"]
+why = "Keep the Korean word for the deposit-plus-monthly structure; EMI is a loan installment, which wrongly suggests a debt and hides the deposit."
+register_note = "Use मासिक किराया (월세) for the monthly figure. Gloss the deposit each time."
+sources = ["https://globalindiaconnect.blogspot.com/2026/02/jeonse-vs-wolse-korea-rental-system.html", "https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "medium"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "मासिक किराया (월세)"
+avoid = ["EMI", "महीने की किश्त"]
+why = "मासिक किराया is the plain monthly rent amount; EMI and महीने की किश्त mean loan installments and imply a debt."
+register_note = "Everyday and formal both fit."
+sources = ["https://globalindiaconnect.blogspot.com/2026/02/jeonse-vs-wolse-korea-rental-system.html"]
+confidence = "low"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "मेंटेनेंस शुल्क (관리비): इमारत के रखरखाव का मासिक शुल्क, किराये से अलग"
+avoid = ["किराया", "बिजली बिल"]
+why = "मेंटेनेंस शुल्क shows it is a separate building charge, while किराया folds it into rent and बिजली बिल names only one utility."
+register_note = "Formal legal text: रखरखाव शुल्क. Everyday UI: मेंटेनेंस शुल्क."
+sources = ["https://globalindiaconnect.blogspot.com/2026/02/jeonse-vs-wolse-korea-rental-system.html"]
+confidence = "low"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "बयाना (계약금): सौदा पक्का करने के लिए दी गई रकम"
+avoid = ["एडवांस", "डाउन पेमेंट"]
+why = "बयाना is the Hindi property word for earnest money that locks a deal; एडवांस suggests a refundable rent prepayment, while 계약금 is forfeited by the buyer who backs out, so the earnest-money sense matters."
+register_note = "Gloss the forfeit rule on first mention. Korea-resident usage of बयाना is unverified."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "लीज़ कॉन्ट्रैक्ट (임대차 계약)"
+avoid = ["एग्रीमेंट", "पट्टा"]
+why = "लीज़ कॉन्ट्रैक्ट matches the rental agreement people sign, while पट्टा is a formal land-lease deed term that does not fit an apartment rental."
+register_note = "Formal legal text: किराया-अनुबंध (임대차 계약)."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "मकान मालिक (임대인/집주인)"
+avoid = ["ज़मींदार"]
+why = "मकान मालिक is the everyday owner-who-rents-out term; ज़मींदार evokes a feudal estate lord and misleads the reader."
+register_note = "Formal: मकान-मालिक / मालिक. Keep 집주인 in parentheses for the Korean reader."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "किरायेदार (임차인/세입자)"
+avoid = ["निवासी", "पट्टेदार"]
+why = "किरायेदार means the person renting under a contract; निवासी only means resident and does not imply a lease, and पट्टेदार is a formal legal-lease term."
+register_note = "Everyday and formal both work."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "लाइसेंसधारी ब्रोकर (공인중개사)"
+avoid = ["दलाल", "एजेंट"]
+why = "लाइसेंसधारी ब्रोकर conveys the licensed status, while दलाल carries a bribe-middleman connotation and plain एजेंट could mean an insurance or travel agent."
+register_note = "UI: ब्रोकर (공인중개사). Support copy may say लाइसेंसधारी ब्रोकर."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "ब्रोकर कार्यालय (중개사무소)"
+avoid = ["ऑफिस", "दफ़्तर", "रियल एस्टेट कार्यालय"]
+why = "ब्रोकर कार्यालय names the agent's office and uses कार्यालय, the word the shipped bundles use for office everywhere; bare ऑफिस or दफ़्तर leaves out the broker function, and रियल एस्टेट कार्यालय is an inconsistent variant."
+register_note = "Everyday fine. Formal: ब्रोकरेज कार्यालय."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "ब्रोकरेज फ़ीस (중개수수료)"
+avoid = ["दलाली", "रिश्वत"]
+why = "ब्रोकरेज फ़ीस is the neutral official fee; दलाली carries a corrupt-middleman tone, and रिश्वत means a bribe, which would be a serious misread."
+register_note = "Gloss that the fee is legally capped and based on deposit plus rent. 복비 is slang, so keep the official term."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "वन रूम (원룸): एक कमरे की अलग यूनिट, किचन और बाथरूम अंदर"
+avoid = ["एक कमरा", "1BHK"]
+why = "वन रूम with a gloss means a self-contained one-room unit; एक कमरा may suggest a shared room, and 1BHK is an Indian layout with a separate hall that does not match."
+register_note = "Use ‘वन रूम (원룸)’ in the UI. Keep the gloss short."
+sources = ["https://seoulstart.com/ko/guides/goshiwon-vs-officetel-vs-oneroom"]
+confidence = "medium"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "ऑफिसटेल (오피스텔): ऑफ़िस-नुमा रिहायशी इमारत, कम कानूनी सुरक्षा"
+avoid = ["ऑफिस होटल", "ऑफिस टेल"]
+why = "ऑफिसटेल is the Korean word with a gloss; the literal joins ऑफिस होटल or ऑफिस टेल mislead the reader into a hotel or a telephone-office sense."
+register_note = "Gloss the business-use classification, since deposit protection is weaker than for residential units."
+sources = ["https://seoulstart.com/ko/guides/goshiwon-vs-officetel-vs-oneroom"]
+confidence = "medium"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "गोशिवॉन (고시원): छोटे कमरे, कुछ साझा सुविधाएं, सस्ता"
+avoid = ["हॉस्टल", "पीजी"]
+why = "गोशिवॉन keeps the Korean word, while हॉस्टल implies students and पीजी (paying guest) implies meals and shared living, and a gosiwon room is usually a small self-contained cell."
+register_note = "Gloss on first use. Avoid English study room as a literal translation (고시 means civil exam)."
+sources = ["https://seoulstart.com/ko/guides/goshiwon-vs-officetel-vs-oneroom"]
+confidence = "medium"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "सेमी-बेसमेंट (반지하): आधी ज़मीन के नीचे की मंज़िल, खिड़की ज़मीन की सतह के पास"
+avoid = ["बेसमेंट", "तहखाना"]
+why = "सेमी-बेसमेंट shows it is partly above ground; बेसमेंट suggests a fully underground room and तहखाना suggests a cellar for storage, both misleading."
+register_note = "Gloss the humidity and flood risk when shown in a listing filter."
+sources = ["https://seoulstart.com/ko/guides/goshiwon-vs-officetel-vs-oneroom"]
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "전입신고 (नए पते का सरकारी पंजीकरण,주민센터 में); विदेशी निवासी को इसके अलावा 출입국 कार्यालय में 체류지 변경신고 भी 15 दिन में करना होता है"
+avoid = ["मूव-इन सूचना", "पता बदलना"]
+why = "Keep the Korean term with a gloss; पता बदलना is an everyday move-address phrase that loses the official registration act. Foreigners file 체류지 변경신고 at immigration within 15 days (Immigration Act), so the gloss must mention both, not replace one with the other."
+register_note = "Verify foreigner process with HiKorea before publishing. The seoulstart guide states the 15-day rule but is not an official source."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "medium"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "फिक्स्ड डेट स्टैंप (확정일자): सरकारी तारीख की मोहर जो जमा को सुरक्षा देती है"
+avoid = ["फिक्स्ड डिपॉजिट", "स्टैंप ड्यूटी"]
+why = "फिक्स्ड डेट स्टैंप names the Korean date stamp; फिक्स्ड डिपॉजिट is a bank savings product and स्टैंप ड्यूटी is a tax, both misleading about what the stamp does."
+register_note = "Gloss it protects the deposit when the landlord goes bankrupt or the property is auctioned."
+sources = ["https://kowork.kr/blog/howtoavoidhousingscamsinkorea"]
+confidence = "low"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "प्रॉपर्टी रजिस्टर (등기부등본): संपत्ति का सरकारी रिकॉर्ड, मालिक और कर्ज़ का हाल"
+avoid = ["रजिस्ट्री", "रजिस्टर्ड डीड"]
+why = "प्रॉपर्टी रजिस्टर describes the public record of owner and debts; रजिस्ट्री in India means a stamped sale-deed registration, which does not match this document."
+register_note = "Gloss what to check: owner, mortgage, and seizure notes."
+sources = ["https://kowork.kr/blog/howtoavoidhousingscamsinkorea"]
+confidence = "low"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "ARC (외국인등록증): विदेशी पंजीकरण कार्ड"
+avoid = ["आधार", "वीज़ा", "पासपोर्ट"]
+why = "Keep ARC with the Hindi gloss; आधार is India's national ID, वीज़ा is a visa permit, and पासपोर्ट is a travel document, none of which is the Korean resident card."
+register_note = "Keep ARC in English, as Indian residents already use it."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "medium"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "체류자격 (वीज़ा श्रेणी; जैसे D-2, E-9)"
+avoid = ["वीज़ा", "वीज़ा स्टिकर"]
+why = "Keep 체류자격 with a gloss as the status category; plain वीज़ा or a visa sticker is a different document than the status code shown on the ARC."
+register_note = "Keep the codes D-2, E-9 unchanged."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "पहचान सत्यापन (외국인 인증)"
+avoid = ["केवाईसी", "प्रमाणीकरण"]
+why = "पहचान सत्यापन is plain everyday wording for checking who you are; केवाईसी is an Indian banking KYC term and प्रमाणीकरण is technical authentication jargon."
+register_note = "Everyday UI. Formal text may say विदेशी नागरिक सत्यापन."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "OTP (सत्यापन कोड)"
+avoid = ["पिन", "पासवर्ड"]
+why = "Keep OTP per the locale notes, since people use it, with सत्यापन कोड as the gloss; पिन means an ATM PIN and पासवर्ड is a password, both wrong for a one-time SMS code."
+register_note = "Everyday. Keep OTP in English per locale policy."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "medium"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "पार्टनर (파트너): KOVIL के साथ काम करने वाला ब्रोकर या कार्यालय"
+avoid = ["साथी", "सहयोगी"]
+why = "पार्टनर names a business partner in the platform sense; साथी reads as a personal companion or partner in marriage, which is wrong here."
+register_note = "UI label: पार्टनर. Gloss the role on first use."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "खाता बंद करें (회원 탈퇴)"
+avoid = ["निकासी", "लॉगआउट"]
+why = "खाता बंद करें matches the bundles' existing wording for withdrawing an account (PARTNER_SUSPENDED_CANNOT_WITHDRAW, LAST_ADMIN_CANNOT_WITHDRAW); निकासी means cash withdrawal in Indian banking, which would be a serious misread, and लॉगआउट only signs out and keeps the account."
+register_note = "Formal text: सदस्यता समाप्त करें. Everyday UI: खाता बंद करें."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "अकाउंट अस्थायी रूप से रोका गया (이용 정지)"
+avoid = ["बैन", "निलंबन"]
+why = "अस्थायी रूप से रोका गया says the account is paused and may return, while बैन sounds permanent and निलंबन evokes a school or job suspension."
+register_note = "Formal text: उपयोग पर अस्थायी रोक (이용 정지)."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "रिपोर्ट करें (신고)"
+avoid = ["सूचना", "अधिसूचना"]
+why = "रिपोर्ट करें is the everyday action of flagging abuse; सूचना means information or notice and अधिसूचना means an official government notification, neither of which is a user action."
+register_note = "Formal: शिकायत दर्ज करें."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "पुश नोटिफ़िकेशन (푸시 알림)"
+avoid = ["धक्का सूचना"]
+why = "पुश नोटिफ़िकेशन is the term Indian app users already know; the literal धक्का सूचना is a word-for-word rendering that a reader would not recognize as the app feature."
+register_note = "Keep English term per locale notes. धक्का सूचना is a judgment call, not verified in usage."
+sources = ["https://globalindiaconnect.blogspot.com/2026/02/jeonse-vs-wolse-korea-rental-system.html"]
+confidence = "low"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "गू (구): शहर का ज़िला या वार्ड (जैसे XX-गू)"
+avoid = ["ज़िला", "तहसील"]
+why = "गू names the Korean urban district; ज़िला and तहसील are Indian administrative units that are larger or differently organized, so they mislead on location."
+register_note = "Keep 구 with a gloss. 시군구 for a wider address field."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "मोहल्ला (동): शहर के अंदर का इलाका (जैसे XX-동)"
+avoid = ["गांव", "गली"]
+why = "मोहल्ला is the everyday word for a city neighborhood; गांव means village and गली means a single lane, which mislead about the area size."
+register_note = "Keep 동 with the gloss. 읍면동 applies only to rural areas."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "ट्रांसफ़र (환승)"
+avoid = ["स्थानांतरण", "बदलना"]
+why = "ट्रांसफ़र is what Indian metro riders already say for changing lines; स्थानांतरण is heavy Sanskrit-style Hindi (per locale notes) and बदलना is vague."
+register_note = "Everyday UI. Keep the station name separate."
+sources = ["https://globalindiaconnect.blogspot.com/2026/02/jeonse-vs-wolse-korea-rental-system.html"]
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "주민센터 (स्थानीय सरकारी सेवा केंद्र)"
+avoid = ["सामुदायिक केंद्र", "सामुदायिक भवन"]
+why = "स्थानीय सरकारी सेवा केंद्र says it is the government administrative office where registration happens; सामुदायिक केंद्र suggests a recreation hall, which is wrong."
+register_note = "Keep 주민센터 in the UI with the gloss. Official paperwork happens here."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"

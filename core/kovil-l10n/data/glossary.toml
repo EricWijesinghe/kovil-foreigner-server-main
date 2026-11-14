@@ -1,0 +1,173 @@
+# Korea housing terms. Foreign residents hear the Korean words from landlords and agents, so most are KEPT:
+#   keep      = write the romanization (in target script if customary), then a short gloss in the target language
+#               the first time it appears. Example: "jeonse (lump-sum deposit lease)".
+#   translate = use the natural local equivalent; meaning tells what it must convey.
+# Longer terms win over shorter ones they contain (반전세 beats 전세).
+
+[[term]]
+ko = "전세"
+roman = "jeonse"
+meaning = "lease paid with one large deposit and no monthly rent; deposit is returned at the end"
+policy = "keep"
+
+[[term]]
+ko = "반전세"
+roman = "ban-jeonse"
+meaning = "large deposit plus small monthly rent"
+policy = "keep"
+
+[[term]]
+ko = "월세"
+roman = "wolse"
+meaning = "monthly rent (usually with a deposit)"
+policy = "keep"
+
+[[term]]
+ko = "보증금"
+roman = "bojeunggeum"
+meaning = "security deposit, returned at the end of the lease"
+policy = "translate"
+
+[[term]]
+ko = "계약금"
+roman = "gyeyakgeum"
+meaning = "down payment paid when signing the contract (often 10%)"
+policy = "translate"
+
+[[term]]
+ko = "잔금"
+roman = "jangeum"
+meaning = "remaining balance paid on move-in day"
+policy = "translate"
+
+[[term]]
+ko = "관리비"
+roman = "gwallibi"
+meaning = "monthly building maintenance fee, separate from rent"
+policy = "translate"
+
+[[term]]
+ko = "원룸"
+roman = "one-room"
+meaning = "studio apartment (one room with kitchen area and bathroom)"
+policy = "keep"
+
+[[term]]
+ko = "투룸"
+roman = "two-room"
+meaning = "apartment with two rooms"
+policy = "keep"
+
+[[term]]
+ko = "오피스텔"
+roman = "officetel"
+meaning = "studio in a mixed office/residential building"
+policy = "keep"
+
+[[term]]
+ko = "고시원"
+roman = "gosiwon"
+meaning = "very small single room with shared facilities, cheap, short-term"
+policy = "keep"
+
+[[term]]
+ko = "하숙"
+roman = "hasuk"
+meaning = "boarding house room with meals included"
+policy = "keep"
+
+[[term]]
+ko = "쉐어하우스"
+roman = "share house"
+meaning = "shared house: private bedroom, shared kitchen and living room"
+policy = "translate"
+
+[[term]]
+ko = "반지하"
+roman = "banjiha"
+meaning = "semi-basement unit, partly below street level"
+policy = "keep"
+
+[[term]]
+ko = "옥탑방"
+roman = "oktapbang"
+meaning = "rooftop room built on top of a building"
+policy = "keep"
+
+[[term]]
+ko = "풀옵션"
+roman = "full-option"
+meaning = "fully furnished with appliances (fridge, washer, AC, bed)"
+policy = "translate"
+
+[[term]]
+ko = "평"
+roman = "pyeong"
+meaning = "Korean area unit, 1 pyeong = 3.3 m²; also give m²"
+policy = "keep"
+
+[[term]]
+ko = "확정일자"
+roman = "hwakjeong-ilja"
+meaning = "official fixed-date stamp on the lease that protects the deposit"
+policy = "keep"
+
+[[term]]
+ko = "전입신고"
+roman = "jeonip-singo"
+meaning = "registering your new address at the community service center"
+policy = "keep"
+
+[[term]]
+ko = "등기부등본"
+roman = "deunggibu-deungbon"
+meaning = "property register certificate showing owner and debts"
+policy = "keep"
+
+[[term]]
+ko = "근저당"
+roman = "geunjeodang"
+meaning = "mortgage/lien on the property; a risk for the deposit"
+policy = "keep"
+
+[[term]]
+ko = "중개수수료"
+roman = "junggae-susuryo"
+meaning = "real estate agent's commission"
+policy = "translate"
+
+[[term]]
+ko = "공인중개사"
+roman = "gongin-junggaesa"
+meaning = "licensed real estate agent"
+policy = "translate"
+
+[[term]]
+ko = "임대인"
+roman = "imdaein"
+meaning = "landlord"
+policy = "translate"
+
+[[term]]
+ko = "임차인"
+roman = "imchain"
+meaning = "tenant"
+policy = "translate"
+
+[[term]]
+ko = "외국인등록증"
+roman = "ARC"
+meaning = "Alien Registration Card; foreigners in Korea call it ARC"
+policy = "keep"
+
+[[term]]
+ko = "체류자격"
+roman = "visa status"
+meaning = "residence/visa status (e.g. D-2, E-9)"
+policy = "translate"
+
+[[term]]
+ko = "주민센터"
+roman = "jumin center"
+meaning = "community service center (local government office)"
+policy = "keep"

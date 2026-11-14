@@ -1,0 +1,400 @@
+# Terminology for Kazakh (kk). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Review 2026-11-13: jeonse/wolse cited sources do not define those terms (koreajoongangdaily never mentions them; globalpropertyguide returned 403). No Kazakh-language source found; WebSearch budget exhausted, so Kazakh word choices remain unverified.
+# Search budget exhausted after 1 successful query; no Kazakh-language source found. All entries are lexical proposals, confidence low, until verified.
+# Skeptic review 2026-11-13 (kk native pass): real_estate_agent/brokerage_* and account_suspended aligned to shipped errors_kk wording; jeonse sourced to ru.wikipedia; wolse and gosiwon still unverified; native sign-off pending.
+
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "азаматтығы (citizenship, the passport country)"
+avoid = ["ұлты (ethnic nationality)", "ұлт"]
+why = "국적 is legal citizenship; азаматтығы names the passport state, while ұлты/ұлт means ethnicity, so a machine gloss would make the field ask for ethnic group."
+register_note = "Use in legal and ARC contexts; keep UI label short."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "ел"
+avoid = ["мемлекет (formal state)", "ұлт"]
+why = "ел is the everyday word for a country; мемлекет reads as a political state and is too formal for a UI label, and ұлт means nation or ethnicity."
+register_note = "Everyday word in UI; мемлекет only in formal legal text."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "жарнама (advertised property)"
+avoid = ["тізім (generic list)", "листинг (transliterated English)"]
+why = "매물 is a specific property on offer; жарнама means the advertisement of a property, whereas тізім only says list and листинг is an untranslated English word."
+register_note = "Plural жарнамалар in list headings."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "жалға алу сұранысы (өтініш нақты жарнама бойынша)"
+avoid = ["пәтер іздеу сұранысы (general apartment search, not a request on one listing)", "тапсырыс (order)", "сұрау (a question)"]
+why = "임대 요청 is a tenant asking to rent one specific listing; жалға алу сұранысы says that, while пәтер іздеу сұранысы describes a general search. тапсырыс implies buying a service order and сұрау reads as a simple question. Shipped strings (errors_kk, notifications_kk) already use жалға алу сұранысы."
+register_note = "Use in tenant-to-broker flow titles."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "кепіл ақша (deposit returned at lease end)"
+avoid = ["залог (Russian loan, also means pawn or collateral in general)", "депозит (bank deposit)"]
+why = "보증금 is a refundable lease deposit, and кепіл ақша carries that refundable sense; депозит suggests a bank product and залог can read as a pawned item."
+register_note = "Legal text: кепіл ақша. Avoid colloquial jargon in UI tooltips."
+sources = ["https://www.globalpropertyguide.com/asia/south-korea/landlord-and-tenant", "https://www.koreajoongangdaily.com/korea/beyond-the-dorm-an-international-students-guide-to-renting-in-korea/12800168"]
+confidence = "low"
+
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "чонсе (jeonse), keep romanized, gloss: тұтас кепіл ақшамен, ай сайынғы төлемсіз жалдау"
+avoid = ["аванс (advance payment)", "ай сайынғы жалдау (monthly rent, the opposite)"]
+why = "전세 has no monthly rent and a large refundable deposit; keeping the Korean name with a gloss avoids generic translations that suggest a normal monthly lease or a payment advance. Review 2026-11-13: ru.wikipedia 'Чонсе' confirms no monthly rent and a one-time refundable deposit; the earlier sources did not define the term."
+register_note = "Keep romanized Korean word per keep-policy; always gloss on first use."
+sources = ["https://ru.wikipedia.org/wiki/Чонсе"]
+confidence = "medium"
+
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "вольсе (wolse), keep romanized, gloss: ай сайынғы төлеммен, кепіл ақшамен жалдау"
+avoid = ["ай сайынғы жалақы (monthly salary)", "жалдау ақысы only (drops deposit)"]
+why = "월세 is monthly rent plus a deposit; a plain rent word drops the deposit, and жалақы means salary. Review 2026-11-13: cited sources do not define wolse (ru.wikipedia 'Вольсе' returned 404); the entry is unverified."
+register_note = "Keep romanized word with gloss."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "ай сайынғы жалдау ақысы"
+avoid = ["айлық жалақы (monthly salary)"]
+why = "This is the amount paid each month for the room; айлық жалақы is what a worker earns, so it inverts the meaning."
+register_note = "Plain everyday phrasing in UI."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "басқару ақысы (building management fee)"
+avoid = ["коммуналдық төлем (utilities)", "салық (tax)"]
+why = "관리비 covers common-area upkeep such as cleaning and elevators and is billed separately from utilities; коммуналдық means utilities, which are usually metered separately."
+register_note = "Clarify in UI that utilities may be extra."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "алғашқы төлем (payment at signing, part of price)"
+avoid = ["аванс (salary advance)", "предоплата (Russian loan, generic prepayment)"]
+why = "계약금 is an earnest payment made when signing and credited to the price; аванс means salary advance and предоплата is generic, so both lose the signing meaning."
+register_note = "Use in contract flow steps."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "жалдау шарты"
+avoid = ["контракт (Russian loan, implies employment)", "келісім (generic agreement)"]
+why = "임대차 계약 is a formal lease; жалдау шарты names the lease document, while контракт suggests employment and келісім is vague."
+register_note = "Legal register; use formal шарт."
+sources = ["https://blog.liveanywhere.me/korean-rental-contract-checklist-phrases"]
+confidence = "low"
+
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "жалға беруші (үй иесі in everyday speech)"
+avoid = ["хозяин (Russian slang, a master or boss)", "иесі (owner, too generic)"]
+why = "임대인 is the lessor of the property; жалға беруші is the legal lessor and үй иесі is what residents say, while хозяин has a servant-master tone."
+register_note = "Legal text: жалға беруші. UI or chat: үй иесі."
+sources = ["https://blog.liveanywhere.me/korean-rental-contract-checklist-phrases"]
+confidence = "low"
+
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "жалға алушы"
+avoid = ["тұрғын (resident or dweller)", "қонақ (guest)"]
+why = "임차인 is the person who rents the property; тұрғын only means someone living there and қонақ implies a short visit."
+register_note = "Legal: жалға алушы. UI: жалға алушы is fine."
+sources = ["https://blog.liveanywhere.me/korean-rental-contract-checklist-phrases"]
+confidence = "low"
+
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "делдал (жылжымайтын мүлік делдалы)"
+avoid = ["риелтор (Russian loan; shipped strings use делдал)", "посредник (middleman, suggests an unlicensed go-between)", "агент (bare, ambiguous)"]
+why = "공인중개사 is a licensed broker. делдал is the term already shipped in errors_kk (BROKER_PROFILE_NOT_FOUND, OFFICE_REG_NO_DUPLICATED, OFFICE_CHANGE_DIVISION_NOT_APPROVED), so the glossary must match it; риелтор would split the vocabulary, and посредник suggests an informal go-between."
+register_note = "Use делдал in UI and legal text; gloss жылжымайтын мүлік делдалы on first use."
+sources = []
+confidence = "medium"
+
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "делдалдық кеңсе"
+avoid = ["офис (generic office)", "агенттік (bare agency)", "риелторлық кеңсе (Russian loan, mixes with риелтор)"]
+why = "중개사무소 is the licensed agent office handling listings. errors_kk says кеңсе (OFFICE_NOT_ACTIVE) and делдалдық (OFFICE_REG_NO_DUPLICATED), so делдалдық кеңсе is the consistent pair; офис is generic and агенттік alone does not say property."
+register_note = "Plain UI phrase."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "делдалдық ақысы (делдалдың қызмет ақысы)"
+avoid = ["салық (tax)", "комиссия (bare commission, fine but vague)", "агенттік комиссия (агенттік is not the shipped term)"]
+why = "중개수수료 is the fee paid to the licensed agent for a deal; салық means tax, and bare комиссия does not say it goes to a property agent. делдалдық ақысы matches the real_estate_agent entry."
+register_note = "Colloquial 복비 is not translated; use full term."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "бір бөлмелі пәтер (원룸, keep romanized: вонрум, gloss: бір бөлмелі шағын пәтер)"
+avoid = ["студия (studio, can mean an art studio)", "үй (house)"]
+why = "원룸 is a small single-room flat with a kitchen and bathroom; бір бөлмелі keeps the room count, while студия may be read as an art studio and үй implies a whole house."
+register_note = "Keep romanized word with gloss on first use."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "офистел (romanized, gloss: кеңсе мен тұрғын үй қосылған ғимарат)"
+avoid = ["кеңсе (office)", "пәтер (apartment)"]
+why = "오피스텔 is a mixed office-residence building; the plain office or apartment word misses that it is a legal office building that can be lived in."
+register_note = "Keep romanized word with gloss."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "гошивон (romanized, gloss: шағын бөлмелі жатақхана)"
+avoid = ["жатақхана (dorm, for students)", "қонақ үй (hotel)", "көсиуон (к for 고 is wrong; Russian transliteration uses г)"]
+why = "고시원 is a cheap small-room rental with shared facilities; жатақхана suggests a school dorm and қонақ үй suggests a hotel. Romanization follows the file's own pattern (원룸 -> вонрум), so 시 -> ши, 원 -> вон."
+register_note = "Keep romanized word with gloss."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "жартылай жертөле (банджиха, romanized, gloss: жер деңгейінен төмен тұрғын бөлме)"
+avoid = ["жертөле (full basement, underground)"]
+why = "반지하 is a half-underground flat with windows at street level; жертөле suggests a fully underground cellar, which overstates the danger and understates light."
+register_note = "Use the gloss in listings to set expectations."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "тұрғылықты мекенжайды тіркеу (жаңа мекенжайды тіркеу, 주민센터 арқылы)"
+avoid = ["көшу хабарламасы (moving notice)", "миграциялық хабарлама (migration notice)"]
+why = "전입신고 is a legal registration of the new residence at the community center; the moving-notice phrases sound informal and miss the legal registration effect."
+register_note = "Legal: тұрғылықты мекенжайды тіркеу. UI: say where to go."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "бекітілген күн мөрі (확정일자)"
+avoid = ["күн белгісі (date mark)", "нотариалды куәлік (notary certificate)"]
+why = "확정일자 is a fixed-date stamp that protects the deposit's priority; күн белгісі is too vague, and нотариалды куәлік is a different legal document."
+register_note = "Keep Korean term with gloss; this is a Korea-specific office step."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "жылжымайтын мүлік тізілімінің көшірмесі (등기부등본)"
+avoid = ["паспорт (passport)", "куәлік (certificate, generic)"]
+why = "등기부등본 is the official registry extract of the property's owner and encumbrances; паспорт is an identity document and куәлік is too generic."
+register_note = "Legal text: full phrase."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "шетелдік тіркеу карточкасы (ARC)"
+avoid = ["паспорт (passport)", "виза (visa)"]
+why = "외국인등록증 is the alien registration card issued to residents; паспорт is the home-country document and виза is the entry permit, neither of which is the card."
+register_note = "Use ARC in parentheses for recognition."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "тұру мәртебесі (виза түрі: D-2, E-9)"
+avoid = ["жұмыс рұқсаты (work permit)", "виза мәртебесі (visa status, mixes terms)"]
+why = "체류자격 is the stay category printed as D-2 or E-9; жұмыс рұқсаты suggests a work permit only, and виза is the entry document."
+register_note = "Keep codes as-is."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "шетелдік растау (외국인 인증); жеке басты растау (본인 인증)"
+avoid = ["аутентификация (Russian tech loan)", "тіркелу (registration)"]
+why = "본인 인증 means proving you are the person; жеке басты растау says that, while аутентификация sounds like a tech login and тіркелу is sign-up. Shipped strings use шетелдік растау for the foreigner check, so the use field now matches them."
+register_note = "UI: жеке басты растау."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "растау коды (SMS-код)"
+avoid = ["пароль (password)", "промокод (promo code)"]
+why = "인증번호 is a one-time SMS code; пароль is a stored password and промокод is a discount code."
+register_note = "SMS-код is fine in UI."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "серіктес (брокер-серіктес)"
+avoid = ["қызметкер (employee)", "дос (friend)"]
+why = "파트너 on KOVIL is a broker business partner; қызметкер means an employee and дос means a friend, both wrong for a business relationship."
+register_note = "Use серіктес in UI."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "аккаунтты жою (есептік жазбаны жою)"
+avoid = ["шығу (exit, generic)", "бұғаттау (block)"]
+why = "회원 탈퇴 is the user deleting their membership; шығу only means logging out and бұғаттау means blocking, which is a different action. Shipped strings say аккаунт (LAST_ADMIN_CANNOT_WITHDRAW); есептік жазба kept as the legal gloss."
+register_note = "Confirm before deletion in UI."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "аккаунт тоқтатылған (уақытша шектеу)"
+avoid = ["бұғатталды (sounds like criminal lock)", "өшірілді (deleted)", "есептік жазбаның қолдану тоқтатылды (broken grammar; SUSPENDED_USER ships аккаунт тоқтатылған)"]
+why = "이용 정지 is a temporary suspension of use; бұғатталды sounds criminal and өшірілді means deleted, which is the opposite. Matches the shipped SUSPENDED_USER wording."
+register_note = "Use with the reason and end date."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "шағым жасау"
+avoid = ["донос (denunciation)", "мәлімдеме (statement)"]
+why = "신고 means filing a report about abusive content; донос suggests a malicious informant and мәлімдеме is only a statement."
+register_note = "UI button: шағым жасау."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "push-хабарлама"
+avoid = ["жарнама (advertisement)", "ескерту (warning)"]
+why = "푸시 알림 is an app notification; жарнама means advertising and ескерту means a warning, both of which mislead about purpose."
+register_note = "push-хабарлама is widely understood."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "аудан (구)"
+avoid = ["облыс (oblast, region)", "қала (city)"]
+why = "구 is a district inside a city; облыс is a province-level region and қала means the whole city."
+register_note = "Keep 구 in parentheses for Seoul addresses."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "ықшам аудан (дон, romanized)"
+avoid = ["көше (street)", "ауыл (village)"]
+why = "동 is a neighborhood unit inside a district; көше is a street and ауыл is a village, neither of which is an administrative area."
+register_note = "Keep romanized дон with gloss."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "ауысу (метродағы ауысу станциясы)"
+avoid = ["өту (crossing)", "тасымалдау (transport)"]
+why = "환승 is changing lines at a station; өту means just crossing and тасымалдау means transporting, neither naming the line change."
+register_note = "UI: ауысу станциясы."
+sources = []
+confidence = "low"
+
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "тұрғындар орталығы (주민센터)"
+avoid = ["қоғамдық орталық (generic community centre, may read as leisure)"]
+why = "주민센터 is the district civic office handling residence registration; қоғамдық орталық suggests a leisure centre and misses the government office role."
+register_note = "Keep 주민센터 in parentheses."
+sources = []
+confidence = "low"

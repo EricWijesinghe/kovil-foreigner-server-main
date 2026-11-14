@@ -1,0 +1,371 @@
+# Terminology for Burmese (my). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Evidence is thin: no Burmese-language Danuri, HiKorea or Seoul housing guide was found. Most Burmese forms below are
+# standard Burmese for the gloss, not verified against Korea-facing Burmese material. Confidence reflects that.
+# Adversarial check 2026-11-13: livinginkorea.vercel.app jeonse-wolse guide and stay.enko.kr renting guide were fetched;
+# both are English-only (Korean terms in parentheses, no Burmese). They support the Korean concepts, NOT the Burmese
+# wording. WebSearch budget was exhausted, so no independent Burmese search was run. All entries stay low confidence
+# until a native speaker signs off. Known doubt: jeonse spelling (ဂျိုးဆွဲ vs ဂျွန်ဆဲ) and wolse (ဝေါ်ဆဲ).
+# Skeptic pass 2026-11-13: bundle consistency checked (errors_my / notifications_my). Fixed: maintenance_fee now
+# management fee in bundle (was repair/upkeep ပြုပြင်ထိန်းသိမ်းခ); visa_status bundle now ဗီဇာအမျိုးအစား.
+# NOT resolved: WebSearch budget exhausted in that pass, so jeonse/wolse/ARC/identity spellings have no independent
+# Burmese source. Confidence stays low.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "နိုင်ငံသား (passport nationality, e.g. Burmese nationality)"
+avoid = ["နိုင်ငံ (plain 'country')"]
+why = "Machine translation renders 국적 as the bare country word, which reads as where you live, not which passport you hold."
+register_note = "Use the same word in forms and legal text; add the country name after it."
+sources = ["https://www.jobploy.kr/my/content/writer/WR0000000005", "https://tchinese.seoul.go.kr/wp-content/uploads/2014/09/Foreign-Workers-Safety-Handbook-Burmese.pdf"]
+confidence = "low"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "နိုင်ငံ"
+avoid = ["နိုင်ငံသား (citizen/national)"]
+why = "Plain country is နိုင်ငံ; the -သား suffix turns it into a person (citizen), which is the nationality sense, not the country sense."
+register_note = "None."
+sources = ["https://www.jobploy.kr/my/content/writer/WR0000000005"]
+confidence = "low"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "ငှားရမ်းရန် အိမ် (house for rent)"
+avoid = ["ပစ္စည်း (generic 'item/goods')"]
+why = "ပစ္စည်း means any item or property, so a rental listing reads as a thing for sale; say explicitly that the house is for rent."
+register_note = "In UI, a short label like 'ငှားရမ်းရန် အိမ်များ' (houses for rent) works."
+sources = ["https://livinginkorea.vercel.app/guides/housing/find-apartment/"]
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "အိမ်ငှားရန် တောင်းဆိုချက် (request to find a rental home)"
+avoid = ["ငှားရမ်းခ တောင်းဆိုချက် (rent-price request)"]
+why = "Adding ငှားရမ်းခ (rent price) makes it sound like a request for a price, not a request for a home matching conditions."
+register_note = "None."
+sources = ["https://livinginkorea.vercel.app/guides/housing/find-apartment/"]
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "ငွေအပ်ငွေ (deposit, returned at lease end)"
+avoid = ["အာမခံငွေ (guarantee/insurance money)"]
+why = "အာမခံ means insurance or guarantee, which suggests a premium that is kept; ငွေအပ်ငွေ is money placed in trust and returned, which matches 보증금."
+register_note = "Use the same term in the lease and in the deposit-return explanation."
+sources = ["https://seoulstart.com/ko/guides/deposit-return-guide", "https://stay.enko.kr/blog/renting-in-south-korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "ဂျိုးဆွဲ (jeonse, 전세): one large deposit, no monthly rent"
+avoid = ["ငှားခ (plain rent)", "ငွေချေးငွား (loan)"]
+why = "Plain rent suggests monthly payment; the one-time large deposit is the defining feature, so keep the Korean term and gloss it. A loan reading misleads because no interest is paid."
+register_note = "Keep 전세 in the Korean term and add the gloss on first use. One source wrote ဂျွန်ဆဲ; spelling is not settled, so confirm with a native speaker."
+sources = ["https://livinginkorea.vercel.app/guides/housing/jeonse-wolse/", "https://stay.enko.kr/blog/renting-in-south-korea-housing-guide", "https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "ဝေါ်ဆဲ (wolse, 월세): deposit plus monthly rent"
+avoid = ["ငှားခ (rent with no 'monthly' marker)"]
+why = "Bare ငှားခ does not say the rent is paid monthly, so a foreigner may think the whole rent is one payment; name the monthly part."
+register_note = "Use with the deposit term when quoting both amounts."
+sources = ["https://livinginkorea.vercel.app/guides/housing/jeonse-wolse/", "https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "လစဉ်ငှားခ (monthly rent amount)"
+avoid = ["ငှားခ (rent, unspecified)", "လစဉ် ပေးရမည့်ငွေ (generic 'monthly payment')"]
+why = "လစဉ်ငှားခ names the rent itself; the generic payment phrase could include the maintenance fee and blur rent with 관리비."
+register_note = "Keep separate from maintenance fee in the UI."
+sources = ["https://stay.enko.kr/blog/renting-in-south-korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "စီမံခန့်ခွဲမှုခ (building management fee), keep 관리비 (gwanlibi) on first use"
+avoid = ["ငှားခ (rent)"]
+why = "Machine translation tends to fold 관리비 into rent, so the tenant under-budgets; it is a separate monthly charge on top of rent."
+register_note = "Show it as a separate line from monthly rent."
+sources = ["https://stay.enko.kr/blog/renting-in-south-korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "ကြိုတင်ငွေ (advance payment at signing)"
+avoid = ["ငွေအပ်ငွေ (deposit)"]
+why = "ငွေအပ်ငွေ is the word for the refundable 보증금; using it for 계약금 makes a non-refundable signing payment look refundable."
+register_note = "None."
+sources = ["https://seoulstart.com/ko/guides/deposit-return-guide"]
+confidence = "low"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "အိမ်ငှားစာချုပ် (house rental contract)"
+avoid = ["စာချုပ် (generic contract)"]
+why = "Bare စာချုပ် could be any contract; the house-rental phrase keeps it to the lease."
+register_note = "Legal register: keep the Korean term 임대차 계약 beside the Burmese for the contract name."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "အိမ်ရှင် (landlord/house owner)"
+avoid = ["ဆိုင်ရှင် (shop owner)"]
+why = "ဆိုင်ရှင် means a shop or business owner; the residential sense is အိမ်ရှင်, the house owner who lets the unit."
+register_note = "Legal text: 임대인 can stay in brackets next to အိမ်ရှင်."
+sources = ["https://seoulstart.com/ko/guides/deposit-return-guide"]
+confidence = "low"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "အိမ်ငှားသူ (tenant)"
+avoid = ["ငှားရမ်းသူ (generic renter, any item such as a vehicle)"]
+why = "The generic renter word covers any item; အိမ်ငှားသူ ties it to a house."
+register_note = "Legal text: add 임차인 in brackets."
+sources = ["https://seoulstart.com/ko/guides/deposit-return-guide"]
+confidence = "low"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "အိမ်ခြံမြေ ကိုယ်စားလှယ် (real estate agent), keep 공인중개사 (licensed agent)"
+avoid = ["ရောင်းဝယ်ရေး ကိုယ်စားလှယ် (sales representative)"]
+why = "Sales representative suggests a company employee; 공인중개사 is a state-licensed broker, and the Korean term signals that licence."
+register_note = "Keep 공인중개사 in the Korean term for licence checks."
+sources = ["https://stay.enko.kr/blog/renting-in-south-korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "အိမ်ခြံမြေရုံး (real estate agency office; the bundles use this form)"
+avoid = ["ဆိုင် (shop)"]
+why = "A shop reads as retail; the agency office is where licensed brokers work."
+register_note = "None."
+sources = ["https://stay.enko.kr/blog/renting-in-south-korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "ကော်မရှင်ခ (agent commission), keep 복비 (bokbi) in brackets"
+avoid = ["ဝန်ဆောင်ခ (generic service charge)"]
+why = "Service charge is generic; the fee is a capped commission paid to the licensed agent, which is what ကော်မရှင် says."
+register_note = "Show the legal cap note with the number."
+sources = ["https://seoulstart.com/ko/guides/real-estate-agent-fee-guide"]
+confidence = "low"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "ဝမ်းရူး (one-room, 원룸): keep Korean with gloss"
+avoid = ["အခန်းတစ်ခန်း (one room, generic)"]
+why = "Generic one room does not say the flat has a kitchen bathroom and bedroom in one unit; 원룸 is a specific housing type."
+register_note = "None."
+sources = ["https://livinginkorea.vercel.app/guides/housing/find-apartment/"]
+confidence = "low"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "officetel (오피스텔): keep Korean term with gloss"
+avoid = ["ရုံးခန်း (office room)"]
+why = "Office room suggests a commercial office; an officetel is a residential unit inside an office-style building."
+register_note = "None."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "gosiwon (고시원): keep Korean term with gloss (small single room with shared facilities)"
+avoid = ["ဟော်တယ် (hotel)", "ဟော်စတယ် (hostel)"]
+why = "Hotel or hostel implies short stays and service; a gosiwon is a long-term tiny room with shared kitchen and bath."
+register_note = "None."
+sources = ["https://stay.enko.kr/blog/renting-in-south-korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "banjiha (반지하): keep Korean term, gloss as half-underground room"
+avoid = ["မြေအောက်ခန်း (underground room)"]
+why = "Underground room suggests a full basement; 반지하 is half above ground with windows at street level, a different risk and light profile."
+register_note = "None."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "jeonip-singo (전입신고): reporting your new address at the community center, keep Korean term"
+avoid = ["ပြောင်းရွှေ့မှု အကြောင်းကြားခြင်း (generic relocation notice)"]
+why = "Generic relocation notice does not name the official address registration, which also feeds the deposit protection and ARC address updates."
+register_note = "Keep Korean in forms; gloss on first use."
+sources = ["https://www.immigration.go.kr/bbs/immigration/47/544862/artclView.do", "https://global.seoul.go.kr/"]
+confidence = "low"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "hwakjeong-ilja (확정일자): keep Korean term, gloss as official date stamp on the lease that protects the deposit"
+avoid = ["ရက်စွဲတံဆိပ် (generic date stamp)"]
+why = "A generic date stamp suggests a receipt; 확정일자 gives legal priority over the deposit in a sale or foreclosure, which the generic phrase does not convey."
+register_note = "Legal text: keep Korean; explain the protection in one line."
+sources = ["https://seoulstart.com/ko/guides/deposit-return-guide", "https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "deunggibu deungbon (등기부등본): keep Korean term, gloss as certified property register"
+avoid = ["မြေစာရင်း (land list)"]
+why = "A land list suggests a cadastral list; the property register shows owner and mortgages, which is what a tenant checks against fraud."
+register_note = "Legal text: keep Korean and include the certified-copy wording."
+sources = ["https://seoulstart.com/ko/guides/deposit-return-guide", "https://stay.enko.kr/blog/renting-in-south-korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "နိုင်ငံခြားသား မှတ်ပုံတင်ကတ် (ARC, Alien Registration Card): keep ARC in brackets"
+avoid = ["မှတ်ပုံတင် (generic ID / national registration card)"]
+why = "မှတ်ပုံတင် is the Myanmar national ID card, so the bare word points to the wrong card for a Korean ARC."
+register_note = "Form text: keep ARC in brackets."
+sources = ["https://www.hikorea.go.kr/", "https://www.jobploy.kr/my/content/writer/WR0000000005"]
+confidence = "low"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "ဗီဇာအမျိုးအစား (visa type), keep codes such as D-2 and E-9"
+avoid = ["နေထိုင်ခွင့် (right to live)"]
+why = "Residence right suggests a permanent right; 체류자격 is a visa class with conditions, so the visa-type phrase is accurate."
+register_note = "Keep the code (D-2, E-9) unchanged."
+sources = ["https://www.hikorea.go.kr/"]
+confidence = "low"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "ကိုယ်တိုင်အတည်ပြုခြင်း (self identity verification)"
+avoid = ["ဗီဇာစစ်ဆေးခြင်း (visa check)"]
+why = "Visa check implies immigration inspection; the app checks the user's own documents, which self-verification says."
+register_note = "UI: short label is enough."
+sources = ["https://www.hikorea.go.kr/"]
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "အတည်ပြုကုဒ် (verification code)"
+avoid = ["လျှို့ဝှက်စကား (password)"]
+why = "Password is a user-chosen secret; an SMS code is a one-time verification number, so the wrong word makes users think they must set one."
+register_note = "UI: keep short."
+sources = ["https://www.jobploy.kr/my/content/writer/WR0000000005"]
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "မိတ်ဖက် (business partner, broker partner)"
+avoid = ["လက်တွဲ (romantic partner)"]
+why = "A romantic-partner sense would be a serious mistake in a broker app; မိတ်ဖက် carries the business sense."
+register_note = "None."
+sources = ["https://www.jobploy.kr/my/content/writer/WR0000000005"]
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "အကောင့်ဖျက်သိမ်းခြင်း (delete account)"
+avoid = ["ထွက်ခွာခြင်း (leaving the group)"]
+why = "Leaving suggests stepping out of a group; the user is deleting their data and account, which the delete phrase says."
+register_note = "UI: use a button label such as 'Delete account'."
+sources = ["https://www.jobploy.kr/my/content/writer/WR0000000005"]
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "အကောင့် ယာယီရပ်ဆိုင်းခံရခြင်း (account temporarily suspended)"
+avoid = ["ပိတ်ပင်ခံရခြင်း (banned/blocked by authority)"]
+why = "Blocked by authority implies government action; the platform suspends use temporarily, which the temporary-suspension phrase conveys."
+register_note = "None."
+sources = ["https://www.jobploy.kr/my/content/writer/WR0000000005"]
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "တိုင်ကြားခြင်း (report abuse / complaint)"
+avoid = ["သတင်းပေးခြင်း (news reporting)"]
+why = "သတင်းပေး means reporting news; the machine sense of 'report' pulls to journalism, while တိုင်ကြား is a complaint to an authority or platform."
+register_note = "UI: 'Report' button label may stay in English."
+sources = ["https://www.jobploy.kr/my/content/writer/WR0000000005"]
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "push notification (keep English) with gloss အကြောင်းကြားချက် (notice)"
+avoid = ["တွန်းအားပေးချက် (literal 'push' force)"]
+why = "A literal push translation reads as physical force; app users know the English term, and the gloss explains it."
+register_note = "Keep English in UI."
+sources = ["https://www.jobploy.kr/my/content/writer/WR0000000005"]
+confidence = "low"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "gu (구): keep Korean term, gloss as ခရိုင် (district); the bundles use ခရိုင်"
+avoid = ["ပြည်နယ် (state/region)"]
+why = "State or region is a much larger administrative unit; gu is a city district and should be named as such."
+register_note = "None."
+sources = ["https://global.seoul.go.kr/"]
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "dong (동): keep Korean term, gloss as neighborhood"
+avoid = ["ရပ်ကွက် (Myanmar ward)"]
+why = "Ward is the Myanmar administrative unit with a different office and scope; dong is the Korean neighborhood unit, so keep the Korean term."
+register_note = "None."
+sources = ["https://global.seoul.go.kr/"]
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "ရထားဘူတာ ပြောင်းစီးခြင်း (change train at transfer station)"
+avoid = ["လွှဲပြောင်းခြင်း (money transfer)"]
+why = "လွှဲပြောင်း means money or item transfer; the rail sense needs train-change wording."
+register_note = "None."
+sources = ["https://global.seoul.go.kr/"]
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "jumin-senteo (주민센터): keep Korean term, gloss as public service office"
+avoid = ["ရပ်ကွက်ရုံး (ward office)"]
+why = "Ward office is the Myanmar unit's office; jumin-senteo is the Korean dong service office where move-in reports are filed, so the wrong word sends users to the wrong place."
+register_note = "Keep Korean in forms."
+sources = ["https://www.immigration.go.kr/bbs/immigration/47/544862/artclView.do", "https://www.hikorea.go.kr/"]
+confidence = "low"

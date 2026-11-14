@@ -1,0 +1,364 @@
+# Terminology for Filipino (fil). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Evidence caveat: no verified Filipino-language housing glossary was fetched. The official PHL portal (k-guide.liveinkorea.kr/PHL) and
+# Gangbuk-gu Filipino lease-stamp program confirm Filipino versions exist, but page text was not retrievable (TLS error), and the
+# Tagalog snippets seen came from search summaries, not source pages. Most confidence values are therefore low or medium.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "nasyonalidad (ayon sa passport)"
+avoid = ["bansa (country)", "lahi (race/ethnicity)"]
+why = "'Nasyonalidad' ties the word to the passport; 'bansa' gives the country, and 'lahi' suggests ethnic background, which is the wrong impression."
+register_note = "Use 'nasyonalidad' in forms and legal text. Casual Taglish often just says 'nationality' in English."
+sources = ["https://www.liveinkorea.kr", "https://k-guide.liveinkorea.kr/PHL/main.do"]
+confidence = "low"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "bansa"
+avoid = ["nasyonalidad (nationality)", "estado (state, US-style)"]
+why = "'Bansa' is the everyday word for a country in general; 'nasyonalidad' is the passport sense, so the two must stay separate."
+register_note = "Neutral in all registers."
+sources = ["https://www.liveinkorea.kr", "https://k-guide.liveinkorea.kr/PHL/main.do"]
+confidence = "medium"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "listing (available unit)"
+avoid = ["listahan (a list)", "anunsyo (announcement)"]
+why = "Filipino renters in Korea use the English 'listing' for a property ad; 'listahan' suggests a generic list, not a unit for rent."
+register_note = "Taglish in chats and posts, as in common Filipino usage of 'listing'."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://stay.enko.kr/blog/housing-in-korea-for-foreigners-budgets-contracts-and-safety-tips"]
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "rental request (keep)"
+avoid = ["kahilingan (generic request)", "order (order/purchase)", "hiling sa agent (invented phrase, no source found)"]
+why = "Filipino residents in Korea use the English 'rental request' in app and chat text, and every shipped fil string already does. 'Hiling sa agent' is an unsourced phrase; the generic 'kahilingan' does not show it is a housing search."
+register_note = "Keep 'rental request' in English in the UI and in Tagalog sentences. Keep 'agent' in English."
+sources = ["https://seoulstart.com/housing/tools/jeonse-vs-wolse", "https://stay.enko.kr/blog/housing-in-korea-for-foreigners-budgets-contracts-and-safety-tips"]
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "deposito (bojeunggeum)"
+avoid = ["garantiya (guarantee)", "seguridad (security)"]
+why = "'Deposito' is the everyday loanword Filipinos use for a refundable sum; 'garantiya' means a guarantor or guarantee, and 'seguridad' means safety, which mislead about the money being returned."
+register_note = "Keep 'deposito'; the Korean term is for reference only."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://www.livinginkorea.co/guides/housing/jeonse-wolse/", "https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "medium"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "jeonse (malaking deposito, walang buwanang upa)"
+avoid = ["upa (rent)", "pautang (loan)"]
+why = "A jeonse is one large refundable deposit with no monthly rent; 'upa' suggests monthly rent, and 'pautang' suggests borrowed money."
+register_note = "Keep the Korean romanization with a short gloss the first time it appears, per glossary policy."
+sources = ["https://www.livinginkorea.co/guides/housing/jeonse-wolse/", "https://seoulstart.com/housing/tools/jeonse-vs-wolse", "https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "medium"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "wolse (buwanang upa na may deposito)"
+avoid = ["renta lang (rent only, no deposit)", "upa (general word, no deposit)"]
+why = "A wolse has a smaller deposit plus monthly rent, so the gloss must mention the deposit; 'upa' alone hides the deposit and makes the rent look all-in."
+register_note = "Keep 'wolse'. Most foreigners rent this way, so it is the default word in UI."
+sources = ["https://www.livinginkorea.co/guides/housing/jeonse-wolse/", "https://seoulstart.com/housing/tools/jeonse-vs-wolse", "https://www.visaskorea.com/korea-apartment-rental-guide-en/"]
+confidence = "medium"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "buwanang upa"
+avoid = ["buwanang bayad (any monthly payment)", "renta kada buwan (ambiguous with fees)"]
+why = "'Buwanang upa' names the rent amount alone; 'buwanang bayad' also covers maintenance fees and other charges, which blurs the price."
+register_note = "Neutral in all registers. Show the 관리비 (maintenance fee) on its own line."
+sources = ["https://www.livinginkorea.co/guides/housing/jeonse-wolse/", "https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "maintenance fee (gwallibi)"
+avoid = ["upa (rent)", "buwanang bayad (any monthly payment)"]
+why = "The maintenance fee is charged on top of rent; 'upa' or a generic monthly payment would hide that it is a separate building charge."
+register_note = "Keep 'maintenance fee' in English with the Korean term in parentheses."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://www.visaskorea.com/korea-apartment-rental-guide-en/"]
+confidence = "low"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "contract deposit (gyeyakgeum)"
+avoid = ["paunang bayad (advance payment)", "down payment (mortgage sense)"]
+why = "'Contract deposit' is the usual term for the amount paid at signing, often about 10%; 'paunang bayad' is generic and 'down payment' suggests a home purchase."
+register_note = "Use 'contract deposit' in the lease flow. It is separate from the 보증금 (security deposit)."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://stay.enko.kr/blog/housing-in-korea-for-foreigners-budgets-contracts-and-safety-tips"]
+confidence = "low"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "kontrata sa paupahan (lease contract)"
+avoid = ["kasunduan (generic agreement)", "kontrata ng pagbili (purchase contract)"]
+why = "'Kontrata sa paupahan' says it is a rental lease; 'kasunduan' is any agreement, and 'pagbili' means buying, which could be mistaken for a sale."
+register_note = "Legal text: keep 'lease contract' in English and use Tagalog for the sentences around it, as the locale notes advise."
+sources = ["https://www.liveinkorea.kr", "https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "landlord"
+ko = "임대인"
+use = "landlord (may-ari ng bahay)"
+avoid = ["amo (boss/employer)", "may-ari ng lupa (land owner)"]
+why = "'Amo' means employer or boss, which is common in OFW contexts and misleads about the tenancy; 'may-ari ng lupa' means owner of land, not the house or unit."
+register_note = "Use 'landlord' in English in the UI. Formal text: 'may-ari ng bahay'."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://stay.enko.kr/blog/housing-in-korea-for-foreigners-budgets-contracts-and-safety-tips"]
+confidence = "low"
+
+[[term]]
+concept = "tenant"
+ko = "임차인"
+use = "nangungupahan (tenant)"
+avoid = ["inquilino (Spanish-derived legal term)", "umuupa (ambiguous verb form)"]
+why = "'Nangungupahan' is the everyday noun for a person renting a home; 'inquilino' is less common in Tagalog, and the verb form 'umuupa' does not read clearly as a status."
+register_note = "Use 'tenant' in English in UI; use 'nangungupahan' in Tagalog sentences."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "real estate agent (gongin junggaesa)"
+avoid = ["ahente ng lupa (land agent)", "broker (stock/finance sense)"]
+why = "'Real estate agent' is the term Filipinos use for a licensed Korean broker; 'ahente ng lupa' means land agent and 'broker' often means a financial broker."
+register_note = "Keep 'real estate agent' in English, with the Korean term in parentheses."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://seoulstart.com/ko/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "real estate office (junggaesa-sa)"
+avoid = ["opisina (general office)", "bahay-ahente (agent house)"]
+why = "'Real estate office' names the place that handles housing deals; 'opisina' is a general office, and 'bahay-ahente' is not a standard term."
+register_note = "Use 'real estate office' in the app."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료"
+use = "agent fee (junggaesu-suryo / bokbi)"
+avoid = ["komisyon (commission, generic)", "buwis (tax)"]
+why = "'Agent fee' is the phrase foreigners use for the broker's fee; 'komisyon' is generic and 'buwis' means tax, which misleads about who gets paid."
+register_note = "Use 'agent fee' in English. Show 'bokbi' in parentheses for recognition."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://www.visaskorea.com/korea-apartment-rental-guide-en/"]
+confidence = "low"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "one-room (keep)"
+avoid = ["isang kwarto (one bedroom)", "isang silid (one room, unclear layout)"]
+why = "A Korean one-room has a kitchen area and bathroom in one unit; 'isang kwarto' or 'isang silid' suggests a bedroom, and may imply a shared home."
+register_note = "Keep 'one-room' in English."
+sources = ["https://www.visaskorea.com/korea-apartment-rental-guide-en/", "https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "medium"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "officetel (keep)"
+avoid = ["opisina (office)", "condo (condominium)"]
+why = "An officetel is a small residential unit in a mixed office building; 'opisina' hides that it is a home, and 'condo' suggests a full apartment."
+register_note = "Keep the romanized word and gloss it once: 'officetel (studio sa office building)'."
+sources = ["https://www.visaskorea.com/korea-apartment-rental-guide-en/", "https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "gosiwon (maliit na kuwarto, shared na kusina at banyo)"
+avoid = ["dormitoryo (dormitory)", "boarding house (meals included)"]
+why = "A gosiwon is a tiny single room with shared facilities, cheap and short-term; 'dormitoryo' or 'boarding house' suggests a student bed with meals, which is wrong."
+register_note = "Keep 'gosiwon' with a short gloss on first use."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://www.visaskorea.com/korea-apartment-rental-guide-en/"]
+confidence = "low"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "banjiha (semi-basement)"
+avoid = ["silong (basement)", "ground floor"]
+why = "A banjiha is partly below street level, not fully underground; 'silong' or 'basement' overstates how deep it is, and 'ground floor' hides the low light and damp risk."
+register_note = "Keep 'banjiha' with the gloss 'semi-basement'."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://www.visaskorea.com/korea-apartment-rental-guide-en/"]
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "jeonip-singo (move-in report)"
+avoid = ["pag-report ng paglipat (literal report of moving)", "pagpaparehistro ng address (address registration, generic)"]
+why = "The move-in report is a legal filing at the community service center; literal phrases sound like a casual notice, which hides the legal duty and the 14-day deadline."
+register_note = "Official term. Gangbuk-gu issues its move-in stamp in Filipino among nine languages, so the Filipino form is public, though its exact wording was not verified."
+sources = ["https://www.asiae.co.kr/en/article/2025012108095537136", "https://www.koreajoongangdaily.com/korea/gangbuk-district-expands-housing-protection-for-foreign-residents/12852715", "https://www.koreatimes.co.kr/southkorea/20260831/seoul-district-steps-up-housing-protections-for-foreign-tenants"]
+confidence = "medium"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "hwakjeong-ilja (fixed date stamp)"
+avoid = ["petsa ng pagkakatiyak (literal date of certainty)", "notaryo (notary)"]
+why = "The fixed-date stamp is a dated seal on the lease that protects the deposit; literal Tagalog phrases sound like a generic date, and 'notaryo' suggests a notarized signature, which is a different service."
+register_note = "Keep the romanized term and the gloss 'fixed date stamp' in English."
+sources = ["https://www.asiae.co.kr/en/article/2025012108095537136", "https://brunch.co.kr/@oceanshin/44", "https://albup.co.kr/page/column_detail.php?content_id=2199"]
+confidence = "medium"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "deunggibu-deungbon (property register)"
+avoid = ["rehistro ng ari-arian (property registry, literal)", "titulo (title deed)"]
+why = "The property register lists the owner and any debts; 'titulo' suggests a title deed you sign, and the literal phrase is not what Korean agents or government sites call it."
+register_note = "Keep 'property register' with the Korean term, since foreigners check it on the Internet registry."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://www.koreatimes.co.kr/amp/southkorea/society/20250917/jeonse-scams-trap-tenants-in-housing-rental-crisis"]
+confidence = "low"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "ARC (Alien Registration Card)"
+avoid = ["rehistro ng dayuhan (foreigner registration, literal)", "pasaporte (passport)"]
+why = "Foreigners in Korea say 'ARC'; the literal phrase is not what the card is called, and 'pasaporte' is the wrong document, since the ARC is issued by Korea."
+register_note = "Use 'ARC' in the UI. Gloss once with the full English name."
+sources = ["https://www.liveinkorea.kr", "https://k-guide.liveinkorea.kr/PHL/main.do"]
+confidence = "low"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "visa status (D-2, E-9)"
+avoid = ["katayuan sa pananatili (stay status, literal)", "uri ng pasaporte (passport type)"]
+why = "'Visa status' is the term foreign residents use for the stay category; the literal phrase is unfamiliar, and 'passport type' is the wrong concept."
+register_note = "Keep 'visa status' in English. Show the code, such as D-2 or E-9."
+sources = ["https://www.liveinkorea.kr", "https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "identity verification (ARC verification)"
+avoid = ["pagpapatunay ng pagkatao (literal, personal proof)", "pagkakakilanlan check (generic)"]
+why = "KOVIL checks the foreign resident's documents; 'identity verification' names that process, while the literal phrases read as a personal character check."
+register_note = "Keep 'verification' in English; use Tagalog for the sentence around it."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "verification code (SMS)"
+avoid = ["numero ng pagpapatunay (literal)", "PIN (bank PIN)"]
+why = "'Verification code' is what Filipino users see in SMS apps; the literal phrase is unusual, and 'PIN' means a bank or card PIN, which is wrong for an SMS code."
+register_note = "Use 'verification code' in the UI."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "partner (broker partner)"
+avoid = ["kasosyo (business co-owner)", "kasama (companion)"]
+why = "On KOVIL, a partner is a licensed broker working with the app; 'kasosyo' suggests a business co-owner, and 'kasama' suggests a companion or friend."
+register_note = "Keep 'partner' in English in the UI."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "i-delete ang account (account withdrawal)"
+avoid = ["i-withdraw (withdraw money from a bank)", "umalis sa app (leave the app)"]
+why = "'Withdraw' in Filipino usage means taking money out of a bank; 'delete the account' is the action the user means, and 'leave the app' does not say the data is erased."
+register_note = "Use 'delete account' in the UI, with 'account withdrawal' as the Korean-law term."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "naka-suspend ang account"
+avoid = ["naka-pause (paused)", "pinatigil (stopped, generic)"]
+why = "'Suspended' is the word Filipino users know from apps; 'paused' suggests a temporary break the user can end, and 'pinatigil' is generic."
+register_note = "Use 'suspended' in English in the UI."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "i-report"
+avoid = ["ireklamo (file a complaint, formal)", "sumbong (tattle)"]
+why = "'Report' is the everyday app word Filipinos use; 'ireklamo' sounds like a formal legal complaint, and 'sumbong' means tattling, which carries a social stigma."
+register_note = "Keep 'report' in English in the UI."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "push notification (keep)"
+avoid = ["pagtulak (push, literal shove)", "abiso (notice, generic)"]
+why = "'Push notification' is the term Filipino app users see; 'pagtulak' means shoving, and 'abiso' is a general notice, not a phone alert."
+register_note = "Keep the English term."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "gu (district)"
+avoid = ["distrito (electoral district, Spanish-derived)", "lungsod (city)"]
+why = "A Korean gu is a city district, such as Gangbuk-gu; 'distrito' suggests an electoral zone, and 'lungsod' means city, which is too large."
+register_note = "Keep 'gu' with the gloss 'district'."
+sources = ["https://www.asiae.co.kr/en/article/2025012108095537136", "https://www.koreajoongangdaily.com/korea/gangbuk-district-expands-housing-protection-for-foreign-residents/12852715"]
+confidence = "medium"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "dong (neighborhood)"
+avoid = ["barangay (Philippine village unit)", "kapitbahayan (general neighborhood)"]
+why = "A Korean dong is a small local area inside a gu; 'barangay' is the Philippine village unit, which is a different administrative level and would confuse readers."
+register_note = "Keep 'dong' with the gloss 'neighborhood'."
+sources = ["https://www.asiae.co.kr/en/article/2025012108095537136"]
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "transfer (subway)"
+avoid = ["paglilipat (transfer of property or person)", "paglipat (move house)"]
+why = "'Transfer' is the everyday word Filipinos use for changing subway lines; 'paglipat' means moving house, which would confuse a route instruction."
+register_note = "Use 'transfer' in English."
+sources = ["https://www.visaskorea.com/korea-apartment-rental-guide-en/"]
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "jumin center (community service center)"
+avoid = ["sentro ng komunidad (community center, generic)", "city hall (city government)"]
+why = "A jumin center is the local government office where residents file move-in reports; 'community center' suggests a social hall, and 'city hall' suggests a larger municipal office."
+register_note = "Keep 'jumin center' with the gloss 'community service center', as Gangbuk-gu's Filipino materials name the office."
+sources = ["https://www.asiae.co.kr/en/article/2025012108095537136", "https://www.koreajoongangdaily.com/korea/gangbuk-district-expands-housing-protection-for-foreign-residents/12852715"]
+confidence = "medium"

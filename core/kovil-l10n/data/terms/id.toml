@@ -1,0 +1,335 @@
+# Terminology for Indonesian (id). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Search budget ran out after ~14 queries, so Indonesian community usage (kos/kost, jeonse slang) is thin; most "low" entries had no source at all.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "kewarganegaraan"
+avoid = ["negara", "kebangsaan"]
+why = "Kewarganegaraan is the passport-country term on Indonesian documents; negara means country in general, so using it blurs nationality into country."
+register_note = "Form and legal text. Keep it a country-of-passport picker, not a place-of-living field."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "negara"
+avoid = ["kewarganegaraan", "wilayah"]
+why = "Negara is the everyday word for a country; kewarganegaraan would wrongly suggest citizenship, and wilayah means region or territory."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "iklan sewa"
+avoid = ["listing", "daftar", "iklan jual"]
+why = "Iklan sewa says plainly that the listing is for rent and matches the bundle wording; iklan jual is a for-sale ad, which is the wrong direction."
+register_note = "Bundles already write Iklan for listings. Use iklan sewa in UI and cards."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "permintaan sewa"
+avoid = ["pesanan", "booking"]
+why = "Permintaan sewa is the tenant asking for a home; booking and pesanan suggest a short-stay reservation or an order, which is a different transaction."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "deposit (보증금)"
+avoid = ["uang muka", "uang jaminan"]
+why = "Residents and guides keep the word deposit for the refundable sum; uang muka means down payment, which would confuse it with 계약금."
+register_note = "Gloss once as 'deposit sewa, dikembalikan saat kontrak berakhir' in legal text."
+sources = ["https://www.livinginkorea.org/id/guide/housing", "https://www.rukita.co/stories/kost-di-korea-selatan/"]
+confidence = "medium"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "jeonse (sewa deposit besar, tanpa sewa bulanan)"
+avoid = ["sewa tahunan", "kredit", "cicilan"]
+why = "Keep jeonse and gloss it as a large deposit with no monthly rent; sewa tahunan suggests yearly rent and cicilan suggests a loan repayment, both wrong."
+register_note = "Legal text: keep 'jeonse (전세)' with the gloss on first use. livinginkorea.org glosses it as 'sewa uang kunci lump-sum'. Community slang 'dhuwit kunci' (key money) appears too."
+sources = ["https://www.livinginkorea.org/id/guide/housing", "https://staykorea.org/korea-travel/jeonse-vs-wolse-explained-the-korean-rental-system-for-foreigners/", "https://rri.co.id/batam/keuangan/1478672/sistem-sewa-properti-di-korea-selatan"]
+confidence = "high"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "wolse (sewa bulanan)"
+avoid = ["cicilan", "sewa harian"]
+why = "Wolse with the gloss sewa bulanan matches how the guides explain it; cicilan implies buying on credit, and sewa harian means daily rent."
+sources = ["https://www.livinginkorea.org/id/guide/housing", "https://staykorea.org/korea-travel/jeonse-vs-wolse-explained-the-korean-rental-system-for-foreigners/"]
+confidence = "high"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "sewa bulanan"
+avoid = ["cicilan bulanan", "biaya bulanan"]
+why = "Sewa bulanan is the amount paid each month for the unit; cicilan is loan repayment and biaya bulanan is too vague, since it could include 관리비."
+sources = ["https://www.livinginkorea.org/id/guide/housing", "https://www.rukita.co/stories/kost-di-korea-selatan/"]
+confidence = "medium"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "관리비 (biaya pengelolaan gedung bulanan)"
+avoid = ["biaya perawatan", "pajak"]
+why = "Guides keep 관리비 and gloss it as the monthly building-management fee; biaya perawatan reads as repair cost and pajak as tax, so both mislead."
+register_note = "Show the amount on its own line, separate from sewa bulanan."
+sources = ["https://www.livinginkorea.org/id/guide/housing", "https://www.rukita.co/stories/kost-di-korea-selatan/"]
+confidence = "medium"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "uang muka (계약금)"
+avoid = ["deposit", "uang jaminan"]
+why = "Uang muka is the standard Indonesian down payment paid at signing; deposit is already used for 보증금, so reusing it would blur the two."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "kontrak sewa"
+avoid = ["perjanjian jual beli", "kontrak kerja"]
+why = "Kontrak sewa names the lease; perjanjian jual beli means sale-purchase agreement and kontrak kerja means employment contract, both wrong for a rental."
+sources = ["https://www.livinginkorea.org/id/guide/housing"]
+confidence = "medium"
+
+[[term]]
+concept = "landlord"
+ko = "임대인(집주인)"
+use = "pemilik (yang menyewakan)"
+avoid = ["tuan rumah", "majikan"]
+why = "Pemilik yang menyewakan says the owner is the lessor; tuan rumah can mean host or homeowner in a loose sense, and majikan means employer."
+register_note = "Use 'pemilik' in UI; 집주인 is the everyday term in Korea."
+sources = ["https://www.livinginkorea.org/id/guide/housing"]
+confidence = "medium"
+
+[[term]]
+concept = "tenant"
+ko = "임차인(세입자)"
+use = "penyewa"
+avoid = ["penghuni", "pemakai"]
+why = "Penyewa is the party who signed the lease; penghuni means occupant and does not imply a contract, so it misses the legal role."
+sources = ["https://www.livinginkorea.org/id/guide/housing"]
+confidence = "medium"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "agen properti berlisensi (공인중개사)"
+avoid = ["makelar", "notaris"]
+why = "Agen properti berlisensi keeps the licensed status, which is the point of 공인중개사; makelar is informal and can sound like an unlicensed go-between, and notaris is a notary, a different profession."
+register_note = "Keep 공인중개사 in the legal text. Use 'agen' in short UI labels."
+sources = ["https://www.livinginkorea.org/id/guide/housing"]
+confidence = "medium"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "kantor agen properti (중개사무소)"
+avoid = ["kantor notaris", "kantor makelar"]
+why = "Kantor agen properti names the agency office; notaris and makelar give the wrong profession or an informal tone."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "biaya komisi agen (중개수수료)"
+avoid = ["fee makelar", "biaya sewa"]
+why = "Biaya komisi agen names the agent commission; biaya sewa would make it sound like part of the rent."
+sources = ["https://www.livinginkorea.org/id/guide/housing"]
+confidence = "medium"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "원룸 (apartemen studio satu kamar)"
+avoid = ["kamar", "apartemen"]
+why = "Apartemen studio satu kamar says it is one whole unit with kitchen and bath; kamar alone means a single room, and apartemen suggests a large building."
+sources = ["https://www.rukita.co/stories/kost-di-korea-selatan/", "https://www.ultimateducation.co.id/cara-memahami-sistem-apartemen-di-korea-selatan-untuk-pemula/"]
+confidence = "medium"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "오피스텔 (officetel)"
+avoid = ["apartemen", "hotel"]
+why = "Keep officetel, which guides keep as-is, because it is a mixed office-residence building; apartemen and hotel each give the wrong building type."
+sources = ["https://www.rukita.co/stories/kost-di-korea-selatan/", "https://www.livinginkorea.org/id/guide/housing"]
+confidence = "medium"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "고시원 (goshiwon, kamar kos mikro)"
+avoid = ["kos biasa", "asrama"]
+why = "Keep goshiwon with the gloss kamar kos mikro, since it is a tiny room with shared facilities; kos biasa suggests a regular boarding house and asrama suggests a school dormitory."
+register_note = "Community also writes 'kost' for these rooms, so accept it in search but keep 고시원 in the UI."
+sources = ["https://www.livinginkorea.org/id/guide/housing", "https://www.rukita.co/stories/kost-di-korea-selatan/"]
+confidence = "medium"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "semi-basement (반지하, unit yang sebagian di bawah permukaan tanah)"
+avoid = ["basemen", "ruang bawah tanah"]
+why = "Semi-basement with the gloss partly below ground keeps the sense; basemen and ruang bawah tanah overstate it as fully underground."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "lapor pindah alamat (전입신고)"
+avoid = ["pindah KTP", "daftar KTP"]
+why = "Lapor pindah alamat says what the filing does; pindah KTP and daftar KTP name the Indonesian ID card, which Korea does not use, so they mislead."
+register_note = "Keep 전입신고 in brackets, since the form and office use the Korean term. livinginkorea.org glossary says Pendaftaran alamat pindah masuk; lapor pindah alamat is the plainer wording used in the bundle. Native check pending."
+sources = ["https://www.livinginkorea.org/id/guide/housing"]
+confidence = "medium"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "확정일자 (cap tanggal tetap)"
+avoid = ["sertifikat", "stempel"]
+why = "Keep 확정일자 with the gloss cap tanggal tetap, which explains its legal purpose; sertifikat means a title or certificate and stempel means a plain rubber stamp, both wrong."
+sources = ["https://www.livinginkorea.org/id/guide/housing"]
+confidence = "medium"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "등기부등본 (dokumen registri properti)"
+avoid = ["sertifikat tanah", "sertifikat rumah"]
+why = "Dokumen registri properti says it is a registry extract; sertifikat tanah or rumah means an Indonesian land title, which is a different document."
+sources = ["https://www.livinginkorea.org/id/guide/housing"]
+confidence = "medium"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "ARC (외국인등록증, Kartu Pendaftaran Orang Asing)"
+avoid = ["KTP", "KITAS"]
+why = "ARC with the gloss Kartu Pendaftaran Orang Asing (the wording livinginkorea.org uses) is the Korean card; KTP is the Indonesian ID card and KITAS is Indonesia's residence permit, both giving the wrong document."
+sources = ["https://www.livinginkorea.org/id/guide/housing"]
+confidence = "medium"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "status tinggal (체류자격, mis. D-2, E-9)"
+avoid = ["izin tinggal", "KITAS", "status visa"]
+why = "Status visa with the Korean category code is the term a foreign resident would check; izin tinggal and KITAS are Indonesian immigration terms for a different permit system."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "verifikasi identitas (외국인 인증)"
+avoid = ["sertifikasi", "otentikasi"]
+why = "Verifikasi identitas matches the common app meaning of checking who the user is; sertifikasi means certification of a qualification and otentikasi is too technical."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "kode verifikasi"
+avoid = ["nomor sertifikat", "kode sertifikat"]
+why = "Kode verifikasi is the SMS code users expect; nomor sertifikat would suggest a certificate number, which is wrong."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "mitra"
+avoid = ["pasangan", "partner"]
+why = "Mitra is the standard Indonesian word for a business partner in apps; pasangan means romantic partner or spouse, which would be a serious mistranslation."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "hapus akun (회원 탈퇴)"
+avoid = ["penarikan", "keluar"]
+why = "Hapus akun says the account is deleted; penarikan means cash withdrawal and keluar is vague, so neither says the account is gone."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "akun ditangguhkan sementara (이용 정지)"
+avoid = ["diblokir", "dibekukan"]
+why = "Akun ditangguhkan sementara matches the bundle SUSPENDED_USER wording; dibekukan is the word for frozen bank accounts, and diblokir reads as banned."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "laporkan"
+avoid = ["berita", "lapor"]
+why = "Laporkan is the standard verb for reporting abuse in apps; berita means news and bare lapor reads as a generic filing."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "notifikasi"
+avoid = ["dorongan", "push"]
+why = "Notifikasi is the word Indonesian app users know for a push alert; dorongan literally means push or thrust and sounds wrong."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "district"
+ko = "구(시군구)"
+use = "distrik (gu, 구)"
+avoid = ["kecamatan", "kabupaten"]
+why = "Distrik matches the bundle wording (Pilih distrik ...); gu in brackets keeps the Korean romanization. kecamatan is an Indonesian sub-district and kabupaten a regency, which do not match the Korean level."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동(읍면동)"
+use = "dong (동)"
+avoid = ["kelurahan", "desa"]
+why = "Keep dong, since the neighborhood name is written that way; kelurahan is an Indonesian urban village and desa is a village, both implying a different admin unit."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "transit (환승, pindah jalur)"
+avoid = ["transfer", "oper"]
+why = "Transit with the gloss pindah jalur is the everyday word for changing lines; transfer would read as a bank transfer, and oper is informal for changing buses."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "주민센터 (kantor kelurahan)"
+avoid = ["pusat komunitas", "pusat kebudayaan"]
+why = "Kantor kelurahan names the civic office that handles move-in reports; pusat komunitas and pusat kebudayaan mean a social or cultural centre, which is the wrong place."
+sources = []
+confidence = "low"

@@ -1,0 +1,369 @@
+# Terminology for Urdu (ur). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Evidence caveat: the WebSearch budget ran out after 3 searches, so no Urdu-language community sources were found.
+# Second pass 2026-11-13: WebSearch budget exhausted, no independent search done; edits are consistency fixes against the three files plus reviewer judgement.
+# Third pass 2026-11-13 (WebSearch budget still exhausted; cited pages fetched directly): liveinkorea.kr does NOT
+# mention ARC, 전입신고, 주민센터, 본인인증 or nationality; seoulstart does not mention 임대 요청, 관리비, 중개수수료 (it
+# uses 중개보수) or 매물; checkmatekorea does not cover 확정일자. Unsupported citations removed, arc lowered to low.
+# Official check: liveinkorea.kr (Danuri, 13-16 languages) and hikorea.go.kr have NO Urdu version. Urdu is not an official
+# multilingual target, so every Urdu word below is a dictionary/usage-based choice, not an official one. Confidence is
+# capped accordingly. Native review is needed before launch.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "شہریت (پاسپورٹ پر درج ملک)"
+avoid = ["قومیت"]
+why = "شہریت means the state that issued the passport, which is what 국적 asks for; قومیت means ethnicity or ethnic group, so it would make users think the app asks about their background."
+register_note = "Use the same word on forms and in UI."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "ملک"
+avoid = ["قوم", "ملت"]
+why = "ملک is the standard general word for a country; قوم and ملت mean people, nation or community, which gives a cultural or ethnic sense rather than a state."
+register_note = "Plain everyday word."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "اشتہار (کرائے کے لیے دستیاب مکان)"
+avoid = ["جائیداد"]
+why = "اشتہار is the word the error and notification files already use for a listing; جائیداد means owned property or assets, so it suggests something the user would buy, not rent."
+register_note = "Use اشتہار in every file. Do not mix in پراپرٹی لسٹنگ."
+sources = ["https://seoulstart.com/guides/renting-apartment-korea"]
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "کرائے کے مکان کی تلاش کی درخواست (ایجنٹ کو)"
+avoid = ["فرمائش", "آرڈر"]
+why = "The phrase describes a tenant asking a broker to find a home that matches conditions; فرمائش means a casual demand or request for a favour, and آرڈر sounds like a shop purchase."
+register_note = "Use the full phrase on the request form; a shorter label works in lists."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "ڈپازٹ (لیز ختم ہونے پر واپس ملنے والی رقم)"
+avoid = ["ضمانت", "ایڈوانس"]
+why = "ڈپازٹ is the widely used loanword and matches Korean 보증금, which is returned at lease end; ضمانت means a guarantee or surety, which suggests a guarantor, and ایڈوانس suggests advance rent that is kept."
+register_note = "Add the refund sentence in the gloss so users know it comes back."
+sources = ["https://checkmatekorea.com/blog/jeonse-wolse-korea-guide/", "https://sharedhomies.com/blog/korea-deposit-jeonse-explained-2026-guide-foreigners"]
+confidence = "medium"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "جیونسے (jeonse): بڑی رقم بطور ڈپازٹ، ماہانہ کرایہ نہیں"
+avoid = ["ایڈوانس کرایہ", "کرایہ"]
+why = "Keep the Korean word with a gloss, because no Urdu word exists for this system; a translation as advance rent or just کرایہ suggests the user pays rent, but jeonse has no monthly rent and the full deposit comes back."
+register_note = "Keep the romanized word and gloss in every place it appears, not only the first."
+sources = ["https://checkmatekorea.com/blog/jeonse-wolse-korea-guide/", "https://infosouthkorea.com/finding-housing-korea/"]
+confidence = "low"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "وولسے (wolse): کم ڈپازٹ + ماہانہ کرایہ"
+avoid = ["ماہانہ کرایہ", "رینٹ"]
+why = "A plain ماہانہ کرایہ leaves out the deposit, and رینٹ suggests only rent; wolse always has both a deposit and monthly rent, which is the main cost difference from jeonse."
+register_note = "Keep the romanized word with the gloss."
+sources = ["https://checkmatekorea.com/blog/jeonse-wolse-korea-guide/", "https://seoulstart.com/guides/renting-apartment-korea"]
+confidence = "low"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "ماہانہ کرایہ"
+avoid = ["ڈپازٹ", "ایڈوانس"]
+why = "ماہانہ کرایہ is the direct term for the amount paid each month; using ڈپازٹ or ایڈوانس for it would mix up the one-time deposit with the monthly payment."
+register_note = "Plain everyday word."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "مینٹیننس فیس (ماہانہ عمارتی اخراجات)"
+avoid = ["کرایہ", "بجلی کا بل"]
+why = "The fee is separate from rent and pays building upkeep; کرایہ would make users think it is part of the rent, and بجلی کا بل means an electricity bill, which is only one line in 관리비."
+register_note = "Gloss needed the first time, because many users have not seen it before."
+sources = ["https://seoulstart.com/guides/renting-apartment-korea"]
+confidence = "low"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "بیعانہ"
+avoid = ["ایڈوانس", "ڈاؤن پیمنٹ"]
+why = "بیعانہ is the Urdu legal word for earnest money paid at signing and is part of the price; ایڈوانس suggests advance rent, and ڈاؤن پیمنٹ suggests a mortgage or purchase down payment."
+register_note = "Formal word in contract text; add the gloss 'paid at signing, counted in the total' in UI."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "کرایہ نامہ (لیز معاہدہ)"
+avoid = ["سروس معاہدہ"]
+why = "کرایہ نامہ is the common Urdu word for a rent agreement; سروس معاہدہ would suggest a service contract, not a lease for a home."
+register_note = "Formal in legal text. Use لیز معاہدہ as the English-friendly alias."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "مالکِ مکان"
+avoid = ["زمیندار", "جاگیردار"]
+why = "مالکِ مکان means the owner of the house; زمیندار and جاگیردار mean a feudal landowner or estate lord, which gives the wrong picture of a Korean residential landlord."
+register_note = "Use مالک مکان for everyday; 임대인 is the legal role in contracts."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "کرایہ دار"
+avoid = ["کرایہ لینے والا"]
+why = "کرایہ دار is the standard word for the person who rents; کرایہ لینے والا means the one who receives rent, which is the landlord, so it is the wrong direction."
+register_note = "Everyday word; in legal text, مستاجر is possible but too formal for an app."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "پراپرٹی ایجنٹ (لائسنس یافتہ)"
+avoid = ["دلال"]
+why = "پراپرٹی ایجنٹ is the common term and the Korean 공인 (licensed) can be added; دلال is the old word for a broker and is often used with a negative sense of a middleman who takes an unfair cut."
+register_note = "Put 'licensed' in the gloss, because 공인 is a legal status users can check."
+sources = ["https://seoulstart.com/guides/renting-apartment-korea"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "پراپرٹی ایجنسی (دفتر)"
+avoid = ["دلالی دفتر"]
+why = "پراپرٹی ایجنسی is the usual name for an agent office; دلالی دفتر uses the negative old word for a middleman and sounds unofficial."
+register_note = "Use ایجنسی in lists; the full phrase on the signage line."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "ایجنٹ کمیشن (بوکبی, 복비)"
+avoid = ["ٹپ", "رشوت"]
+why = "ایجنٹ کمیشن is the fee for the agent's service; ٹپ means a voluntary gratuity, and رشوت means a bribe, which would make a legal fee look optional or illegal."
+register_note = "Keep the Korean 복비 in the gloss, since users will see it on Korean receipts."
+sources = ["https://seoulstart.com/guides/renting-apartment-korea"]
+confidence = "low"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "ون روم (원룸)"
+avoid = ["سٹوڈیو اپارٹمنٹ"]
+why = "ون روم is the Korean-English loanword used in Korean listings for this one-room unit, where the kitchen is in the same room; سٹوڈیو اپارٹمنٹ means the same one-room layout in Western usage, so the choice is about familiarity, not size or price (corrected 2026-11-13: earlier text wrongly said a separate kitchen)."
+register_note = "Everyday word in UI."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "آفس ٹیل (오피스텔): دفتر اور رہائش کی ملی جلی عمارت"
+avoid = ["آفس"]
+why = "Keep the Korean word with a gloss, because it is a Korean hybrid building type; آفس alone says the place is only an office and hides that people live there."
+register_note = "Gloss needed in the first mention."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "گوشی وون (고시원): چھوٹے کمروں والی رہائش"
+avoid = ["ہاسٹل", "پی جی"]
+why = "Keep the Korean word with a gloss, since it is a specific Korean small-room type; ہاسٹل and پی جی suggest a managed hostel or paying-guest house with shared meals and services, which gosiwon does not usually offer."
+register_note = "Gloss needed; the Korean word is widely used by foreign residents."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "بان جی ہا (반지하): نیم زیر زمین کمرہ/فلیٹ"
+avoid = ["بیسمنٹ"]
+why = "Keep the Korean word with a gloss; بیسمنٹ means a full underground basement and, in Pakistani usage, often suggests an unsafe or illegal rental, which can mislead users about a half-underground unit with windows at street level."
+register_note = "Gloss must say 'partly underground'."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "نئے پتے کا اندراج (전입신고): جومِن سینٹر (주민센터) پر"
+avoid = ["امیگریشن رپورٹ", "شفٹنگ"]
+why = "نئے پتے کا اندراج describes registering a new home address with the local office; امیگریشن رپورٹ suggests a report to the immigration office, and شفٹنگ means only moving the belongings."
+register_note = "Use the full phrase in instructions and the short label in buttons."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "확정일자 (ہواک جونگ ال جا): معاہدے پر سرکاری تاریخ کی مہر جو ڈپازٹ کو تحفظ دیتی ہے"
+avoid = ["کنفرم ڈیٹ"]
+why = "Keep the Korean term with a gloss; کنفرم ڈیٹ is a literal English-style phrase and does not say that this official date stamp gives priority over other creditors for the deposit."
+register_note = "Gloss needed; this is a legal protection users must act on."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "جائیداد کی رجسٹری کی نقل (등기부등본)"
+avoid = ["سرٹیفکیٹ"]
+why = "جائیداد کی رجسٹری کی نقل is the closest Urdu description of the official ownership and lien record; سرٹیفکیٹ means only a certificate, which does not say what the document shows."
+register_note = "Keep 등기부등본 in parentheses so users can ask for it in Korean."
+sources = ["https://sharedhomies.com/blog/korea-deposit-jeonse-explained-2026-guide-foreigners"]
+confidence = "low"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "ARC (غیر ملکی رجسٹریشن کارڈ)"
+avoid = ["شناختی کارڈ", "پاسپورٹ"]
+why = "ARC with the Urdu gloss is what Korean offices print and foreign residents say; شناختی کارڈ is Pakistan's national ID card, and پاسپورٹ is a different document, so either would mislead users about which card KOVIL asks for."
+register_note = "Keep the English ARC abbreviation; the gloss helps first-time users."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "ویزا کیٹیگری (D-2، E-9) (체류자격)"
+avoid = ["امیگریشن اسٹیٹس"]
+why = "ویزا کیٹیگری matches the code users see on their card (D-2, E-9) and is what they would say to a broker; امیگریشن اسٹیٹس is an English-style phrase that does not match the Korean code system."
+register_note = "Keep the codes in Latin letters."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "شناخت کی تصدیق (ID verification)"
+avoid = ["سرٹیفکیٹ کی تصدیق"]
+why = "شناخت کی تصدیق means confirming the person's identity, which is what KOVIL does with the ARC; سرٹیفکیٹ کی تصدیق suggests checking a certificate document, not the person."
+register_note = "Use in UI; 본인 인증 is the Korean term users may see on other sites."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "تصدیقی کوڈ (OTP)"
+avoid = ["سرٹیفکیشن نمبر"]
+why = "تصدیقی کوڈ with OTP is what Pakistani and other Urdu-speaking users see in SMS messages from banks and apps; سرٹیفکیشن نمبر is a literal translation that users do not use for an SMS code."
+register_note = "Short label in UI; the full phrase in the SMS notice."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "پارٹنر (شراکت دار ایجنٹ)"
+avoid = ["ساتھی"]
+why = "پارٹنر is the loanword used in business apps and matches a broker company that works with KOVIL; ساتھی means a companion or friend, which sounds personal and vague."
+register_note = "Use the business word on the broker sign-up screen."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "اکاؤنٹ ختم کرنا (رکنیت سے علیحدگی)"
+avoid = ["نکالنا", "ودڈراول"]
+why = "اکاؤنٹ ختم کرنا says the user is closing their account; نکالنا and ودڈراول mean taking money out, as at an ATM, so the button would seem to be about cash."
+register_note = "Use in button and confirmation dialog."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "اکاؤنٹ عارضی طور پر معطل"
+avoid = ["بند"]
+why = "عارضی طور پر معطل says the block is temporary and under review, which matches 이용 정지; بند means closed or shut, which suggests the account is gone for good."
+register_note = "Give a reason and an appeal path in the message."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "رپورٹ کریں"
+avoid = ["اطلاع دیں", "شکایت کریں"]
+why = "رپورٹ کریں is the everyday word for flagging abusive content in apps; اطلاع دیں means only to inform someone and does not carry the moderation sense, and شکایت کریں suggests a personal complaint, not a report for the platform to review."
+register_note = "Everyday UI word."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "پش نوٹیفکیشن (اطلاع)"
+avoid = ["دھکا"]
+why = "پش نوٹیفکیشن is the loanword users see in phone settings; دھکا is the literal meaning of 'push' (a shove) and would make the setting look like something physical."
+register_note = "Use the loanword in settings; the gloss اطلاع in messages."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "گو (구): شہر کا ضلعی علاقہ"
+avoid = ["ضلع"]
+why = "Keep the Korean 구 with a gloss; ضلع is the Pakistani administrative district, which is a larger unit, so it would make a Seoul 구 look like a province-level area."
+register_note = "Keep the Korean word; gloss the first time."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "دونگ (동): محلہ"
+avoid = ["گاؤں", "ٹاؤن"]
+why = "محلہ is the everyday word for a city neighborhood and fits 동; گاؤں means a village, which is 읍/면 in Korea and not a city block, and ٹاؤن suggests a planned town."
+register_note = "Keep the Korean 동 in addresses."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "منتقلی (환승)"
+avoid = ["تبادلہ", "ٹرانزٹ"]
+why = "منتقلی is the short badge word for changing lines at a station (Android label transfer); تبادلہ means exchange or staff transfer, and ٹرانزٹ means transit in general, not a change of line."
+register_note = "Everyday word in route info."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "جومِن سینٹر (주민센터): مقامی سرکاری دفتر"
+avoid = ["کمیونٹی سینٹر"]
+why = "Keep 주민센터 with a gloss; کمیونٹی سینٹر means a social or recreation venue in English-speaking use, but 주민센터 is the local government office where move-in reports are filed."
+register_note = "Gloss needed the first time; the Korean name is what staff and signs use."
+sources = []
+confidence = "low"

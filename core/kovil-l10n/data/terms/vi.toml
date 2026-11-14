@@ -1,0 +1,363 @@
+# Terminology for Vietnamese (vi). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Skeptic pass 2026-11-13: WebSearch budget was exhausted, so only WebFetch of cited pages was possible (seoulstart glossary, checkmate guide). Corrected rows are marked "Skeptic correction". korea.net fetch failed (redirect loop). Rows with no source stay low.
+# Evidence base: seoulstart.com/vi/glossary and checkmatekorea.com/vi (fetched); maeil11.com rental page (fetched); other sources search-snippet only. No Danuri/HiKorea Vietnamese page was reachable. WebSearch budget ran out before concept 2 of the nationality check, so several low-confidence rows rest on general usage.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "quốc tịch"
+avoid = ["quốc gia", "đất nước"]
+why = "'quốc tịch' is the field label on Vietnamese ID and passport forms ('Quốc tịch: Việt Nam'); 'quốc gia' means country, so '국적' rendered as 'quốc gia' asks for the wrong thing."
+register_note = "Form label: 'Quốc tịch'. Skeptic pass 2026-11-13: no source fetched (search budget spent); form-label usage is from general knowledge."
+sources = []
+confidence = "medium"   # not sourced; the form-label convention is the basis
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "quốc gia"
+avoid = ["đất nước", "nước"]
+why = "'quốc gia' is the neutral word for a state; 'đất nước' is poetic/homeland and 'nước' is ambiguous (water, or colloquial 'country' in speech)."
+register_note = "Neutral in both UI and legal text."
+sources = []
+confidence = "low"   # no source fetched
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "căn đang cho thuê"
+avoid = ["sản phẩm", "hàng hóa", "mặt hàng"]
+why = "매물 is 'an item for sale'; 'sản phẩm' and 'hàng hóa' read as retail goods, while 'căn đang cho thuê' names a home available for rent."
+register_note = "In UI lists use 'căn cho thuê'; in ad-style copy 'tin đăng'."
+sources = []
+confidence = "low"   # no source fetched for this exact term
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "yêu cầu tìm nhà thuê"
+avoid = ["yêu cầu thuê", "đơn đặt thuê"]
+why = "The tenant asks brokers to search for homes matching conditions; 'yêu cầu thuê' reads as a request to rent one specific unit and 'đơn đặt thuê' suggests a booking."
+register_note = "Button label: 'Gửi yêu cầu tìm nhà'."
+sources = []
+confidence = "low"   # no source fetched
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "tiền đặt cọc (보증금)"
+avoid = ["tiền bảo hành", "tiền ký quỹ"]
+why = "Skeptic correction: seoulstart glossary defines 보증금 as 'Khoản tiền đặt cọc...' and checkmate writes 'Tiền đặt cọc thuê nhà — sẽ được hoàn trả'. The previous 'tiền cọc' preference and the 'tiền đặt cọc' avoid were not supported by the cited sources."
+register_note = "Legal text: 'tiền đặt cọc (보증금), được hoàn trả khi kết thúc hợp đồng'. Bare 'tiền cọc' is acceptable in casual copy."
+sources = ["https://seoulstart.com/vi/glossary", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "high"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "jeonse (tiền cọc lớn một lần, không trả tiền thuê hằng tháng)"
+avoid = ["thuê trả trước", "thuê trả một lần", "tiền thuê nhà một lần"]
+why = "Keep the romanization with a gloss: 'thuê trả trước' (prepaid rent) suggests rent paid in advance and hides that the large sum is a deposit returned at the end."
+register_note = "Keep 'jeonse' in every language; gloss only on first mention."
+sources = ["https://seoulstart.com/vi/glossary", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "high"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "wolse (tiền cọc nhỏ + tiền thuê hằng tháng)"
+avoid = ["thuê theo tháng", "thuê hàng tháng"]
+why = "A bare 'thuê hàng tháng' gives only the monthly rent and drops the deposit; 'thuê theo tháng' sounds like a short month-to-month stay."
+register_note = "Keep 'wolse' in every language; gloss on first mention."
+sources = ["https://seoulstart.com/vi/glossary", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "high"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "tiền thuê hằng tháng"
+avoid = ["tiền nhà", "phí thuê"]
+why = "'tiền nhà' is vague and can mean total housing cost; 'phí thuê' implies a service charge rather than the rent itself."
+register_note = "Show as '50만원/월' style figures with 'tiền thuê hằng tháng' label."
+sources = ["https://maeil11.com/blog/vietnamese-rental-housing"]
+confidence = "medium"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "phí bảo trì (관리비)"
+avoid = ["phí duy tu", "phí sửa chữa"]
+why = "Skeptic correction: seoulstart glossary says 'Phí bảo trì và quản lý tòa nhà hàng tháng' and checkmate says 'Phí bảo trì hàng tháng. Bao gồm... dọn dẹp và an ninh'. The earlier claim that seoulstart uses 'phí quản lý' was wrong. 'phí sửa chữa' and 'phí duy tu' (repairs) are the misreadings to avoid."
+register_note = "Say what it covers in the UI: 'phí bảo trì (dọn dẹp, an ninh, chi phí chung của tòa nhà)'."
+sources = ["https://seoulstart.com/vi/glossary", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "medium"   # 'phí quản lý' is used in Vietnamese property sites for Vietnam, not for 관리비; native check still pending
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "tiền đặt trước (계약금), trả khi ký hợp đồng và trừ vào tiền thuê/cọc"
+avoid = ["tiền đặt cọc", "tiền cọc", "tiền trả trước", "tiền giữ chỗ"]
+why = "Skeptic correction: 계약금 is the signing payment and is not the 보증금. The two sources cited for it do not give a Vietnamese term (checkmate has no 계약금 section), so 'tiền đặt trước' is from general usage and the old 'tiền đặt cọc' label would collide with security_deposit."
+register_note = "Always state whether it is deducted from the deposit."
+sources = ["https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "low"   # the cited sources do not contain the term; needs native check
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "hợp đồng thuê nhà"
+avoid = ["giao kèo", "thỏa thuận thuê"]
+why = "'hợp đồng thuê nhà' is the signed written lease that protects the deposit; 'giao kèo' is informal and 'thỏa thuận' suggests a casual understanding with no legal weight."
+register_note = "Legal text: 'hợp đồng thuê nhà (임대차 계약)'."
+sources = ["https://maeil11.com/blog/vietnamese-rental-housing", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "high"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "chủ nhà"
+avoid = ["chủ đất", "ông chủ", "chủ sở hữu"]
+why = "'chủ nhà' is the person who rents out the unit; 'chủ đất' means land owner, 'ông chủ' means boss, and 'chủ sở hữu' is the registered owner, who can differ from the landlord when a unit is sublet."
+register_note = "Legal text: 'bên cho thuê (chủ nhà)'."
+sources = ["https://seoulstart.com/vi/glossary", "https://maeil11.com/blog/vietnamese-rental-housing", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "high"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "người thuê nhà"
+avoid = ["khách thuê", "người ở trọ", "người ở ghép"]
+why = "'khách thuê' sounds like a hotel guest and 'người ở trọ' means a boarder in cheap shared lodging, which mislabels a lease holder."
+register_note = "Short UI form: 'người thuê'."
+sources = ["https://maeil11.com/blog/vietnamese-rental-housing", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "high"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "môi giới bất động sản (공인중개사)"
+avoid = ["đại lý", "đại diện", "người trung gian"]
+why = "'môi giới bất động sản' names a licensed property broker; 'đại lý' means a dealer or distributor, and 'người trung gian' is a literal middleman."
+register_note = "Say 'đã có chứng chỉ hành nghề' in trust copy."
+sources = ["https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "medium"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "văn phòng môi giới bất động sản (공인중개사사무소)"
+avoid = ["công ty môi giới", "văn phòng đại lý"]
+why = "Most 중개사무소 are small licensed offices, so 'công ty' (company) overstates them and 'văn phòng đại lý' (dealer office) mislabels them."
+register_note = "Short form: 'văn phòng môi giới'."
+sources = ["https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "medium"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "phí môi giới (중개보수)"
+avoid = ["phí đại lý", "tiền hoa hồng"]
+why = "'phí môi giới' names the broker fee directly; 'phí đại lý' is a literal calque of 중개보수 that reads as a dealer's fee."
+register_note = "Show the legal cap for the deal type next to it."
+sources = ["https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/", "https://maeil11.com/blog/vietnamese-rental-housing", "https://seoulstart.com/vi/glossary"]
+confidence = "medium"   # 'tiền hoa hồng' avoid is from general usage, not sourced
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "one-room (원룸)"
+avoid = ["phòng trọ", "nhà một phòng", "căn hộ studio"]
+why = "'phòng trọ' is Vietnam's cheap shared-room word and blurs one-room with gosiwon; 'nhà một phòng' is a literal rendering that sources use but residents rarely say."
+register_note = "Keep 'one-room' in UI; gloss once as 'phòng một phòng có bếp và WC riêng'."
+sources = ["https://maeil11.com/blog/vietnamese-rental-housing", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/", "https://goodkedu.com/can-ho-oneroom-co-gi-khac-ky-tuc-xa/"]
+confidence = "medium"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "officetel (căn hộ kết hợp văn phòng)"
+avoid = ["văn phòng cho thuê", "căn hộ văn phòng"]
+why = "'văn phòng cho thuê' implies commercial office space, but an officetel is a small residential unit in a mixed office/residential building."
+register_note = "Keep 'officetel' in all languages."
+sources = ["https://seoulstart.com/vi/glossary", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "high"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "gosiwon (phòng nhỏ dùng chung tiện nghi)"
+avoid = ["ký túc xá", "khách sạn", "phòng trọ"]
+why = "'ký túc xá' implies a school dormitory and 'khách sạn' implies a hotel; both mislead about a cheap small single room with shared facilities. Sources spell it 'Goshiwon'; glossary uses 'gosiwon'."
+register_note = "Keep romanization consistent with glossary.toml ('gosiwon')."
+sources = ["https://seoulstart.com/vi/glossary", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "high"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "banjiha (반지하, phòng nửa dưới mặt đất)"
+avoid = ["tầng hầm", "nhà hầm", "tầng trệt"]
+why = "A 반지하 is partly above street level with windows; 'tầng hầm' implies a fully underground basement and 'tầng trệt' means ground floor, the opposite."
+register_note = "Show the flood-risk warning in the listing, not only the term."
+sources = []
+confidence = "low"   # Vietnamese term not found in any source; Korean news consulted only for context
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "đăng ký chuyển đến (jeonip-singo, tại văn phòng hành chính địa phương)"
+avoid = ["đăng ký hộ khẩu", "chuyển hộ khẩu", "đổi địa chỉ", "khai báo chuyển đến"]
+why = "Skeptic correction: seoulstart glossary defines it as 'Thủ tục đăng ký chuyển đến bắt buộc... tại văn phòng hành chính địa phương'. 'khai báo chuyển đến' had no cited support. 'hộ khẩu' is Vietnam's household booklet, a different system; 'đổi địa chỉ' misses that it is a required official report."
+register_note = "Checkmate's body uses 체류지변경신고 for ARC holders; the report must be filed within 14 days of moving. Verify deadline with HiKorea."
+sources = ["https://seoulstart.com/vi/glossary", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/"]
+confidence = "medium"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "hwakjeong-ilja (확정일자, dấu xác nhận ngày tháng)"
+avoid = ["ngày xác định", "đóng dấu ngày"]
+why = "Skeptic correction: both cited sources translate 확정일자 as 'xác nhận ngày tháng' (seoulstart: 'Dấu xác nhận ngày tháng... bởi tòa án hoặc văn phòng hành chính'). The earlier avoid of that phrase was unsupported. The stamp gives the deposit priority over later creditors."
+register_note = "Keep romanization; gloss with the protection in plain words."
+sources = ["https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/", "https://seoulstart.com/vi/glossary"]
+confidence = "medium"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "deunggibu deungbon (sổ đăng ký bất động sản)"
+avoid = ["sổ đỏ", "sổ hồng", "giấy chứng nhận quyền sở hữu"]
+why = "'sổ đỏ' and 'sổ hồng' are Vietnamese land-title certificates; a 등기부등본 lists owner, mortgages and liens, which a Vietnamese reader would not expect from a title certificate."
+register_note = "Keep romanization; gloss on first mention."
+sources = ["https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/", "https://seoulstart.com/vi/glossary"]
+confidence = "medium"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "ARC (thẻ cư trú)"
+avoid = ["chứng minh nhân dân", "thẻ căn cước", "CMND"]
+why = "'thẻ căn cước' and CMND are Vietnam's national ID cards; a Vietnamese reader would take the Korean residence card for a national ID. Skeptic correction: most Vietnamese search-result titles for the card say 'thẻ cư trú' (6 of 9 in one search), not 'thẻ đăng ký người nước ngoài'; seoulstart uses the latter and checkmate 'giấy chứng nhận cư trú (ARC)'."
+register_note = "Korea is moving to 'residence card' naming; keep 'ARC' in UI."
+sources = ["https://seoulstart.com/vi/glossary", "https://checkmatekorea.com/vi/blog/how-to-rent-apartment-in-korea-foreigner-guide/", "https://ant-edu.vn/the-cu-tru-arc-du-hoc-han-quoc-trong-90-ngay-cap-nhat/"]
+confidence = "medium"   # sources give different Vietnamese glosses; 'thẻ cư trú' is the most common in search titles
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "tư cách lưu trú (visa D-2, E-9)"
+avoid = ["tình trạng visa", "giấy phép cư trú", "loại visa"]
+why = "'tư cách lưu trú' is the official stay-category term that decides what a resident may do; 'tình trạng visa' suggests a visa application state, and 'giấy phép cư trú' is a document, not a category."
+register_note = "Keep codes D-2, E-9 unchanged; residents say 'visa D-2' informally."
+sources = ["https://ant-edu.vn/the-cu-tru-arc-du-hoc-han-quoc-trong-90-ngay-cap-nhat/"]
+confidence = "medium"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증/본인 인증"
+use = "xác minh người nước ngoài (외국인 인증)"
+avoid = ["xác nhận căn cước", "xác thực CMND", "kiểm tra danh tính"]
+why = "'xác nhận căn cước' and 'xác thực CMND' imply a Vietnamese ID card check; KOVIL checks the Korean residence status. Skeptic correction: the bundles use 'xác minh' for the whole verification feature, so the TOML now matches them instead of 'xác thực'."
+register_note = "Use 'xác minh danh tính (본인 인증)' for the phone/ID check and keep the two distinct. 'mã xác thực' stays for auth tokens."
+sources = []
+confidence = "low"   # no source found; wording from general usage
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "mã xác minh gửi qua SMS"
+avoid = ["mã số", "mã OTP"]
+why = "'mã số' means any code or ID number, and 'OTP' is banking jargon many residents do not use on app screens."
+register_note = "Button: 'Gửi lại mã'."
+sources = []
+confidence = "low"   # no source found
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "đối tác môi giới"
+avoid = ["bạn đời", "cộng sự", "partner"]
+why = "'bạn đời' means spouse or romantic partner and 'cộng sự' means co-worker, so either makes a KOVIL broker sound like a personal relationship or a colleague."
+register_note = "Use 'đối tác' in UI and keep 'môi giới' for the role."
+sources = []
+confidence = "low"   # no source found
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "xóa tài khoản"
+avoid = ["thoát tài khoản", "rút khỏi thành viên"]
+why = "'thoát tài khoản' reads as logout, which leaves the account intact, and a literal 'rút khỏi thành viên' is unnatural for a consumer app."
+register_note = "Confirm step: 'Xóa tài khoản? Dữ liệu sẽ không khôi phục được.'"
+sources = []
+confidence = "low"   # no source found
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "tài khoản bị tạm khóa"
+avoid = ["bị đình chỉ", "bị treo"]
+why = "'bị đình chỉ' is the legal term for a license or official sanction, and 'bị treo' means frozen or stuck; 'tạm khóa' is what app users see."
+register_note = "Show the reason and appeal route in the same message."
+sources = []
+confidence = "low"   # no source found
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "báo cáo nội dung vi phạm"
+avoid = ["tố cáo", "khai báo"]
+why = "'tố cáo' means denouncing someone to authorities, a formal legal act, and 'khai báo' means declaring, as at customs; 'báo cáo' is the in-app word for flagging content."
+register_note = "Button label: 'Báo cáo'."
+sources = []
+confidence = "low"   # no source found
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "thông báo đẩy"
+avoid = ["thông báo bật lên", "tin nhắn đẩy"]
+why = "'thông báo bật lên' means an on-screen pop-up, but push notifications also arrive when the app is closed."
+register_note = "Settings label: 'Thông báo đẩy'."
+sources = []
+confidence = "low"   # no source found
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "quận (구)"
+avoid = ["huyện", "khu"]
+why = "Korean 구 is a city district, which Vietnamese readers call 'quận'; 'huyện' means county (Korean 군), so it mislabels Seoul's districts, and 'khu' is vague."
+register_note = "For 시/군 use 'thành phố'/'huyện' respectively."
+sources = []
+confidence = "low"   # no source found; mapping is a general convention
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "phường (동)"
+avoid = ["xã", "khu phố"]
+why = "'xã' means a rural commune and sounds wrong for Seoul neighborhoods, and 'khu phố' is vague."
+register_note = "Keep the Korean name in addresses: 'Hapjeong-dong (phường Hapjeong)'."
+sources = []
+confidence = "low"   # no source found
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "chuyển tuyến"
+avoid = ["quá cảnh", "chuyển tiếp", "đổi xe"]
+why = "'quá cảnh' means transit through a country, a travel term, and 'đổi xe' suggests changing vehicles rather than metro lines."
+register_note = "Use 'đổi tuyến tại ga X' in route steps."
+sources = []
+confidence = "low"   # no source found
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "văn phòng hành chính địa phương (주민센터)"
+avoid = ["trung tâm cộng đồng", "Ủy ban nhân dân"]
+why = "'trung tâm cộng đồng' suggests clubs and events, and 'Ủy ban nhân dân' is Vietnam's government committee; 주민센터 is where residents register moves and get certificates."
+register_note = "Keep '주민센터' in parentheses on first mention."
+sources = ["https://seoulstart.com/vi/glossary"]
+confidence = "medium"

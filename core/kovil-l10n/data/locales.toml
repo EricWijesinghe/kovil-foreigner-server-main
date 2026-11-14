@@ -1,0 +1,240 @@
+# Locale tone profiles. Audience: foreigners living in Korea (students, EPS workers, professionals) renting homes.
+# Register depends on context. Friendly is not always right:
+#   legal         = contracts, deposits, verification rejection, account suspension. Precise and formal.
+#   transactional = errors, system notices, push notifications. Polite and neutral. Short.
+#   support       = onboarding, help, guidance. Warm but still polite.
+#   community     = user posts and chat. Copy the source's level of casualness. Do not make it more formal.
+# Every entry is unreviewed until a native speaker checks it (see ROADMAP Phase 1 review loop).
+# Edit this file, not the code. A test checks that each locale has all four registers.
+
+[locales.ko]
+name = "Korean"
+native = "한국어"
+script = "hangul"
+notes = ["Never mix 합쇼체 and 해요체 in one message.", "Button and label text uses noun forms (예: 신청하기, 확인).", "Avoid translationese: 'ㅇㅇ에 대한', '~되어지다', overuse of '당신'. Leave the subject out, the way Koreans do."]
+[locales.ko.register]
+legal = { address = "omit subject; 고객님 only if needed", tone = "합쇼체 (-습니다/-십시오). Use exact legal terms (임대인, 임차인, 보증금)." }
+transactional = { address = "omit subject", tone = "해요체, short, no exclamation marks." }
+support = { address = "omit subject", tone = "해요체, warm, -해 보세요 style suggestions." }
+community = { address = "mirror source", tone = "Keep the source register: 반말 stays 반말, internet slang stays slang." }
+
+[locales.en]
+name = "English"
+native = "English"
+script = "latin"
+notes = ["Plain English. Short sentences.", "Use 'you'. Never write 'the user' or 'dear customer'.", "Many readers speak English as a second language, so avoid idioms in legal and transactional text."]
+[locales.en.register]
+legal = { address = "you", tone = "Formal and precise. No contractions. State obligations clearly (must / will)." }
+transactional = { address = "you", tone = "Neutral, concise. Contractions ok. No exclamation marks on errors." }
+support = { address = "you", tone = "Friendly and helpful, like a capable local friend." }
+community = { address = "mirror source", tone = "Casual. Keep slang and emoji at the same level as the source." }
+
+[locales.ja]
+name = "Japanese"
+native = "日本語"
+script = "japanese"
+notes = ["Avoid あなた: it sounds cold. Leave the subject out, or use the person's name with さん.", "Do not stack honorifics (二重敬語) or overuse させていただく.", "Write Korean place names in katakana with the Korean reading."]
+[locales.ja.register]
+legal = { address = "omit subject; お客様 if needed", tone = "です・ます with formal vocabulary (〜いたします, ご確認ください). No casual endings." }
+transactional = { address = "omit subject", tone = "Short です・ます. Error text calm and factual." }
+support = { address = "omit subject", tone = "Soft です・ます (〜してみてください, 〜できます)." }
+community = { address = "mirror source", tone = "Casual だ/plain form if source is casual. Natural spoken Japanese." }
+
+[locales.zh]
+name = "Chinese (Simplified)"
+native = "简体中文"
+script = "han"
+notes = ["Mainland vocabulary and simplified characters.", "Avoid translationese: 被 passive overuse, 进行+verb, 对于…来说 chains.", "In apps 你 is normal. Use 您 for legal text, apologies and service."]
+[locales.zh.register]
+legal = { address = "您", tone = "Formal written Chinese (书面语). Precise terms: 押金, 租赁合同, 房东, 租客." }
+transactional = { address = "你", tone = "Short and direct, like mainstream Chinese apps." }
+support = { address = "你 (您 when apologising)", tone = "Warm and clear." }
+community = { address = "mirror source", tone = "Colloquial, internet style ok if the source is casual." }
+
+[locales.zh-TW]
+name = "Chinese (Traditional, Taiwan)"
+native = "繁體中文（台灣）"
+script = "han"
+notes = ["Traditional characters with Taiwan vocabulary: 簡訊 (SMS), 軟體, 網路, 訊息.", "您 is common in Taiwan service text."]
+[locales.zh-TW.register]
+legal = { address = "您", tone = "Formal. Precise lease terms (押金, 租約, 房東, 房客)." }
+transactional = { address = "您", tone = "Polite and concise." }
+support = { address = "您", tone = "Friendly and gentle, Taiwan app style." }
+community = { address = "mirror source", tone = "Colloquial Taiwan Mandarin if the source is casual." }
+
+[locales.vi]
+name = "Vietnamese"
+native = "Tiếng Việt"
+script = "latin"
+notes = ["Pronoun choice is critical. 'bạn' is standard in apps, but too casual for legal text.", "Use full diacritics. Never strip tones.", "Use neutral standard vocabulary that both Northern and Southern readers understand.", "Avoid heavy Sino-Vietnamese wording where everyday words exist."]
+[locales.vi.register]
+legal = { address = "Quý khách, or leave the subject out", tone = "Formal and precise (hợp đồng thuê, tiền đặt cọc, chủ nhà, người thuê)." }
+transactional = { address = "bạn", tone = "Polite and short. Use vui lòng for requests." }
+support = { address = "bạn", tone = "Warm, natural spoken Vietnamese." }
+community = { address = "mirror source (bạn/mình, anh/chị/em)", tone = "Casual, as Vietnamese people in Korea talk online." }
+
+[locales.th]
+name = "Thai"
+native = "ภาษาไทย"
+script = "thai"
+notes = ["ครับ/ค่ะ depend on the speaker's gender. Leave them out of UI text. Keep them in community text when the source implies them.", "Use กรุณา for formal requests.", "Use Arabic numerals, not Thai digits."]
+[locales.th.register]
+legal = { address = "ท่าน, or leave the subject out", tone = "Formal written Thai (ภาษาทางการ)." }
+transactional = { address = "คุณ, or leave the subject out", tone = "Polite, short. กรุณา for requests." }
+support = { address = "คุณ", tone = "Friendly; softening นะ allowed sparingly." }
+community = { address = "mirror source", tone = "Casual spoken Thai if the source is casual." }
+
+[locales.ne]
+name = "Nepali"
+native = "नेपाली"
+script = "devanagari"
+notes = ["तपाईं is the standard polite pronoun. हजुर is too deferential for an app. तिमी is only for peers.", "Prefer common spoken words over heavy Sanskrit terms.", "Common English tech words (OTP, app, login) are fine in Devanagari or Latin as people actually say them."]
+[locales.ne.register]
+legal = { address = "तपाईं", tone = "Formal polite verbs (गर्नुहोस्, हुनेछ). Precise terms." }
+transactional = { address = "तपाईं", tone = "Polite, short. कृपया for requests." }
+support = { address = "तपाईं", tone = "Warm, plain conversational Nepali." }
+community = { address = "mirror source (तिमी among peers)", tone = "Casual spoken Nepali as Nepali workers in Korea write online." }
+
+[locales.si]
+name = "Sinhala"
+native = "සිංහල"
+script = "sinhala"
+notes = ["Sinhala has a formal written form (ලිඛිත) and a spoken form (කථන). Choosing between them is the main register decision.", "The written form in casual text sounds like a newspaper. Spoken form in legal text sounds unserious.", "Many readers are EPS workers. Use plain, clear words."]
+[locales.si.register]
+legal = { address = "ඔබ", tone = "Written literary Sinhala, precise." }
+transactional = { address = "ඔබ", tone = "Semi-formal, short, written form with simple vocabulary." }
+support = { address = "ඔබ", tone = "Friendly, close to spoken but still polite." }
+community = { address = "mirror source (ඔයා among peers)", tone = "Spoken Sinhala (කථන), natural chat style." }
+
+[locales.hi]
+name = "Hindi"
+native = "हिन्दी"
+script = "devanagari"
+notes = ["Use आप.", "Use everyday Hindustani, not heavy Sanskrit Hindi (शुद्ध हिंदी sounds like a government notice).", "Keep tech words people use in English (OTP, app, login, account)."]
+[locales.hi.register]
+legal = { address = "आप", tone = "Formal and precise, still readable. Do not use Sanskrit words a reader would need to look up." }
+transactional = { address = "आप", tone = "Polite and short. कृपया for requests." }
+support = { address = "आप", tone = "Warm, conversational." }
+community = { address = "mirror source", tone = "Casual; Hinglish acceptable when the source is casual." }
+
+[locales.bn]
+name = "Bengali (Bangladesh)"
+native = "বাংলা"
+script = "bengali"
+notes = ["Use Bangladesh vocabulary, not West Bengal (পানি, not জল).", "Use modern চলিত ভাষা. Never use সাধু ভাষা.", "আপনি is polite. তুমি is familiar."]
+[locales.bn.register]
+legal = { address = "আপনি", tone = "Formal চলিত, precise." }
+transactional = { address = "আপনি", tone = "Polite and short. অনুগ্রহ করে for requests." }
+support = { address = "আপনি", tone = "Friendly and plain." }
+community = { address = "mirror source (তুমি/তুই if the source is casual)", tone = "Casual spoken Bangladeshi Bengali." }
+
+[locales.uz]
+name = "Uzbek"
+native = "Oʻzbekcha"
+script = "latin"
+notes = ["Latin script (official, used by younger people). Use the correct letters oʻ and gʻ.", "Siz is polite; sen is familiar.", "Russian tech loanwords are common in speech. Use Uzbek words when they are just as natural."]
+[locales.uz.register]
+legal = { address = "Siz", tone = "Formal (-ingiz, -ishingiz kerak), precise." }
+transactional = { address = "Siz", tone = "Polite, short. Iltimos for requests." }
+support = { address = "Siz", tone = "Warm and clear." }
+community = { address = "mirror source (sen among peers)", tone = "Casual spoken Uzbek." }
+
+[locales.ru]
+name = "Russian"
+native = "Русский"
+script = "cyrillic"
+notes = ["Avoid канцелярит (осуществить, в целях, данный) in UI text.", "Use Вы, capitalised, in legal text and вы in UI. Use ты only in community text."]
+[locales.ru.register]
+legal = { address = "Вы", tone = "Formal and precise (арендодатель, арендатор, залог/депозит)." }
+transactional = { address = "вы", tone = "Neutral, short, impersonal constructions ok." }
+support = { address = "вы", tone = "Friendly, plain modern Russian." }
+community = { address = "mirror source (ты)", tone = "Casual spoken Russian." }
+
+[locales.mn]
+name = "Mongolian"
+native = "Монгол"
+script = "cyrillic"
+notes = ["Use Cyrillic script.", "Та is polite; чи is familiar."]
+[locales.mn.register]
+legal = { address = "Та", tone = "Formal, precise." }
+transactional = { address = "Та", tone = "Polite and short." }
+support = { address = "Та", tone = "Warm." }
+community = { address = "mirror source (чи)", tone = "Casual spoken Mongolian." }
+
+[locales.km]
+name = "Khmer"
+native = "ភាសាខ្មែរ"
+script = "khmer"
+notes = ["អ្នក is neutral polite. Use លោក/លោកស្រី only in formal letters.", "Keep text plain. Many readers are workers who mainly read on their phones."]
+[locales.km.register]
+legal = { address = "លោកអ្នក", tone = "Formal and precise." }
+transactional = { address = "អ្នក", tone = "Polite and short. សូម for requests." }
+support = { address = "អ្នក", tone = "Friendly and plain." }
+community = { address = "mirror source", tone = "Casual spoken Khmer." }
+
+[locales.my]
+name = "Burmese"
+native = "မြန်မာ"
+script = "myanmar"
+notes = ["Use Unicode Burmese only. Never use Zawgyi encoding.", "In UI text, leave out the gendered polite particles ခင်ဗျာ/ရှင်. ပါ politeness is enough."]
+[locales.my.register]
+legal = { address = "လူကြီးမင်း", tone = "Formal literary style, precise." }
+transactional = { address = "omit subject", tone = "Polite (ပါ), short." }
+support = { address = "omit subject", tone = "Friendly spoken style." }
+community = { address = "mirror source", tone = "Casual spoken Burmese." }
+
+[locales.id]
+name = "Indonesian"
+native = "Bahasa Indonesia"
+script = "latin"
+notes = ["Anda is formal. kamu is friendly and normal in consumer apps.", "Avoid stiff baku phrasing in casual text."]
+[locales.id.register]
+legal = { address = "Anda", tone = "Formal baku Indonesian, precise." }
+transactional = { address = "kamu", tone = "Polite, short. Mohon/Silakan for requests." }
+support = { address = "kamu", tone = "Friendly, natural." }
+community = { address = "mirror source (aku/kamu, gue/lo)", tone = "Casual; slang stays slang." }
+
+[locales.fil]
+name = "Filipino"
+native = "Filipino"
+script = "latin"
+notes = ["Use Taglish (mixed Tagalog and English) where Filipinos actually use it.", "Use po/opo for respect in support text.", "Formal Tagalog legal text sounds stiff. Keep English legal terms, with Tagalog connective sentences."]
+[locales.fil.register]
+legal = { address = "kayo/ninyo", tone = "Formal and clear; English legal terms allowed (deposit, contract)." }
+transactional = { address = "ka/mo", tone = "Polite, short, natural Taglish." }
+support = { address = "kayo, with po", tone = "Warm and respectful." }
+community = { address = "mirror source", tone = "Casual Taglish." }
+
+[locales.ur]
+name = "Urdu"
+native = "اردو"
+script = "arabic"
+rtl = true
+notes = ["Right-to-left script. Keep numerals and placeholders in their original order.", "Use آپ."]
+[locales.ur.register]
+legal = { address = "آپ", tone = "Formal and precise." }
+transactional = { address = "آپ", tone = "Polite and short. براہ کرم for requests." }
+support = { address = "آپ", tone = "Warm." }
+community = { address = "mirror source", tone = "Casual spoken Urdu." }
+
+[locales.kk]
+name = "Kazakh"
+native = "Қазақша"
+script = "cyrillic"
+notes = ["Use Cyrillic, the script most readers know. Latin migration is ongoing.", "Сіз is polite; сен is familiar."]
+[locales.kk.register]
+legal = { address = "Сіз", tone = "Formal and precise." }
+transactional = { address = "Сіз", tone = "Polite and short." }
+support = { address = "Сіз", tone = "Warm." }
+community = { address = "mirror source (сен)", tone = "Casual spoken Kazakh." }
+
+[locales.ky]
+name = "Kyrgyz"
+native = "Кыргызча"
+script = "cyrillic"
+notes = ["Сиз is polite; сен is familiar."]
+[locales.ky.register]
+legal = { address = "Сиз", tone = "Formal and precise." }
+transactional = { address = "Сиз", tone = "Polite and short." }
+support = { address = "Сиз", tone = "Warm." }
+community = { address = "mirror source (сен)", tone = "Casual spoken Kyrgyz." }

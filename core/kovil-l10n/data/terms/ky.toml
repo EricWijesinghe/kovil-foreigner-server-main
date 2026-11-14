@@ -1,0 +1,367 @@
+# Terminology for Kyrgyz (ky). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Research limits: WebSearch budget was exhausted mid-run, so no Kyrgyz-language community sources were found.
+# Official checks: liveinkorea.kr (Danuri, 13 languages) and Life in Korea guide (16 languages) have NO Kyrgyz;
+# hikorea.go.kr has no Kyrgyz content. Every choice below is therefore model-knowledge, confidence low, pending native review.
+# Skeptic pass 2026-11-13: WebSearch budget exhausted, so NO independent web check was possible. Changes were internal
+# consistency fixes only: housing_listing -> жарнама (matches bundles), move_in_report phrase aligned with bundle,
+# bundle брокер -> риэлтор (matches real_estate_agent). Still unverified by natives.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "жарандык (passport citizenship)"
+avoid = ["улут (ethnic nation; reads as ethnicity)", "мамлекет (state; reads as the country, not the passport)"]
+why = "жарандык is the legal citizenship word matching the passport; улут means ethnicity, which would wrongly suggest a personal or cultural identity question."
+register_note = "Legal and form text: жарандык. UI label may be short: жарандык."
+sources = ["https://www.liveinkorea.kr", "https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "өлкө"
+avoid = ["жарандык (citizenship; reads as passport, not place)"]
+why = "өлкө is the everyday word for a country; жарандык would confuse the country with the user's passport nationality."
+register_note = "Everyday UI word. мамлекет is acceptable in formal text."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "жарнама (батирди ижарага берүү жарыясы; advertised apartment or room for rent)"
+avoid = ["товар (goods; reads as merchandise)", "сатуу үчүн (for sale; wrong, these are rentals)"]
+why = "A listing here is a rental ad. Bundles already use жарнама everywhere (errors_ky/notifications_ky), so the TOML now matches them; the earlier жарыяланган батир is a phrase, not the term. The word for goods or sale implies a purchase."
+register_note = "UI card label: батир. Bundles use жарнама. Full phrase only on first mention. Review pass 2026-11-13 without web verification (search budget exhausted)."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "батир издөө суранычы (tenant request to find a home matching conditions)"
+avoid = ["буйрутма (order; reads as a purchase order)", "арыз (complaint; reads as a grievance)"]
+why = "The tenant is asking brokers to search, so издөө (search) plus сураныч (request) matches; an order or complaint gives the wrong sense."
+register_note = "Short UI label: суранычтар."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "күрөө (deposit, returned at lease end)"
+avoid = ["аванс (advance payment; implies rent is prepaid)", "салык (tax)"]
+why = "күрөө is the deposit word used for a refundable lease guarantee; аванс suggests money paid toward rent, not returned at the end."
+register_note = "Legal text: күрөө акча (deposit money)."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "чонсе (keep Korean romanization; big lump-sum deposit, no monthly rent)"
+avoid = ["ижара акысы (rent fee; implies monthly rent)", "transliteration with no gloss, e.g. жонсе"]
+why = "Residents keep the Korean word, and the gloss must say no monthly rent is paid and the deposit is returned; a plain rent word hides the lump-sum difference."
+register_note = "First use: чонсе (бир жолку чоң күрөө менен ижара, айлык акы жок). Later: чонсе."
+sources = ["https://www.liveinkorea.kr", "https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "волсе (keep Korean romanization; monthly rent with a deposit)"
+avoid = ["ай сайынкы ижара only (drops the deposit)", "жөнөкөй ижара (generic rent; loses the Korean deposit-plus-monthly structure)"]
+why = "The gloss must say monthly rent with a deposit; a generic rent word hides that the deposit is separate from the monthly amount."
+register_note = "First use: волсе (күрөө менен ай сайынкы ижара). Later: волсе."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "ай сайынкы ижара акысы"
+avoid = ["айлык маяна (monthly salary; wrong)"]
+why = "ижара акысы (rent fee) with ай сайынкы (monthly) states the amount paid each month without implying income."
+register_note = "UI field label: ай сайынкы ижара."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "башкаруу акысы (monthly building management fee, separate from rent)"
+avoid = ["ижара акысы (would merge it with rent)", "салык (tax)"]
+why = "башкаруу (management) names the building service fee; calling it rent would make residents think the rent is higher than it is."
+register_note = "UI label: башкаруу акысы."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "келишим акысы (down payment paid when signing, often 10%)"
+avoid = ["аванс (generic advance; loses the signing-contract meaning)", "күрөө (the deposit, which is a different payment)"]
+why = "келишим акысы ties the payment to signing the contract; күрөө would merge it with the refundable security deposit."
+register_note = "Legal text: келишим акысы."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "ижара келишими"
+avoid = ["сатуу келишими (sales contract; wrong)"]
+why = "ижара келишими names a lease agreement; a sales contract would tell the user they are buying the property."
+register_note = "Legal text: ижара келишими."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "үй ээси (house owner who rents out)"
+avoid = ["ижарачы (renter; wrong role)", "ээ (owner alone; ambiguous)"]
+why = "үй ээси says the person owns the home; ижарачы means the tenant, so swapping them reverses the parties of the lease."
+register_note = "Formal: ижара берүүчү. Everyday: үй ээси."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "ижарачы (renter)"
+avoid = ["үй ээси (owner; wrong role)", "конокчу (guest; implies short stay)"]
+why = "ижарачы is the renter in a lease; a guest word implies a short visit, which is wrong for a tenant."
+register_note = "Legal: ижарачы."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "риэлтор (licensed broker; Russian loanword used in Kyrgyz)"
+avoid = ["агент (generic agent; loses the licensed-broker meaning)", "сатуучу (seller; wrong)"]
+why = "риэлтор is the everyday word for a property broker in Kyrgyz; агент is too general and does not say the person is licensed."
+register_note = "Formal text: лицензиялуу риэлтор (licensed realtor). Everyday: риэлтор."
+sources = ["https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "риэлтордук кеңсе (broker office)"
+avoid = ["банк (bank; wrong)", "дүкөн (shop; wrong)"]
+why = "риэлтордук кеңсе names the agent's office; a shop or bank word would send users to the wrong place."
+register_note = "UI label: риэлтордук кеңсе."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "риэлтордун комиссиясы (broker commission)"
+avoid = ["салык (tax)", "ижара акысы (rent; wrong)"]
+why = "комиссия is the standard word for an agent's fee; a tax or rent word would make the broker fee look like a government charge or part of rent."
+register_note = "Korean 복비 may be noted in parentheses once: кеңири сөз: комиссия."
+sources = ["https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "one-room (keep; one room with kitchen area and bathroom)"
+avoid = ["бир бөлмөлүү батир (a one-room flat; loses the built-in bathroom and kitchen meaning)", "студия (studio flat; close, but Korean one-room is usually cheaper and smaller)"]
+why = "Residents keep the Korean word, and the gloss must say kitchen and bathroom are inside one room; plain room wording undersells the layout."
+register_note = "Keep romanized in UI: one-room."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "ofisteli (keep; office-and-residence unit)"
+avoid = ["кеңсе (office; implies not for living)", "пентхаус (penthouse; wrong)"]
+why = "The Korean word is kept because the unit is mixed office and home; кеңсе alone tells the user it is not for living."
+register_note = "First use: ofisteli (кеңсе жана жашоо үчүн батир)."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "gosiwon (keep; small single room in a shared building)"
+avoid = ["общежитие (dormitory; implies a school or work building)", "гостиница (hotel; wrong)"]
+why = "Keep the Korean word with a gloss, because a dormitory or hotel word gives the wrong idea of a small private room."
+register_note = "First use: gosiwon (бөлмө, жалпы имарат)."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "жарым жертөлө (half-basement room)"
+avoid = ["подвал (basement; too negative and implies unsafe)", "жертөлө (full cellar; wrong)"]
+why = "жарым жертөлө says it is half below ground; plain basement suggests a damp cellar and misstates a common Korean room type."
+register_note = "Keep 반지하 in safety notices if needed."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "jeonip singo (keep; register new address at the community center)"
+avoid = ["көчүп келүү (moving in; no registration meaning)", "каттоо (generic registration; loses the address record)"]
+why = "The gloss must say this is the address registration at the community center; a generic moving word omits the legal step."
+register_note = "First use: jeonip singo (жаңы даректи каттоо, жамаат борборунда). Bundle PUBLISH_RESIDENT_REGISTRATION_REQUIRED uses the same phrase."
+sources = ["https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "hwakjeong ilja (keep; official date stamp that protects the deposit)"
+avoid = ["күн (date; no legal meaning)", "штамп (rubber stamp; wrong)"]
+why = "The stamp gives legal priority to the deposit; a plain date word hides that the deposit is protected."
+register_note = "First use: hwakjeong ilja (күрөөнү коргоочу расмий күн белгиси)."
+sources = ["https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "deunggibu (keep; official property registry copy)"
+avoid = ["тех паспорт (technical passport; wrong)", "реестр (registry; too general)"]
+why = "The Korean document is a legal registry extract; keeping the word with a gloss prevents mixing it with an ordinary technical document."
+register_note = "First use: deunggibu (менчик укуктарынын расмий реестринин көчүрмөсү)."
+sources = ["https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "oegukin deungrokjeung (keep; Alien Registration Card)"
+avoid = ["паспорт (passport; wrong document)", "виза (visa; different document)"]
+why = "ARC is a residence card, not a passport or visa; keeping the Korean name with a gloss stops users sending their passport in its place."
+register_note = "First use: oegukin deungrokjeung (чет элдиктин катталуу карточкасы)."
+sources = ["https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "тургундук статусу (residence status, e.g. D-2, E-9)"
+avoid = ["виза (visa alone; ignores the residence category)", "статус (status alone; ambiguous)"]
+why = "тургундук статусу (residence status) keeps the category code visible; visa alone hides that the code is a residence category."
+register_note = "Keep codes D-2 and E-9 as is."
+sources = ["https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "чет элдик катары ырастоо (verify as foreign resident)"
+avoid = ["жеке маалыматты текшерүү (generic identity check; sounds like personal data scanning)", "паспорттук текшерүү (passport check; wrong, ARC is used)"]
+why = "The check is about foreign-resident status; a generic identity word could make users worry about data collection beyond their documents."
+register_note = "UI button: ырастоо."
+sources = ["https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "ырастоо коду (confirmation code sent by SMS)"
+avoid = ["номер (number; no verification meaning)", "пароль (password; wrong)"]
+why = "ырастоо коду says the code confirms the user; a plain number or password would confuse the one-time SMS code with a login secret."
+register_note = "UI: ырастоо коду."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "өнөктөш (broker partner on KOVIL)"
+avoid = ["партнёр (Russian form; reads as business partner, ambiguous)", "досу (friend; wrong)"]
+why = "өнөктөш is the Kyrgyz word for a business partner; a friend word would wrongly imply a personal relation with the broker."
+register_note = "UI: өнөктөш."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "каттоо эсебин жоюу (delete account and leave)"
+avoid = ["чыгуу (exit; ambiguous, might mean log out)", "өчүрүү (switch off; wrong)"]
+why = "каттоо эсебин жоюу says the account is deleted; a plain exit word means only logging out."
+register_note = "UI button: каттоо эсебин жоюу."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "колдонууга убактылуу тыюу салынды (use temporarily restricted)"
+avoid = ["бөгөттөлдү (blocked; sounds permanent)", "жоюлду (deleted; wrong)"]
+why = "убактылуу тыюу says the restriction is temporary; blocked or deleted words sound permanent and frighten users."
+register_note = "Notice text, formal."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "даттануу (report abuse or content)"
+avoid = ["кабарлоо (notify; weaker than a report)", "арыз (complaint; personal)"]
+why = "даттануу is the formal word for reporting content to an authority or platform; a notify word weakens the action."
+register_note = "UI button: даттануу."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "push-билдирме (keep loanword; phone notification)"
+avoid = ["түртүү (push as a physical action)", "кабар (news; too general)"]
+why = "push-билдирме is the usual phone-app term; literal push would be read as a physical action."
+register_note = "UI settings: push-билдирме."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "район (district; keep Korean gu in parentheses)"
+avoid = ["округ (county; wrong for Korean gu)", "шаар (city; wrong level)"]
+why = "район is the usual Kyrgyz word for an administrative district; округ or city would misplace the Korean gu level."
+register_note = "First use: район (гу)."
+sources = ["https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "дong (keep; neighborhood level of Korean address)"
+avoid = ["квартал (city block; wrong)", "айыл (village; wrong for urban dong)"]
+why = "The dong is an urban neighborhood; a village or block word misdescribes an urban Seoul address unit."
+register_note = "First use: dong (шаардык аймак)."
+sources = ["https://www.hikorea.go.kr"]
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "которулуу (transfer between lines at a station)"
+avoid = ["өзгөртүү (change, as in edit; ambiguous)", "ауысуу (move; weaker)"]
+why = "которулуу names changing trains at a station; an edit word could mean changing a setting in the app."
+register_note = "UI: которулуу станциясы."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "жамаат борбору (community service center; keep jumin-jeonter in parentheses)"
+avoid = ["мэрия (city hall; wrong level)", "клуб (club; wrong)"]
+why = "жамаат борбору describes the local government service office where residents register; city hall or club misstates its function."
+register_note = "First use: жамаат борбору (jumin-jeonter)."
+sources = ["https://www.hikorea.go.kr"]
+confidence = "low"

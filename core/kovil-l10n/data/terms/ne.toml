@@ -1,0 +1,362 @@
+# Terminology for Nepali (ne). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Evidence is thin: no Nepali-language Korean housing guide from a public body was found. Nepali-language sources found were mostly news, vlogs and AI-written summaries of English sources. Official Korean-side terms (전세, 확정일자, ARC, 주민센터) are sourced from English government or commercial guides. Most Nepali word choices are low or medium confidence and need a native speaker from the Korea community to check.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "राष्ट्रियता (passport अनुसारको देश)"
+avoid = ["नागरिकता", "देश"]
+why = "राष्ट्रियता is the passport-based term used on forms; नागरिकता means citizenship and देश means country, so both mislead."
+register_note = "Formal word for forms and legal text. In chat, say 'नेपाली' or 'passport को देश'."
+sources = ["https://www.immigration.go.kr/bbs/immigration_eng/230/454086/download.do"]
+confidence = "low"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "देश"
+avoid = ["राष्ट्र"]
+why = "देश is the everyday word; राष्ट्र sounds political (nation-state) and reads oddly in app copy."
+register_note = "Use only in general sense, not for passport nationality."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "सूची (भाडामा दिने घर/कोठा)"
+avoid = ["लिस्टिङ"]
+why = "Changed from 'भाडामा दिने घर/कोठा (विज्ञापन)' because the three files already use सूची for each listing (listing_expired, listing_region_closed, LISTING_REPORT_*), and a bare 'सूची' is the natural app word. Not web-verified (search budget exhausted)."
+register_note = "In body text, state the unit type ('घर/कोठा को सूची'). लिस्टिङ is an untranslated English word and should not appear."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "कोठा खोज्ने अनुरोध"
+avoid = ["भाडा अनुरोध", "माग"]
+why = "Says the tenant is searching for a home with conditions, which is what the Korean term means; भाडा अनुरोध reads like a request to pay rent and माग reads like a demand."
+register_note = "Address the user with 'तपाईं'. Use the verb form 'खोज्नुहोस्' in prompts."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "डिपोजिट (धरौटी)"
+avoid = ["अग्रिम भुक्तानी", "जमानत"]
+why = "डिपोजिट or धरौटी is the rent deposit that comes back at lease end; अग्रिम भुक्तानी implies prepaid rent and जमानत means bail or guarantee."
+register_note = "Nepali workers say 'डिपोजिट' in daily speech. Use 'धरौटी' in formal text. 'निक्षेप' appeared in a Nepali summary of Korean deposit rules but is not common in speech."
+sources = ["https://seoulstart.com/guides/korea-housing-guide", "https://sharedhomies.com/blog/korea-deposit-jeonse-explained-2026-guide-foreigners"]
+confidence = "medium"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "जीयोन (전세)"
+avoid = ["भाडा नभएको बहाल", "लम्पसम भाडा"]
+why = "Keep the Korean word with a gloss: it is a lump-sum deposit with no monthly rent, and a plain translation like 'no-rent lease' misses that the deposit is returned at the end."
+register_note = "Romanization varies. 'जीयोन' is the form seen in Nepali-language text, but 'जोन्से' also occurs. Pick one spelling and keep it consistent."
+sources = ["https://www.livinginkorea.co/guides/housing/jeonse-wolse/", "https://en.wikipedia.org/wiki/Jeonse"]
+confidence = "medium"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "वोल्से (월세)"
+avoid = ["मासिक बहाल", "मासिक किराया"]
+why = "Keep the Korean word with a gloss: it is a smaller deposit plus monthly rent, and the 'वोल्से' label keeps it apart from jeonse."
+register_note = "Romanization varies ('वोल्से' or 'वोलसे'). Use 'मासिक भाडा' in the sentence that explains it."
+sources = ["https://www.livinginkorea.co/guides/housing/jeonse-wolse/", "https://checkmatekorea.com/blog/deposit-vs-rent-korea/"]
+confidence = "medium"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "मासिक भाडा"
+avoid = ["भाडा (फेयर)", "मासिक किराया"]
+why = "मासिक भाडा is the monthly house rent; भाडा alone also means transport fare in Nepali (हवाई भाडा, बस भाडा), so the bare word confuses readers."
+register_note = "Always say 'घर/कोठा को मासिक भाडा' in the app. Never use bare भाडा for rent."
+sources = ["https://www.sawalnepal.com/archives/254431"]
+confidence = "medium"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "관리비 (व्यवस्थापन शुल्क)"
+avoid = ["मर्मत", "रखरखाव"]
+why = "व्यवस्थापन शुल्क means the building management fee charged each month; मर्मत and रखरखाव mean repair or upkeep work, which suggests a one-off cost."
+register_note = "Keep 관리비 in brackets so Korean-speaking staff can match it."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "계약금 (बयाना)"
+avoid = ["डाउन पेमेन्ट", "अग्रिम"]
+why = "बयाना is the Nepali term for the booking or earnest money paid at signing; डाउन पेमेन्ट suggests a mortgage down payment and अग्रिम suggests prepaid rent."
+register_note = "बयाना is familiar from Nepali land deals. Add '(계약금)' so the Korean term stays visible."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "भाडा सम्झौता"
+avoid = ["करार", "सम्झौतापत्र"]
+why = "भाडा सम्झौता names a rental agreement; करार is a general contract word that can read as a treaty or work deal, which is weaker for a lease."
+register_note = "Use 'भाडा सम्झौता' in both legal and support text."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "घरधनी"
+avoid = ["मालिक", "जग्गाधनी"]
+why = "घरधनी is the everyday word for the house owner who rents out; मालिक means boss or employer, which Nepali workers in Korea may link to their workplace, and जग्गाधनी means land owner."
+register_note = "Legal text can use 'घरधनी (임대인)'. Keep '집주인' in parentheses for search."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "भाडावाला"
+avoid = ["कब्जादार", "किरायादार"]
+why = "भाडावाला is the plain word for a person who rents a room; कब्जादार means occupier and can sound like squatting, and किरायादार is a Hindi-Urdu form Nepali readers may not use."
+register_note = "Legal text can use 'बहालवाला (임차인)'."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "लाइसेन्सप्राप्त घर दलाल (공인중개사)"
+avoid = ["एजेन्ट", "मेनपावर एजेन्ट"]
+why = "लाइसेन्सप्राप्त घर दलाल says the broker is licensed; एजेन्ट and मेनपावर एजेन्ट suggest a labour-recruitment agency, which is the context many Nepali workers already distrust."
+register_note = "Keep '공인중개사' so users can check the license at the office."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "घरजग्गा कार्यालय (중개사무소)"
+avoid = ["एजेन्सी", "अफिस", "घर दलाल कार्यालय"]
+why = "Changed from 'घर दलाल कार्यालय' to match notifications rental_request_released ('घरजग्गा कार्यालय'); घरजग्गा (real estate) names the office, while दलाल is kept for the person (real_estate_agent). एजेन्सी points to a recruitment agency and अफिस is too generic."
+register_note = ""
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "दलाली शुल्क (중개수수료, 복비)"
+avoid = ["कमिसन", "सेवा शुल्क"]
+why = "दलाली शुल्क is the broker's fee; कमिसन is common in Nepali business but in housing it implies an undisclosed cut, and सेवा शुल्क is vague."
+register_note = "Keep 복비 because Korean users say it casually."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "वान रुम (원룸)"
+avoid = ["स्टुडियो", "एक कोठे फ्ल्याट"]
+why = "वान रुम is how Nepali speakers in Korea usually say it, one room with a kitchen area and separate bathroom; स्टुडियो can mean a small art or photo studio, and एक कोठे फ्ल्याट suggests a full flat."
+register_note = "Everyday UI word. Keep '원룸' in brackets for listings."
+sources = ["https://en.wikipedia.org/wiki/Gosiwon"]
+confidence = "medium"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "오피스텔 (व्यावसायिक-आवासीय मिश्रित भवनको सानो फ्ल्याट)"
+avoid = ["अफिस", "अफिस फ्ल्याट"]
+why = "Keep the Korean word with a gloss: it is a compact residential unit in a mixed-use building, and अफिस would make users think it is only an office space."
+register_note = ""
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "고시원 (साझा बाथरुम भएको सानो कोठा)"
+avoid = ["होस्टल", "लज"]
+why = "Keep the Korean word with a gloss: a gosiwon is a small room with shared bathroom and kitchen, and होस्टल or लज suggests a different tourist or student setup."
+register_note = ""
+sources = ["https://en.wikipedia.org/wiki/Gosiwon"]
+confidence = "low"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "반지하 (आधा भूमिगत तल्ला, चिस्यान र बाढी जोखिम)"
+avoid = ["बेसमेन्ट"]
+why = "Keep the Korean word with a gloss: it is half below ground with humidity and flood risk, and बेसमेन्ट suggests a full underground floor and gives the wrong picture of size and quality."
+register_note = ""
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "बसाइँ सरेको दर्ता (전입신고)"
+avoid = ["माइग्रेसन रजिस्ट्रेसन", "आप्रवासन दर्ता"]
+why = "बसाइँ सरेको दर्ता is the plain Nepali for registering a move; आप्रवासन means immigration and would confuse it with visa or border matters."
+register_note = "Explain in one line that it is done at the 주민센터 within 14 days of moving in. Source: gov.kr."
+sources = ["https://www.gov.kr/mw/AA020InfoCappView.do?CappBizCD=13100000016"]
+confidence = "low"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "निश्चित मिति छाप (확정일자)"
+avoid = ["पक्का मिति"]
+why = "निश्चित मिति छाप names the official date stamp that protects the deposit; पक्का मिति is a loose phrase that does not show it is an official document."
+register_note = "Keep the Korean word, since users will hear it at the bank and the 주민센터."
+sources = ["https://sharedhomies.com/blog/korea-deposit-jeonse-explained-2026-guide-foreigners"]
+confidence = "low"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "संपत्ति दर्ता प्रमाणपत्र (등기부등본)"
+avoid = ["रजिस्ट्रेसन पत्र"]
+why = "संपत्ति दर्ता प्रमाणपत्र names the property register showing owner and debts; रजिस्ट्रेसन पत्र is too vague to show what the document is."
+register_note = "Keep 등기부등본 in brackets for search and when speaking to an agent."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "ARC (외국인등록증)"
+avoid = ["पहिचानपत्र", "नागरिकता प्रमाणपत्र"]
+why = "ARC is the name foreigners in Korea use for the card; पहिचानपत्र is a generic ID card and नागरिकता प्रमाणपत्र would mean citizenship, which the card does not give."
+register_note = "Keep the English abbreviation ARC, which Nepali speakers already use."
+sources = ["https://www.immigration.go.kr/bbs/immigration_eng/230/454086/download.do"]
+confidence = "medium"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "भिसा प्रकार (체류자격: D-2, E-9)"
+avoid = ["भिसा स्थिति"]
+why = "भिसा प्रकार with the code (D-2, E-9) matches how Nepali workers refer to their visa category; भिसा स्थिति is vague and does not name the category."
+register_note = "E-9 is the most common category for Nepali nationals in Korea, per a Korea-based analysis cited in search results. Show the code, not only the translation."
+sources = ["https://mrvisakorea.com/en/nationality/nepal/", "https://www.immigration.go.kr/bbs/immigration_eng/230/454086/download.do"]
+confidence = "medium"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "पहिचान प्रमाणीकरण (외국인·본인 인증)"
+avoid = ["नागरिक प्रमाणीकरण"]
+why = "पहिचान प्रमाणीकरण is the general 'verify your identity' phrase; नागरिक प्रमाणीकरण implies citizen verification, which is wrong for a foreign resident."
+register_note = "Keep the Korean in brackets since Korean apps use it for the same step."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "OTP कोड (인증번호)"
+avoid = ["पासवर्ड"]
+why = "OTP कोड is what Nepali app users call the SMS one-time code; पासवर्ड is a password the user chose, which is a different thing."
+register_note = "Nepali speakers already say OTP in daily speech."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "साझेदार"
+avoid = ["साथी", "पार्टनर"]
+why = "Changed from 'पार्टनर' because the three files already use साझेदार throughout (NOT_A_PARTNER, partner_division_*). साझेदार is the native business-partner word; साथी means companion or romantic partner. Not web-verified (search budget exhausted)."
+register_note = "Use 'व्यावसायिक साझेदार' once in legal text if needed. Do not switch to the English 'पार्टनर'."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "खाता बन्द गर्ने (회원 탈퇴)"
+avoid = ["निकासी", "फिर्ता"]
+why = "खाता बन्द गर्ने says close your account; निकासी means cash withdrawal from a bank, and फिर्ता means refund, so both could make users think they are taking money out."
+register_note = "Use 'खाता मेटाउने' only if the app deletes data permanently."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "निलम्बन (이용 정지)"
+avoid = ["खाता अस्थायी रोक"]
+why = "Changed from 'खाता अस्थायी रोक' because the files already use निलम्बन for account suspension (USER_SUSPENDED, SUSPENDED_USER, SELF_SUSPEND, LAST_ADMIN_CANNOT_BE_SUSPENDED, partner_division_suspended). Not web-verified (search budget exhausted); the earlier 'employees only' claim was not checked."
+register_note = ""
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "रिपोर्ट गर्नुहोस् (신고)"
+avoid = ["उजुरी"]
+why = "रिपोर्ट गर्नुहोस् is the everyday word for flagging abuse in an app; उजुरी is a formal police or court complaint and would read as legal action."
+register_note = "Use the verb 'रिपोर्ट गर्नु' in buttons."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "पुश सूचना (푸시 알림)"
+avoid = ["धक्का सूचना"]
+why = "पुश सूचना keeps the English 'push' that app users know; a literal gloss like धक्का (shove) makes no sense as a notification."
+register_note = "Nepali speakers know the term 'notification' from phones, so 'सूचना' alone also works in a short label."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "구 (gu)"
+avoid = ["जिल्ला"]
+why = "Keep 구 (gu) romanized: जिल्ला is Nepal's own district unit, a different level of government, so it would mislead about Seoul's administrative level."
+register_note = "Show 'Seoul 구' in full for clarity."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "동 (dong)"
+avoid = ["गाउँ", "छिमेक"]
+why = "Keep 동 (dong) romanized: गाउँ means village, a rural unit, and छिमेक means neighbors, a social word, so neither names the Korean administrative unit."
+register_note = ""
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "환승 (लाइन सरुवा)"
+avoid = ["स्थानान्तरण"]
+why = "लाइन सरुवा means changing subway lines at a station; स्थानान्तरण means a transfer of person or property, which is a different idea."
+register_note = ""
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "주민센터 (वडा कार्यालयजस्तो सरकारी सेवा केन्द्र)"
+avoid = ["सामुदायिक केन्द्र"]
+why = "Keep 주민센터 with a gloss: it is the government administrative office where residence registration is done, and सामुदायिक केन्द्र suggests a social or cultural hall with no admin function."
+register_note = "वडा कार्यालय is the closest Nepali comparison for readers. The gloss is an analogy, not a match."
+sources = ["https://www.gov.kr/mw/AA020InfoCappView.do?CappBizCD=13100000016"]
+confidence = "medium"

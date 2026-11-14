@@ -1,0 +1,348 @@
+# Terminology for Bengali (Bangladesh) (bn). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Evidence caveat: no Bengali-language Korea-specific housing guide or community post was found. Danuri (liveinkorea.kr) lists no Bengali pages. Bengali
+# Korea terms below are either Bangladesh-generic rental vocabulary (Dhaka rental sites) or Korean words kept with a gloss (keep policy).
+# Big-tech MT outputs named in "avoid" are typical literal renderings; they were NOT re-tested in this session.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "জাতীয়তা"
+avoid = ["দেশ", "নাগরিকত্ব"]
+why = "জাতীয়তা is the form-field word for the passport country; দেশ reads as the country in general, and নাগরিকত্ব (citizenship) implies a legal status a foreign resident does not have in Korea."
+register_note = "Legal/forms: জাতীয়তা. Everyday chat: 'কোন দেশের?' is the natural question."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "দেশ"
+avoid = ["রাষ্ট্র", "জাতি"]
+why = "দেশ is the everyday word for a country; রাষ্ট্র sounds like the state or government and জাতি means ethnic group or people, which shifts the meaning."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "ভাড়ার বাসা (বিজ্ঞাপন)"
+avoid = ["সম্পত্তি", "মাল"]
+why = "Dhaka rental portals present each unit as a ভাড়ার বাসা ad; সম্পত্তি (property/assets) suggests a sale or an owned estate, and মাল means goods."
+register_note = "Use the short form 'বাসা' in UI cards; keep 'বিজ্ঞাপন' in headings."
+sources = ["https://basarkhuj.com/", "https://bhara.com/guides/dhaka-rental-guide"]
+confidence = "medium"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "ভাড়ার অনুরোধ (বাসা খোঁজার অনুরোধ)"
+avoid = ["ভাড়ার আবেদন", "অনুমোদন"]
+why = "A tenant asking brokers to find a home by conditions is a search request, while ভাড়ার আবেদন (rental application) means applying for one specific unit, which is a different step in Korea."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "জামানত"
+avoid = ["অগ্রিম", "বায়না"]
+why = "Bangladeshi rental guides use জামানত for the refundable deposit held until lease end; অগ্রিম means advance rent paid up front, and বায়না is booking money, so both suggest the wrong money flow."
+register_note = "Use 'জামানত (ফেরতযোগ্য)' the first time to show it is returned."
+sources = ["https://bdlawhub.com/%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF-%E0%A6%AD%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BE-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC/", "https://sharedhomies.com/blog/korea-deposit-jeonse-explained-2026-guide-foreigners"]
+confidence = "medium"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "জিওনসে (jeonse - বড় একবারের জামানত, মাসিক ভাড়া নেই)"
+avoid = ["লিজ", "বন্ধক"]
+why = "Keep the Korean word because no Bengali equivalent exists; বন্ধক (mortgage/pledge) suggests a loan against the tenant, and লিজ (generic lease) hides that the big deposit is the whole rent."
+register_note = "Gloss on first use in every screen. Bengali spelling জিওনসে is a transliteration not verified against community posts."
+sources = ["https://www.livinginkorea.co/guides/housing/jeonse-wolse/", "https://sharedhomies.com/blog/jeonse-vs-wolse-vs-key-money"]
+confidence = "low"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "ওলসে (wolse - ছোট জামানত সহ মাসিক ভাড়া)"
+avoid = ["ভাড়া", "মাসিক খরচ"]
+why = "Keep the Korean word so 'monthly rent plus deposit' is not confused with a plain ভাড়া; মাসিক খরচ (monthly cost) would also cover maintenance fees and bills."
+register_note = "Gloss on first use. Bengali spelling ওলসে is a transliteration not verified against community posts."
+sources = ["https://www.livinginkorea.co/guides/housing/jeonse-wolse/", "https://www.haniseoul.com/blogs/jeonse-vs-wolse-korea-foreigner-guide"]
+confidence = "low"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "মাসিক ভাড়া"
+avoid = ["মাসিক খরচ", "মাসের বিল"]
+why = "মাসিক ভাড়া is the rent figure alone, which is what Bangladeshi listings show separately; মাসিক খরচ and মাসের বিল would merge rent with the 관리비 maintenance fee."
+sources = ["https://bhara.com/guides/dhaka-rental-guide", "https://www.ajkerpatrika.com/bangladesh/dhaka/ajpjpcerngfus"]
+confidence = "medium"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "সার্ভিস চার্জ (관리비)"
+avoid = ["মেরামত খরচ", "রক্ষণাবেক্ষণ ফি"]
+why = "Dhaka listings show সার্ভিস চার্জ as a separate monthly building fee on top of rent, matching 관리비; মেরামত খরচ (repair cost) suggests occasional fixes, and a literal রক্ষণাবেক্ষণ ফি reads as the same thing."
+register_note = "Show '(관리비)' in brackets when the amount is shown, so people can match it to the Korean bill."
+sources = ["https://www.ajkerpatrika.com/bangladesh/dhaka/ajpjpcerngfus", "https://bdlawhub.com/%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF-%E0%A6%AD%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BE-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC/"]
+confidence = "medium"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "বায়না (계약금)"
+avoid = ["অগ্রিম ভাড়া", "ডাউন পেমেন্ট"]
+why = "বায়না is the Bangladeshi word for money paid to lock a deal at signing, which is what 계약금 does; অগ্রিম ভাড়া means prepaid rent, and ডাউন পেমেন্ট implies a home-loan purchase."
+register_note = "Say that 계약금 is deducted from the deposit at move-in, which is not a rent payment."
+sources = ["https://www.haniseoul.com/blogs/jeonse-vs-wolse-korea-foreigner-guide"]
+confidence = "low"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "ভাড়ার চুক্তি"
+avoid = ["লিজ দলিল", "দলিল"]
+why = "ভাড়ার চুক্তি (rental agreement) is the everyday term Bangladeshi guides use for a written tenancy; দলিল means a registered deed of land or property ownership, which is a different document from the lease."
+register_note = "Legal text: 'ভাড়ার চুক্তিপত্র (임대차계약서)'."
+sources = ["https://bdlawhub.com/%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF-%E0%A6%AD%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BE-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC/", "https://lacha.co.kr/korea-guide/en/monthly-rent-contract-korea-foreigner/"]
+confidence = "medium"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "বাড়ির মালিক"
+avoid = ["জমিদার", "বাড়িওয়ালা (UI)"]
+why = "বাড়ির মালিক is neutral and works in contracts; জমিদার is the historic feudal landlord, which carries a bad tone, and informal বাড়িওয়ালা can sound pushy in app UI."
+register_note = "Legal/contract: বাড়ির মালিক. Community chat: বাড়িওয়ালা is natural and warm."
+sources = ["https://bdlawhub.com/%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF-%E0%A6%AD%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BE-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC/"]
+confidence = "medium"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "ভাড়াটিয়া"
+avoid = ["প্রজা", "ভাড়াদার"]
+why = "ভাড়াটিয়া is the standard Bangladeshi word for a renter; প্রজা means a historic tenant-peasant under landlord rule, which sounds demeaning, and ভাড়াদার is rare and reads as a formal legal term."
+sources = ["https://bdlawhub.com/%E0%A6%AC%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BF-%E0%A6%AD%E0%A6%BE%E0%A6%A1%E0%A6%BC%E0%A6%BE-%E0%A6%86%E0%A6%87%E0%A6%A8-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%AC/"]
+confidence = "medium"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "লাইসেন্সধারী রিয়েল এস্টেট এজেন্ট"
+avoid = ["দালাল"]
+why = "Use the licensed-agent wording because 공인중개사 is a state licence; দালাল means a middleman or fixer and may suggest an unlicensed, untrustworthy person."
+register_note = "দালাল is a common everyday word in Bangladesh, but its tone is negative here. Avoid it in UI and contracts."
+sources = ["https://www.seonsaengnim.com/en/blog/trouver-logement-coree", "https://www.k-lawconsulting.com/post/how-much-is-the-fair-real-estate-brokerage-fee-in-korea"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "রিয়েল এস্টেট অফিস (중개사무소)"
+avoid = ["দালালের দোকান", "অফিস"]
+why = "রিয়েল এস্টেট অফিস matches the Korean 부동산 agency sign; দালালের দোকান (broker's shop) is pejorative, and a plain অফিস may suggest a company office rather than a licensed agency."
+sources = ["https://www.seonsaengnim.com/en/blog/trouver-logement-coree"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "এজেন্ট কমিশন (중개수수료, 복비)"
+avoid = ["দালালি", "সার্ভিস চার্জ"]
+why = "এজেন্ট কমিশন is a fee paid to the agent; দালালি means brokering in a pejorative sense, and সার্ভিস চার্জ must stay reserved for 관리비, or users will mix up the two."
+register_note = "Show the Korean 복비 once in brackets because Korean residents use it. Legal cap rules are set by local ordinance, so state the cap per location."
+sources = ["https://www.k-lawconsulting.com/post/how-much-is-the-fair-real-estate-brokerage-fee-in-korea", "https://lacha.co.kr/korea-guide/en/monthly-rent-contract-korea-foreigner/"]
+confidence = "low"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "ওয়ানরুম (원룸)"
+avoid = ["স্টুডিও অ্যাপার্টমেন্ট", "এক কক্ষের ফ্ল্যাট"]
+why = "Keep ওয়ানরুম because a 원룸 is a single room with its own kitchen and bath, typically 10 to 25 square metres; স্টুডিও অ্যাপার্টমেন্ট suggests a luxury flat, and এক কক্ষের ফ্ল্যাট suggests a full apartment, not one room."
+register_note = "Gloss once: 'ওয়ানরুম (একটি রুম, আলাদা বাথরুম ও রান্নাঘর)'."
+sources = ["https://www.seonsaengnim.com/en/blog/trouver-logement-coree"]
+confidence = "low"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "অফিসটেল (officetel - অফিস-কাম-বাসা)"
+avoid = ["অফিস", "কার্যালয়"]
+why = "Keep অফিসটেল because it is a residential-office hybrid; plain অফিস or কার্যালয় suggests a commercial office, which people may think cannot be lived in."
+sources = ["https://www.seonsaengnim.com/en/blog/trouver-logement-coree"]
+confidence = "low"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "গোশিওন (gosiwon - ছোট ব্যক্তিগত ঘর, শেয়ার্ড বাথ ও কিচেন)"
+avoid = ["মেস", "হোস্টেল"]
+why = "Keep গোশিওন because it is a small private room with shared facilities; মেস (Bangladeshi shared lodging) usually includes meals and suggests a room-share, and হোস্টেল suggests dormitory beds."
+register_note = "Gloss once with 'ছোট ঘর'. Shared bath and kitchen are the key facts for renters."
+sources = ["https://www.koreaherald.com/article/10444124", "https://www.hikorean.co.kr/guide/housing?lang=ko"]
+confidence = "low"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "সেমি-বেসমেন্ট (반지하 - আধা মাটির নিচের ঘর)"
+avoid = ["বেসমেন্ট", "ভূগর্ভস্থ ঘর"]
+why = "Use সেমি-বেসমেন্ট because 반지하 units sit half below street level with windows at pavement height; বেসমেন্ট and ভূগর্ভস্থ ঘর suggest a fully underground, unlit room that is misleading."
+register_note = "Show flood and damp risk in the gloss so people judge it on facts."
+sources = ["https://www.fnnews.com/news/201805251715434415"]
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "জিওন-ইপ-শিনগো (전입신고 - বসবাসের ঠিকানা নিবন্ধন)"
+avoid = ["ইমিগ্রেশন রেজিস্ট্রেশন", "নাম নিবন্ধন"]
+why = "Keep the Korean word and gloss it as address registration at the 주민센터; ইমিগ্রেশন রেজিস্ট্রেশন sounds like the ARC visa process (외국인등록), which is a separate step."
+register_note = "Make the distinction visible: 전입신고 = address, 외국인등록 = ARC."
+sources = ["https://www.easylaw.go.kr/CSP/CnpClsMain.laf?csmSeq=666&ccfNo=4&cciNo=1&cnpClsNo=1", "https://brunch.co.kr/@dabang/122"]
+confidence = "low"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "হোজেং-ইল-জা (확정일자 - চুক্তির সরকারি তারিখ সিল)"
+avoid = ["নোটারাইজেশন", "রেজিস্ট্রেশন তারিখ"]
+why = "Keep the Korean word because it is a deposit-priority stamp at the 주민센터; নোটারাইজেশন (notarisation) only certifies a signature, and রেজিস্ট্রেশন তারিখ misses that it protects the deposit."
+register_note = "Gloss: 'জামানতের সুরক্ষা'. Pair with 전입신고 in the same sentence."
+sources = ["https://brunch.co.kr/@dabang/122", "https://www.haniseoul.com/blogs/jeonse-vs-wolse-korea-foreigner-guide"]
+confidence = "low"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "ডেংগিবু-ডেংবন (등기부등본 - সম্পত্তির সরকারি মালিকানা রেজিস্টার)"
+avoid = ["দলিল", "খতিয়ান"]
+why = "Keep the Korean word because it is the official register of ownership and mortgages; দলিল means a deed or contract, and খতিয়ান is the Bangladesh land record, which is a different system."
+sources = ["https://www.haniseoul.com/blogs/jeonse-vs-wolse-korea-foreigner-guide"]
+confidence = "low"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "এআরসি (ARC - বিদেশিদের নিবন্ধন কার্ড, 외국인등록증)"
+avoid = ["পাসপোর্ট", "রেসিডেন্স পারমিট"]
+why = "Keep ARC because Korean forms and offices use it; পাসপোর্ট is a different travel document, and রেসিডেন্স পারমিট is a generic term that does not match the Korean card."
+register_note = "English sources say 'Residence Card' for the same card. Show both labels once."
+sources = ["https://lacha.co.kr/korea-guide/en/residence-card-vs-arc-difference/", "https://migaku.com/blog/korean/alien-registration-card-in-korea-how-to-get-one-as-a-foreigner"]
+confidence = "medium"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "ভিসার ধরন (체류자격 - যেমন D-2, E-9)"
+avoid = ["ভিসা", "ভিসা নম্বর"]
+why = "Use ভিসার ধরন because 체류자격 is the category (D-2 student, E-9 non-professional work), not the visa sticker; plain ভিসা and ভিসা নম্বর point to the document rather than the category."
+sources = ["https://migaku.com/blog/korean/alien-registration-card-in-korea-how-to-get-one-as-a-foreigner"]
+confidence = "low"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "যাচাইকরণ (외국인 인증)"
+avoid = ["সার্টিফিকেশন", "আইডি ভেরিফিকেশন"]
+why = "যাচাইকরণ is the word the app already uses in every verification message (errors_bn, notifications_bn), so one term covers the whole flow. It means a status check, which fits 외국인 인증; পরিচয় যাচাই would suggest only an identity check. সার্টিফিকেশন sounds like a certificate."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "যাচাইকরণ কোড (OTP)"
+avoid = ["পাসওয়ার্ড", "সিক্রেট কোড"]
+why = "যাচাইকরণ কোড with OTP is the code texted to the phone; পাসওয়ার্ড means a password the user chooses, and সিক্রেট কোড sounds like a scam request."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "পার্টনার (রিয়েল এস্টেট পার্টনার)"
+avoid = ["সঙ্গী", "অংশীদার"]
+why = "Use পার্টনার for a broker on the platform; সঙ্গী suggests a romantic partner, and অংশীদার means a business co-owner with legal stake, which is wrong here."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "অ্যাকাউন্ট মুছে ফেলুন (회원 탈퇴)"
+avoid = ["লগ আউট", "বন্ধ করুন"]
+why = "অ্যাকাউন্ট মুছে ফেলুন says the account and data are removed; লগ আউট only ends the session, and বন্ধ করুন is ambiguous with suspension."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "অ্যাকাউন্ট সাময়িক বন্ধ (이용 정지)"
+avoid = ["নিষিদ্ধ", "ব্লক"]
+why = "সাময়িক বন্ধ says the use is paused for a time; নিষিদ্ধ (banned) sounds like a permanent legal prohibition, and ব্লক is a personal block that may be read as a block of one person."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "রিপোর্ট করুন (신고)"
+avoid = ["অভিযোগ", "নালিশ"]
+why = "রিপোর্ট করুন is the in-app abuse flag; অভিযোগ and নালিশ mean a formal complaint or lawsuit to authorities, which scares users off reporting."
+register_note = "Legal text for official police or government reports: 'সরকারি অভিযোগ'."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "পুশ নোটিফিকেশন"
+avoid = ["সতর্কবার্তা", "ঘোষণা"]
+why = "পুশ নোটিফিকেশন is the term Bangladeshi app users already know; সতর্কবার্তা (warning) and ঘোষণা (public announcement) change the tone of routine alerts."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "গু (gu - শহরের এলাকা)"
+avoid = ["জেলা", "উপজেলা"]
+why = "Keep গু because a Korean 구 is a city district inside a larger city; জেলা and উপজেলা are Bangladeshi administrative regions, so they put the place in the wrong level."
+register_note = "Show the parent city once, for example 'সিউল, গাংনাম-গু'."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "ডং (dong - পাড়া)"
+avoid = ["গ্রাম", "মহল্লা"]
+why = "Keep ডং as a small neighbourhood inside a 구; গ্রাম (village) suggests rural, and মহল্লা is informal and vague, so it does not match the official unit."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "ট্রান্সফার (환승 - স্টেশন বদল)"
+avoid = ["বদল", "পরিবর্তন"]
+why = "ট্রান্সফার is the common word for changing lines, and it is used in Dhaka Metro Rail signage; বদল and পরিবর্তন are generic and can mean changing the route or the plan."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "জুমিন সেন্টার (주민센터 - সরকারি স্থানীয় অফিস)"
+avoid = ["কমিউনিটি সেন্টার", "ইউনিয়ন পরিষদ"]
+why = "Keep জুমিন সেন্টার with the gloss 'সরকারি স্থানীয় অফিস'; কমিউনিটি সেন্টার suggests a social hall, and ইউনিয়ন পরিষদ is the elected Bangladeshi village council, which is a different body."
+register_note = "The 주민센터 handles 전입신고 and 확정일자. Say which services it provides."
+sources = ["https://www.easylaw.go.kr/CSP/CnpClsMain.laf?csmSeq=666&ccfNo=4&cciNo=1&cnpClsNo=1"]
+confidence = "low"

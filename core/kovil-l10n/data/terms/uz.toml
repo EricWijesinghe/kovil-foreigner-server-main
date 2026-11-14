@@ -1,0 +1,371 @@
+# Terminology for Uzbek (Latin) (uz). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Evidence base is thin: Uzbek-language pages from seoulhomes.kr (Korean agency, commercial) and the
+# liveinkorea.kr Uzbek link (portal confirmed to exist; housing text not readable from this run).
+# No Uzbek resident community usage (Telegram/Facebook) was found. Confidence is capped at medium.
+# "avoid" items are plausible machine-translation or confusing alternatives, NOT tested MT output.
+# 2026-11-13 skeptic pass: web search budget exhausted, so no new sources were checked. Changes were
+# consistency fixes only (Android tab_countries -> fuqaroligi, transfer -> liniya almashtirish).
+# Open doubt for native review: "rieltor" is avoided above but may be the everyday spoken word for agent.
+# 2026-11-13 native-level skeptic pass 2: WebSearch budget exhausted, so independent searches were NOT run.
+# Checked by WebFetch against seoulhomes.kr guide pages only. The /uz/glossary/ fetch returned English text,
+# so Uzbek glosses attributed to that page are unverified. Edits below align terms with the server bundles.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "fuqaroligi"
+avoid = ["millat", "mamlakat"]
+why = "Fuqaroligi means legal citizenship, which is what the passport shows; millat means ethnic nation and mamlakat means country, so both give the wrong meaning."
+register_note = "Use fuqaroligi in forms and ID checks; the phrase 'passport country' is clearer as 'pasport bergan davlat' in help text. No server bundle uses fuqaroligi yet; the guide only has chet ellik (foreigner), so check where nationality is shown before relying on it."
+sources = ["https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/", "https://kun.uz/en/news/2025/07/28/south-koreas-foreign-population-hits-record-high-including-nearly-100000-from-uzbekistan"]
+confidence = "low"   # No direct nationality-field gloss found; fuqaro usage seen only in news/agency text.
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "mamlakat"
+avoid = ["davlat (ambiguous with state government)"]
+why = "Mamlakat is the everyday word for a country in general; davlat also means state or government, which narrows the meaning in a generic sense."
+register_note = "In legal text davlat is standard; in UI mamlakat reads more naturally."
+sources = ["https://kun.uz/en/news/2025/07/28/south-koreas-foreign-population-hits-record-high-including-nearly-100000-from-uzbekistan"]
+confidence = "low"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "ijara eʼloni"
+avoid = ["kvartira (implies a whole apartment)", "obyekt"]
+why = "Eʼlon is the ad-style word Uzbek speakers use for a posted listing, while kvartira or obyekt wrongly suggests a specific apartment or a commercial property."
+register_note = "Seoulhomes uses the word properties in its Uzbek UI; the plain word eʼlon reads as an ad, and the bundles use it."
+sources = ["https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/", "https://seoulhomes.kr/uz/glossary/"]
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "ijara soʻrovi"
+avoid = ["buyurtma (order, implies a purchase)", "talab (demand, sounds like a legal claim)"]
+why = "Soʻrov means a request to find something, which matches a tenant asking brokers for a home; buyurtma implies buying and talab sounds like a complaint or claim."
+register_note = "Use the everyday word uy qidirish in the UI and ijara soʻrovi in notices."
+sources = ["https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"   # No Uzbek source for this exact concept was found.
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "depozit (qaytariluvchi xavfsizlik depoziti)"
+avoid = ["garov (pledge or collateral, a different legal concept)", "avans (advance payment)"]
+why = "The seoulhomes guide uses Depozit (보증금) and says it is fully refunded at lease end; garov implies a pledge that the lender can keep, and avans implies payment toward rent."
+register_note = "Use depozit in both UI and text; add the gloss qaytariluvchi on first use so it is not read as a fee."
+sources = ["https://seoulhomes.kr/uz/glossary/bojeungeum/", "https://seoulhomes.kr/uz/blog/wolse-korea-monthly-rent-guide/"]
+confidence = "medium"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "jeonse (전세) - katta qaytariluvchi depozit, oylik ijarasiz"
+avoid = ["ijara (implies monthly rent)", "garov"]
+why = "Keeping the Korean word with a gloss matches how Uzbek-language Korean guides present it; a plain ijara label would suggest monthly rent, which jeonse does not have."
+register_note = "Keep jeonse in the UI with the gloss at first mention; it is a fixed Korean term, not a translation. The English glossary page confirms the concept; the Uzbek gloss wording is ours and unverified."
+sources = ["https://seoulhomes.kr/uz/glossary/jeonse/", "https://seoulhomes.kr/uz/blog/wolse-korea-monthly-rent-guide/"]
+confidence = "medium"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "wolse (월세) - oylik ijara bilan kichik depozit"
+avoid = ["oylik ijara (drops the deposit detail)", "garov"]
+why = "The Korean word with a gloss is what the Uzbek-language Korean guides use, and oylik ijara alone hides that a deposit is also paid, which is the key difference from jeonse."
+register_note = "Use wolse as the label; the gloss is needed in the first screen where the user chooses a type."
+sources = ["https://seoulhomes.kr/uz/glossary/", "https://seoulhomes.kr/uz/blog/wolse-korea-monthly-rent-guide/"]
+confidence = "medium"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "oylik ijara"
+avoid = ["oylik toʻlov (too vague, could mean any charge)", "kommunal (utility bills only)"]
+why = "Oylik ijara names the rent amount itself, and it stays separate from the maintenance fee; kommunal would imply utilities and oylik toʻlov could mean any monthly charge."
+register_note = "In UI show the amount under 'Oylik ijara' and keep maintenance fee on its own line."
+sources = ["https://seoulhomes.kr/uz/blog/wolse-korea-monthly-rent-guide/", "https://seoulhomes.kr/uz/glossary/"]
+confidence = "medium"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "boshqaruv toʻlovi (관리비)"
+avoid = ["kommunal toʻlovlar (utility bills, which the 관리비 may partly include)", "xizmat haqi (service charge)"]
+why = "Boshqaruv toʻlovi is the building-management fee shown on the Uzbek-language Korean glossary; kommunal would suggest only utilities, and the fee can cover building services that are not utilities."
+register_note = "Show 관리비 in parentheses so readers can match it to the bill; say what it covers in the detail view. Conflict: the seoulhomes guide uses Texnik xizmat koʻrsatish toʻlovi (관리비); the bundles use boshqaruv toʻlovi, kept for consistency until a native speaker decides."
+sources = ["https://seoulhomes.kr/uz/glossary/", "https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "gyeyakgeum (계약금) - shartnoma paytida toʻlanadigan oldindan toʻlov"
+avoid = ["avans (advance, can be refundable as a rent prepayment)", "bron puli (reservation fee, a different deal)"]
+why = "Gyeyakgeum is the Korean term used in the Uzbek glossary with a gloss that it is paid at signing, while avans and bron puli suggest different refund and reservation rules."
+register_note = "Keep the Korean word; the glossary gives the typical ratio of about 10 percent, which should be checked against the actual contract."
+sources = ["https://seoulhomes.kr/uz/glossary/"]
+confidence = "low"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "ijara shartnomasi"
+avoid = ["kelishuv (agreement, not a signed legal contract)", "shartnoma (without the ijara part, could be any contract)"]
+why = "Ijara shartnomasi names the lease as a legal document, which is the sense the Korean term has; kelishuv suggests an informal agreement."
+register_note = "Legal text should use ijara shartnomasi; the UI can use shartnoma when the context already says it is a lease."
+sources = ["https://seoulhomes.kr/uz/blog/wolse-korea-monthly-rent-guide/"]
+confidence = "medium"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "uy egasi (UI); ijaraga beruvchi (legal)"
+avoid = ["mulkdor (owner, formal and less common in speech)", "xoʻjayin (boss, implies employment)"]
+why = "Uy egasi is the everyday word people use for the owner of the home, and ijaraga beruvchi is the formal legal term in the Uzbek glossary; xoʻjayin wrongly suggests an employer."
+register_note = "Use uy egasi in conversation and the app UI; use ijaraga beruvchi in lease documents and legal text."
+sources = ["https://seoulhomes.kr/uz/glossary/jeonse/", "https://seoulhomes.kr/uz/blog/wolse-korea-monthly-rent-guide/"]
+confidence = "medium"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "ijarachi"
+avoid = ["mijoz (customer, wrong relationship)", "egasi (owner, opposite meaning)"]
+why = "Ijarachi is the Uzbek-language Korean glossary term for the person renting the home; mijoz suggests a shop customer and egasi means owner, the opposite role."
+register_note = "Use ijarachi in both UI and legal text; avoid the everyday word for renter in formal forms."
+sources = ["https://seoulhomes.kr/uz/glossary/jeonse/"]
+confidence = "medium"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "litsenziyalangan agent (공인중개사)"
+avoid = ["makler (broker, Russian-derived)", "dallol (street peddler)"]
+why = "Litsenziyalangan agent names the licensed status that 공인중개사 means, and the Uzbek glossary uses this phrase; rieltor appears in the seoulhomes guide link text and is likely spoken; it is fine in casual speech but not in legal text, and makler does not show the license requirement."
+register_note = "Use the full phrase in legal and trust contexts; a short form like agent is acceptable in the UI once the license word is shown."
+sources = ["https://seoulhomes.kr/uz/glossary/", "https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "medium"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "ofis (중개사무소)"
+avoid = ["kompaniya (company, too broad)"]
+why = "Ofis is the word the server bundles already use for the agent office; the 중개사무소 gloss makes it unambiguous, while kompaniya does not show the real estate role."
+register_note = "Use the Korean term 중개사무소 in parentheses when the user needs to find the office in Korea."
+sources = ["https://seoulhomes.kr/uz/glossary/"]
+confidence = "low"   # Inferred from the glossary's 'real estate' term; no direct Uzbek gloss found for this office.
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "brokerlik toʻlovi (중개보수)"
+avoid = ["komissiya (commission, a generic word)", "xizmat haqi (service charge)"]
+why = "Brokerlik toʻlovi is the one-time fee the Uzbek-language Korean glossary calls junggae-bosu, and it is capped by law; komissiya gives no idea of the legal limit."
+register_note = "The Korean word 복비 is a common slang term; in UI prefer 중개보수 in parentheses."
+sources = ["https://seoulhomes.kr/uz/glossary/", "https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "medium"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "bir xonali (원룸)"
+avoid = ["kvartira (implies a full apartment)", "studiya (could mean an art studio)"]
+why = "Bir xonali names the single-room layout; the seoulhomes guide uses studiolar for this type and never uses one-room, while kvartira implies a full apartment with separate rooms."
+register_note = "Show 원룸 in parentheses for search; the English one-room is not used in the Uzbek sources."
+sources = ["https://seoulhomes.kr/uz/glossary/", "https://studying2025.mycafe24.com/step-by-step-guide-to-renting-a-one-room-in-korea"]
+confidence = "medium"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "ofistel (오피스텔)"
+avoid = ["ofis (office only)", "ofis-kvartira (invented compound)"]
+why = "Ofistel is the Uzbek term used on the Korean agency site and it keeps the Korean word's meaning of a mixed office-residence, while ofis alone suggests a workplace with no living space."
+register_note = "Keep the Korean term in parentheses for search."
+sources = ["https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "medium"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "gosiwon (고시원)"
+avoid = ["yotoqxona (dormitory, implies a school)", "mehmonxona (hotel)", "hostel (implies shared travel housing)"]
+why = "Gosiwon is the Korean term the Uzbek guide links to; no Uzbek gloss was found, and the other options suggest a dormitory, hotel or hostel, which do not match a small private room in a shared building."
+register_note = "Keep the romanized Korean word and add a short gloss: kichik yakka xona, umumiy jihozlar bilan."
+sources = ["https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"   # Only an English-form link title found; no Uzbek definition.
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "yarim yertoʻla (반지하)"
+avoid = ["yertoʻla (full basement, implies underground)", "podval (Russian-derived, cellar)"]
+why = "Yarim yertoʻla literally means half basement, which matches the partly-below-ground layout, while yertoʻla and podval suggest a fully underground or cellar space."
+register_note = "Show 반지하 with the gloss and a note about moisture and light; no Uzbek source was found for this term."
+sources = []
+confidence = "low"   # No source found for the Uzbek word; wording is a literal construction.
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "fuqaro roʻyxati (전입신고)"
+avoid = ["propiska (Soviet-era residence permit, wrong meaning)", "koʻchish hisobi (literal 'move account', unclear)"]
+why = "Fuqaro roʻyxati is the phrase the Uzbek-language Korean guide uses for registering the new address, while propiska implies a Soviet residence permit and koʻchish hisobi is not a term people would recognize."
+register_note = "The seoulhomes guide uses fuqaro roʻyxati (전입신고) and the fetched glossary page offers no alternative; use fuqaro roʻyxati in UI and show 전입신고 in parentheses. Native confirmation still needed."
+sources = ["https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/", "https://seoulhomes.kr/uz/glossary/"]
+confidence = "medium"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "belgilangan sana muhri (확정일자)"
+avoid = ["notarial tasdiq (notary attestation, a different service)", "sana (date, too vague)"]
+why = "Belgilangan sana muhri is the phrase used in the Uzbek-language guide for the official date stamp, while notarial tasdiq implies a notary service and sana alone is too vague to refer to the stamp."
+register_note = "The seoulhomes guide uses belgilangan sana muhri (확정일자), which is the form used here; a native speaker should still confirm the wording."
+sources = ["https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/", "https://seoulhomes.kr/uz/glossary/"]
+confidence = "medium"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "mulk reyestri (등기부등본)"
+avoid = ["pasport (passport, wrong document)", "sertifikat (certificate, implies a different document)"]
+why = "Mulk reyestri is the Uzbek glossary's term for the official property register that shows owner and debts, while pasport and sertifikat name different documents."
+register_note = "Always show 등기부등본 in parentheses; check that the register owner matches the landlord."
+sources = ["https://seoulhomes.kr/uz/glossary/"]
+confidence = "low"   # Gloss is loose; no native usage confirmed.
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "chet ellikni roʻyxatga olish kartasi (ARC, 외국인등록증)"
+avoid = ["pasport (passport, a different document)", "guvohnoma (certificate, too generic)"]
+why = "Chet ellik roʻyxatga olish kartasi is the Uzbek phrase the Korean agency site uses for ARC, while pasport names a different document and guvohnoma does not specify it. The seoulhomes guide uses the -ni form, which is used here."
+register_note = "Note that the ARC confirms residence status only and does not grant work rights; keep 'ARC' in the UI for recognition."
+sources = ["https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/", "https://www.hikorea.go.kr"]
+confidence = "medium"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "viza turi (체류자격, masalan D-2, E-9)"
+avoid = ["status (English, unclear)", "hujjat (document, not a status)"]
+why = "Viza turi names the visa category like D-2 or E-9 that the user holds, while status and hujjat do not tell the user it is a category code."
+register_note = "Show the code (D-2, E-9) next to the Uzbek label; the Uzbek agency site does not use an Uzbek term for 체류자격."
+sources = ["https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "shaxsni tasdiqlash (외국인 인증)"
+avoid = ["identifikatsiya (technical, unclear)", "roʻyxatdan oʻtish (register, implies sign-up)"]
+why = "Shaxsni tasdiqlash means confirming who you are, which is what KOVIL checks; identifikatsiya is technical and roʻyxatdan oʻtish means signing up, not verifying."
+register_note = "Explain the required documents in one line, because the user may think they are only creating an account."
+sources = []
+confidence = "low"   # No Uzbek source found for this app-specific step.
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "tasdiqlash kodi"
+avoid = ["raqam (number, too generic)", "parol (password, a different secret)"]
+why = "Tasdiqlash kodi is the everyday phrase for an SMS verification code, while parol means password and raqam does not say what it is for."
+register_note = "Say that the code comes by SMS, and that it expires after a short time."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "hamkor (파트너, broker partner)"
+avoid = ["sherik (informal, friend-like)", "partner (English, unclear)"]
+why = "Hamkor is the standard Uzbek term for a business partner, while sherik is informal and partner in English may not be understood."
+register_note = "In KOVIL the partner is a broker; say 'agent hamkor' in the UI to match 공인중개사."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "hisobni oʻchirish (aʼzolikni bekor qilish)"
+avoid = ["chiqish (exit, ambiguous)", "bloklash (block, a different action)"]
+why = "Hisobni oʻchirish means deleting the account, which is what the user is asking for, while chiqish is ambiguous and bloklash implies a block that can be undone."
+register_note = "Warn that deletion may not be reversible; no Uzbek source was checked for this app step."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "bloklangan"
+avoid = ["muzlatilgan (frozen, suggests money)"]
+why = "The bundles use bloklangan and bloklash for every suspension, so one word keeps UI and notices consistent; muzlatilgan suggests money is frozen. Temporary versus permanent is not encoded; if product needs it, change the strings and this entry together."
+register_note = "Say the reason and the end date if known."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "shikoyat qilish"
+avoid = ["hisobot (report as a document)", "xabar berish (inform, not a complaint)"]
+why = "Shikoyat qilish is the everyday phrase for reporting abuse or an unfair post, while hisobot means a formal document and xabar berish is only informing."
+register_note = "Use the same phrase for the button and the confirmation message."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "bildirishnoma (push)"
+avoid = ["push (English only)", "xabar (message, too generic)"]
+why = "Bildirishnoma is the standard Uzbek word for a notification, and push in brackets shows it is an app alert; xabar could mean a chat message."
+register_note = "Use bildirishnoma in settings screens."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "tuman (구)"
+avoid = ["rayon (Russian-derived, used for regions)", "shahar (city)"]
+why = "Tuman is the Uzbek word for a district within a city, which is the sense of Korean 구; shahar means the whole city and rayon is a Russian-derived term that suggests a different administrative level."
+register_note = "Use the Korean name of the district in parentheses, for example Gangnam-gu; the Uzbek agency site uses tuman for the district office."
+sources = ["https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "medium"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "mahalla (동)"
+avoid = ["kvartal (Russian-derived, city block)", "hudud (area, too vague)"]
+why = "Mahalla is the word the Uzbek agency site uses for a neighborhood, but in Uzbekistan it is also a community committee unit, so kvartal and hudud give the wrong or vague sense."
+register_note = "Add a short gloss: Seul tumanidagi kichik hudud. Do not use mahalla in the sense of a community committee."
+sources = ["https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"   # 'mahallalarni' is used loosely; the Uzbek sense of mahalla differs.
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "liniya almashtirish (환승)"
+avoid = ["peresadka (Russian-derived, common in speech)", "oʻtish (crossing, generic)"]
+why = "Liniya almashtirish describes changing from one subway line to another, while peresadka is a Russian loan and oʻtish is too generic to mean a transfer."
+register_note = "Show 환승 in parentheses on the station card."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "jamoat xizmati markazi (주민센터)"
+avoid = ["mahalla fuqarolar yigʻini (Uzbek mahalla committee, a different institution)", "jamoat markazi (community center, social sense)"]
+why = "Jamoat xizmati markazi names the Korean district office that handles resident registration; mahalla fuqarolar yigʻini is the Uzbek neighborhood committee, a different institution, so using it would mislead the user."
+register_note = "Keep 주민센터 in parentheses and say it is where 전입신고 and 확정일자 are done. The seoulhomes guide calls the district office tuman idorasi, a higher level, so do not reuse that term for 주민센터."
+sources = ["https://seoulhomes.kr/uz/glossary/", "https://seoulhomes.kr/uz/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"   # Official name not seen in Uzbek; the Uzbek phrase is a proposed construction.

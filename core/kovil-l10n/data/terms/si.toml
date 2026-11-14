@@ -1,0 +1,362 @@
+# Terminology for Sinhala (si). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Evidence caveat: web search returned almost no Sinhala-language housing material. Danuri (liveinkorea.kr) and the Korean Life Guide have NO Sinhala version (checked 2026-11-13; their 13/16 languages exclude Sinhala). Every "use" below is a provisional proposal from Sinhala lexical knowledge, not confirmed community usage. Treat all entries as confidence low until a Sri Lankan EPS worker or Sinhala native reviews them.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "ජාතිකත්වය (jathikathwaya)"
+avoid = ["රට (rata, 'country')"]
+why = "ජාතිකත්වය is the citizenship/nationality word, while MT typically renders 국적 as රට, which means 'country' and makes the question read as 'which country are you in'."
+register_note = "Formal word in forms and legal text; in chat use 'ඔයාගේ රට' ('your country') only if the reader already understands 'passport country'."
+sources = ["https://www.ivisitkorea.com/alien-registration-card-korea/"]
+confidence = "low"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "රට (rata)"
+avoid = ["ජාතිකත්වය (nationality)"]
+why = "රට is the ordinary general word for a country; it must not be used for the passport sense, which is the nationality term above."
+register_note = "Everyday word."
+sources = ["https://www.ivisitkorea.com/alien-registration-card-korea/"]
+confidence = "low"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "දැන්වීම (danvīma)"
+avoid = ["නිෂ්පාදනය (product)", "භාණ්ඩය (goods)"]
+why = "දැන්වීම is the word the Sinhala UI already uses for a listing (errors_si LISTING_*), so one term is used everywhere; a generic 'item' word reads as a product for sale. Gloss as 'housing listing' on first use: නිවාස දැන්වීම."
+register_note = "Everyday word, usable in app UI."
+sources = ["https://seoulhomes.kr/ko/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "කුලී ඉල්ලීම (kuli illīma)"
+avoid = ["ඉල්ලුම (demand)"]
+why = "කුලී ඉල්ලීම is a tenant's request for a rental; ඉල්ලුම alone means market demand and would read as a general economic term."
+register_note = "Short UI label."
+sources = ["https://seoulhomes.kr/ko/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "තැන්පතුව (thaenpathuva)"
+avoid = ["ණය (loan/debt)", "ඇපකම (surety/guarantee)"]
+why = "තැන්පතුව means a refundable deposit left with the landlord and returned at lease end; ණය implies borrowing and ඇපකම implies a guarantor, both misleading."
+register_note = "Everyday; use with 'returned at end of lease' gloss in first use."
+sources = ["https://staykorea.org/korea-travel/jeonse-vs-wolse-explained-the-korean-rental-system-for-foreigners/", "https://seoulhomes.kr/ko/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "ජොන්සේ (jeonse) - එකවර විශාල තැන්පතුවක් ගෙවා මාසික කුලියක් නොගෙවා ජීවත්වන කුලී ගිවිසුම"
+avoid = ["තැන්පතු කුලිය (deposit rent)", "මාසික කුලිය නැති කුලිය (rent-free)"]
+why = "Keep the romanized Korean word with a gloss, because the system has no Sinhala equivalent and keep-policy applies; the gloss stops MT-style 'deposit rent' or 'free rent' readings that suggest a lower or no-cost lease."
+register_note = "Keep romanization in every UI string; gloss on first appearance."
+sources = ["https://staykorea.org/korea-travel/jeonse-vs-wolse-explained-the-korean-rental-system-for-foreigners/", "https://seoulhomes.kr/ko/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "වොල්සේ (wolse) - අඩු තැන්පතුවක් සහ මාසික කුලිය සහිත කුලී ගිවිසුම"
+avoid = ["මාසික ගෙවීම (monthly payment)"]
+why = "Keep romanization with gloss; the generic monthly payment wording hides that a deposit is also required, which is the key point for foreign residents."
+register_note = "Keep romanization; gloss first time."
+sources = ["https://staykorea.org/korea-travel/jeonse-vs-wolse-explained-the-korean-rental-system-for-foreigners/"]
+confidence = "low"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "මාසික කුලිය (masika kuliya)"
+avoid = ["මාසික ගෙවීම (monthly payment)"]
+why = "මාසික කුලිය names only the rent amount; the generic payment term can include bills and fees, which the Korean 관리비 is separate from."
+register_note = "Everyday."
+sources = ["https://staykorea.org/korea-travel/jeonse-vs-wolse-explained-the-korean-rental-system-for-foreigners/"]
+confidence = "low"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "නඩත්තු ගාස්තුව (naḍatthu gāstuva)"
+avoid = ["බදු (tax)", "අමතර කුලිය (extra rent)"]
+why = "නඩත්තු ගාස්තුව means building upkeep and management charge, a separate monthly fee (source: 'paid monthly apart from rent'). Matches errors_si PUBLISH_MAINTENANCE_REQUIRED; the earlier කළමනාකරණ wording was inconsistent with that bundle. 'extra rent' merges it into rent and 'tax' suggests a government levy."
+register_note = "Use the same term in fee breakdowns."
+sources = ["https://seoulhomes.kr/ko/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "මුල් ගෙවීම (mula gevīma)"
+avoid = ["පූර්ණ ගෙවීම (full payment)"]
+why = "මුල් ගෙවීම means the initial payment at signing; 'full payment' implies the whole price, which misleads a user about what is paid first."
+register_note = "Gloss as paid at signing (usually about 10%)."
+sources = ["https://seoulstart.com/ko/guides/korea-lease-documents-checklist"]
+confidence = "low"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "කුලී ගිවිසුම (kuli giwisuma)"
+avoid = ["ගිවිසුම (agreement, generic)"]
+why = "කුලී ගිවිසුම specifies a rental agreement; the bare word ගිවිසුම could mean any deal or treaty."
+register_note = "Legal word; use in full in contract screens."
+sources = ["https://seoulstart.com/ko/guides/korea-lease-documents-checklist"]
+confidence = "low"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "නිවාස හිමිකරු (nivas himikaru)"
+avoid = ["භූමි හිමියා (land owner)", "කුලී දෙන්නා (rent-giver)"]
+why = "නිවාස හිමිකරු is the house owner, which matches Korean 집주인; 'land owner' implies a plot of land and 'rent-giver' is unnatural."
+register_note = "Everyday; 임대인 (legal) can use the same word in legal text."
+sources = ["https://seoulhomes.kr/ko/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "කුලිකරු (kulikaru)"
+avoid = ["සේවකයා (employee/worker)"]
+why = "කුලිකරු means the person who rents; MT often gives සේවකයා, which means an employee or worker, and this confuses the housing role with the EPS job."
+register_note = "Important for EPS workers: 'worker' already means job; keep housing role distinct."
+sources = ["https://seoulhomes.kr/ko/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "නිවාස දලාල (nivas dalāla)"
+avoid = ["නියෝජිත (representative)", "බ්‍රෝකර් (broker, loan)"]
+why = "නිවාස දලාල is the traditional Sinhala word for a property broker; 'representative' suggests an agent of one party, and the Korean 공인중개사 is a licensed neutral broker."
+register_note = "Mention 'licensed' in first use: 'රජයෙන් අවසර ලත්'."
+sources = ["https://seoulhomes.kr/ko/blog/seoul-jeonse-wolse-foreigners-guide.md"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "දලාල කාර්යාලය (dalāla kāryālaya); UI short form කාර්යාලය"
+avoid = ["නියෝජිත කාර්යාලය (representative office)"]
+why = "දලාල කාර්යාලය names a broker's office; the short form කාර්යාලය is what errors_si and notifications_si already use, so both are kept consistent. 'representative office' implies a company branch, which is a different legal thing."
+register_note = "Everyday."
+sources = ["https://seoulhomes.kr/ko/blog/seoul-jeonse-wolse-foreigners-guide.md"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "දලාල ගාස්තුව (dalāla gāstuva)"
+avoid = ["දෛනික ගාස්තුව (daily fee)"]
+why = "දලාල ගාස්තුව is the broker commission; the colloquial Korean 복비 has no Sinhala equivalent, and 'daily fee' would be a wrong unit."
+register_note = "Gloss that the cap is set by the city ordinance."
+sources = ["https://seoulhomes.kr/ko/blog/seoul-jeonse-wolse-foreigners-guide.md"]
+confidence = "low"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "වන් රූම් (one room) - ජීවත්වීමත් නිදාගැනීමත් එකම කාමරයේ කෙරෙන කුඩා නිවාසය"
+avoid = ["ස්ටුඩියෝ (studio, art sense)"]
+why = "Keep 'one room' in English with gloss: the Seoulstart housing guide defines 원룸 as living and sleeping in one shared room (it does not say bathroom; that claim was removed). 'studio' in Sinhala can suggest an art workspace."
+register_note = "Keep English loan; in Korea 'one room' is standard."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "ඔෆිස්ටෙල් (officetel) - කාර්යාල සහ නිවාස මිශ්‍ර ගොඩනැගිල්ලක කුඩා කාමරය"
+avoid = ["කාර්යාලය (office)"]
+why = "Keep the romanized word with gloss; a plain 'office' suggests a workplace rather than a residence in a mixed building."
+register_note = "Keep romanization."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "ගොසිවොන් (gosiwon) - පොදු පහසුකම් සහිත ඉතා කුඩා තනි කාමරය"
+avoid = ["හෝටලය (hotel)", "නිවාසය (house)"]
+why = "Keep romanized with gloss; the Seoulstart guide describes 고시원 as a building of small private rooms with shared facilities, usually with no or a minimal deposit. 'hotel' or 'house' misrepresents it."
+register_note = "Keep romanization."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "අර්ධ බිම්තලය (ardha bimtalaya)"
+avoid = ["බිම් මහල (ground floor)", "බේස්මන්ට් (basement)"]
+why = "අර්ධ බිම්තලය means a half-underground floor, which is the real condition; 'ground floor' hides that windows are partly below street level and 'basement' implies a fully underground unit."
+register_note = "Gloss the flood and light risk in UI."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "ජොන්ජිප්-සිංගෝ (jeonip-singo) - නව ලිපිනය ලියාපදිංචි කිරීම, ප්‍රාදේශීය කාර්යාලයේදී"
+avoid = ["සංක්‍රමණ වාර්තාව (migration report)"]
+why = "Keep romanization with gloss; 'migration report' suggests an immigration filing, while the real act is registering the new address at the local office."
+register_note = "Keep romanization; this is a required step for deposit protection."
+sources = ["https://seoulstart.com/ko/guides/korea-lease-documents-checklist", "https://seoulhomes.kr/ko/blog/seoul-jeonse-wolse-foreigners-guide.md"]
+confidence = "low"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "හ්වක්ජොං-ඉල්ජා (hwakjeong-ilja) - තැන්පතුව ආරක්ෂා කරන නිල දින මුද්දරය"
+avoid = ["තහවුරු කිරීම (confirmation)"]
+why = "Keep romanization with gloss; a plain 'confirmation' hides that it is a specific official date stamp that protects the deposit."
+register_note = "Keep romanization."
+sources = ["https://seoulhomes.kr/ko/blog/seoul-jeonse-wolse-foreigners-guide.md", "https://seoulhomes.kr/ko/properties/guide/renting-in-seoul-as-a-foreigner/"]
+confidence = "low"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "දේපල ලියාපදිංචි සහතිකය (deepala liyāpadiñci sahatikaya)"
+avoid = ["ලේඛනය (document, generic)"]
+why = "දේපල ලියාපදිංචි සහතිකය names the official registry certificate of the property; a generic 'document' hides that this is what shows the owner and debts."
+register_note = "Gloss: 'the registry certificate that shows owner and debts'."
+sources = ["https://seoulhomes.kr/ko/blog/seoul-jeonse-wolse-foreigners-guide.md"]
+confidence = "low"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "ARC (외국인등록증) - විදේශ පුරවැසියන්ගේ ලියාපදිංචි කාඩ්පත"
+avoid = ["ජාතික හැඳුනුම්පත (national ID)"]
+why = "Keep the card name in English ARC with the Korean and gloss; 'national ID' wrongly suggests a Korean citizen's identity card and misleads the resident about its use."
+register_note = "Official name is now 'Residence Card' in English; keep ARC in community usage."
+sources = ["https://www.ivisitkorea.com/alien-registration-card-korea/"]
+confidence = "low"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "වීසා තත්ත්වය (visa thathvaya) - උදා: D-2, E-9"
+avoid = ["රැකියා බලපත්‍රය (work permit)"]
+why = "වීසා තත්ත්වය names the stay status category; 'work permit' is wrong for D-2 students and would mislead on what the codes mean."
+register_note = "Keep codes (D-2, E-9) in Latin script."
+sources = ["https://www.ivisitkorea.com/alien-registration-card-korea/"]
+confidence = "low"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "අනන්‍යතා සත්‍යාපනය (anan'yatā satyāpanaya)"
+avoid = ["ආරක්ෂක පරීක්ෂාව (security check)"]
+why = "අනන්‍යතා සත්‍යාපනය means confirming who the person is; 'security check' sounds like a surveillance or police procedure and may discourage sign-up."
+register_note = "Formal but short; use in UI."
+sources = ["https://www.ivisitkorea.com/alien-registration-card-korea/"]
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "සත්‍යාපන කේතය (satyāpana kēthaya)"
+avoid = ["රහස් මුරපදය (password)", "අංකය (number)"]
+why = "සත්‍යාපන කේතය is the one-time SMS code; 'password' wrongly implies a fixed secret, and 'number' is too vague to act on."
+register_note = "Everyday UI."
+sources = ["https://www.ivisitkorea.com/alien-registration-card-korea/"]
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "හවුල්කරු (havulkaru)"
+avoid = ["ස්වාමියා (husband/master)", "සහකරු (spouse)"]
+why = "හවුල්කරු means a business partner or associate; 'spouse' or 'master' carry wrong personal or hierarchical meanings for a broker on the platform."
+register_note = "Use 'broker partner' in full in UI."
+sources = ["https://seoulhomes.kr/ko/blog/seoul-jeonse-wolse-foreigners-guide.md"]
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "ගිණුම ඉවත් කිරීම (ginuma ivat kirīma)"
+avoid = ["ගිණුම මකන්න (delete account, harsh)", "ගිණුම අවලංගු කිරීම (cancel account)"]
+why = "ගිණුම ඉවත් කිරීම means the user leaves the service; 'delete' sounds destructive and 'cancel' suggests a subscription, neither matching Korean 탈퇴."
+register_note = "Neutral UI label."
+sources = ["https://seoulhomes.kr/ko/blog/seoul-jeonse-wolse-foreigners-guide.md"]
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "ගිණුම අත්හිටුවා ඇත (ginuma atihituwā āta)"
+avoid = ["ගිණුම මකා ඇත (account deleted)", "තහනම් කර ඇත (banned)"]
+why = "ගිණුම අත්හිටුවා ඇත is the word the bundles already use (SUSPENDED_USER, PARTNER_*), so one term is used everywhere; 'deleted' or 'banned' overstate the penalty and cause panic."
+register_note = "Bundles say suspended without 'temporarily'; add a temporary gloss only where the policy is temporary."
+sources = ["https://seoulhomes.kr/ko/blog/seoul-jeonse-wolse-foreigners-guide.md"]
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "වාර්තා කරන්න (vārtā karanna)"
+avoid = ["චෝදනා කරන්න (accuse)"]
+why = "වාර්තා කරන්න means to flag content to the platform; 'accuse' implies blaming a person and discourages use of the report function."
+register_note = "Everyday UI verb."
+sources = ["https://seoulhomes.kr/ko/blog/seoul-jeonse-wolse-foreigners-guide.md"]
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "පුෂ් දැනුම්දීම (push danuma dīma)"
+avoid = ["ඔත්තු (spy/tip-off)"]
+why = "පුෂ් දැනුම්දීම keeps the English loan that Sinhala phone users already know; 'ඔත්තු' means a covert tip-off and gives a spying impression."
+register_note = "Everyday; the loan 'push' is common in Sri Lankan phone use."
+sources = ["https://seoulhomes.kr/ko/blog/seoul-jeonse-wolse-foreigners-guide.md"]
+confidence = "low"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "gu (ගු) - නගර දිස්ත්‍රික්කය"
+avoid = ["ප්‍රාන්තය (state/province)"]
+why = "Keep 'gu' romanized with gloss; 'province' or 'state' misstates the level, since Seoul's gu is a city district below the city."
+register_note = "Keep romanization."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "dong (ඩොං) - නිවාස පරිසරය"
+avoid = ["ගම (village)"]
+why = "Keep 'dong' romanized with gloss; 'village' suggests rural land, while a dong is an urban neighborhood unit."
+register_note = "Keep romanization."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "මෙට්‍රෝ මාරුව (metro māruva)"
+avoid = ["ගමන් නැවතුම (bus stop)"]
+why = "මෙට්‍රෝ මාරුව means switching metro lines at a station; 'bus stop' is a different thing and would send the user to the wrong place."
+register_note = "Everyday."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "jumin center (ජුමින් සෙන්ටර්) - ප්‍රාදේශීය රජයේ කාර්යාලය"
+avoid = ["ප්‍රජා ශාලාව (community hall)"]
+why = "Keep the Korean name romanized with gloss; 'community hall' suggests a social venue, but the building is the government ward office where move-in reports are filed."
+register_note = "Keep romanization; gloss as the local government office."
+sources = ["https://seoulstart.com/ko/guides/korea-lease-documents-checklist"]
+confidence = "low"

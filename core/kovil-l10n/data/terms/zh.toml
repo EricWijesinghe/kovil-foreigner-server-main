@@ -1,0 +1,361 @@
+# Terminology for Chinese (Simplified) (zh). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "国籍"
+avoid = ["国家 (reads as 'which country do you live in')", "籍贯 (China hukou sense, wrong)"]
+why = "国籍 matches the dobong district page menu item 取得国籍 (acquiring nationality) for 국적 (fetched in review); machine translation's 国家 for 국적 asks the wrong question."
+register_note = "Same word in legal and UI text."
+sources = ["https://www.dobong.go.kr/subsite/chn/Info/info1_1.asp"]
+confidence = "medium"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "国家"
+avoid = ["国籍 (nationality, not a country)"]
+why = "国家 is the general word for a country; keep it separate from 国籍 so 'country' and 'nationality' do not blur."
+register_note = "Neutral in all registers."
+sources = ["https://www.dobong.go.kr/subsite/chn/Info/info1_1.asp"]
+confidence = "medium"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "房源"
+avoid = ["房产 (property in general, sales sense)", "物业 (property management, Korean 관리사무소 sense)", "房屋 (generic house)"]
+why = "房源 is the term used for an advertised unit (braindetox zh: 委托房源); 房产 and 物业 point to sales or building management instead."
+register_note = "Everyday word in UI; fine in support text."
+sources = ["https://braindetox.kr/zh/posts/brokerage_fee_eligibility.html", "https://seoulstart.com/zh/guides/renting-apartment-korea"]
+confidence = "medium"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "租房申请"
+avoid = ["找房需求 (standing request sense, not what the app files use)", "求租 (informal ad wording, not a structured request)", "租房请求 (literal, unnatural)"]
+why = "租房申请 is the term used consistently in errors_zh and notifications_zh for a rental request; no source with a clear term for this was found, so the choice is a reasoned guess."
+register_note = "UI label should be short; test with a native reader before shipping."
+sources = ["https://seoulstart.com/zh/guides/renting-apartment-korea"]
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "保证金（보증금）"
+avoid = ["押金 (mainland rental-deposit habit; neither source body uses it, only a related-article link title does)", "定金 (earnest money, a different payment)"]
+why = "保证金（보증금）: the braindetox jeonse/wolse article body and the seoulstart zh glossary both render 보증금 as 保证金. Review correction: the earlier claim that braindetox uses 押金 was wrong; 押金 appears only in a link title."
+register_note = "保证金 in legal and everyday text. No bundle uses this term yet."
+sources = ["https://braindetox.kr/zh/posts/jeonse_wolse_contract_checklist_guide.html", "https://seoulstart.com/zh/glossary"]
+confidence = "medium"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "全租（전세）"
+avoid = ["全税 (seoulstart zh glossary, rare variant)", "包租 (means renting out a whole unit to resell, wrong)", "整租 (mainland term for whole-unit rental, implies monthly rent)", "key money (English, untranslated, confusing)"]
+why = "全租 is the term in the braindetox jeonse article body (fetched in review) for a lump-sum deposit lease with no monthly rent; 包租 and 整租 suggest different arrangements. Real source conflict: seoulstart zh glossary gives 全税. Kept 全租 because the primary article uses it."
+register_note = "Keep 전세 in parentheses for residents who search in Korean."
+sources = ["https://www.extrabux.com/chs/guide/7501575", "https://braindetox.kr/zh/posts/jeonse_wolse_contract_checklist_guide.html", "https://seoulstart.com/zh/glossary"]
+confidence = "low"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "月租（월세）"
+avoid = ["月付房租 (correct but wordy, not a term)", "租金 alone (ambiguous with monthly_rent amount)"]
+why = "月租 names the deposit-plus-monthly-rent type; the seoulstart zh glossary uses 月租（월세）, so the pair is confirmed on one source (jeonse side disputed)."
+register_note = "Use as a type label; use 月租金 for the amount."
+sources = ["https://braindetox.kr/zh/posts/jeonse_wolse_contract_checklist_guide.html", "https://seoulstart.com/zh/glossary"]
+confidence = "high"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "月租金"
+avoid = ["月租 (type, not amount)", "月费 (vague, sounds like a subscription)"]
+why = "月租金 separates the monthly amount from the lease type 月租, avoiding the one-word confusion both labels would create in a single screen."
+register_note = "Everyday word in UI and legal text."
+sources = ["https://braindetox.kr/zh/posts/jeonse_wolse_contract_checklist_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "管理费"
+avoid = ["物业费 (China property-management fee, not the same charge)", "维修费 (repairs only, misleading)"]
+why = "管理费 matches the seoulstart glossary (月度管理费（관리비）). Review caveat: braindetox uses 物业费 in a jeonse/wolse table, so 物业费 is not clearly a different charge in Korean-Chinese usage; 管理费 kept for UI clarity."
+register_note = "Everyday word; clarify that it can include utilities."
+sources = ["https://seoulstart.com/zh/glossary"]
+confidence = "medium"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "定金（계약금）"
+avoid = ["首付 (mortgage down payment for buying a home)", "押金 (refundable deposit, a different payment)"]
+why = "定金 is the braindetox jeonse/wolse article's rendering of 계약금 (confirmed in review). 首付 suggests a home-purchase mortgage down payment, and 押金 would mislead renters into expecting it back."
+register_note = "Test with a native reader; the Korean word matters here."
+sources = ["https://braindetox.kr/zh/posts/jeonse_wolse_contract_checklist_guide.html", "https://seoulstart.com/zh/glossary"]
+confidence = "medium"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "租赁合同"
+avoid = ["合约 (generic contract, weaker in legal text)", "租约 (informal, fine in chat only)"]
+why = "租赁合同 is the formal term the Chinese legal register in locales.toml requires; 合约 is looser and does not signal a lease."
+register_note = "Formal written Chinese for legal text; 租约 is acceptable in casual UI."
+sources = ["https://braindetox.kr/zh/posts/jeonse_wolse_contract_checklist_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "房东"
+avoid = ["业主 (China property-owner term, implies owners' committee)", "地主 (landowner, wrong)"]
+why = "房东 is the everyday term Chinese renters use for the Korean 집주인; 业主 points to property-owner or owners' committee roles in China."
+register_note = "房东 in UI; 出租人 only in formal legal text if needed."
+sources = ["https://seoulstart.com/zh/guides/renting-apartment-korea", "https://braindetox.kr/zh/posts/jeonse_wolse_contract_checklist_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "租客"
+avoid = ["租户 (braindetox uses it as the tenant term; acceptable, not wrong)", "房客 (Taiwan/Mainland colloquial, acceptable but less common in Korea guides)", "承租人 (legal only)"]
+why = "租客 is the everyday word Chinese renters use for the Korean 세입자 (seoulstart guide, not re-fetched in review). Review conflict: braindetox pairs 承租人 with 租户 (承租人（租户）) and never uses 租客, so the source does not confirm 租客."
+register_note = "租客 in UI and support; 承租人 in legal text only."
+sources = ["https://seoulstart.com/zh/guides/renting-apartment-korea"]
+confidence = "low"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "公认中介士（공인중개사）"
+avoid = ["经纪人 (China licence-agent term, implies a different regime)", "房产经纪人 (close, but drops the Korean licence sense)"]
+why = "Confirmed in review: braindetox zh article renders 공인중개사 as 公认中介士 and 개업공인중개사 as 开业公认中介士. 经纪人 suggests an unlicensed or Chinese-style agent. Seoulstart zh glossary has no entry for this term."
+register_note = "Use 公认中介士 for legal and licence text; 中介 is fine in casual UI."
+sources = ["https://braindetox.kr/zh/posts/brokerage_fee_eligibility.html"]
+confidence = "high"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "中介事务所"
+avoid = ["房产公司 (company sense, wrong)", "中介公司 (acceptable but less formal)"]
+why = "中介事务所 is the term braindetox zh uses for 중개사무소 (中介事务所所在地的条例); 房产公司 implies a company rather than a licensed office. Applied in errors_zh and notifications_zh (was 中介机构)."
+register_note = "Formal enough for listing details."
+sources = ["https://braindetox.kr/zh/posts/brokerage_fee_eligibility.html"]
+confidence = "medium"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "中介费（복비）"
+avoid = ["佣金 (commission, mainland wording)", "中介报酬 (legal term, too formal for UI)"]
+why = "中介费 is a plain-language UI choice, not sourced. Review correction: the braindetox fee article uses 中介报酬 for 중개수수료 (fetched), not 中介费, so the earlier claim that guides use 中介费 was wrong. 佣金 implies a percentage commission, and Korea caps the fee."
+register_note = "中介费 in UI; 中介报酬 in legal text. The fee is a legal ceiling, not a fixed price."
+sources = ["https://braindetox.kr/zh/posts/brokerage_fee_eligibility.html", "https://calcfyi.com/zh-hans/calculator/realtor-fee-kr/"]
+confidence = "low"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "单间（원룸）"
+avoid = ["套房 (suite with separate rooms, MT default)", "单身公寓 (studio-apartment wording from other markets)"]
+why = "单间 names the one-room layout Korean renters mean; 套房 suggests a separated living room and bedroom, which 원룸 usually lacks."
+register_note = "Keep 원룸 in parentheses for residents who search in Korean."
+sources = ["https://seoulstart.com/zh/guides/renting-apartment-korea"]
+confidence = "low"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "商务公寓（오피스텔）"
+avoid = ["官厅 (seoulstart zh glossary, wrong)", "办公室 (office only, misleading)", "酒店式公寓 (serviced apartment, not the same)"]
+why = "商务公寓 describes the mixed office-residence building; 官厅 in one Chinese glossary is an error, and 办公室 hides the residential use."
+register_note = "Keep 오피스텔 in parentheses; flag the glossary error to the team."
+sources = ["https://seoulstart.com/zh/glossary"]
+confidence = "low"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "考试院（고시원）"
+avoid = ["学习室 (study room, literal)", "自习室 (study hall, literal)"]
+why = "考试院 is the term Chinese-language Korean guides use for a small monthly room; 学习室 and 自习室 describe a study space, not a residence."
+register_note = "Keep 고시원 in parentheses."
+sources = ["https://seoulstart.com/zh/glossary", "https://www.taiwannews.com.tw/zh/news/4626785"]
+confidence = "medium"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "半地下（반지하）"
+avoid = ["地下室 (full basement, wrong)", "低层 (low floor, not the same)"]
+why = "半地下 is the term Chinese-language Korean news uses for half-underground housing; 地下室 implies a full basement and hides the window and humidity issues."
+register_note = "Keep 반지하 in parentheses; users may search it in Korean."
+sources = ["https://www.taiwannews.com.tw/zh/news/4626785"]
+confidence = "medium"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "迁入申报（전입신고）"
+avoid = ["户口登记 (China hukou, wrong system)", "落户 (China hukou settlement, wrong)", "居住变更报告 (dobong district page uses it for the same 14-day move-in reporting duty; official alternate, cite only in legal text)"]
+why = "迁入申报 is the Chinese-language rendering used in Korean guides for 전입신고; 户口 and 落户 imply China's hukou system, which does not exist in Korea."
+register_note = "迁入申报 in UI; cite 居住变更报告 only when referring to the official foreigner form."
+sources = ["https://seoulstart.com/zh/glossary", "https://www.dobong.go.kr/subsite/chn/Info/info1_1.asp"]
+confidence = "medium"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "确定日期印章（확정일자）"
+avoid = ["公证 (notarization, a different service)", "认证 (certification, misleading)"]
+why = "确定日期 is the term Chinese-language guides use for the stamp that protects the deposit; 公证 and 认证 imply other legal services."
+register_note = "Keep 확정일자 in parentheses; explain what it protects in support text."
+sources = ["https://seoulstart.com/zh/glossary", "https://braindetox.kr/zh/posts/jeonse_wolse_contract_checklist_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "登记簿誊本（등기부등본）"
+avoid = ["产权证 (ownership certificate, China sense)", "房产证 (China property certificate, wrong)"]
+why = "登记簿誊本 is the term in Chinese-language Korean guides for the register extract; 产权证 and 房产证 imply a single ownership deed, which the Korean register does not give."
+register_note = "Keep 등기부등본 in parentheses; legal text may use the full form."
+sources = ["https://seoulstart.com/zh/glossary"]
+confidence = "medium"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "外国人登录证（외국인등록증）"
+avoid = ["外国人登记证 (machine translation's literal form, not the official Chinese wording)", "居留证 (China residence permit, different document)"]
+why = "外国人登录证 is the wording in the seoulstart zh glossary and in the dobong district page title (外国人登录证的注册及变更, fetched in review). Review correction: the earlier note said dobong lacked 登录证; that was wrong. The body of the same page says 外国人登记程序, so both forms appear officially. 登记证 is the literal machine translation and 居留证 is a different Chinese document."
+register_note = "Official wording; use it in legal and UI text."
+sources = ["https://seoulstart.com/zh/glossary", "https://www.dobong.go.kr/subsite/chn/Info/info1_1.asp"]
+confidence = "medium"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "停留资格（체류자격）"
+avoid = ["签证 (visa, a different document)", "居留许可 (China residence permit wording)"]
+why = "停留资格 follows the 停留 wording the official Chinese-language district page uses for stay, so it matches government usage; 签证 and 居留许可 refer to different things."
+register_note = "Formal wording; keep the code (D-2, E-9) unchanged."
+sources = ["https://www.dobong.go.kr/subsite/chn/Info/info1_1.asp"]
+confidence = "low"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "外国人认证 / 本人认证"
+avoid = ["实名认证 (China real-name verification, implies Chinese ID)", "身份证验证 (ID card check, implies a Chinese ID card)"]
+why = "外国人认证 names the foreign-resident check. UNVERIFIED in review: no source cited and the WebSearch budget was exhausted, so 本人认证 and 实名认证 were not checked against Korean-Chinese usage; 身份证验证 does imply the Chinese ID card."
+register_note = "外国人认证 in UI; 本人认证 for the general identity step."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "验证码"
+avoid = ["认证码 (acceptable but less common in apps)", "短信码 (literal, unnatural)"]
+why = "验证码 is the standard word Chinese apps use for SMS codes, and it is what residents expect on the screen."
+register_note = "Everyday word in UI."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "合作伙伴"
+avoid = ["合伙人 (business partner, shareholder sense)", "合作中介 (narrower, not what the files use)"]
+why = "合作伙伴 is the term used consistently in errors_zh and notifications_zh for KOVIL partner accounts; 合伙人 implies a business partner and ownership."
+register_note = "Product-specific label; test with a native reader."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "注销账号"
+avoid = ["退出登录 (log out, not delete)", "删除账号 (acceptable but less standard in apps)"]
+why = "注销账号 is the wording Chinese apps use for permanent account deletion; 退出登录 means only logging out."
+register_note = "Everyday UI word; warn about data loss in the same screen."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "账号已暂停使用"
+avoid = ["封号 (ban, gaming tone, harsher)", "账号已停用 (disabled, permanent sense)"]
+why = "账号已暂停使用 describes a temporary restriction; 封号 sounds like a permanent gaming-style ban."
+register_note = "你 throughout, matching the bundles (review: bundles mixed 您 and 你; 您 unified to 你)."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "举报"
+avoid = ["报告 (report as document, MT default)", "投诉 (complaint to an authority, heavier)"]
+why = "举报 is the standard Chinese app word for flagging abusive content; 报告 means a written report and 投诉 is a formal complaint."
+register_note = "Everyday UI word."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "推送通知"
+avoid = ["推送消息 (message, not the notification itself)", "推播 (Taiwan wording)"]
+why = "推送通知 is the mainland app term for push notifications; 推播 is Taiwan wording and 推送消息 means the content, not the alert."
+register_note = "Everyday UI word."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "区（구）"
+avoid = ["县 (county, wrong for Seoul)", "市 (city, wrong level)", "行政区 (too generic)"]
+why = "区 matches how the Chinese-language district page names 구 (for example, the 区厅 district office); 县 and 市 are different administrative levels."
+register_note = "Keep 구 in parentheses where the gu name is shown."
+sources = ["https://www.dobong.go.kr/subsite/chn/Info/info1_1.asp"]
+confidence = "medium"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "洞（동）"
+avoid = ["社区 (community, mainland administrative sense, MT default)", "街道 (street or subdistrict, different unit)"]
+why = "洞 is the term Chinese-language Korean guides use for 동; 社区 and 街道 point to Chinese administrative units that do not match Korean 동."
+register_note = "Keep 동 in parentheses; it is a legal unit in addresses."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "换乘"
+avoid = ["转车 (generic, vague)", "转站 (not a standard term)"]
+why = "换乘 is the standard Chinese metro term; 转车 and 转站 are vague or not used on metro maps."
+register_note = "Everyday UI word."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "居民中心（주민센터）"
+avoid = ["社区中心 (China community centre, a different institution)", "社区服务中心 (community service centre, a different institution)"]
+why = "居民中心 is the term Chinese-language Korean guides use for the local office where 전입신고 is filed; 社区中心 points to a China-style community facility."
+register_note = "Keep 주민센터 in parentheses; users go there in person."
+sources = ["https://seoulstart.com/zh/glossary", "https://seoulstart.com/zh/guides/moving-house-korea"]
+confidence = "medium"

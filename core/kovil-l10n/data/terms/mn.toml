@@ -1,0 +1,361 @@
+# Terminology for Mongolian (Cyrillic) (mn). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "иргэншил"
+avoid = ["үндэстэн", "угсаа"]
+why = "Иргэншил is the legal term for citizenship/nationality on Mongolian forms; 'үндэстэн' and 'угсаа' mean ethnic nation/origin, so a passport question reads as asking about ethnicity."
+register_note = "Formal/legal term; use in forms and ID-related screens."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # Mongolian guide exists on Danuri, but no Mongolian text for this term was retrieved; based on legal usage, verify with a native speaker.
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "улс"
+avoid = ["үндэстэн"]
+why = "Улс means a country or state in general; 'үндэстэн' means nation in the ethnic sense, which would blur 'country' into 'people' or ethnicity."
+register_note = "Neutral; works in UI and legal text."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # Term is basic Mongolian; no housing-specific source retrieved, so usage was not confirmed in context.
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "түрээслэх байр (зар)"
+avoid = ["бараа", "зүйл"]
+why = "Түрээслэх байр (зар) means 'a flat advertised for rent'; 'бараа' means goods/merchandise and would suggest a product for sale."
+register_note = "Everyday wording for listing cards; 'зар' alone means ad."
+sources = ["https://univ.vijob.net/mn/guides/living", "https://creatrip.com/mn/languagecourse/seriescontent/13441"]
+confidence = "medium"   # Sources use 'байр' and 'түрээс' for rental housing; the exact compound 'зар' for listings was not seen verbatim.
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "түрээсийн хүсэлт"
+avoid = ["захиалга", "эрэлт"]
+why = "Түрээсийн хүсэлт is the tenant's request for a rental and is the term the bundles already use; 'захиалга' means a booking/order and 'эрэлт' means market demand, neither of which is the tenant's request."
+register_note = "Plain wording for a request form."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "low"   # Not checked against a Mongolian source; the term was changed to match the bundles (RENTAL_REQUEST_NOT_FOUND, notification keys).
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "барьцаа"
+avoid = ["урьдчилгаа", "баталгаа"]
+why = "Барьцаа is the word Mongolian students use for the refundable Korean deposit; 'урьдчилгаа' means advance payment (it would read as prepaid rent) and 'баталгаа' means guarantee or certificate."
+register_note = "Use барьцаа in all screens; 'барьцаа мөнгө' (deposit money) is also used."
+sources = ["https://univ.vijob.net/mn/guides/living", "https://creatrip.com/mn/languagecourse/seriescontent/13441", "https://misheelenhjin.blogspot.com/2019/10/blog-post_47.html"]
+confidence = "high"   # Verified: univ.vijob.net/mn/guides/living uses 'Барьцаа' as the deposit column header. Community blog sources were not re-checked.
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "Жонсе (урт хугацааны том барьцаа, сарын түрээсгүй)"
+avoid = ["бэлэн мөнгөний түрээс", "нэг удаагийн төлбөр"]
+why = "Жонсе is the romanized Korean word Mongolian sources keep as-is; a literal gloss like 'lump-sum rent' suggests rent is paid, when in jeonse the big deposit replaces monthly rent entirely."
+register_note = "Keep 'Жонсе' with the short gloss on first use; Korean-romanized term is the one residents say."
+sources = ["https://univ.vijob.net/mn/guides/living", "https://creatrip.com/mn/languagecourse/seriescontent/13441", "https://setsoyu.mn/detail_20_mn"]
+confidence = "high"   # Verified: univ.vijob.net/mn/guides/living gives 'Жонсе (урт хугацааны барьцаа хэлбэр)' and warns foreigners against it.
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "Волсе (бага барьцаа + сар бүрийн түрээс)"
+avoid = ["сарын төлбөр", "ипотек"]
+why = "Волсе is the romanized term Mongolian students use for a small deposit plus monthly rent; 'сарын төлбөр' (monthly payment) is generic and could mean utilities, and 'ипотек' means a mortgage loan."
+register_note = "Keep 'Волсе' with the gloss; in the monthly-rent amount field use 'сарын түрээс'."
+sources = ["https://setsoyu.mn/detail_20_mn", "https://univ.vijob.net/mn/guides/living"]
+confidence = "low"   # Not in the 2026 guide (verified). Only one blog (setsoyu.mn) supports it, and it could not be re-fetched in this review (TLS error).
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "сарын түрээс"
+avoid = ["сарын цалин", "сарын төлбөр"]
+why = "Сарын түрээс is the standard term in the Mongolian guides for the monthly amount; 'сарын цалин' means salary and 'сарын төлбөр' is generic and could include utilities."
+register_note = "Use in amount labels; plain and everyday."
+sources = ["https://univ.vijob.net/mn/guides/living", "https://creatrip.com/mn/languagecourse/seriescontent/13441"]
+confidence = "high"   # Verified: univ.vijob.net/mn/guides/living uses 'Сарын түрээс' as the monthly rent column header.
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "засвар үйлчилгээний төлбөр"
+avoid = ["засвар", "менежмент"]
+why = "Засвар үйлчилгээний төлбөр is the monthly building-service fee; bare 'засвар' means repair, which suggests a one-off cost, and an untranslated 'менежмент' would not be understood by residents."
+register_note = "Explain as 'monthly building fee, separate from rent' on the first use."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "low"   # The guide (verified) uses 'ашиглалтын зардал' for included utility/maintenance costs and never this fee term; bundles use it; needs native review.
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "урьдчилгаа төлбөр (гэрээ байгуулах үед)"
+avoid = ["барьцаа", "түрээсийн урьдчилгаа"]
+why = "Урьдчилгаа төлбөр is the payment made at signing; 'барьцаа' would confuse it with the refundable deposit, which is a different sum paid at a different time."
+register_note = "Keep the 'at signing' note so the user does not confuse it with the deposit."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "low"   # Not a term seen in sources; the distinction from deposit is supported by the general guides, not Mongolian text.
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "түрээсийн гэрээ"
+avoid = ["хэлцэл", "гэрээ"]
+why = "Түрээсийн гэрээ is the rental contract; 'хэлцэл' means a deal or transaction in general and bare 'гэрээ' could mean any contract, including an employment one."
+register_note = "Legal register: use 'түрээсийн гэрээ' in full."
+sources = ["https://univ.vijob.net/mn/guides/living", "https://setsoyu.mn/detail_20_mn"]
+confidence = "medium"   # Guides mention signing the lease with 'гэрээ'; the compound 'түрээсийн гэрээ' appears in Mongolian rental pages.
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "байрны эзэн (түрээслүүлэгч)"
+avoid = ["худалдагч", "эзэмшигч"]
+why = "Байрны эзэн is the everyday word for the building owner; 'худалдагч' means seller and 'эзэмшигч' means holder, which can suggest a purchase or title rather than a lease."
+register_note = "Use 'түрээслүүлэгч' in the legal text; 'байрны эзэн' in UI."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "medium"   # Both terms are used on the 2026 guide page.
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "түрээслэгч"
+avoid = ["оршин суугч", "хөлслөгч"]
+why = "Түрээслэгч is the person who rents; 'оршин суугч' means resident, which hides the contract role, and 'хөлслөгч' is an older, employment-flavoured term."
+register_note = "Use 'түрээслэгч' everywhere; 'хөлслөгч' appears in the 2026 guide only as an alternative."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "medium"   # Used in a 2026 guide; a single source.
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "үл хөдлөх хөрөнгийн зуучлагч"
+avoid = ["брокер", "дилер"]
+why = "Үл хөдлөх хөрөнгийн зуучлагч means a property intermediary; 'брокер' suggests a stock or finance broker and 'дилер' means a dealer or trader."
+register_note = "Use the full term."
+sources = ["https://univ.vijob.net/mn/guides/living", "https://setsoyu.mn/detail_20_mn"]
+confidence = "low"   # The guide (verified) does not use this term; it only names 'Зуучлалын хөлс'. Bundles use 'зуучлагч'; needs native review.
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "үл хөдлөх хөрөнгийн компани"
+avoid = ["оффис", "салбар"]
+why = "Үл хөдлөх хөрөнгийн компани is how the 2026 guide names the agency; 'оффис' suggests a generic office and 'салбар' means a branch."
+register_note = "Plain term; the guide uses 'компани' and does not give a separate office term."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "low"   # Guide does not name the agency (verified); 'компани' is unconfirmed.
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "зуучлалын хөлс"
+avoid = ["татвар", "шимтгэл"]
+why = "Зуучлалын хөлс is the agent's fee; 'татвар' means tax, which would make residents think it is a government charge, and bare 'шимтгэл' is a generic fee term."
+register_note = "The 2026 guide says the fee is 50-100% of monthly rent; that figure is the guide's claim and is not verified here."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "medium"   # One source, which also gives a fee range that should be checked against Korean rules.
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "Нэг өрөө (원룸)"
+avoid = ["студио", "дотуур байр"]
+why = "Нэг өрөө is how the guides name a one-room flat; 'студио' is an English loan that Mongolians do not use for this, and 'дотуур байр' means a dormitory, which implies shared housing."
+register_note = "Keep the Korean '원룸' in parentheses; the Mongolian guide lists 'Нэг өрөө' as a separate type from 'Дотуур байр'."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "medium"   # One 2026 guide; 'жачви' (jachwi, 자취 living alone) is also used there.
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "Офисстел"
+avoid = ["оффис", "оффисын байр"]
+why = "Офисстел is the romanized term the 2026 guide keeps; 'оффис' means office and 'оффисын байр' means an office building, which would describe commercial space."
+register_note = "Keep romanized; add a short note that it is a residential-office flat."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "medium"   # Single 2026 source; keep-policy term.
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "Гошивон"
+avoid = ["дотуур байр", "дормитори"]
+why = "Гошивон is the romanized term the guide keeps; 'дотуур байр' means a dormitory and 'дормитори' a campus dorm, which hide that gosiwon is a small private room with shared facilities."
+register_note = "Keep romanized; explain in one line on first use."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "medium"   # One 2026 guide; a keep-policy term.
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "хагас подвал (반지하)"
+avoid = ["зоорь", "подвал"]
+why = "Хагас подвал means half-underground; 'зоорь' and bare 'подвал' suggest a cellar or unfit basement, while a 반지하 is a legal, common flat with a street-level window."
+register_note = "Keep the Korean in parentheses; mention window level as a warning sign."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "low"   # No Mongolian source used this term; the wording is a literal fit.
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "оршин суугаа хаягийн бүртгэл (전입신고)"
+avoid = ["шилжилт хөдөлгөөн", "бүртгэл"]
+why = "Оршин суугаа хаягийн бүртгэл is the address registration done on moving in; 'шилжилт хөдөлгөөн' means migration in general. The 2026 guide does not use 'шилжилтийн тайлан'; it describes 'Гадаадын иргэний бүртгэл' and a 90-day address report."
+register_note = "Use 'шилжилтийн тайлан' in UI; the longer form on first use."
+sources = ["https://univ.vijob.net/mn/guides/living", "https://setsoyu.mn/detail_20_mn"]
+confidence = "low"   # The guide (verified) does not use the previous wording; no Mongolian source for this exact phrase; needs native review.
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "баталгааны огноо (확정일자)"
+avoid = ["баталгаа", "гэрчилгээ"]
+why = "Баталгааны огноо is how the guide explains the date-stamp that protects the deposit; 'гэрчилгээ' means a certificate, which implies a document rather than a legal date, and bare 'баталгаа' means guarantee."
+register_note = "Keep the Korean in parentheses; the term matters in deposit-protection steps."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "medium"   # Single source; the gloss describes the stamp as a date, which matches Korean usage.
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "үл хөдлөх хөрөнгийн бүртгэлийн лавлагаа (등기부등본)"
+avoid = ["гэрчилгээ", "газрын гэрчилгээ"]
+why = "Үл хөдлөх хөрөнгийн бүртгэлийн лавлагаа is the registry extract a tenant checks for liens; 'гэрчилгээ' or 'газрын гэрчилгээ' means a title certificate, which is a different document from the registry extract."
+register_note = "Keep the Korean in parentheses so the user can show it at the office."
+sources = ["https://setsoyu.mn/detail_20_mn"]
+confidence = "medium"   # One Mongolian blog describes the registry extract; the exact wording is a community phrasing.
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "Гадаадын иргэний бүртгэлийн карт (ARC)"
+avoid = ["паспорт", "оршин суух зөвшөөрөл"]
+why = "Гадаадын иргэний бүртгэлийн карт is the name on the 2026 guide; 'паспорт' means passport, which the card is not, and 'оршин суух зөвшөөрөл' (residence permit) describes the visa right, not the card."
+register_note = "Use the full name at first mention, 'ARC' after."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "high"   # Verified: univ.vijob.net/mn/guides/living names it 'Гадаадын иргэний бүртгэлийн карт' with ARC.
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "визний төрөл (D-2, E-9 гэх мэт)"
+avoid = ["статус", "виз"]
+why = "Визний төрөл is the everyday term for the visa type with its code; bare 'статус' is too vague and bare 'виз' blurs the visa with the stay status the code describes."
+register_note = "Keep the code (D-2, E-9) as-is; the code is the same in every language."
+sources = ["https://univ.vijob.net/mn/guides/living"]
+confidence = "low"   # No Mongolian source confirmed this term; the wording is a community-style fit and needs native review.
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "Гадаад иргэний баталгаажуулалт"
+avoid = ["таних", "идентификаци"]
+why = "Баталгаажуулалт (verification) is the word for confirming who you are; 'таних' means recognise, and untranslated 'идентификаци' would be unfamiliar to most residents."
+register_note = "Use 'баталгаажуулалт' in UI; say what documents are checked."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # univ.vijob.net/mn/guides/living uses 'биеийн баталгаажуулалт' for Korean ID checks (K-Pass), not this term; the bundles keep this term.
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "баталгаажуулах код"
+avoid = ["нууц үг", "код"]
+why = "Баталгаажуулах код is the SMS code to confirm the phone; 'нууц үг' means password, which would make the user think the code is a password, and bare 'код' is too vague."
+register_note = "Short UI word; the code is sent by SMS."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # No Mongolian source retrieved for this term; a literal fit that needs native review.
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "түнш (хамтрагч зуучлагч)"
+avoid = ["найз", "хамтрагч"]
+why = "Түнш means a business partner; 'найз' means friend and 'хамтрагч' (comrade or associate) reads as a companion, not a business counterpart."
+register_note = "Use in the broker-partner context only."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # No source for this term in a housing context; the word fits business use but needs native review.
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "бүртгэлээ устгах"
+avoid = ["гарах", "цуцлах"]
+why = "Бүртгэлээ устгах means delete my account; 'гарах' means leave or exit, which sounds like logging out, and 'цуцлах' means cancel, which implies cancelling a contract."
+register_note = "Use as a button label with a confirm screen."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # No Mongolian source retrieved; a literal fit for app usage.
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "бүртгэл түр зогсоосон"
+avoid = ["хориглосон", "блоклосон"]
+why = "Бүртгэл түр зогсоосон means the account is temporarily suspended, matching the bundles (SUSPENDED_USER, USER_SUSPENDED); 'хориглосон' means banned, which is harsher than a temporary stop, and 'блоклосон' is used in the bundles for listing blocks, not account suspension."
+register_note = "Plain status message; include the reason and the appeal path."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # No Mongolian source retrieved; matches the bundle wording, needs native review.
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "мэдээлэх (зөрчил)"
+avoid = ["тайлагнах", "гомдол"]
+why = "Мэдээлэх (зөрчил) means report an abuse to the platform; 'тайлагнах' means file an accounting report, and 'гомдол' means complaint, which is a different action from reporting content."
+register_note = "Use as a button label; 'гомдол гаргах' is also understood."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # No Mongolian source retrieved; literal fit.
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "мэдэгдэл"
+avoid = ["түлхэлт", "түлхэх мэдэгдэл"]
+why = "Мэдэгдэл is the everyday word for an app notification; 'түлхэлт' means a shove or push, and a literal 'push notification' would be unclear to most users."
+register_note = "Short UI word; use 'мэдэгдэл' in the settings screen."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # No Mongolian source retrieved; the term is a standard app-UI fit.
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "дүүрэг (Гу)"
+avoid = ["хороо", "аймаг"]
+why = "Дүүрэг is the usual term for a Seoul district; 'хороо' is Mongolia's smallest admin unit (khoroo), and 'аймаг' means province, both of which would misplace the Korean district."
+register_note = "Keep Korean 'gu' in parentheses on first use."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # No Mongolian source retrieved; the wording is the standard admin term, needs native review.
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "dong (동)"
+avoid = ["хороо", "тойрог"]
+why = "Keep 'dong' romanized because it is the Korean admin unit; 'хороо' equates it to a Mongolian khoroo, which is a different level of government, and 'тойрог' means a circle or area, which is vague."
+register_note = "Keep romanized; add 'Korean neighborhood unit' on first use."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # No source retrieved; keep-policy suggestion needs native confirmation.
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "шилжих (метроны солилт)"
+avoid = ["солих", "өөрчлөх"]
+why = "Шилжих is the everyday word for changing lines on transit; 'солих' (exchange) and 'өөрчлөх' (change) are general and may not read as a transit transfer."
+register_note = "Use 'шилжих' in route text."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # No Mongolian transit source retrieved; a literal fit.
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "Иргэдийн үйлчилгээний төв (Jumin Center)"
+avoid = ["хорооны байр", "засгийн газар"]
+why = "Иргэдийн үйлчилгээний төв is a literal description of the Korean local office that handles move-in reports; 'хорооны байр' means a khoroo building, which Mongolians know as a different office, and 'засгийн газар' means government in general."
+register_note = "Keep 'Jumin Center' in parentheses; explain what it does (move-in report, ID)."
+sources = ["https://www.liveinkorea.kr"]
+confidence = "low"   # No Mongolian source for this office was retrieved; the gloss is a literal fit.

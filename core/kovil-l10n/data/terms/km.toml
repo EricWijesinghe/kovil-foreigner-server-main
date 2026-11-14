@@ -1,0 +1,362 @@
+# Terminology for Khmer (km). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Evidence is thin: almost no Khmer-language Korean housing material was found. Most "low" entries are reasoned from dictionary senses, not from residents' usage.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "សញ្ជាតិ (sanhcheat)"
+avoid = ["ប្រទេស (country: gives the country where they live, not the passport)", "ជាតិ / ជនជាតិ (nation or ethnic group)"]
+why = "សញ្ជាតិ is the legal citizenship sense (Wiktionary lists it first), while ប្រទេស asks for a country and ជាតិ or ជនជាតិ mean ethnic identity."
+register_note = "Use in forms and identity fields. Spoken Khmer may ask 'which passport' instead."
+sources = ["https://en.wiktionary.org/wiki/%E1%9E%9F%E1%9E%89%E1%9F%92%E1%9E%87%E1%9E%B6%E1%9E%8F%E1%9E%B7", "https://ling-app.com/blog/country-and-nationality-in-khmer/", "https://cambodiaexpatsonline.com/cambodian-culture-and-language/khmer-language-questions-learning-and-speaking-cambodian-t5194-470.html"]
+confidence = "medium"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "ប្រទេស (brates)"
+avoid = ["ស្រុក (land, home area; warmer and not the formal word for a state)", "ជាតិ (nation or ethnicity)"]
+why = "ប្រទេស is the formal word for a sovereign state; ស្រុក reads as home land or area, which blurs the meaning."
+register_note = "Forum sources call ប្រទេស the correct form. Only one informal source, so check with a native reader."
+sources = ["https://ling-app.com/blog/country-and-nationality-in-khmer/", "https://cambodiaexpatsonline.com/cambodian-culture-and-language/khmer-language-questions-learning-and-speaking-cambodian-t5194-470.html"]
+confidence = "medium"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "ផ្ទះជួល (rental house)"
+avoid = ["ផ្ទះលក់ (house for sale)"]
+why = "ផ្ទះជួល is the everyday phrase for a house offered for rent, as in Khmer news headlines about Korean rental housing; ផ្ទះលក់ advertises a sale."
+register_note = "Use in listing titles. Khmer news uses the same phrase for Korean rental housing."
+sources = ["https://www.thmeythmey.com/detail/134584"]
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "ការស្នើសុំផ្ទះជួល (request for a rental house)"
+avoid = ["ប្រាក់កក់ (booking deposit: suggests paying money to reserve)"]
+why = "ការស្នើសុំ means asking for something, which matches a tenant asking brokers to find a home; a booking deposit would suggest paying up front."
+register_note = ""
+sources = ["https://glosbe.com/km/en/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%80%E1%9F%8B"]
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "ប្រាក់បញ្ញើ (security deposit, returned at lease end)"
+avoid = ["ប្រាក់កក់ (booking or down payment, usually not returned)"]
+why = "Khmer sources give ប្រាក់បញ្ញើ for a rental security deposit, but it is also the bank deposit word, so the gloss must say it is refundable; ប្រាក់កក់ suggests money that is lost."
+register_note = "Put 보증금 (bojeunggeum) in brackets on contracts so Korean-speaking agents match it."
+sources = ["https://talkpal.ai/culture/what-are-the-terms-for-renting-a-house-or-apartment-in-cambodia/", "https://glosbe.com/km/en/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%80%E1%9F%8B"]
+confidence = "low"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "jeonse (ជុនសេ): ប្រាក់បញ្ញើធំតែមួយ គ្មានថ្លៃជួលប្រចាំខែ"
+avoid = ["ថ្លៃជួលប្រចាំខែ (monthly rent: jeonse has none)", "ការជួលធម្មតា (generic rent)"]
+why = "No Khmer term for this system was found in any source, so keep the Korean word with a gloss; a generic rent word suggests a monthly payment, which is wrong for jeonse."
+register_note = "Keep romanized. The Khmer script spelling ជុនសេ is our transliteration, not a sourced term."
+sources = ["https://en.wikipedia.org/wiki/Jeonse", "https://www.quietproperty.kr/2026/06/jeonse-wolse-korea-rental-guide-foreign-residents.html"]
+confidence = "low"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "wolse (វ៉ុលសេ): ប្រាក់បញ្ញើ + ថ្លៃជួលប្រចាំខែ"
+avoid = ["ថ្លៃជួលប្រចាំខែ only (drops the deposit)", "ប្រាក់កក់ only (booking fee)"]
+why = "Wolse is monthly rent with a deposit; a bare monthly rent word hides the deposit, which residents ask about first."
+register_note = "Keep romanized with the gloss on first use. The Khmer script spelling is our transliteration."
+sources = ["https://en.wikipedia.org/wiki/Jeonse", "https://www.quietproperty.kr/2026/06/jeonse-wolse-korea-rental-guide-foreign-residents.html"]
+confidence = "low"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "ថ្លៃជួលប្រចាំខែ (monthly rent)"
+avoid = ["ឈ្នួល (generic rent or wage: ambiguous)", "ថ្លៃផ្ទះ (house price: suggests buying)"]
+why = "ថ្លៃជួល is the rent-amount word in the antkh dictionary; ថ្លៃផ្ទះ means house price and would suggest the user is buying."
+register_note = ""
+sources = ["https://antkh.com/dict/en/dictionaries/rent.aspx", "https://talkpal.ai/culture/what-are-the-terms-for-renting-a-house-or-apartment-in-cambodia/"]
+confidence = "low"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "ថ្លៃគ្រប់គ្រង (building management fee, monthly)"
+avoid = ["ថ្លៃជួលបន្ថែម (extra rent: suggests it is part of rent)"]
+why = "The fee is a separate monthly building charge; calling it extra rent blurs the rent amount that residents compare."
+register_note = "Keep the gloss monthly and separate from rent on listings."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "ប្រាក់កក់ (down payment paid at signing)"
+avoid = ["ប្រាក់បញ្ញើ (refundable security deposit: mixes with 보증금)", "ប្រាក់ទូទាត់ (full payment)"]
+why = "Dictionaries map deposit and down payment to ប្រាក់កក់, and it fits the 10% payment at signing; the bank-deposit word would suggest it is refundable."
+register_note = "Show 계약금 in brackets to separate it from 보증금."
+sources = ["https://glosbe.com/km/en/%E1%9E%94%E1%9F%92%E1%9E%9A%E1%9E%B6%E1%9E%80%E1%9F%8B%E1%9E%80%E1%9F%8B", "https://en.wikipedia.org/wiki/Jeonse"]
+confidence = "medium"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "កិច្ចសន្យាជួល (rental contract)"
+avoid = ["កិច្ចសន្យាលក់ (sale contract: suggests buying)", "ឯកសារ (generic document)"]
+why = "កិច្ចសន្យាជួល names the rental relationship directly; a sale word would signal buying and a generic document word hides the legal contract."
+register_note = "Formal legal word. Use in contracts and fine print."
+sources = ["https://talkpal.ai/culture/what-are-the-terms-for-renting-a-house-or-apartment-in-cambodia/"]
+confidence = "low"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "ម្ចាស់ផ្ទះ (landlord)"
+avoid = ["ម្ចាស់ដី (land owner: suggests land, not a house)"]
+why = "Wiktionary gives ម្ចាស់ផ្ទះ as the owner who rents out a house, which matches 집주인 (house owner); ម្ចាស់ដី points to land."
+register_note = "Use ម្ចាស់ផ្ទះ for both 임대인 and 집주인 in everyday text."
+sources = ["https://en.wiktionary.org/wiki/landlord"]
+confidence = "medium"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "អ្នកជួល (tenant)"
+avoid = ["ភតិកៈ (formal lemma Glosbe gives for tenant: legal or literary)", "ភ្ញៀវ (guest or visitor)"]
+why = "អ្នកជួល is the plain word Wiktionary gives; ភ្ញៀវ makes the person sound like a short-stay guest."
+register_note = "ភតិកៈ may suit a legal text; អ្នកជួល for the app UI."
+sources = ["https://en.wiktionary.org/wiki/tenant", "https://glosbe.com/en/km/tenant"]
+confidence = "medium"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "ភ្នាក់ងារអចលនវត្ថុ (licensed real estate agent)"
+avoid = ["ឈ្មួញកណ្ដាល (informal middleman: suggests no license)"]
+why = "ភ្នាក់ងារអចលនវត្ថុ names a property agent; ឈ្មួញកណ្ដាល sounds like an unlicensed go-between, which is the wrong impression for a 공인 licensed agent."
+register_note = "Gloss 'licensed' on first use. Keep 공인중개사 in brackets."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "ការិយាល័យភ្នាក់ងារអចលនវត្ថុ (real estate agent office)"
+avoid = ["ក្រុមហ៊ុនសាងសង់ (construction company)"]
+why = "Use the agent word from real_estate_agent; a construction company would mean the building developer, not the agent office."
+register_note = ""
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "ថ្លៃឈ្នួលភ្នាក់ងារ (agent fee; Korean: bokbi)"
+avoid = ["ថ្លៃជួល (rent: a different payment)"]
+why = "The fee goes to the agent, not the landlord; calling it rent would make users think it is a monthly charge."
+register_note = "Keep 복비 (bokbi) in brackets for Korean-speaking agents."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "one-room (បន្ទប់តែមួយ)"
+avoid = ["ផ្ទះតូច (small house: suggests separate rooms)"]
+why = "Residents say one-room; a small-house phrase hides that the bed, kitchen and living space share one room."
+register_note = "Keep the English one-room in listings, with the Khmer gloss."
+sources = ["https://checkmatekorea.com/blog/korea-goshiwon-guide-foreigners/"]
+confidence = "low"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "officetel (អុហ្វីសតែល)"
+avoid = ["ការិយាល័យ (office: suggests you cannot live there)"]
+why = "An officetel is a residential unit in an office building; the plain office word suggests it is not a home."
+register_note = "Keep romanized, with a gloss: home in an office building."
+sources = ["https://en.wikipedia.org/wiki/Officetel"]
+confidence = "low"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "gosiwon (ហ្គូស៊ីវ៉ុន): បន្ទប់តូចឯកជនក្នុងអាគារចែករំលែក"
+avoid = ["បន្ទប់ជួល (generic rental room: hides the tiny size and shared facilities)", "ស្នាក់នៅ (hostel or guesthouse: suggests tourism)"]
+why = "A gosiwon is a very small single room in a shared building; a generic room word hides the size, and a hostel word suggests a short stay."
+register_note = "Keep romanized with the gloss on first use."
+sources = ["https://en.wikipedia.org/wiki/Gosiwon", "https://checkmatekorea.com/blog/korea-goshiwon-guide-foreigners/"]
+confidence = "low"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "banjiha (ប៊ានជីហា): ជាន់ក្រោមដីកន្លះ"
+avoid = ["ជាន់ក្រោមដី (basement: suggests dark and fully underground)"]
+why = "A semi-basement is partly above ground with windows; a plain basement word suggests darkness and could make people reject it or misjudge it."
+register_note = "Keep banjiha with the gloss. Residents may refer to the floor level or windows."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "jeonipsingo (ចុះឈ្មោះអាសយដ្ឋានថ្មី នៅការិយាល័យ dong)"
+avoid = ["ការស្នាក់នៅ (stay: no registration implied)", "ការចុះបញ្ជីទូទៅ (generic registration: could mean company registration)"]
+why = "The official step is reporting a new address at the local office; a stay word leaves out the registration, and a generic registration word can mean company registration."
+register_note = "Keep romanized and name the local community centre (community_center) as the place to go."
+sources = ["https://www.hanam.go.kr/english/contents.do?key=9641", "https://www.quietproperty.kr/2026/06/jeonse-wolse-korea-rental-guide-foreign-residents.html"]
+confidence = "low"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "hwakjeong-ilja (ត្រាកាលបរិច្ឆេទផ្លូវការ ដែលការពារប្រាក់បញ្ញើ)"
+avoid = ["ថ្ងៃកំណត់ (deadline: suggests an expiry date)"]
+why = "This is an official date stamp that protects the deposit; a deadline word suggests a due date and hides its purpose."
+register_note = "Gloss it as a protective date stamp."
+sources = ["https://www.haniseoul.com/blogs/jeonse-vs-wolse-korea-foreigner-guide"]
+confidence = "low"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "deungiburdeungbon (ឯកសារចុះបញ្ជីកម្មសិទ្ធិអចលនវត្ថុ)"
+avoid = ["ប័ណ្ណកម្មសិទ្ធិ (single title deed: suggests one document, not the full register)"]
+why = "The 등기부등본 shows owner, mortgages and liens; a single title deed word does not convey the full register that tenants must check."
+register_note = "Keep romanized and gloss as the official property record."
+sources = ["https://www.haniseoul.com/blogs/jeonse-vs-wolse-korea-foreigner-guide"]
+confidence = "low"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "ប័ណ្ណស្នាក់នៅ (ARC; oegukin deungnokjeung)"
+avoid = ["លិខិតឆ្លងដែន (passport)", "ទិដ្ឋាការ (visa: a different document)"]
+why = "The ARC is a residence card; a passport or visa word names a different document and could confuse people asking for ID."
+register_note = "Use the card name in full on first mention. The Khmer word ប័ណ្ណស្នាក់នៅ is not verified in an official Khmer source."
+sources = ["https://centers.ibs.re.kr/html/living_en/overview/arc.html", "https://www.hanam.go.kr/english/contents.do?key=9641"]
+confidence = "low"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "ប្រភេទទិដ្ឋាការ (visa type; keep codes D-2, E-9)"
+avoid = ["ស្ថានភាពការងារ (employment status: wrong meaning)"]
+why = "The status is the visa category that the code names; an employment word would make users think it is about their job."
+register_note = "Keep the codes (D-2, E-9) as they are. ទិដ្ឋាការ (visa) is confirmed by Khmer news on skilled-worker visas."
+sources = ["https://kohsantepheapdaily.com.kh/article/2195752.html"]
+confidence = "medium"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "ការផ្ទៀងផ្ទាត់អត្តសញ្ញាណ (identity verification)"
+avoid = ["ការបញ្ជាក់ (vague confirmation)"]
+why = "ផ្ទៀងផ្ទាត់អត្តសញ្ញាណ names checking who the person is, which is what KOVIL does; the vague confirm word does not say what is checked."
+register_note = "Add 'foreign resident' in the text when it is the ARC check."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "លេខកូដផ្ទៀងផ្ទាត់ (verification code sent by SMS)"
+avoid = ["លេខសម្ងាត់ (password: a different thing)"]
+why = "The code is a one-time number sent by SMS; a password word suggests the user must create or keep a secret."
+register_note = "Name SMS in the text."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "ភ្នាក់ងារដៃគូ (partner agent)"
+avoid = ["ដៃគូ alone (can mean spouse or romantic partner)"]
+why = "A bare ដៃគូ can read as a romantic partner or spouse; adding ភ្នាក់ងារ makes clear it is a business agent partner."
+register_note = "Use the full phrase in every place it appears."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "ដកខ្លួនចេញពីគណនី (leave the account)"
+avoid = ["លុបគណនី (delete account: sounds like a system wipe)"]
+why = "Residents leave an account voluntarily; the delete word sounds like the service removing their data."
+register_note = "Use in the user's own settings."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "គណនីត្រូវបានផ្អាក (account suspended)"
+avoid = ["បិទគណនីជាអចិន្ត្រៃយ៍ (permanent ban: stronger)"]
+why = "A suspension is temporary; a permanent-ban phrase exaggerates the penalty and makes users panic."
+register_note = "Give the reason and the end date where possible."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "រាយការណ៍ (report)"
+avoid = ["ប្តឹង (lawsuit or police complaint)"]
+why = "In the app, 신고 means flagging abuse to the platform; ប្តឹង means a legal complaint, which would scare users off."
+register_note = "Use for the app's report button."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "ការជូនដំណឹង (push notification)"
+avoid = ["សារ (message: suggests chat)"]
+why = "A push alert tells the user something happened; a message word suggests a chat from a person."
+register_note = "Keep 'push' in parentheses for the settings screen."
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "ខណ្ឌ (gu, district)"
+avoid = ["ខេត្ត (province: wrong level)", "ស្រុក (rural district: wrong kind)"]
+why = "ខណ្ឌ is Cambodia's urban district, closest to a Seoul gu; ខេត្ត is a province and ស្រុក is a rural district, both wrong sizes."
+register_note = "Keep 'gu' in brackets so Korean addresses match."
+sources = ["https://en.wikipedia.org/wiki/Names_of_Cambodia"]
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "dong (ដុង, neighbourhood)"
+avoid = ["ភូមិ (village: rural)", "សង្កាត់ (Cambodian sangkat: a different admin unit)"]
+why = "A Seoul dong is an urban neighbourhood; ភូមិ suggests a village, and sangkat is a Cambodian unit with different rules, so keep the Korean word."
+register_note = "Keep romanized, with the gloss on first use."
+sources = ["https://en.wikipedia.org/wiki/Addresses_in_South_Korea"]
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "ប្តូរខ្សែ (change line)"
+avoid = ["ផ្លាស់ទីលំនៅ (move house)", "ប្តូរ (exchange: too generic)"]
+why = "ប្តូរខ្សែ is the train line change; ផ្លាស់ទីលំនៅ means moving home, which is a different action."
+register_note = ""
+sources = ["https://seoulstart.com/guides/korea-housing-guide"]
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "jumin-senteo (មជ្ឈមណ្ឌលប្រជាពលរដ្ឋ, government civil office)"
+avoid = ["មជ្ឈមណ្ឌលសហគមន៍ (community centre: NGO or social club)"]
+why = "jumin-senteo is the government office for registration; the English 'community centre' gives a social or NGO impression and sends people to the wrong place."
+register_note = "Keep the Korean name and gloss it as the government civil office."
+sources = ["https://www.hanam.go.kr/english/contents.do?key=9641", "https://www.quietproperty.kr/2026/06/jeonse-wolse-korea-rental-guide-foreign-residents.html"]
+confidence = "low"

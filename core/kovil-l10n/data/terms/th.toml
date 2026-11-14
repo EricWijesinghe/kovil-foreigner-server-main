@@ -1,0 +1,366 @@
+# Terminology for Thai (th). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Skeptic pass 2026-11-13: WebSearch budget ran out after 1 search; cited sources re-opened where reachable.
+# Unreachable (HTTP 403): haniseoul ARC, haniseoul rent-conversion, calcfyi-only checks noted per entry.
+# Evidence is thin for Thai-language housing terms: Thai community and official Thai pages were scarce in search.
+# Where no Thai source was found, the entry says so and confidence is low. "avoid" items are reasoned guesses at misleading
+# machine output, NOT checked against Google Translate or Papago output.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "สัญชาติ"
+avoid = ["ประเทศ"]
+why = "สัญชาติ means the legal citizenship on a passport; ประเทศ means country, which is the wrong concept for a passport-based form field."
+register_note = "Use in form labels and ID-related UI; keep it to a single word."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "ประเทศ"
+avoid = ["สัญชาติ", "ชาติ"]
+why = "ประเทศ is the everyday word for a country in general; สัญชาติ would wrongly imply the citizenship field."
+register_note = "Neutral; use in general text."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "ห้องให้เช่า (ประกาศ)"
+avoid = ["รายการสินค้า", "ทรัพย์"]
+why = "ห้องให้เช่า names the thing a tenant is looking for; รายการสินค้า (product list) is a shopping term and ทรัพย์ sounds like legal or financial property."
+register_note = "Plain UI word; ประกาศ marks it as an advertised listing."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "ขอหาห้องเช่า (ส่งเงื่อนไขให้นายหน้า)"
+avoid = ["คำขอเช่า", "คำร้องขอ"]
+why = "A tenant sending their conditions to brokers is 'looking for a room', and คำร้องขอ sounds like a formal petition or government request."
+register_note = "Use as a feature label; the subtitle explains the action."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "เงินมัดจำ (คืนเมื่อสิ้นสัญญา)"
+avoid = ["ค่าประกัน", "เงินประกัน (ไม่มีคำอธิบาย)"]
+why = "เงินมัดจำ is a refundable deposit; ค่าประกัน means an insurance premium, which would make the money look like a fee that is never returned."
+register_note = "Thai community posts also use เงินประกัน; keep the gloss so residents read it as the refundable deposit."
+sources = ["https://www.haniseoul.com/th/blogs/korea-rental-contract-checklist-for-foreigners", "https://www.haniseoul.com/th/services/rent-conversion"]
+confidence = "medium"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "จอนเซ (jeonse: เงินประกันก้อนใหญ่ ไม่มีค่าเช่ารายเดือน)"
+avoid = ["เช่าแบบเหมาจ่าย", "เช่าปีละครั้ง", "ค่าเช่าเหมา"]
+why = "Thai sources keep the romanized จอนเซ with a gloss; a generic 'lump-sum rent' phrase hides that the big deposit is returned at lease end and the monthly rent is zero."
+register_note = "Keep the romanization on first use, the gloss after it. Thai sources also write ชอนเซ; pick one spelling for the whole app. Skeptic 2026-11-13: the one Thai-language search summary (asiae/enko aggregator, not official) led with ชอนเซ and called the deposit เงินประกัน; จอนเซ is still NOT verified either way. Native review decides spelling. Haniseoul pages returned 403; the enko page is English and gives only 전세 and the economics (50-80% of market value, refundable minus damages), no Thai word."
+sources = ["https://www.haniseoul.com/th/blogs/korea-rental-contract-checklist-for-foreigners (403, unverified)", "https://stay.enko.kr/blog/renting-in-south-korea-2025-contracts-pricing-and-what-every-foreigner-should-know/ (English; confirms concept only)"]
+confidence = "low"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "วอลเซ (wolse: ค่าเช่ารายเดือนพร้อมเงินมัดจำ)"
+avoid = ["ค่าเช่า (ไม่มีคำอธิบาย)", "ค่าเช่าเดือนละ"]
+why = "Thai sources use the romanized วอลเซ with a gloss; a plain ค่าเช่า (rent) doesn't tell the reader that Korea's wolse always pairs monthly rent with a deposit, so it can be confused with jeonse."
+register_note = "Keep the romanization on first use. Gloss once per screen. Skeptic 2026-11-13: one Thai-language search summary uses วอลเซ for monthly rent (aggregator, not official); haniseoul rent-conversion returned 403. enko page confirms only the concept: monthly rent plus a small upfront deposit (about 1M-10M KRW)."
+sources = ["https://www.haniseoul.com/th/services/rent-conversion (403, unverified)", "https://stay.enko.kr/blog/renting-in-south-korea-2025-contracts-pricing-and-what-every-foreigner-should-know/ (English; confirms concept only)"]
+confidence = "medium"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "ค่าเช่ารายเดือน"
+avoid = ["ค่าเช่ารายวัน", "ค่าเช่าต่อเดือน (แปลตรงจากอังกฤษ)"]
+why = "ค่าเช่ารายเดือน is the plain Thai phrase for the monthly amount; ค่าเช่ารายวัน (daily rent) is wrong for Korean monthly rent."
+register_note = "Use the same phrase as the wolse gloss so the amount and the contract type read together."
+sources = ["https://www.haniseoul.com/th/services/rent-conversion"]
+confidence = "medium"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "ค่าส่วนกลาง (관리비)"
+avoid = ["ค่าบริการ", "ค่าดูแล", "ค่าบำรุง (ไม่มีคำอธิบาย)"]
+why = "ค่าส่วนกลาง means the building's shared-area fee, separate from rent; ค่าบริการ (service fee) and ค่าดูแล (care fee) suggest a paid service the tenant chose."
+register_note = "Include the Korean 관리비 once in parentheses so residents can match it to the bill."
+sources = ["https://www.haniseoul.com/th/blogs/korea-rental-contract-checklist-for-foreigners"]
+confidence = "low"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "เงินวางมัดจำ (จ่ายตอนเซ็นสัญญา)"
+avoid = ["เงินดาวน์", "ค่าดาวน์"]
+why = "เงินดาวน์ means a purchase down payment, which implies buying the property; the Korean 계약금 is a signing deposit paid before the balance."
+register_note = "No Thai source found; check with a native speaker."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "สัญญาเช่าที่อยู่อาศัย"
+avoid = ["สัญญาซื้อขาย", "สัญญาเช่าทั่วไป"]
+why = "สัญญาเช่าที่อยู่อาศัย is the residential lease; สัญญาซื้อขาย means a sale contract, which is wrong for a rental."
+register_note = "Seoul's Thai-translated 주택임대차표준계약서 uses this sense; check its exact Thai title before final copy."
+sources = ["https://global.seoul.go.kr/web/news/news/bordContDetail.do?mode=W&brd_no=2&post_no=EF9E08CB2B4801B0E053C0A8A023FDE7"]
+confidence = "medium"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "ผู้ให้เช่า (เจ้าของห้อง)"
+avoid = ["เจ้านาย", "เจ้าของบ้าน (คลุมเครือ)"]
+why = "ผู้ให้เช่า names the lessor role in the contract; เจ้านาย means boss or employer, which is a strong wrong impression."
+register_note = "Use เจ้าของห้อง in casual UI; ผู้ให้เช่า in contract text."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "ผู้เช่า"
+avoid = ["ลูกบ้าน", "ผู้อยู่อาศัย"]
+why = "ผู้เช่า is the direct word for the party who rents; ลูกบ้าน (resident of a village) and ผู้อยู่อาศัย (resident) don't name the contract role."
+register_note = "Neutral in all registers."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "นายหน้า (공인중개사: นายหน้าที่มีใบอนุญาต)"
+avoid = ["เอเจนต์", "ตัวแทนขาย"]
+why = "นายหน้า with the licence gloss names a licensed broker who collects a fee; ตัวแทนขาย (sales agent) implies the agent works for the seller."
+register_note = "Thai community posts use นายหน้า for the broker role."
+sources = ["https://calcfyi.com/th/calculator/realtor-fee-kr/"]
+confidence = "medium"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "ออฟฟิศนายหน้า (중개사무소)"
+avoid = ["สำนักงานขายบ้าน", "บริษัทอสังหา"]
+why = "ออฟฟิศนายหน้า keeps the broker-office sense; สำนักงานขายบ้าน (house-sales office) and บริษัทอสังหา (property company) describe a developer or company, not a licensed agent."
+register_note = "No Thai source found for the exact phrase; check with a native speaker."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "ค่านายหน้า (복비)"
+avoid = ["ค่าธรรมเนียม"]
+why = "ค่านายหน้า is the fee a broker charges (calcfyi.com/th page title uses it). ค่าคอมมิชชั่น was removed from avoid: the same Thai page labels the fee ค่าคอมมิชชัน, so it is a readable Thai word for this fee. ค่าธรรมเนียม (fee) doesn't say it goes to the broker."
+register_note = "Include 복비 once in parentheses, since Korean residents say it casually. Cap rates are set by law, so the UI should not show one flat number."
+sources = ["https://calcfyi.com/th/calculator/realtor-fee-kr/", "https://bokduckbbang.com/blog/%EC%A4%91%EA%B0%9C%EB%B3%B4%EC%88%98%EB%B3%B5%EB%B9%84-%EC%9A%94%EC%9C%A8%ED%91%9C%EC%99%80-%EC%A0%88%EC%95%BD-%EB%85%B8%ED%95%98%EC%9A%B0-2/"]
+confidence = "medium"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "วันรูม (one-room: ห้องสตูดิโอรวมห้องนอน-ห้องรับแขก)"
+avoid = ["ห้องเดี่ยว", "ห้องนอนเดี่ยว"]
+why = "วันรูม with the gloss names the Korean one-room unit; ห้องเดี่ยว (single room) and ห้องนอนเดี่ยว suggest a bedroom-only room, which is a smaller space."
+register_note = "No Thai source found for วันรูม; check with a native speaker."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "ออฟฟิศเทล (ห้องสตูดิโอในอาคารพักอาศัย-สำนักงาน)"
+avoid = ["สำนักงานให้เช่า", "อพาร์ตเมนต์สำนักงาน"]
+why = "ออฟฟิศเทล is the transliterated name and is what Thai expats use; สำนักงานให้เช่า (office for rent) tells the reader it is a work space, not a home."
+register_note = "Keep the transliteration and gloss."
+sources = ["https://blog.liveanywhere.me/officetel-vs-villa-vs-goshiwon-which-one-fits-your-exchange-semester-85035"]
+confidence = "medium"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "โกชิวอน (gosiwon: ห้องเล็กในอาคารแบ่งห้อง ครัวใช้ร่วมกัน)"
+avoid = ["หอพัก", "ห้องพักรายเดือน"]
+why = "โกชิวอน with the gloss names the Korean small-room type, which often has shared kitchen and bath; หอพัก (dormitory) and ห้องพักรายเดือน (monthly room) suggest a different building type or price."
+register_note = "Keep the romanization; Thai expat blogs use it."
+sources = ["https://blog.liveanywhere.me/officetel-vs-villa-vs-goshiwon-which-one-fits-your-exchange-semester-85035"]
+confidence = "medium"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "บันจีฮา (ban-jiha: ห้องครึ่งชั้นใต้ดิน ช่องหน้าต่างอยู่ระดับถนน)"
+avoid = ["ห้องใต้ดิน", "ชั้นใต้ดิน"]
+why = "บันจีฮา with the gloss marks a half-basement room; ห้องใต้ดิน (full basement) gives a worse, possibly illegal impression that Korean residents don't use for this type."
+register_note = "No Thai source found; the romanization is an assumption. Check with a native speaker."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "แจ้งย้ายเข้า (전입신고) ที่ศูนย์ชุมชนภายใน 14 วัน"
+avoid = ["แจ้งเข้าพัก", "ลงทะเบียนที่อยู่ (แปลตรงจากอังกฤษ)"]
+why = "แจ้งย้ายเข้า with the Korean term names the legal address-registration step; แจ้งเข้าพัก (check-in notice) suggests a hotel or dorm check-in, not an address change."
+register_note = "Include the 14-day deadline in the UI text. Skeptic: the cited AJD page is Korean-only and confirms 14 days and in-person 주민센터 visit; the online route was removed from use because no source confirmed it. Foreigners also have a separate 체류지 변경 신고 at immigration (Hi Korea)."
+sources = ["https://www.ajd.co.kr/contents/basic-tip/detail/%EC%A0%84%EC%9E%85_%EC%8B%A0%EA%B3%A0_%ED%95%84%EC%9A%94%EC%84%9C%EB%A5%98_%EB%B0%8F_%ED%95%98%EB%8A%94_%EB%B0%A9%EB%B2%95-43997"]
+confidence = "medium"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "ฮวักจองอิลจา (확정일자: วันที่รับรองทางกฎหมาย ช่วยคุ้มครองเงินมัดจำ)"
+avoid = ["วันที่ยืนยัน", "วันที่แน่นอน"]
+why = "The Korean term names an official date stamp that protects the deposit in priority; วันที่ยืนยัน (confirmed date) and วันที่แน่นอน (certain date) say nothing about legal protection."
+register_note = "No Thai source found for the romanization; keep the Korean and gloss. Check with a native speaker."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "ทะเบียนทรัพย์สิน (등기부등본)"
+avoid = ["โฉนดที่ดิน", "ใบรับรองกรรมสิทธิ์"]
+why = "ทะเบียนทรัพย์สิน names the official property registry; โฉนดที่ดิน (land deed) and ใบรับรองกรรมสิทธิ์ (title certificate) are Thai legal documents that differ from Korea's register."
+register_note = "No Thai source found; give the Korean in parentheses."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "บัตรประจำตัวคนต่างด้าว (ARC)"
+avoid = ["หนังสือเดินทาง", "บัตรประชาชน"]
+why = "บัตรประจำตัวคนต่างด้าว is the name Thai sources use for the Alien Registration Card; หนังสือเดินทาง (passport) and บัตรประชาชน (Thai national ID card) are different documents."
+register_note = "Thai sources also say บัตรต่างด้าว informally; the Korean government has renamed it Residence Card, so cite both. Skeptic: the cited haniseoul ARC page returned 403, so the Thai name and the claimed renaming are UNVERIFIED. Check the exact Thai name against an official Korean source before shipping."
+sources = ["https://www.haniseoul.com/th/blogs/alien-registration-card-arc-guide-korea (403, unverified)"]
+confidence = "low"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "ประเภทวีซ่า (สถานะการพำนัก เช่น D-2, E-9)"
+avoid = ["สถานะบุคคล", "สถานะทางกฎหมาย"]
+why = "ประเภทวีซ่า names the visa category Thai residents use, and the codes D-2 and E-9 are the familiar labels; สถานะบุคคล (personal status) and สถานะทางกฎหมาย (legal status) are too vague."
+register_note = "Keep the D-2 / E-9 codes as-is."
+sources = ["https://www.haniseoul.com/th/blogs/south-korea-visa-types-comprehensive-guide-hub"]
+confidence = "medium"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "ยืนยันตัวตนชาวต่างชาติ"
+avoid = ["รับรองตัวตน (ทางกฎหมาย)", "ตรวจสอบประวัติ"]
+why = "ยืนยันตัวตนชาวต่างชาติ says the app checks the user's identity; ตรวจสอบประวัติ (background check) makes it sound like a criminal or credit check."
+register_note = "No Thai source found; check with a native speaker."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "รหัสยืนยัน"
+avoid = ["หมายเลขรับรอง", "เลขอนุมัติ"]
+why = "รหัสยืนยัน is the everyday word for an SMS code; หมายเลขรับรอง (certification number) and เลขอนุมัติ (approval number) sound like official registrations."
+register_note = "Use in SMS text and the input label."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "พาร์ทเนอร์ (นายหน้าพาร์ทเนอร์ของ KOVIL)"
+avoid = ["คู่ชีวิต", "หุ้นส่วน"]
+why = "พาร์ทเนอร์ names a business ally in the app, while คู่ชีวิต (life partner) and หุ้นส่วน (business co-owner) carry personal or legal meanings."
+register_note = "Use the transliteration in UI; no Thai source found."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "ลบบัญชี / ออกจากการเป็นสมาชิก"
+avoid = ["ถอนเงิน", "ถอนตัว"]
+why = "ลบบัญชี says the account and data are removed; ถอนเงิน means withdraw money, which is a dangerous wrong meaning on a payments screen."
+register_note = "Use ออกจากการเป็นสมาชิก in formal text."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "ระงับการใช้งานบัญชีชั่วคราว"
+avoid = ["ห้ามใช้งาน", "แบนถาวร"]
+why = "ระงับการใช้งานชั่วคราว says usage is paused for a period; ห้ามใช้งาน (forbidden to use) and แบน (ban) sound permanent and punitive."
+register_note = "No Thai source found; generic UI phrasing."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "รายงานเนื้อหา"
+avoid = ["ร้องเรียน", "แจ้งความ"]
+why = "รายงานเนื้อหา is the in-app flag action; ร้องเรียน (formal complaint) and แจ้งความ (file a police report) are much heavier actions."
+register_note = "No Thai source found; generic UI phrasing."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "การแจ้งเตือน"
+avoid = ["การผลักดัน", "ข้อความดัน"]
+why = "การแจ้งเตือน is the standard Thai app term for a notification; แปลตรงจากคำว่า push (การผลักดัน) reads as pushing something, not alerting the user."
+register_note = "Standard UI word."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "เขต (กู)"
+avoid = ["อำเภอ", "จังหวัด"]
+why = "เขต with the romanized 구 names a Seoul-style district; อำเภอ (district in Thailand) and จังหวัด (province) are Thai administrative units that would mislead about the level."
+register_note = "Keep the Korean 구 next to the Thai word for Seoul districts."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "ตง (dong: ชุมชนระดับย่อยในเขต)"
+avoid = ["ตำบล", "หมู่บ้าน"]
+why = "ตง (romanized 동) names the Korean neighborhood unit; ตำบล (Thai subdistrict) and หมู่บ้าน (village) are different administrative levels."
+register_note = "No Thai source found; keep the romanization with a gloss."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "เปลี่ยนสาย"
+avoid = ["โอนย้าย", "โอนเงิน"]
+why = "เปลี่ยนสาย is the everyday word for changing subway lines; โอนย้าย and โอนเงิน (transfer money) are wrong meanings on a transit screen."
+register_note = "Standard transit UI word; no Thai source checked."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "ศูนย์ชุมชน (주민센터)"
+avoid = ["ศูนย์ราชการ", "ที่ว่าการอำเภอ"]
+why = "ศูนย์ชุมชน with the Korean name matches the Thai sources that describe 주민센터 for move-in reporting; ศูนย์ราชการ (government center) and ที่ว่าการอำเภอ (district office) are different buildings."
+register_note = "Keep the Korean in parentheses so residents can search the sign."
+sources = ["https://www.ajd.co.kr/contents/basic-tip/detail/%EC%A0%84%EC%9E%85_%EC%8B%A0%EA%B3%A0_%ED%95%84%EC%9A%94%EC%84%9C%EB%A5%98_%EB%B0%8F_%ED%95%98%EB%8A%94_%EB%B0%A9%EB%B2%95-43997"]
+confidence = "medium"

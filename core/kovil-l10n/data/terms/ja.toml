@@ -1,0 +1,363 @@
+# Terminology for Japanese (ja). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Evidence is mostly Japanese-language Korean-housing guides (seoulstart.com/ja, braindetox.kr/ja) and Danuri (liveinkorea.kr/JPN) search snippets. Official Japanese-language housing text was NOT fetched in full (Seoul JP PDF exceeded size limit), so most entries are medium confidence.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "国籍"
+avoid = ["国", "国家", "出身国"]
+why = "国籍 is the legal word for the passport nation; 国 and 国家 blur it with the country concept, and 出身国 (country of origin) suggests where you were born or grew up."
+register_note = "Everyday and legal use are the same word."
+sources = ["https://www.liveinkorea.kr/portal/JPN/page/contents.do?menuSeq=5206&pageSeq=32"]
+confidence = "medium"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "国・国家"
+avoid = ["国籍", "出身地"]
+why = "国 for a country in general and 国家 for the state; using 国籍 here would wrongly say the citizenship of a place, not the place itself."
+register_note = "Use 国家 only in formal or political contexts; 国 is the everyday word."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "物件"
+avoid = ["商品", "リスト", "掲載物"]
+why = "物件 is the standard Japanese real-estate word for a property on the market; 商品 (product) makes a home sound like a retail item, and リスト (list) names the container, not the property."
+register_note = "Add 賃貸物件 when the listing is for rent."
+sources = ["https://braindetox.kr/ja/posts/real_estate_contract_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "賃貸リクエスト（希望条件の依頼）"
+avoid = ["依頼", "申込"]
+why = "The app's feature is named リクエスト in 10+ keys across errors_ja and notifications_ja, and リクエスト is common loanword usage in Japanese apps, so 賃貸リクエスト stays for consistency. 希望条件 (wish conditions) glosses the meaning. 申込 implies applying for a specific unit. The earlier claim that 賃貸リクエスト is a calque nobody uses had no source; web search was unavailable this run, so it was removed."
+register_note = "Gloss once as 希望条件（物件探しの依頼）; in notices use リクエスト with the number."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "保証金"
+avoid = ["敷金", "礼金", "デポジット"]
+why = "保証金 matches how Japanese-language Korean guides describe the lump-sum or deposit returned at lease end; 敷金 invokes Japanese deductions for restoration, and 礼金 is a non-refundable key-money fee that does not exist in Korea."
+register_note = "Use 保証金（返還あり） when explaining that it is returned."
+sources = ["https://seoulstart.com/ja/guides/wolse-explained", "https://braindetox.kr/ja/posts/jeonse_vs_monthly_rent_guide.html"]
+confidence = "high"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "チョンセ（전세）"
+avoid = ["保証金だけの賃貸", "家賃なし", "一括家賃", "全額前払い"]
+why = "チョンセ is the Korean term Japanese guides keep, and it names a deposit-only lease; 家賃なし or 一括家賃 mislead people into thinking they pay rent in a lump sum, when the money is a deposit returned at the end."
+register_note = "Keep the Korean word in listings; gloss as 大型保証金の賃貸 on first use."
+sources = ["https://seoulstart.com/ja/guides/how-jeonse-works", "https://braindetox.kr/ja/posts/jeonse_vs_monthly_rent_guide.html"]
+confidence = "high"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "ウォルセ（월세）"
+avoid = ["家賃", "月租", "月払い賃貸のみ"]
+why = "ウォルセ is the kept Korean term that separates monthly-rent leases from jeonse; plain 家賃 without the word loses the link to Korea's deposit-plus-rent structure, and 月租 is a Chinese term."
+register_note = "Gloss as 月払い（保証金ありの月家賃）."
+sources = ["https://seoulstart.com/ja/guides/wolse-explained", "https://braindetox.kr/ja/posts/jeonse_wolse_contract_checklist_guide.html"]
+confidence = "high"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "家賃（月払い）"
+avoid = ["月家賃", "月額", "月々の支払い", "月租"]
+why = "家賃 is the everyday Japanese word residents use for rent, and 月払い says it is monthly; 月家賃 is a non-standard compound (not in the seoulstart wolse guide, which uses 月払い and 月額賃料 in its tax-credit name). 月額 alone is ambiguous with 管理費 (maintenance fee), and 月租 is a Chinese term."
+register_note = "Show as 家賃（月払い・管理費別）when the figure excludes 管理費."
+sources = ["https://braindetox.kr/ja/posts/jeonse_vs_monthly_rent_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "管理費"
+avoid = ["共益費", "管理料", "維持費"]
+why = "braindetox checklist (fetched 2026-11-13) uses 管理費 for the Korean fee and never 共益費 or 管理料. Whether utilities are included is NOT confirmed by that source, so the old claim that 管理費 includes utilities was unsupported. 共益費 is a Japanese common-area fee term, so it can be misread as the Korean fee."
+register_note = "Do not state whether utilities are included unless the listing says so; ask: 電気・水道・ガス等は管理費に含まれますか。"
+sources = ["https://braindetox.kr/ja/posts/jeonse_wolse_contract_checklist_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "手付金"
+avoid = ["頭金", "契約金", "予約金"]
+why = "手付金 is what Japanese-language Korean guides use for the sum paid at signing, and it is also the Japanese legal term for earnest money; 頭金 means a purchase down payment on a loan and misleads about the scale and timing, and 予約金 implies a reservation fee."
+register_note = "Add 契約時に支払う（金額は契約ごとに確認）. The braindetox source only gives 約10% for a sale (売買代金), not for leases: do not state a lease percentage."
+sources = ["https://braindetox.kr/ja/posts/real_estate_contract_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "賃貸借契約"
+avoid = ["レンタル契約", "賃貸契約書のみ", "賃貸借契約書"]
+why = "賃貸借契約 is the legal term used by Japanese-language Korean guides for the lease; レンタル契約 suggests a short-term rental product, which is not how Korean residential leases work."
+register_note = "Use 賃貸借契約書 when referring to the signed document."
+sources = ["https://braindetox.kr/ja/posts/real_estate_contract_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "家主（大家）"
+avoid = ["大家さん", "オーナー", "テナント"]
+why = "家主 is the term Japanese-language Korean guides use for the owner who leases out; オーナー suggests a business owner or company, and 大家さん is a casual, Japan-specific term for a landlord who may live in the building."
+register_note = "Use 家主 in legal and contract text, 大家 is acceptable in friendly UI only."
+sources = ["https://braindetox.kr/ja/posts/jeonse_wolse_contract_checklist_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "賃借人（入居者）"
+avoid = ["テナント", "借り手（カジュアル）", "借主（法的）"]
+why = "賃借人 is the Civil Code term for the renter. The braindetox contract guide (fetched 2026-11-13) does not use 賃借人; its clause wording uses 借主, so 借主 is only a contract-clause variant and is not listed as avoid. テナント means a commercial shop tenant in Japanese, so using it for a home renter is wrong."
+register_note = "Use 賃借人 in legal text, 入居者 in everyday UI."
+sources = ["https://braindetox.kr/ja/posts/real_estate_contract_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "公認仲介士"
+avoid = ["宅建士", "不動産屋", "不動産業者"]
+why = "公認仲介士 is the term Japanese-language Korean guides use for the Korean licensed broker; 宅建士 is the Japanese qualification with a different scope, and 不動産屋 is a casual word for any real-estate business."
+register_note = "Add 韓国の公認仲介士（資格所持者）on first use so it is not confused with 宅建士."
+sources = ["https://braindetox.kr/ja/posts/real_estate_contract_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "公認仲介士事務所"
+avoid = ["不動産屋", "不動産会社", "宅建事務所"]
+why = "公認仲介士事務所 names the Korean licensed office where the broker works, and 不動産屋 suggests a casual shop without the licence check residents do; 宅建事務所 imports the Japanese qualification."
+register_note = "Short UI form: 仲介事務所."
+sources = ["https://braindetox.kr/ja/posts/real_estate_contract_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "仲介報酬（仲介手数料）"
+avoid = ["礼金", "手数料", "仲介料"]
+why = "仲介報酬 is the formal Korean-law name for the broker fee and 仲介手数料 is the common word; 礼金 is a Japanese key-money payment to the landlord, and bare 手数料 is vague about who gets paid."
+register_note = "The rate is capped by city or province ordinance; cite the cap rather than a fixed amount."
+sources = ["https://braindetox.kr/ja/posts/brokerage_fee_eligibility.html"]
+confidence = "medium"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "ワンルーム"
+avoid = ["1K", "1R", "ワンルームマンション"]
+why = "ワンルーム is the Japanese word for a one-room unit and matches the Korean 원룸 usage; 1K and 1R are Japanese floor-plan codes that imply a separate kitchen layout, and ワンルームマンション implies a Japanese condo."
+register_note = "Gloss on first use as 1部屋の単身向け住居（トイレ・浴室付きが多い）."
+sources = ["https://seoulstart.com/ja/guides/korea-apartment-types"]
+confidence = "medium"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "オフィステル"
+avoid = ["オフィス", "事務所", "貸事務所"]
+why = "オフィステル is the Korean loanword that Japanese-language guides keep, and it names a residential-use building; オフィス and 貸事務所 suggest a commercial office, which can mean no legal right to live there."
+register_note = "Gloss as 住居用のオフィステル（法的には準住宅）."
+sources = ["https://seoulstart.com/ja/guides/goshiwon-vs-officetel-vs-oneroom"]
+confidence = "medium"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "コシウォン（고시원）"
+avoid = ["下宿", "寮", "ゲストハウス"]
+why = "コシウォン is the kept Korean name for a tiny-room, shared-facility building; 下宿 and 寮 are Japanese lodging types with meals or a school tie, and ゲストハウス suggests short-stay tourism."
+register_note = "Gloss as 個室（2〜5畳程度）と共用設備の住まい."
+sources = ["https://seoulstart.com/ja/guides/goshiwon-vs-officetel-vs-oneroom"]
+confidence = "medium"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "バンジハ（半地下）"
+avoid = ["地下室", "地下", "地下住宅"]
+why = "バンジハ（半地下） is the kept Korean term for a unit partly below ground with windows at street level, and 地下室 suggests a fully underground cellar with no natural light, which is a worse picture than the actual unit."
+register_note = "Always add the window and damp caveat in the listing, since 半地下 units often lack ventilation."
+sources = ["https://seoulstart.com/ja/guides/korea-apartment-types"]
+confidence = "medium"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "転入届（전입신고）"
+avoid = ["チョニプシンゴ", "住民票の移動", "住所変更", "引っ越し届"]
+why = "転入届 is the Japanese word closest to Korea's resident move-in report that is filed at the community center; 住所変更 and 引っ越し届 do not say it is an official filing, and 住民票の移動 names a Japanese document, not the act."
+register_note = "Official Danuri FAQ (Korean only, fetched 2026-11-13) says a foreigner's change of residence must be reported within 14 days. The FAQ does not name a form, so do not add a form name. Japanese text is not available: do not cite a 15-day figure."
+sources = ["https://www.liveinkorea.kr/web/lay1/bbs/S1T13C43/E/14/list.do", "https://braindetox.kr/ja/posts/real_estate_contract_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "チョンイルジャ（確定日付）"
+avoid = ["確定日", "確認日", "日付印"]
+why = "確定日付 is the term Japanese-language Korean real-estate guides use for the official date stamp that gives deposit priority, and 確定日 or 確認日 omit the legal effect and sound like a simple date."
+register_note = "Explain in one line: 役所か公証で付与する日付で、保証金を優先的に守る."
+sources = ["https://braindetox.kr/ja/posts/real_estate_contract_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "トゥンギブドゥンボン（登記事項全部証明書）"
+avoid = ["登記簿", "不動産登記", "登記簿謄本（旧称のみ）"]
+why = "braindetox FAQ (fetched 2026-11-13) names it 登記事項全部証明書（등기부등본）, with 登記簿謄本 as the old name; 登記事項全部証明書 is the full certified copy and the nearest Japanese equivalent (登記事項証明書 is the Japanese registry certificate, but 全部 matches the Korean full-copy scope). 登記簿 alone is the old register, not the certificate."
+register_note = "Check it the day before signing and again on the balance-payment day."
+sources = ["https://braindetox.kr/ja/posts/real_estate_contract_guide.html", "https://braindetox.kr/ja/posts/jeonse_wolse_contract_checklist_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "外国人登録証（외국인등록증・ARC）"
+avoid = ["在留カード", "外国人在留カード", "ビザ"]
+why = "外国人登録証 is the card's name in Korea, and 在留カード is the Japanese card with a different issuer and format; a Japanese resident may think their 在留カード is the document requested in Korea."
+register_note = "Keep the ARC abbreviation per glossary policy."
+sources = ["https://www.hikorea.go.kr/info/InfoDatail.pt?CAT_SEQ=282&PARENT_ID=155&locale=EN"]
+confidence = "low"
+# 2026-11-13 check: the cited hikorea page (F-4 / Overseas Korean page) does NOT name the foreigner ID card. 外国人登録証 is unverified; keep until a native check of the card's current Japanese name.
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "在留資格（D-2・E-9など）"
+avoid = ["ビザ", "滞在資格", "ビザの種類"]
+why = "在留資格 is the official Korean-government term for the residence category, while ビザ means the entry visa sticker and is a different document; 滞在資格 is a non-standard calque."
+register_note = "Show the code (D-2, E-9) with the name."
+sources = ["https://www.hikorea.go.kr/info/InfoDatail.pt?CAT_SEQ=282&PARENT_ID=155&locale=EN"]
+confidence = "medium"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "本人確認"
+avoid = ["認証", "本人認証", "ログイン認証"]
+why = "本人確認 is the everyday Japanese term for proving who you are with documents, and 認証 alone reads as a login or app-authentication step; 本人認証 is closer to SMS verification than to a document check."
+register_note = "Name the document step: 在留カードではなく外国人登録証で本人確認."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "認証番号"
+avoid = ["暗証番号", "パスコード", "確認コード"]
+why = "認証番号 is the common Japanese app term for the SMS one-time code; 暗証番号 is a bank or card PIN, which can make residents think they must enter a secret they set up earlier."
+register_note = "Use 認証番号をSMSで送信 wording in UI."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "パートナー（提携仲介業者）"
+avoid = ["配偶者", "相棒", "パートナー（恋人）"]
+why = "提携仲介業者 says the partner is a broker company that works with KOVIL; 配偶者 means spouse and 相棒 or 恋人 wrongly suggest a personal relationship."
+register_note = "Use パートナー with 業者 in the label to avoid the personal sense."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "退会"
+avoid = ["脱退", "解約", "アカウント削除"]
+why = "退会 is the standard Japanese app term for leaving a member account; 脱退 means leaving a group or union, and 解約 means cancelling a contract or subscription, which can imply a refund or ongoing payment."
+register_note = "Use 退会する in buttons and 退会手続き in notices."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "利用停止"
+avoid = ["凍結", "停止中", "アカウント凍結"]
+why = "利用停止 is the standard Japanese term for a temporary service ban; 凍結 means a frozen bank account and sounds like money is locked, which is a different harm."
+register_note = "Calm factual wording in error text: 現在、アカウントの利用が停止されています."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "通報"
+avoid = ["届け出", "報告", "告発"]
+why = "通報 is the Japanese app term for flagging content to moderators; 届け出 is an official filing with a government office, 報告 is a report to a superior, and 告発 is a legal accusation."
+register_note = "Use 通報する in buttons and 不適切な投稿を通報 in help text."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "プッシュ通知"
+avoid = ["お知らせ", "押し通知", "通知（単独）"]
+why = "プッシュ通知 is the standard Japanese term for an app notification pushed to the phone; お知らせ means a general announcement, and 通知 alone is ambiguous with in-app alerts."
+register_note = "Use 通知設定 for the settings screen."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "区（ク・gu）"
+avoid = ["地区", "市", "郡"]
+why = "区 is the Japanese word that matches Seoul's gu, as in 江南区 (강남구); 地区 means a neighbourhood or zone, and 市 wrongly implies a city-level unit."
+register_note = "For 시군구 outside Seoul use 市区郡 with the Korean word in brackets."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "洞（ドン・dong）"
+avoid = ["町", "地域", "丁目"]
+why = "洞 is the Korean neighbourhood unit that Japanese guides keep as dong; 町 is the Japanese neighbourhood unit with a different structure, and 丁目 is a block number, so each misleads about the size and location."
+register_note = "Show as 江南区 駅三洞 with the Korean reading on first use."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "乗り換え"
+avoid = ["転換", "乗換（漢字のみ）", "転勤"]
+why = "乗り換え is the everyday Japanese word for changing trains, which matches 환승 in the subway sense; 転換 means conversion or switching to something else, and 転勤 means a job transfer."
+register_note = "Use 乗り換え駅 for the transfer station."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "チュミンセンター（住民センター）"
+avoid = ["区役所", "市役所", "役所"]
+why = "チュミンセンター（住民センター） is the kept Korean name for the neighbourhood office where 転入届 is filed; 区役所 and 市役所 are higher-level ward and city offices, so telling a resident to go there sends them to the wrong building."
+register_note = "Keep the Korean word per glossary policy; gloss as 洞の事務所 on first use."
+sources = ["https://www.liveinkorea.kr/web/lay1/bbs/S1T13C43/E/14/list.do"]
+confidence = "medium"

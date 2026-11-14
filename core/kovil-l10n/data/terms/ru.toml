@@ -1,0 +1,362 @@
+# Terminology for Russian (ru). Researched 2026-11-13 by web research; native-speaker sign-off: pending.
+# Evidence note: searches returned almost only English and Korean sources. No Russian-language official Korean material was fetched. Confidence is medium or low for most terms; re-verify with a native Russian-speaking resident before release.
+
+[[term]]
+concept = "nationality"
+ko = "국적"
+use = "гражданство"
+avoid = ["национальность", "страна"]
+why = "«Гражданство» is the passport-country meaning used on Russian forms; «национальность» means ethnicity in Russian, and «страна» means the country in general, so both give the wrong impression."
+register_note = "Same word in forms and UI."
+sources = ["https://www.yeonsu.go.kr/welfare/user/family/guide_rus.asp"]
+confidence = "medium"
+
+[[term]]
+concept = "country"
+ko = "국가"
+use = "страна"
+avoid = ["гражданство", "государство"]
+why = "«Страна» is the everyday word for a country in general; «гражданство» would mean passport citizenship, and «государство» is formal or political."
+register_note = "Neutral."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "housing_listing"
+ko = "매물"
+use = "объявление (квартира / комната в аренду)"
+avoid = ["недвижимость", "продажа"]
+why = "Residents say «объявление» or «квартира в аренду» for an advertised rental; «недвижимость» is the whole property market and «продажа» means sale, not rent."
+register_note = "Use «объявление» in UI; «вариант» is acceptable in chat."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "rental_request"
+ko = "임대 요청"
+use = "запрос на аренду"
+avoid = ["заказ", "заявка на аренду"]
+why = "Bundles already say «запрос на аренду» (VERIFICATION_REQUIRED, rental_request_* keys), so the glossary must match; «заказ» implies a purchased service, and «заявка на аренду» sounds like a formal application to a landlord. The search-for-a-home sense is carried by the sentence, not the term."
+register_note = "Plain phrase in UI."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "security_deposit"
+ko = "보증금"
+use = "депозит (залог, возвращается при выезде)"
+avoid = ["задаток", "аванс"]
+why = "«Депозит» is what Russian-speaking tenants use and clearly means the returnable deposit; «задаток» means the earnest money paid at signing (계약금), and «аванс» means prepayment of rent, which is not returned."
+register_note = "In legal text write «залог (депозит)» at first mention, then «депозит»."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-faq", "https://seoullawgroup.com/housing-deposit-korea/"]
+confidence = "medium"
+
+[[term]]
+concept = "jeonse"
+ko = "전세"
+use = "чонсе — беспроцентный залог на весь срок, без ежемесячной платы"
+avoid = ["аренда с депозитом", "ипотека", "кредит"]
+why = "Residents keep the Korean word and gloss it as a large lump-sum deposit with no monthly rent; machine translation gives «аренда с залогом» or «ипотека», which suggests a loan or a normal rent."
+register_note = "Use romanized «чонсе» with the gloss on first use; the Korean word can stay in brackets."
+sources = ["https://www.weave-living.com/blog/jeonse-explained", "https://braindetox.kr/en/posts/jeonse_wolse_contract_checklist_guide.html"]
+confidence = "medium"
+
+[[term]]
+concept = "wolse"
+ko = "월세"
+use = "вольсе — ежемесячная аренда с депозитом"
+avoid = ["ежемесячная плата", "аренда по месяцам"]
+why = "Residents use the romanized word with a deposit plus a monthly payment; «ежемесячная плата» loses the deposit detail, and «аренда по месяцам» does not show it is a Korean lease type."
+register_note = "Gloss on first use, then «вольсе»."
+sources = ["https://www.weave-living.com/blog/jeonse-explained", "https://seoulstart.com/housing/tools/jeonse-vs-wolse"]
+confidence = "medium"
+
+[[term]]
+concept = "monthly_rent"
+ko = "월세(금액)"
+use = "ежемесячная плата (вольсе)"
+avoid = ["арендная плата", "стоимость"]
+why = "«Ежемесячная плата» is the amount paid each month; «стоимость» reads as the property price, which is a serious misreading for a renter."
+register_note = "Neutral."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "maintenance_fee"
+ko = "관리비"
+use = "коммунальные и управляющие платежи (관리비)"
+avoid = ["налог", "комиссия"]
+why = "The fee is separate from rent and covers building management and utilities; «налог» implies a government tax, and «комиссия» implies a broker or service fee."
+register_note = "Keep the Korean word in brackets on first use."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-faq"]
+confidence = "low"
+
+[[term]]
+concept = "down_payment"
+ko = "계약금"
+use = "задаток (계약금)"
+avoid = ["депозит", "первый взнос"]
+why = "«Задаток» is the amount paid at signing that can be forfeited; «депозит» is the returnable deposit (보증금), and «первый взнос» implies a mortgage-style installment."
+register_note = "Use «задаток» in legal text."
+sources = ["https://seoulstart.com/ko/guides/real-estate-agent-fee-guide"]
+confidence = "low"
+
+[[term]]
+concept = "lease_contract"
+ko = "임대차 계약"
+use = "договор аренды (임대차 계약)"
+avoid = ["контракт на аренду", "соглашение"]
+why = "«Договор аренды» is the standard legal name; «соглашение» is vague and «контракт» is an informal borrowing that is less used in Russian legal writing."
+register_note = "Formal in legal text."
+sources = ["https://blog.sugar.legal/foreign-lease-contract-tips"]
+confidence = "low"
+
+[[term]]
+concept = "landlord"
+ko = "임대인/집주인"
+use = "арендодатель (хозяин квартиры)"
+avoid = ["владелец", "домовладелец"]
+why = "«Арендодатель» is the legal role; «владелец» means owner in general, and «домовладелец» sounds like a house owner, which can mislead about who signs the lease."
+register_note = "Use «арендодатель» in legal text and «хозяин» in chat."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "tenant"
+ko = "임차인/세입자"
+use = "арендатор (жилец)"
+avoid = ["квартирант", "съемщик"]
+why = "«Арендатор» is the legal role; «квартирант» is informal and sometimes means a lodger, which weakens the legal sense."
+register_note = "«Арендатор» in legal text, «жилец» in UI."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "real_estate_agent"
+ko = "공인중개사"
+use = "риелтор (лицензированный риелтор)"
+avoid = ["агент", "брокер"]
+why = "«Риелтор» is the usual Russian-speaking word for a licensed Korean broker; «брокер» suggests stock or finance, and «агент» alone is vague. The cited seoulstart fee guide uses 중개보수 and never says риелтор, so the choice rests on community usage, not that source."
+register_note = "Use «риелтор» in UI, «лицензированный риелтор» in legal text."
+sources = ["https://seoulstart.com/ko/guides/real-estate-agent-fee-guide"]
+confidence = "low"
+
+[[term]]
+concept = "brokerage_office"
+ko = "중개사무소"
+use = "агентство недвижимости (риелторская контора)"
+avoid = ["офис", "биржа"]
+why = "«Агентство недвижимости» names the office type; «биржа» implies stock trading and «офис» is too generic."
+register_note = "Neutral."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "brokerage_fee"
+ko = "중개수수료(복비)"
+use = "комиссия риелтора (복비)"
+avoid = ["налог", "чаевые"]
+why = "The fee is paid to the broker by law; «налог» implies a government tax, and «чаевые» misrepresents an agreed fee."
+register_note = "Keep «복비» in brackets."
+sources = ["https://seoulstart.com/ko/guides/real-estate-agent-fee-guide"]
+confidence = "medium"
+
+[[term]]
+concept = "studio_one_room"
+ko = "원룸"
+use = "вонрум (однокомнатная квартира)"
+avoid = ["студия", "однушка"]
+why = "Residents say «вонрум» for the small one-room flat with a kitchen area; «студия» in Russian means a larger apartment, and «однушка» is an informal phrase for a one-bedroom apartment."
+register_note = "Use «вонрум» with a gloss on first use."
+sources = ["https://seoulstart.com/guides/goshiwon-vs-officetel-vs-oneroom"]
+confidence = "low"
+
+[[term]]
+concept = "officetel"
+ko = "오피스텔"
+use = "оффитель (офисная квартира)"
+avoid = ["офис", "апартаменты"]
+why = "«Оффитель» is the romanized name for a mixed office-residence; «офис» suggests a workplace only, and «апартаменты» implies hotel-style units."
+register_note = "Keep the romanized word and gloss it."
+sources = ["https://seoulstart.com/guides/goshiwon-vs-officetel-vs-oneroom"]
+confidence = "low"
+
+[[term]]
+concept = "gosiwon"
+ko = "고시원"
+use = "гошиуон (комната в гошиуоне)"
+avoid = ["общежитие", "хостел"]
+why = "«Гошиуон» is the romanized Korean word; «общежитие» means a dormitory with shared rooms, and «хостел» means a tourist bed, which misrepresents a small private room."
+register_note = "Use the romanized word with a gloss on first use, as the Russian search results also show."
+sources = ["https://stay.enko.kr/blog/en/a-complete-guide-to-korean-goshiwon-for-foreigners-tips-for-a-fail-proof-stay/"]
+confidence = "medium"
+
+[[term]]
+concept = "semi_basement"
+ko = "반지하"
+use = "полуподвал (반지하)"
+avoid = ["подвал", "цоколь"]
+why = "«Полуподвал» describes a unit partly below ground with windows above street level; «подвал» means a full basement, which is worse for living, and «цоколь» is a building-plinth term that residents do not use."
+register_note = "Keep «반지하» in brackets on first use."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "move_in_report"
+ko = "전입신고"
+use = "изменение адреса проживания (체류지 변경신고 для иностранцев)"
+avoid = ["переезд", "заявление о переезде", "регистрация нового адреса по месту жительства"]
+why = "Fetched seoulstart FAQ: registered foreigners file 체류지 변경신고 instead of 전입신고, so «регистрация по месту жительства» (the 전입신고 sense) is wrong for this audience; «переезд» is only the act of moving, and «заявление о переезде» is not the counter term."
+register_note = "Bundles: Russian only, no Hangul (linter flags Hangul in translations). Legal text may keep «전입신고» in brackets for citizens. Confirm the foreigner wording with the 주민센터 or immigration office; native review pending."
+sources = ["https://seoulstart.com/ko/guides/korea-housing-faq", "https://korea.legal/wiki/%ec%a0%95%eb%b6%8024-%ec%a0%84%ec%9e%85%ec%8b%a0%ea%b3%a0-%eb%af%bc%ec%9b%90%ec%95%88%eb%82%b4/"]
+confidence = "low"
+
+[[term]]
+concept = "fixed_date_stamp"
+ko = "확정일자"
+use = "печать с датой (확정일자)"
+avoid = ["фиксированная дата", "нотариальная заверка"]
+why = "The 확정일자 is a date stamp put on the lease, so the deposit has priority in a forced sale. «Фиксированная дата» is a literal calque that hides the stamp, and «нотариальная заверка» is a different notarial procedure that misleads tenants about deposit protection."
+register_note = "Keep «확정일자» in brackets; explain the protection purpose in the sentence."
+sources = ["https://kowork.kr/blog/howtoavoidhousingscamsinkorea", "https://visainfo-korea.com/entry/%EC%99%B8%EA%B5%AD%EC%9D%B8-%ED%95%9C%EA%B5%AD-%EC%A0%84%EC%84%B8%C2%B7%EC%9B%94%EC%84%B8-%EA%B3%84%EC%95%BD-%EB%B0%A9%EB%B2%95-%EC%B4%9D%EC%A0%95%EB%A6%AC-2026%EF%BD%9C%ED%99%95%EC%A0%95%EC%9D%BC%EC%9E%90%C2%B7%EC%B2%B4%EB%A5%98%EC%A7%80-%EC%8B%A0%EA%B3%A0%C2%B7%EB%B3%B4%EC%A6%9D%EA%B8%88-%EB%B3%B4%ED%98%B8"]
+confidence = "low"
+
+[[term]]
+concept = "property_register"
+ko = "등기부등본"
+use = "выписка из реестра недвижимости (등기부등본)"
+avoid = ["свидетельство о собственности", "кадастровый паспорт"]
+why = "The register extract lists owner and liens; «свидетельство о собственности» is an old-style title deed, and «кадастровый паспорт» is a Russian cadastre document that is not the same."
+register_note = "Keep «등기부등본» in brackets."
+sources = ["https://kowork.kr/blog/howtoavoidhousingscamsinkorea"]
+confidence = "medium"
+
+[[term]]
+concept = "arc"
+ko = "외국인등록증"
+use = "регистрационная карта иностранца (ARC, 외국인등록증)"
+avoid = ["паспорт", "вид на жительство"]
+why = "ARC is the residence card issued to foreigners staying over 90 days; «паспорт» is the passport from the home country, and «вид на жительство» is a Russian permanent-residence document, so both mislead."
+register_note = "Use «ARC» on first mention, then «карта иностранца»."
+sources = ["https://www.visaskorea.com/en-blog-arc-registration-guide/"]
+confidence = "medium"
+
+[[term]]
+concept = "visa_status"
+ko = "체류자격"
+use = "статус пребывания (체류자격, например D-2, E-9)"
+avoid = ["виза", "тип визы"]
+why = "The status code (D-2 student, E-9 worker) defines what the person may do in Korea; «виза» is only the entry document, and «тип визы» confuses the stay status with the visa stamp."
+register_note = "Use «статус пребывания» in UI."
+sources = ["https://www.visaskorea.com/en-blog-arc-registration-guide/"]
+confidence = "low"
+
+[[term]]
+concept = "identity_verification"
+ko = "외국인 인증 / 본인 인증"
+use = "верификация иностранца (проверка документов)"
+avoid = ["идентификация", "авторизация"]
+why = "KOVIL checks the foreign resident's documents; «верификация» is the term the shipped bundles already use consistently (6 lines across errors_ru and notifications_ru), and «идентификация» is a general term, while «авторизация» means logging in, which misleads users about a document check."
+register_note = "Use «верификация» in UI and «проверка документов» in legal text. Native review pending: a Russian-speaking resident may prefer «проверка личности»; if so, change all bundle keys together."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "phone_verification_code"
+ko = "인증번호"
+use = "код подтверждения (SMS)"
+avoid = ["номер подтверждения", "верификационный номер"]
+why = "The SMS one-time code is called «код подтверждения»; «номер» suggests a phone number or account number, and «верификационный номер» is a literal machine calque."
+register_note = "Neutral."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "partner"
+ko = "파트너"
+use = "партнёр (риелтор-партнёр)"
+avoid = ["компаньон", "парт-нёр"]
+why = "«Партнёр» is the everyday word for a business partner on the platform; «компаньон» implies a co-owner with shares, which misleads about the relationship."
+register_note = "Use «партнёр» in UI."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_withdrawal"
+ko = "회원 탈퇴"
+use = "удалить аккаунт (выход из сервиса)"
+avoid = ["выйти из членства", "отчисление"]
+why = "«Удалить аккаунт» is the plain word for leaving; «выйти из членства» is a calque, and «отчисление» means expulsion from school, which sounds punitive."
+register_note = "Plain and short in UI."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "account_suspended"
+ko = "이용 정지"
+use = "аккаунт приостановлен (временно, обратитесь в поддержку)"
+avoid = ["заблокирован", "арест"]
+why = "«Приостановлен» is the word the shipped bundles use for a suspended (temporary, support-resolved) account; «заблокирован» is a ban and is used for listings (listing_blocked), so it would overstate a suspension; «арест» implies legal seizure."
+register_note = "Use «Аккаунт приостановлен. Обратитесь в службу поддержки.» in UI. Keep «заблокирован» for listings only."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "report_content"
+ko = "신고"
+use = "пожаловаться"
+avoid = ["отчитаться", "доклад"]
+why = "«Пожаловаться» is the everyday word for reporting abuse; «отчитаться» means giving a report to a boss, and «доклад» is a formal presentation."
+register_note = "Button text: «Пожаловаться»."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "push_notification"
+ko = "푸시 알림"
+use = "push-уведомление (пуш)"
+avoid = ["всплывающее окно", "оповещение по почте"]
+why = "«Push» with the gloss «уведомление» is the common phone term; «всплывающее окно» is a pop-up window on a computer, and «оповещение по почте» is an email, which is different."
+register_note = "«Уведомление» in UI, «пуш» in chat."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "district"
+ko = "구/시군구"
+use = "район (гу)"
+avoid = ["округ", "область"]
+why = "Residents say «гу» or «район» for the Korean district; «округ» is a US-style county or Russian federal unit, and «область» is a province, which is too large."
+register_note = "Keep «гу» in the address."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "neighborhood"
+ko = "동/읍면동"
+use = "квартал (дон)"
+avoid = ["микрорайон", "деревня"]
+why = "«Дон» is the Korean neighborhood unit that residents write as «квартал»; «микрорайон» is a Soviet-era planned district, and «деревня» means a village, which misdescribes an urban area."
+register_note = "Keep «дон» in the address."
+sources = []
+confidence = "low"
+
+[[term]]
+concept = "subway_transfer"
+ko = "환승"
+use = "пересадка"
+avoid = ["трансфер", "перенос"]
+why = "«Пересадка» is the everyday word on the metro; «трансфер» means airport transfer or a transport service, and «перенос» means moving something."
+register_note = "Neutral."
+sources = []
+confidence = "medium"
+
+[[term]]
+concept = "community_center"
+ko = "주민센터"
+use = "центр обслуживания жителей (주민센터)"
+avoid = ["общинный центр", "муниципалитет", "управа"]
+why = "The 주민센터 is a local service desk for residence and documents (주민 = resident, 센터 = centre); «общинный центр» suggests a commune or community club, «муниципалитет» is the whole city government, and «управа» is an older district office, which all mislead about what the counter does."
+register_note = "Keep «주민센터» in brackets on first use."
+sources = ["https://korea.legal/wiki/%ec%a0%95%eb%b6%8024-%ec%a0%84%ec%9e%85%ec%8b%a0%ea%b3%a0-%eb%af%bc%ec%9b%90%ec%95%88%eb%82%b4/"]
+confidence = "low"
