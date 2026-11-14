@@ -1,0 +1,8 @@
+[workspace]
+resolver = "3"
+members = ["kovil-l10n", "kovil-server"]
+
+[workspace.package]
+edition = "2024"
+license = "UNLICENSED"
+publish = false
