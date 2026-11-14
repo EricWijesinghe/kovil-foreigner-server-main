@@ -1,0 +1,7 @@
+# Keep local state and Rust build output out of every image. The Java image needs build/libs, so build/ stays.
+.git
+.gradle
+.idea
+core/target
+.env
+.env.*

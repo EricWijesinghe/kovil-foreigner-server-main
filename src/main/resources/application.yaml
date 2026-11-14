@@ -1,0 +1,412 @@
+spring:
+  # ★ 기본값은 **스레드 1개**다. @Scheduled 넷이 그 하나를 공유하는데, 정리 배치는 회차당
+  #   R2 왕복을 최대 400회(200건 × copy+delete) 돈다 — 그동안 푸시 아웃박스(30초 주기)와
+  #   조회수 동기화(60초 주기)가 통째로 멈춘다. R2 가 느리면 정지 시간이 시간 단위로 번진다
+  #   (적대적 리뷰 2026-09-23). 배치끼리는 서로 다른 도메인이라 병행해도 겹치지 않는다.
+  task:
+    scheduling:
+      pool:
+        size: ${TASK_SCHEDULING_POOL_SIZE:4}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 55MB
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+  # OSIV 는 OpenEntityManagerInViewConfig 가 건다 — 외부 벤더를 부르는 경로(주변시설 · 번역)만 빼려고 기본값을 끈다.
+  jpa:
+    open-in-view: false
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
+  config:
+    import: optional:file:${ENV_FILE_PATH:./.env}[.properties]
+  application:
+    name: kovil
+  # 에러 문구는 getCode()를 키로 번들에서 찾는다. 키가 없으면 ErrorCode.getDefaultMessage()로 떨어진다.
+  # fallback-to-system-locale=false — 미지원 언어는 서버 로케일이 아니라 기본 번들(영어)로 간다.
+  messages:
+    basename: messages/errors,messages/notifications
+    encoding: UTF-8
+    fallback-to-system-locale: false
+    use-code-as-default-message: false
+  # 주변시설(카카오)은 상세 화면이 기다리는 호출이다 — 기본(연결 10초 · 읽기 60초)이면 카카오가 느릴 때
+  # 상세 옆 칸 하나 때문에 요청이 1분씩 붙잡힌다. 실패는 UNAVAILABLE 로 삼키므로 짧게 끊는다.
+  # 주소 검색(카카오 · 네이버)은 사람이 [검색]을 누르고 기다리는 호출 — 끊기면 GEOCODING_PROVIDER_ERROR(502).
+  cloud:
+    openfeign:
+      client:
+        config:
+          kakaoLocalFeignClient:   # @FeignClient(name = …) 와 같아야 걸린다
+            connect-timeout: 1000
+            read-timeout: 2000
+          kakaoGeocodingClient:
+            connect-timeout: ${GEOCODING_CONNECT_TIMEOUT_MS:3000}
+            read-timeout: ${GEOCODING_READ_TIMEOUT_MS:5000}
+          naverGeocodingClient:
+            connect-timeout: ${GEOCODING_CONNECT_TIMEOUT_MS:3000}
+            read-timeout: ${GEOCODING_READ_TIMEOUT_MS:5000}
+          jusoSearchClient:        # 행정안전부 검색 — 끊기면 ADDRESS_SEARCH_UNAVAILABLE(503)
+            connect-timeout: ${ADDRESS_SEARCH_CONNECT_TIMEOUT_MS:3000}
+            read-timeout: ${ADDRESS_SEARCH_READ_TIMEOUT_MS:5000}
+
+notification:
+  push:
+    provider: ${PUSH_PROVIDER:fake}            # fake | firebase
+  worker:
+    enabled: ${NOTIFICATION_WORKER_ENABLED:true}
+    fixed-delay: ${NOTIFICATION_WORKER_DELAY_MS:30000}
+    # 이 횟수를 넘기면 GIVEN_UP — 자동 재시도를 멈추고 관리자 대기열로 넘어간다
+    max-attempts: ${NOTIFICATION_MAX_ATTEMPTS:5}
+    retry-backoff: ${NOTIFICATION_RETRY_BACKOFF:5m}
+
+firebase:
+  project-id: ${FIREBASE_PROJECT_ID:}
+  client-email: ${FIREBASE_CLIENT_EMAIL:}     # 서비스 계정 JSON의 client_email 값
+  private-key: ${FIREBASE_PRIVATE_KEY:}       # JSON의 private_key 값 그대로(백슬래시 n 이스케이프 포함 한 줄)
+
+device:
+  max-tokens-per-user: ${DEVICE_MAX_TOKENS_PER_USER:10}
+
+storage:
+  provider: ${STORAGE_PROVIDER:fake}          # fake | r2
+  presign-ttl-seconds: ${STORAGE_PRESIGN_TTL_SECONDS:600}
+  # 민감 파일 열람 URL의 수명. 짧을수록 안전하지만 화면이 느리면 재발급이 잦아진다.
+  read-url-ttl-seconds: ${STORAGE_READ_URL_TTL_SECONDS:300}
+
+# 정리 배치 — 지워진 파일을 격리 접두사로 옮긴다. 실제 파기는 R2 수명 규칙이 한다.
+# ★ cron 을 "-" 로 두면 빈은 살아 있고 트리거만 꺼진다(Spring CRON_DISABLED).
+file:
+  cleanup:
+    enabled: ${FILE_CLEANUP_ENABLED:true}
+    cron: "${FILE_CLEANUP_CRON:0 30 4 * * *}"
+  orphan:
+    listing-image:   # 매물에 안 붙은 매물 사진 폐기 표시 — 위 정리 배치보다 앞
+      enabled: ${FILE_ORPHAN_LISTING_IMAGE_ENABLED:true}
+      cron: "${FILE_ORPHAN_LISTING_IMAGE_CRON:0 10 4 * * *}"
+      grace: ${FILE_ORPHAN_LISTING_IMAGE_GRACE:24h}
+
+# r2
+cloudflare:
+  r2:
+    account-id: ${R2_ACCOUNT_ID:}
+    access-key-id: ${R2_ACCESS_KEY_ID:}
+    secret-access-key: ${R2_SECRET_ACCESS_KEY:}
+    bucket: ${R2_BUCKET:}
+    public-base-url: ${R2_PUBLIC_BASE_URL:}   # 예: https://pub-xxxx.r2.dev 또는 커스텀 도메인(https://file.kovil.co.kr)
+
+ocr:
+  provider: ${OCR_PROVIDER:fake}
+
+llm:
+  provider: ${LLM_PROVIDER:fake}
+
+openai:
+  api-url: ${OPENAI_API_URL:https://api.openai.com}
+  api-key: ${OPENAI_API_KEY:}
+  model: ${OPENAI_MODEL:gpt-5.4-mini}
+  max-completion-tokens: ${OPENAI_MAX_COMPLETION_TOKENS:4000}
+  reasoning-effort: ${OPENAI_REASONING_EFFORT:low}
+
+# 광고 기한 배치 — 게시 후 1개월 만료, 그 뒤 7일 안에 연장 없으면 자동 종료.
+# 끄면 **모든 광고가 영원히 떠 있는다.** 운영에서 내리지 말 것.
+listing:
+  expiry:
+    enabled: ${LISTING_EXPIRY_ENABLED:true}
+    cron: ${LISTING_EXPIRY_CRON:0 20 3 * * *}
+
+translation:
+  provider: ${TRANSLATION_PROVIDER:fake}   # fake | gemini | openai
+  gemini:
+    api-url: ${GEMINI_API_URL:https://generativelanguage.googleapis.com}
+    api-key: ${GEMINI_API_KEY:}
+    model: ${GEMINI_MODEL:gemini-3.1-flash-lite}
+    timeout-seconds: ${GEMINI_TIMEOUT_SECONDS:20}
+  # 키 · 주소는 위 openai: 블록(OPENAI_API_KEY)을 같이 쓴다. 생각 정도 값은 모델마다 다르다 — gpt-6-luna 는 none, gpt-5-nano 는 minimal.
+  openai:
+    model: ${OPENAI_TRANSLATION_MODEL:gpt-6-luna}
+    reasoning-effort: ${OPENAI_TRANSLATION_REASONING_EFFORT:none}
+    max-completion-tokens: ${OPENAI_TRANSLATION_MAX_COMPLETION_TOKENS:4000}
+
+nearby:
+  provider: ${NEARBY_PROVIDER:fake}   # fake | kakao
+  radius: ${NEARBY_RADIUS:500}
+  nearest-size: ${NEARBY_NEAREST_SIZE:3}
+  # 0 이면 캐시 끔. 카카오 결과 저장 허용 범위를 확인한 뒤 켠다(예 7d) — HUMAN_TODO #77.
+  cache-ttl: ${NEARBY_CACHE_TTL:0s}
+
+geocoding:
+  provider: ${GEOCODING_PROVIDER:fake}   # fake | naver | kakao — 고른 주소의 좌표(/partner/address/coordinate)
+
+# 주소 검색 후보를 어디서 받나(PO 11-02: 검색은 행정안전부, 좌표만 네이버). 기본 geocoding 은 위 좌표 벤더로 검색 — 지금까지와 같다.
+# juso 로 바꾸면 후보에 좌표가 비어 오니, 좌표 없는 후보를 다루는 파트너스 앱이 깔린 뒤에 바꾼다.
+address-search:
+  provider: ${ADDRESS_SEARCH_PROVIDER:geocoding}   # geocoding | juso
+
+# 행정안전부 도로명주소 검색(business.juso.go.kr). 무료, 승인키는 시스템마다 하나, 좌표는 주지 않는다.
+# 개발용 키는 기간이 지나면 E0014 로 막힌다 — 운영 서버에는 운영용 키를 넣는다.
+juso:
+  search:
+    base-url: ${JUSO_SEARCH_BASE_URL:https://business.juso.go.kr}
+    confm-key: ${JUSO_SEARCH_CONFM_KEY:}
+
+kakao:
+  geocoding:
+    base-url: ${KAKAO_GEOCODING_BASE_URL:https://dapi.kakao.com}
+    rest-api-key: ${KAKAO_REST_API_KEY:}
+  local:
+    base-url: ${KAKAO_LOCAL_BASE_URL:https://dapi.kakao.com}
+    # 비우면 주소 검색 키를 같이 쓴다. KOVIL 전용 키가 생기면 이것만 바꾼다.
+    rest-api-key: ${KAKAO_LOCAL_REST_API_KEY:${KAKAO_REST_API_KEY:}}
+
+naver:
+  geocoding:
+    base-url: ${NAVER_MAPS_BASE_URL:https://maps.apigw.ntruss.com}
+    client-id: ${NAVER_MAPS_CLIENT_ID:}
+    client-secret: ${NAVER_MAPS_CLIENT_SECRET:}
+
+clova:
+  ocr:
+    invoke-url: ${CLOVA_OCR_INVOKE_URL:}
+    secret-key: ${CLOVA_OCR_SECRET_KEY:}
+
+# 브라우저 프런트의 출처. 네이티브 앱은 Origin을 안 보내므로 무관하고, **Expo 웹·Next 관리자 웹**이
+# 대상이다. 포트 와일드카드는 대괄호 문법이다(`http://localhost:[*]` — `http://localhost:*`는 안 먹는다).
+# 기본값은 로컬 개발 출처뿐이다. **운영 배포는 CORS_ALLOWED_ORIGIN_PATTERNS를 실제 도메인으로
+# 반드시 덮어써라** — 안 덮으면 운영 서버가 아무개의 localhost 페이지에도 응답한다.
+# 비워 두면(CORS_ALLOWED_ORIGIN_PATTERNS=) CORS를 아예 걸지 않는다.
+cors:
+  allowed-origin-patterns: ${CORS_ALLOWED_ORIGIN_PATTERNS:http://localhost:[*],http://127.0.0.1:[*]}
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-ttl: ${JWT_ACCESS_TOKEN_TTL:30m}
+  issuer: kovil
+
+# 키를 바꾸면 기존 phone 암호문은 복호화 불가, phone_hash는 대조 불가가 된다(가입 이력 전체가 끊긴다).
+# 교체는 재암호화 마이그레이션과 함께만 한다.
+crypto:
+  key-provider: ${CRYPTO_KEY_PROVIDER:env}   # env | kms
+  # env: Base64(원문 키) / kms: Base64(KMS 암호문). 같은 칸을 재사용한다 —
+  # 잘못 넣으면 한쪽은 KMS가, 한쪽은 길이 검사가 거절해서 조용히 통과하지 않는다.
+  aes-key: ${CRYPTO_AES_KEY:}                # env 기준 Base64(32 bytes)
+  hmac-key: ${CRYPTO_HMAC_KEY:}              # env 기준 Base64(32 bytes 이상)
+  active-version: ${CRYPTO_ACTIVE_VERSION:1}   # 새로 쓰는 암호문에 박히는 버전
+  # 키 교체 중에만 채운다. 채워지면 옛 버전 암호문도 읽을 수 있다.
+  # 백필이 끝나면 반드시 비운다 — 남겨두면 유출된 옛 키가 계속 유효하다.
+  previous:
+    version: ${CRYPTO_PREVIOUS_VERSION:}
+    aes-key: ${CRYPTO_PREVIOUS_AES_KEY:}
+    hmac-key: ${CRYPTO_PREVIOUS_HMAC_KEY:}
+  kms:
+    key-id: ${CRYPTO_KMS_KEY_ID:}            # kms 모드 필수. CMK ARN 또는 alias/이름
+    region: ${CRYPTO_KMS_REGION:}            # 비우면 SDK 기본 체인(EC2 메타데이터)
+
+# 정책 enum과 이 목록은 1:1이다 — 하나라도 빠지면 부팅이 실패한다(무제한으로 열린 채 뜨는 것보다 낫다).
+# 한도 수치는 `설계 선택`이며 운영 데이터를 보고 조정한다(HUMAN_TODO P1-19).
+ratelimit:
+  enabled: ${RATELIMIT_ENABLED:true}
+  # 프록시 뒤의 진짜 클라이언트 IP를 얻기 위한 신뢰 대역.
+  # 이게 없으면 관리자 웹의 **모든** 요청이 Next 컨테이너 IP 하나로 보여, 누구의 로그인 실패든
+  # 30회면 전 직원이 10분간 차단된다(signin-fail-ip는 인증 전에 거절한다).
+  # 루프백 + RFC1918(도커 사설망) — 인터넷에서 직접 오는 요청은 여기 없으므로 헤더를 안 믿는다.
+  trusted-proxies: ${RATELIMIT_TRUSTED_PROXIES:127.0.0.1/32,::1/128,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
+  policies:
+    # ── 휴대폰 인증: SMS 1건 = 비용. 번호·IP·전역 세 축을 동시에 건다 ──
+    phone-verification-send:        # 번호축(key = phone_hash)
+      limit: ${RL_PHONE_SEND_LIMIT:5}
+      window: ${RL_PHONE_SEND_WINDOW:1h}
+    phone-verification-send-ip:     # IP축 — 번호를 바꿔가며 폭주하는 스크립트용
+      limit: ${RL_PHONE_SEND_IP_LIMIT:20}
+      window: ${RL_PHONE_SEND_IP_WINDOW:1h}
+    phone-verification-verify:      # 6자리 코드 대입 방지
+      limit: ${RL_PHONE_VERIFY_LIMIT:5}
+      window: ${RL_PHONE_VERIFY_WINDOW:10m}
+    sms-global:                     # 전역 서킷 브레이커 — 계정 양산으로 개인 한도를 우회해도 총 발송량을 캡
+      limit: ${RL_SMS_GLOBAL_LIMIT:500}
+      window: ${RL_SMS_GLOBAL_WINDOW:1d}
+    # ── 인증 ──
+    signup:
+      limit: ${RL_SIGNUP_LIMIT:5}
+      window: ${RL_SIGNUP_WINDOW:1h}
+    oauth-login:
+      limit: ${RL_OAUTH_LOGIN_LIMIT:60}
+      window: ${RL_OAUTH_LOGIN_WINDOW:10m}
+    refresh:
+      limit: ${RL_REFRESH_LIMIT:60}
+      window: ${RL_REFRESH_WINDOW:10m}
+    signin-fail-id:
+      limit: ${RL_SIGNIN_FAIL_ID_LIMIT:5}
+      window: ${RL_SIGNIN_FAIL_ID_WINDOW:5m}
+    signin-fail-ip:
+      limit: ${RL_SIGNIN_FAIL_IP_LIMIT:30}
+      window: ${RL_SIGNIN_FAIL_IP_WINDOW:10m}
+    # 사진 한 장에 presign 한 번이다. 200 은 입주 확인서(사진 상한 100장)를 한 세션에 만들 수 있게
+    # 잡은 값이었다 — 확인서는 계약 도메인과 함께 사라졌고 값은 그대로 두었다.
+    upload-presign:
+      limit: ${RL_UPLOAD_PRESIGN_LIMIT:200}
+      window: ${RL_UPLOAD_PRESIGN_WINDOW:1h}
+    # ── 전 /api 백스톱(사용자∨IP) — 정상 사용자는 닿지 않는 값 ──
+    # ── 매물: 등록은 영업 상한, 수정은 번역 캐시 무효화 비용 방어 ──
+    listing-create:
+      limit: ${RL_LISTING_CREATE_LIMIT:50}
+      window: ${RL_LISTING_CREATE_WINDOW:1d}
+    listing-update:
+      limit: ${RL_LISTING_UPDATE_LIMIT:100}
+      window: ${RL_LISTING_UPDATE_WINDOW:1d}
+    # ── 문의: 중개사 번호가 나가는 유일한 경로다. 없으면 번호 전수 수집이 그대로 열린다 ──
+    listing-inquiry:
+      limit: ${RL_LISTING_INQUIRY_LIMIT:30}
+      window: ${RL_LISTING_INQUIRY_WINDOW:1d}
+    listing-inquiry-global:     # 계정 양산으로 개인 한도를 우회해도 총 노출량을 캡
+      limit: ${RL_LISTING_INQUIRY_GLOBAL_LIMIT:2000}
+      window: ${RL_LISTING_INQUIRY_GLOBAL_WINDOW:1d}
+    # ── 번역: 호출당 과금. 캐시는 같은 매물·같은 언어·같은 버전만 막아 준다 ──
+    listing-translate:          # PO 승인값 — 시간축이다. 하루축으로 바꾸지 말 것
+      limit: ${RL_LISTING_TRANSLATE_LIMIT:30}
+      window: ${RL_LISTING_TRANSLATE_WINDOW:1h}
+    listing-translate-global:   # 이 숫자가 곧 하루 최대 번역 비용의 상한이다
+      limit: ${RL_LISTING_TRANSLATE_GLOBAL_LIMIT:3000}
+      window: ${RL_LISTING_TRANSLATE_GLOBAL_WINDOW:1d}
+    # ── 주변시설: 비로그인 상세마다 카카오 최대 8호출 ──
+    listing-nearby:
+      limit: ${RL_LISTING_NEARBY_LIMIT:60}
+      window: ${RL_LISTING_NEARBY_WINDOW:1h}
+    listing-nearby-global:      # 이 숫자 × 8 이 하루 카카오 호출 상한이다 — 카카오 쿼터 확인 뒤 정한다(HUMAN_TODO #77)
+      limit: ${RL_LISTING_NEARBY_GLOBAL_LIMIT:2000}
+      window: ${RL_LISTING_NEARBY_GLOBAL_WINDOW:1d}
+    # ── 매물 신고: 신고 자체는 아무것도 내리지 않지만, 남발하면 관리자 대기열이 덮인다 ──
+    listing-report:
+      limit: ${RL_LISTING_REPORT_LIMIT:20}
+      window: ${RL_LISTING_REPORT_WINDOW:1d}
+    # ── 주소 검색: 가입 중(로그인 전)에도 열려 있다. 행정안전부(juso)는 무료지만 이상 호출이면 우리 서버 IP 를 막아
+    #    모두의 검색이 멈춘다 — 사람 축 셋에 전체 축 둘(CLEANUS 와 같은 600/분 · 80,000/일)을 더 건다 ──
+    address-search:             # 사용자∨IP 연속 — 사람이 [검색]을 누르는 속도면 닿지 않는다
+      limit: ${RL_ADDRESS_SEARCH_LIMIT:20}
+      window: ${RL_ADDRESS_SEARCH_WINDOW:1m}
+    address-search-daily:       # 사용자∨IP 하루 — 매물을 많이 올리는 중개사도 남는 값
+      limit: ${RL_ADDRESS_SEARCH_DAILY_LIMIT:300}
+      window: ${RL_ADDRESS_SEARCH_DAILY_WINDOW:1d}
+    address-search-guest:       # 비로그인 전체 하루 — 로그인 전 검색(가입 소재지)의 하루 벤더 호출 상한
+      limit: ${RL_ADDRESS_SEARCH_GUEST_LIMIT:3000}
+      window: ${RL_ADDRESS_SEARCH_GUEST_WINDOW:1d}
+    address-search-burst:       # 전체 1분 — 순간 폭주를 행정안전부에 그대로 넘기지 않는다
+      limit: ${RL_ADDRESS_SEARCH_BURST_LIMIT:600}
+      window: ${RL_ADDRESS_SEARCH_BURST_WINDOW:1m}
+    address-search-global:      # 전체 하루
+      limit: ${RL_ADDRESS_SEARCH_GLOBAL_LIMIT:80000}
+      window: ${RL_ADDRESS_SEARCH_GLOBAL_WINDOW:1d}
+    # ── 고른 주소의 좌표: 호출마다 네이버 과금. 매물 관리 권한(로그인)만 부른다 ──
+    address-coordinate:         # 사용자 연속 — 후보를 고르는 속도면 닿지 않는다
+      limit: ${RL_ADDRESS_COORDINATE_LIMIT:20}
+      window: ${RL_ADDRESS_COORDINATE_WINDOW:1m}
+    address-coordinate-daily:   # 사용자 하루
+      limit: ${RL_ADDRESS_COORDINATE_DAILY_LIMIT:300}
+      window: ${RL_ADDRESS_COORDINATE_DAILY_WINDOW:1d}
+    address-coordinate-global:  # 전체 하루 — 이 숫자가 곧 좌표 변환의 하루 네이버 호출 상한이다(한 번에 최대 2건)
+      limit: ${RL_ADDRESS_COORDINATE_GLOBAL_LIMIT:10000}
+      window: ${RL_ADDRESS_COORDINATE_GLOBAL_WINDOW:1d}
+    default-backstop:
+      limit: ${RL_BACKSTOP_LIMIT:120}
+      window: ${RL_BACKSTOP_WINDOW:1m}
+
+sms:
+  provider: ${SMS_PROVIDER:fake}          # fake | solapi
+
+solapi:
+  api-key: ${SOLAPI_API_KEY:}
+  api-secret: ${SOLAPI_API_SECRET:}
+  from: ${SOLAPI_FROM:}                   # 사전 등록된 발신번호
+
+# 인증번호·시도 횟수·쿨다운은 전부 Redis가 소유한다(FR-102). DB에는 성공 사실만 남는다.
+phone-verification:
+  code-ttl: ${PHONE_CODE_TTL:5m}
+  resend-cooldown: ${PHONE_RESEND_COOLDOWN:60s}
+  max-attempts: ${PHONE_MAX_ATTEMPTS:5}
+  token-ttl: ${PHONE_TOKEN_TTL:10m}
+
+refresh-token:
+  ttl: ${REFRESH_TOKEN_TTL:30d}
+  max-active-per-user: ${REFRESH_TOKEN_MAX_ACTIVE:5}
+  reuse-grace: ${REFRESH_TOKEN_REUSE_GRACE:60s}
+
+# provider별 엔드포인트는 공식 discovery/문서로 확인한 값이다.
+oauth:
+  provider: ${OAUTH_PROVIDER:fake}          # fake | real
+  # 웹 흐름(authorize → code 교환)을 여는 목록. 지금은 구글만 연다. 앱의 welcome.tsx 플래그와 짝이므로 **양쪽을 함께** 되돌린다.
+  #   애플   — 웹(kovil.co.kr) 로그인이다. 넣으면 아래 apple 의 웹 값(Services ID · redirect-uri)과 키가 모두 있어야 부팅된다.
+  #             iOS 앱 네이티브 로그인은 이 목록과 무관하고 oauth.apple.native-enabled 로 연다.
+  #   페이스북 — Meta 비즈니스 인증 + email 고급 액세스 승인 전까지 잠금. 표준 액세스로는
+  #             email 이 null 로 와서 신규 가입이 OAUTH_EMAIL_REQUIRED 로 끊긴다.
+  # 켤 때는 GOOGLE,APPLE 또는 GOOGLE,FACEBOOK,APPLE 로.
+  enabled-providers: ${OAUTH_ENABLED_PROVIDERS:GOOGLE}
+  # 되돌림 페이지가 앱을 열 때 쓰는 스킴. expo 의 app.json `scheme` 과 반드시 같아야 한다 —
+  # 어긋나면 동의를 마친 사용자가 브라우저에 갇힌다.
+  app:
+    scheme: ${OAUTH_APP_SCHEME:kovil}
+  # authorize 의 returnTo=WEB 일 때 되돌림 페이지가 보내는 웹 주소. {base-url}/oauth/{provider} 로 간다.
+  # 로컬 개발은 Expo 웹(http://localhost:8081)을 넣는다.
+  web:
+    base-url: ${OAUTH_WEB_BASE_URL:https://kovil.co.kr}
+  google:
+    client-id: ${GOOGLE_CLIENT_ID:}
+    client-secret: ${GOOGLE_CLIENT_SECRET:}
+    redirect-uri: ${GOOGLE_REDIRECT_URI:}
+    authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
+    token-uri: https://oauth2.googleapis.com/token
+    user-info-uri: https://openidconnect.googleapis.com/v1/userinfo
+  # client_id 가 둘이다. 앱 네이티브는 번들 ID, 웹은 Services ID. 둘은 primary App ID com.kovil.app 에 묶여 sub 가 같다.
+  # 네이티브를 켜면(real 모드) client-id · team-id · key-id · private-key 가, 웹을 켜면 web-client-id · redirect-uri 까지 있어야 부팅된다.
+  apple:
+    native-enabled: ${APPLE_NATIVE_ENABLED:false}
+    client-id: ${APPLE_CLIENT_ID:}          # 번들 ID(com.kovil.app). 네이티브 id_token 의 aud · client_secret 의 sub
+    web-client-id: ${APPLE_WEB_CLIENT_ID:}  # Services ID(com.kovil.web). 웹 id_token 의 aud · client_secret 의 sub
+    team-id: ${APPLE_TEAM_ID:}
+    key-id: ${APPLE_KEY_ID:}
+    private-key: ${APPLE_PRIVATE_KEY:}      # .p8 본문
+    redirect-uri: ${APPLE_REDIRECT_URI:}    # 웹 Return URL. https://api.kovil.co.kr/oauth/apple/callback
+    authorization-uri: https://appleid.apple.com/auth/authorize
+    token-uri: https://appleid.apple.com/auth/token
+    keys-uri: https://appleid.apple.com/auth/keys
+    revoke-uri: https://appleid.apple.com/auth/revoke
+    # userinfo 엔드포인트가 없다 — 신원은 id_token에서 꺼낸다
+  facebook:
+    client-id: ${FACEBOOK_CLIENT_ID:}
+    client-secret: ${FACEBOOK_CLIENT_SECRET:}
+    redirect-uri: ${FACEBOOK_REDIRECT_URI:}
+    authorization-uri: https://www.facebook.com/v25.0/dialog/oauth
+    token-uri: https://graph.facebook.com/v25.0/oauth/access_token
+    user-info-uri: https://graph.facebook.com/v25.0/me
+
+# open_api.json이 FE 계약의 정본이다.
+# ⚠ 운영에서는 반드시 꺼야 한다 — 켜두면 API 표면 전체가 비로그인 공개된다.
+springdoc:
+  api-docs:
+    enabled: ${SWAGGER_ENABLED:true}
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: ${SWAGGER_ENABLED:true}
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: method
+
+rental-request:
+  max-active-per-user: ${RENTAL_REQUEST_MAX_ACTIVE:1}
+  max-claims-per-office: ${RENTAL_REQUEST_MAX_CLAIMS_PER_OFFICE:50}
+
+community:
+  view-sync:
+    enabled: ${COMMUNITY_VIEW_SYNC_ENABLED:true}
+    delay-ms: ${COMMUNITY_VIEW_SYNC_DELAY_MS:60000}
+  popular:
+    # 인기 정렬 계수 — 점수 = (조회수 + 좋아요×like-weight + 댓글×comment-weight) / (경과시간h + 2)^decay-exponent.
+    # 실데이터 없이 정한 초기값이라 재조정을 전제로 설정에 뺐다(배포 없이 바꾼다).
+    # 가중은 어뷰징 비용 순: 댓글 > 좋아요 > 조회. decay-exponent는 클수록 빨리 식는다(HN 1.8, 초기엔 완만하게).
+    like-weight: ${COMMUNITY_POPULAR_LIKE_WEIGHT:4}
+    comment-weight: ${COMMUNITY_POPULAR_COMMENT_WEIGHT:10}
+    decay-exponent: ${COMMUNITY_POPULAR_DECAY_EXPONENT:1.5}
+    # 랭킹 캐시 TTL — hit면 즉시 응답, miss면 재집계 후 저장. 순위 반영이 최대 이만큼 늦는다(PO: 1~2시간).
+    # 0 또는 음수면 캐시 끔(테스트·디버깅용).
+    cache-ttl: ${COMMUNITY_POPULAR_CACHE_TTL:1h}
+    # 랭킹 풀 크기 — 캐시에 담는 상위 N. 인기 목록 페이지네이션의 상한이자 miss 시 스코어링 결과 폭.
+    pool-size: ${COMMUNITY_POPULAR_POOL_SIZE:100}

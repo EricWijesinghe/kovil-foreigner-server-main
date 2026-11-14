@@ -1,0 +1,109 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: ""
+      timeout: 60000
+  flyway:
+    enabled: false
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        show_sql: false
+        dialect: org.hibernate.dialect.H2Dialect
+
+jwt:
+  secret: dGVzdC1qd3Qtc2VjcmV0LWtleS1mb3ItdGVzdGluZy1wdXJwb3NlLTMyYnl0ZXM=
+  access-token-ttl: 30m
+  issuer: kovil
+
+crypto:
+  key-provider: env
+  aes-key: dGVzdC1jcnlwdG8tYWVzLWtleS0zMmJ5dGVzLW9ubHk=
+  hmac-key: dGVzdC1jcnlwdG8taG1hYy1rZXktMzJieXRlcy1vbmw=
+
+ratelimit:
+  enabled: false
+
+sms:
+  provider: fake
+
+phone-verification:
+  code-ttl: 5m
+  resend-cooldown: 60s
+  max-attempts: 5
+  token-ttl: 10m
+
+refresh-token:
+  ttl: 30d
+  max-active-per-user: 5
+
+oauth:
+  provider: fake
+  # 테스트는 3종 전부 연다 — 애플 경로의 코드·스위트가 계속 살아 있어야 부활이 안전하다.
+  # 애플 네이티브는 목록과 따로 스위치로 연다.
+  enabled-providers: GOOGLE,FACEBOOK,APPLE
+  apple:
+    native-enabled: true
+
+device:
+  max-tokens-per-user: 10
+
+storage:
+  provider: fake
+  presign-ttl-seconds: 600
+  read-url-ttl-seconds: 300
+
+rental-request:
+  max-active-per-user: 1
+  max-claims-per-office: 50
+
+ocr:
+  provider: fake
+
+geocoding:
+  provider: fake
+
+nearby:
+  provider: fake
+  cache-ttl: 0s
+
+llm:
+  provider: fake
+
+translation:
+  provider: fake
+
+notification:
+  push:
+    provider: fake
+  worker:
+    enabled: false
+    max-attempts: 3
+    retry-backoff: 5m
+
+listing:
+  expiry:
+    enabled: false
+
+community:
+  view-sync:
+    enabled: false
+
+# 빈은 살리고 자동 트리거만 끈다 — FileLifecycleIntegrationTest 가 scheduler.run() 을 직접 부른다.
+file:
+  cleanup:
+    cron: "-"
+  orphan:
+    listing-image:
+      cron: "-"

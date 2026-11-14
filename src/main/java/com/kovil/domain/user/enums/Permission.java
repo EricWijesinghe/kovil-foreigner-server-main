@@ -1,0 +1,28 @@
+package com.kovil.domain.user.enums;
+
+public enum Permission {
+
+    RENTAL_REQUEST_VIEW,
+
+    VERIFICATION_REVIEW,
+
+    COMMUNITY_MODERATE,
+
+    USER_MANAGE,
+
+    PARTNER_APPROVE,
+
+    ROLE_ASSIGN,
+
+    MASTER_DATA_MANAGE,
+
+    NOTIFICATION_MANAGE,
+
+    APP_POLICY_MANAGE,
+
+    LISTING_MANAGE,
+
+    LISTING_MODERATE,
+
+    RENTAL_REQUEST_HANDLE
+}
