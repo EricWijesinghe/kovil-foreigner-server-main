@@ -1,0 +1,361 @@
+name: Server CD - Production Deploy
+
+# 운영 배포는 자동으로 나가지 않는다. main 푸시는 QA만 건드리고(CD_PIPELINE.yml),
+# 운영은 사람이 이 워크플로를 눌러야 나간다.
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write      # OIDC로 AWS 역할을 맡기 위해 필요하다 — 액세스 키는 저장하지 않는다.
+  contents: read
+
+concurrency:
+  group: prod-server-deploy
+  cancel-in-progress: false
+
+env:
+  AWS_REGION: ap-northeast-2
+  ECR_REGISTRY: 088146583376.dkr.ecr.ap-northeast-2.amazonaws.com
+  ECR_REPOSITORY: wjf-prod/server
+  CONTAINER: wjf-prod-server
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: production      # 환경 시크릿 + (설정하면) 승인 게이트
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Preflight - PROD_SERVER_ENV 정규화·검사
+        env:
+          PROD_SERVER_ENV: ${{ secrets.PROD_SERVER_ENV }}
+          PROD_EC2_INSTANCE_ID: ${{ secrets.PROD_EC2_INSTANCE_ID }}
+          PROD_EC2_USERNAME: ${{ secrets.PROD_EC2_USERNAME }}
+          PROD_EC2_SSH_KEY: ${{ secrets.PROD_EC2_SSH_KEY }}
+          # PROD_ 접두사가 붙은 저장소 Variable만 골라 덮어쓴다. QA 워크플로와 Variable을
+          # 공유하므로, 접두사가 없으면 QA용 값(CORS 출처 등)이 운영에 그대로 새어 들어간다.
+          VARS_JSON: ${{ toJSON(vars) }}
+        run: |
+          python3 - <<'PYEOF'
+          import base64, json, os, re, sys
+
+          # ── 접속 시크릿 모양 검사 (값은 절대 출력하지 않는다)
+          # QA에서 실제로 났던 사고: EC2_HOST에 .env 전문이 들어가 scp가 그 안의 URL을
+          # 호스트로 착각해 dial했고, 그 과정에서 env 조각이 로그에 노출됐다.
+          shape = []
+          # SSM 터널로 붙으므로 접속 대상은 IP 가 아니라 인스턴스 ID 다.
+          # 22번 인바운드를 열지 않기 위한 구조라, 여기에 IP 를 넣으면 배포가 붙지 않는다.
+          instance = os.environ.get("PROD_EC2_INSTANCE_ID", "")
+          if not instance.strip():
+              shape.append("PROD_EC2_INSTANCE_ID 가 비어 있다")
+          elif not re.fullmatch(r"i-[0-9a-f]{8,32}", instance.strip()):
+              shape.append("PROD_EC2_INSTANCE_ID 는 i-0123abcd... 형태여야 한다 "
+                           "(IP 를 넣으면 SSM 터널이 대상을 못 찾는다)")
+          user = os.environ.get("PROD_EC2_USERNAME", "")
+          if not re.fullmatch(r"[a-z_][a-z0-9_-]*", user.strip() or ""):
+              shape.append("PROD_EC2_USERNAME 은 리눅스 사용자명 한 단어여야 한다(예: ubuntu)")
+          if not os.environ.get("PROD_EC2_SSH_KEY", "").strip().startswith("-----BEGIN"):
+              shape.append("PROD_EC2_SSH_KEY 는 PEM 개인키 전문이어야 한다")
+          if shape:
+              for s in shape:
+                  print("::error::%s" % s)
+              sys.exit(1)
+
+          raw = os.environ.get("PROD_SERVER_ENV", "")
+          if not raw.strip():
+              print("::error::PROD_SERVER_ENV 가 비어 있다 "
+                    "(Settings > Environments > production > Environment secrets)")
+              sys.exit(1)
+
+          # 사람이 손으로 채우는 파일이라 관용적으로 읽는다 — CRLF·앞뒤 공백·`KEY = V`·따옴표를
+          # 여기서 정규화한다. docker --env-file 은 이런 것들을 값의 일부로 읽어(예: 이름이
+          # "DB_NAME "이 되어) 스프링이 영영 못 찾는다. 실패는 배포 후 런타임에야 드러난다.
+          KEY = re.compile(r"[A-Za-z_][A-Za-z0-9_]*$")
+          good, bad = [], []
+          for lineno, rawline in enumerate(raw.replace("\r\n", "\n").replace("\r", "\n").split("\n"), 1):
+              line = rawline.strip()
+              if not line or line.startswith("#"):
+                  continue
+              if "=" not in line:
+                  shown = line if KEY.match(line) and len(line) <= 40 else "(값처럼 보이는 줄)"
+                  bad.append((lineno, shown, "'=' 없음"))
+                  continue
+              k, v = line.split("=", 1)
+              k, v = k.strip(), v.strip()
+              if len(v) >= 2 and v[0] == v[-1] and v[0] in "\"'":
+                  v = v[1:-1]
+              if not KEY.match(k):
+                  bad.append((lineno, repr(k)[:44], "키에 공백·특수문자(전각/NBSP 포함) 섞임"))
+                  continue
+              good.append((k, v))
+
+          try:
+              overrides = json.loads(os.environ.get("VARS_JSON") or "{}")
+          except ValueError:
+              overrides = {}
+          applied = []
+          for k, v in sorted(overrides.items()):
+              if not k.startswith("PROD_"):
+                  continue                 # QA용 Variable이 운영으로 새지 않게 하는 유일한 장치
+              name = k[len("PROD_"):]
+              if not re.fullmatch(r"[A-Z][A-Z0-9_]*", name):
+                  continue
+              v = str(v).strip()
+              idx = next((i for i, (kk, _) in enumerate(good) if kk == name), None)
+              if idx is None:
+                  good.append((name, v)); applied.append(name + "(추가)")
+              elif good[idx][1] != v:
+                  good[idx] = (name, v); applied.append(name + "(덮어씀)")
+          if applied:
+              print("PROD_ Variables 반영: %s" % " ".join(applied))
+
+          print("정규화된 키 %d개: %s" % (len(good), " ".join(k for k, _ in good)))
+          for lineno, shown, why in bad:
+              print("::warning::%d행 무시됨 — %s : %s" % (lineno, why, shown))
+
+          seen = dict(good)
+          REQUIRED = ["DB_HOST", "DB_NAME", "DB_USERNAME", "DB_PASSWORD",
+                      "REDIS_HOST", "JWT_SECRET", "CRYPTO_AES_KEY", "CRYPTO_HMAC_KEY"]
+          missing = [k for k in REQUIRED if k not in seen]
+          empty = [k for k in REQUIRED if k in seen and seen[k] == ""]
+          if missing:
+              print("::error::누락된 키: %s" % " ".join(missing))
+          if empty:
+              print("::error::값이 비어 있는 필수 키: %s "
+                    "(CRYPTO_* 가 비면 서버는 설계상 부팅되지 않는다)" % " ".join(empty))
+          if missing or empty:
+              sys.exit(1)
+
+          # ── 운영 전용 검사: QA 값이 그대로 들어오는 사고를 잡는다.
+          fatal = []
+          db_host = seen.get("DB_HOST", "")
+          if not db_host.endswith(".rds.amazonaws.com"):
+              fatal.append("DB_HOST 가 RDS 엔드포인트가 아니다 — 운영은 컨테이너 MySQL을 쓰지 않는다 "
+                           "(현재 값의 끝: ...%s)" % db_host[-24:])
+          redis_host = seen.get("REDIS_HOST", "")
+          if not redis_host.endswith(".cache.amazonaws.com"):
+              fatal.append("REDIS_HOST 가 ElastiCache 엔드포인트가 아니다 (현재 값의 끝: ...%s)"
+                           % redis_host[-24:])
+          if seen.get("SWAGGER_ENABLED", "").lower() == "true":
+              fatal.append("SWAGGER_ENABLED=true 다 — 운영에서 켜면 API 표면 전체가 비로그인 공개된다")
+          cors = seen.get("CORS_ALLOWED_ORIGIN_PATTERNS", "")
+          if not cors:
+              fatal.append("CORS_ALLOWED_ORIGIN_PATTERNS 가 비었다 — 실도메인을 넣어야 한다")
+          elif "localhost" in cors or "127.0.0.1" in cors:
+              fatal.append("CORS_ALLOWED_ORIGIN_PATTERNS 에 localhost 가 남아 있다 "
+                           "— 운영 서버가 아무개의 로컬 페이지에도 CORS 응답을 준다")
+
+          # DB 자격의 모양 검사. QA 실사고: 템플릿 안내문구가 DB_USERNAME 값으로 그대로 들어가
+          # MySQL이 "String ... is too long for user name"으로 죽었다.
+          PLACEHOLDER = re.compile(r"[(<]|새로 정하기|새 난수|TODO|여기에|입력하세요")
+          for key, rule, human in [
+              ("DB_NAME", re.compile(r"[A-Za-z0-9_]{1,64}$"), "영문·숫자·밑줄 1~64자"),
+              ("DB_USERNAME", re.compile(r"[A-Za-z0-9_]{1,32}$"), "영문·숫자·밑줄 1~32자 (MySQL 상한 32)"),
+          ]:
+              v = seen.get(key, "")
+              if PLACEHOLDER.search(v):
+                  fatal.append("%s 에 안내문구가 그대로 들어갔다 (길이 %d)" % (key, len(v)))
+              elif not rule.match(v):
+                  fatal.append("%s 형식 오류 — %s 여야 한다 (지금 길이 %d)" % (key, human, len(v)))
+          pw = seen.get("DB_PASSWORD", "")
+          if PLACEHOLDER.search(pw):
+              fatal.append("DB_PASSWORD 에 안내문구가 그대로 들어갔다")
+          elif len(pw) < 8:
+              fatal.append("DB_PASSWORD 가 너무 짧다(8자 이상)")
+          elif re.search(r"[\'\"\\`\s]", pw):
+              # DML 적용 단계에서 셸을 거치므로 따옴표·역슬래시·공백은 명령을 깨뜨린다.
+              fatal.append("DB_PASSWORD 에 따옴표·역슬래시·공백이 있다 "
+                           "(openssl rand -hex 16 권장 — RDS 상한은 41자다)")
+
+          # Apple 을 켰는데 OAUTH_PROVIDER 가 real 이 아니면 가짜 검증기가 붙는다 — 아무 토큰이나 Apple 로그인이 되고,
+          # 늘 열려 있는 알림 경로로 아무 계정의 세션을 끊을 수 있다.
+          apple_web = "APPLE" in [p.strip().upper() for p in seen.get("OAUTH_ENABLED_PROVIDERS", "").split(",")]
+          apple_native = seen.get("APPLE_NATIVE_ENABLED", "").lower() == "true"
+          if (apple_web or apple_native) and seen.get("OAUTH_PROVIDER") != "real":
+              fatal.append("Apple 로그인을 켰는데 OAUTH_PROVIDER 가 real 이 아니다 — 가짜 검증기가 붙는다")
+
+          if fatal:
+              for f in fatal:
+                  print("::error::%s" % f)
+              sys.exit(1)
+
+          # 프로바이더 스위치와 자격의 짝 — 어긋나면 배포는 되고 기능만 조용히 죽는다.
+          def warn_pair(flag, expected, deps):
+              if seen.get(flag) == expected:
+                  blanks = [d for d in deps if not seen.get(d)]
+                  if blanks:
+                      print("::warning::%s=%s 인데 %s 가 비었다 — 해당 기능은 런타임에 실패한다"
+                            % (flag, expected, " ".join(blanks)))
+          warn_pair("SMS_PROVIDER", "solapi", ["SOLAPI_API_KEY", "SOLAPI_API_SECRET", "SOLAPI_FROM"])
+          warn_pair("PUSH_PROVIDER", "firebase", ["FIREBASE_PROJECT_ID", "FIREBASE_CLIENT_EMAIL", "FIREBASE_PRIVATE_KEY"])
+          warn_pair("OAUTH_PROVIDER", "real", ["GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET"])
+          warn_pair("GEOCODING_PROVIDER", "kakao", ["KAKAO_REST_API_KEY"])
+          # Apple 은 빈 값이 있으면 서버가 부팅을 멈춘다 — 배포 로그에서 먼저 보이게 한다.
+          warn_pair("APPLE_NATIVE_ENABLED", "true", ["APPLE_CLIENT_ID", "APPLE_TEAM_ID", "APPLE_KEY_ID", "APPLE_PRIVATE_KEY"])
+          if apple_web:
+              blanks = [d for d in ["APPLE_WEB_CLIENT_ID", "APPLE_REDIRECT_URI", "APPLE_TEAM_ID", "APPLE_KEY_ID", "APPLE_PRIVATE_KEY"]
+                        if not seen.get(d)]
+              if blanks:
+                  print("::warning::OAUTH_ENABLED_PROVIDERS 에 APPLE 이 있는데 %s 가 비었다 — 서버가 부팅을 멈춘다"
+                        % " ".join(blanks))
+          # .p8 은 여러 줄이라 그대로 넣으면 첫 줄 표지만 값이 된다 — 한 줄로 이어 넣어야 한다.
+          apple_key = seen.get("APPLE_PRIVATE_KEY", "")
+          if apple_key.startswith("-----BEGIN") and len(apple_key) < 60:
+              print("::warning::APPLE_PRIVATE_KEY 가 첫 줄만 들어간 것 같다 — 줄바꿈 없이 한 줄로 넣어야 한다. 서버가 부팅을 멈춘다")
+
+          body = "\n".join("%s=%s" % kv for kv in good) + "\n"
+          b64 = base64.b64encode(body.encode()).decode()
+          print("::add-mask::%s" % b64)
+          with open(os.environ["GITHUB_ENV"], "a") as f:
+              f.write("ENV_B64=%s\n" % b64)
+          PYEOF
+
+      - name: AWS 자격 증명 (OIDC — 액세스 키 없음)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.PROD_AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: ECR 로그인 (러너에서 push 하기 위해)
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: SSM 터널 준비 (22번 인바운드 없이 접속한다)
+        env:
+          SSH_KEY: ${{ secrets.PROD_EC2_SSH_KEY }}
+        run: |
+          # 러너 → 인터넷 → 22번 이 아니라, 러너 → SSM → sshd 로 붙는다.
+          # sshd 인증은 그대로다(키가 여전히 필요하다). 바뀌는 것은 경로뿐이라
+          # 보안그룹에서 22번 인바운드를 완전히 지울 수 있다.
+          curl -sSLo /tmp/sm.deb https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb
+          sudo dpkg -i /tmp/sm.deb >/dev/null
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_prod && chmod 600 ~/.ssh/id_prod
+          cat > ~/.ssh/config <<'SSHCFG'
+          Host prod
+            HostName ${{ secrets.PROD_EC2_INSTANCE_ID }}
+            User ${{ secrets.PROD_EC2_USERNAME }}
+            IdentityFile ~/.ssh/id_prod
+            StrictHostKeyChecking accept-new
+            ServerAliveInterval 30
+            ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters portNumber=%p --region ap-northeast-2"
+          SSHCFG
+          chmod 600 ~/.ssh/config
+          # 여기서 실패하면 배포 전에 멈춘다 — 이미지 push 뒤에 끊기는 것보다 낫다.
+          ssh -o ConnectTimeout=60 prod 'echo "SSM 터널 OK — $(hostname)"'
+
+      - name: Build boot jar
+        run: |
+          chmod +x ./gradlew
+          ./gradlew bootJar -x test
+          # 부트 jar만 집는다 — plain jar가 같이 나오므로 글롭 하나로 못 집는다.
+          cp "$(ls build/libs/*.jar | grep -v plain | head -1)" build/libs/app.jar
+          ls -la build/libs/app.jar
+
+      - name: Build & push image
+        run: |
+          TAG=${GITHUB_SHA::7}
+          IMAGE=$ECR_REGISTRY/$ECR_REPOSITORY
+          # --platform 을 명시한다. EC2가 x86_64이고 러너도 x86이라 지금은 같지만,
+          # 러너가 arm으로 바뀌면 EC2에서 exec format error 로만 드러난다.
+          docker build --platform linux/amd64 -t $IMAGE:$TAG -t $IMAGE:latest .
+          docker push $IMAGE:$TAG
+          docker push $IMAGE:latest
+          echo "IMAGE_TAG=$TAG" >> $GITHUB_ENV
+
+      - name: 배포 스크립트 준비
+        run: |
+          cat > /tmp/deploy.sh <<'SCRIPT'
+          set -e
+          APP_DIR="$HOME"/wjf
+          IMAGE=$IMAGE
+          mkdir -p "$APP_DIR"
+
+          echo "[1/5] .env 기록 (base64 한 줄로 받아 디코드)"
+          # heredoc으로 multi-line 시크릿을 넘기지 않는다 — 줄바꿈이 SSH 경로에서 깨져
+          # 파일이 한 줄로 뭉개지는 사고가 QA 첫 배포에서 있었다.
+          printf '%s' "$ENV_B64" | base64 -d > "$APP_DIR/server.env"
+          chmod 600 "$APP_DIR/server.env"
+          echo "기록된 키 개수: $(grep -cE '^[A-Za-z_][A-Za-z0-9_]*=' "$APP_DIR/server.env")"
+
+          get_env() { grep "^$1=" "$APP_DIR/server.env" | head -1 | cut -d= -f2-; }
+          DB_HOST=$(get_env DB_HOST); DB_NAME=$(get_env DB_NAME)
+          DB_USERNAME=$(get_env DB_USERNAME); DB_PASSWORD=$(get_env DB_PASSWORD)
+
+          echo "[2/5] 이미지 pull"
+          # docker login 이 없다. amazon-ecr-credential-helper 가 인스턴스 역할로 인증한다
+          # (~/.docker/config.json 의 credHelpers). 서버에 토큰이 저장되지 않는다.
+          docker pull "$IMAGE"
+          PREV_IMAGE=$(docker inspect $CONTAINER -f '{{.Config.Image}}' 2>/dev/null || true)
+          echo "rollback candidate: ${PREV_IMAGE:-'(첫 배포)'}"
+
+          echo "[3/5] 컨테이너 교체"
+          docker stop $CONTAINER 2>/dev/null || true
+          docker rm $CONTAINER 2>/dev/null || true
+          # 8080을 모든 인터페이스에 연다. nginx(127.0.0.1)와 관리자 웹 EC2(사설 IP)가
+          # 둘 다 붙어야 하기 때문이다. 외부 노출은 sg-app 이 막는다 — 8080은 sg-web 만 허용.
+          docker run -d \
+            --name $CONTAINER \
+            -p 8080:8080 \
+            --env-file "$APP_DIR/server.env" \
+            -e SPRING_PROFILES_ACTIVE=prod \
+            --restart unless-stopped \
+            --log-opt max-size=10m --log-opt max-file=3 \
+            "$IMAGE"
+
+          echo "[4/5] 헬스체크 (flyway 마이그레이션 포함 최대 3분)"
+          HEALTHY=0
+          for i in $(seq 1 36); do
+            if curl -fsS http://localhost:8080/actuator/health >/dev/null 2>&1; then HEALTHY=1; break; fi
+            sleep 5
+          done
+          if [ "$HEALTHY" != "1" ]; then
+            echo "== 헬스체크 실패 — 최근 로그 =="
+            docker logs $CONTAINER --tail=80 || true
+            if [ -n "$PREV_IMAGE" ]; then
+              echo "== 이전 이미지로 롤백: $PREV_IMAGE =="
+              docker rm -f $CONTAINER 2>/dev/null || true
+              docker run -d --name $CONTAINER -p 8080:8080 \
+                --env-file "$APP_DIR/server.env" -e SPRING_PROFILES_ACTIVE=prod \
+                --restart unless-stopped --log-opt max-size=10m --log-opt max-file=3 "$PREV_IMAGE"
+            fi
+            exit 1
+          fi
+          echo "healthy ✓"
+
+          echo "[5/5] 시드 DML 멱등 적용 (flyway 이후 — 국가·지역 검증본)"
+          # QA는 MySQL 컨테이너에 docker exec 했지만 운영은 RDS다. 호스트의 mysql 클라이언트로
+          # 직접 붙는다. 비번은 MYSQL_PWD 로 넘겨 명령줄(ps)에 노출시키지 않는다.
+          for f in "$APP_DIR"/dml/*.sql; do
+            [ -f "$f" ] || continue
+            MYSQL_PWD="$DB_PASSWORD" mysql -h "$DB_HOST" -u "$DB_USERNAME" \
+              --default-character-set=utf8mb4 "$DB_NAME" < "$f"
+            echo "applied: $(basename $f)"
+          done
+
+          docker image prune -f >/dev/null
+          echo "배포 완료: $IMAGE"
+          SCRIPT
+          chmod +x /tmp/deploy.sh
+
+      - name: Ship dml to EC2 (SSM 터널)
+        run: |
+          ssh prod 'mkdir -p ~/wjf/dml'
+          scp dml/*.sql prod:'~/wjf/dml/'
+          ssh prod 'ls -1 ~/wjf/dml/*.sql | wc -l | xargs -I{} echo "전송된 DML: {}개"'
+
+      - name: Deploy to EC2 (SSM 터널)
+        timeout-minutes: 15
+        run: |
+          # ENV_B64 와 IMAGE 는 base64·ARN 이라 공백이 없다. 원격 명령줄에 그대로 실어 보낸다.
+          IMAGE=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+          ssh prod "ENV_B64=$ENV_B64 IMAGE=$IMAGE CONTAINER=${{ env.CONTAINER }} bash -s" < /tmp/deploy.sh

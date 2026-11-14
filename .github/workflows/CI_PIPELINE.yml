@@ -1,0 +1,216 @@
+name: KOVIL - Backend CI Pipeline
+
+on:
+  pull_request:
+    types: [ opened, reopened, synchronize ]
+    branches:
+      - main
+      - develop
+  push:
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  # Rust core (core/): kovil-l10n + kovil-server. tests/db.rs applies V*.sql to a scratch DB on this MySQL
+  # and calls the Rust endpoints against the real schema. Then lint messages/*.properties.
+  rust-core:
+    name: Rust - core
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        options: >-
+          --health-cmd "mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+        ports:
+          - 3306:3306
+      # tests/auth.rs: token revocation (logout / user cutoff) keys, same layout as the Java BlacklistedTokenStore.
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+        ports:
+          - 6379:6379
+    defaults:
+      run:
+        working-directory: core
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - run: cargo clippy --all-targets -- -D warnings
+      - run: cargo test
+        env:
+          KOVIL_TEST_MYSQL_URL: mysql://root:root@127.0.0.1:3306
+          KOVIL_TEST_REDIS_URL: redis://127.0.0.1:6379
+      - name: Build kovil-server image
+        working-directory: .
+        run: docker build -f core/kovil-server/Dockerfile -t kovil-server:ci .
+      - name: Lint message catalogs
+        run: cargo run -q -- lint ../src/main/resources/messages
+
+  backend-ci:
+    name: Backend - Build and Test
+    runs-on: ubuntu-latest
+
+    services:
+      # 휴대폰 인증번호(TTL·시도 횟수·쿨다운)와 커뮤니티 조회수 버퍼가 Redis 소유다
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+      # ★ Flyway 마이그레이션 검증용 — 이 서비스를 **실제로 쓰는 스텝**은 아래
+      #   "Verify Migrations" 하나다. 나머지 스텝은 test 프로파일(H2)로 돈다.
+      #
+      #   왜 따로 돌리나: 테스트 프로파일은 H2 + flyway.enabled=false 다. 그래서 스키마는
+      #   엔티티(ddl-auto)가 만들고, **운영이 받을 SQL 은 아무도 실행해 보지 않는다.**
+      #   그 상태로 V1~V24 가 배포 때 처음 돌았다(2026-09-28 발견).
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: kovil_test
+        options: >-
+          --health-cmd "mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+        ports:
+          - 3306:3306
+
+    steps:
+      - name: ✅ Checkout Repository
+        uses: actions/checkout@v4
+
+      # ★ 기준 데이터 변환기(dml/tools)의 묶기 · 코드 · 출력 규칙을 합성 행으로 본다 — 원천 xlsx 는 저장소에 없어 CI 가 다시 만들어 볼 수 없다.
+      #   커밋된 dml/04 · dml/05 · 역 코드 장부가 서로 맞는지(머리말 행 수 · 숨김 목록 · 장부의 활성 코드), V 마이그레이션이
+      #   테이블을 만들었는데 생성 파일이 dml/pending/ 에 남아 CD 가 배포하지 않는 일이 없는지도 여기서 걸린다.
+      #   러너의 시스템 python3 · 표준 라이브러리만 쓴다(-I: 작업 폴더의 모듈을 읽지 않는다 · -B: __pycache__ 를 만들지 않는다).
+      - name: 🐍 Master Data Generators
+        run: python3 -I -B -m unittest discover -s dml/tools -p 'test_*.py' -v
+
+      - name: 🔒 Validate Gradle Wrapper
+        uses: gradle/actions/wrapper-validation@v4
+        timeout-minutes: 5
+
+      # build.gradle의 toolchain(languageVersion)과 반드시 일치해야 한다.
+      # 한쪽만 바꾸면 "No matching toolchains found"로 CI가 깨진다.
+      - name: ⚙️ Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: 📦 Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          cache-read-only: ${{ github.event_name == 'pull_request' }}
+
+      - name: 🔧 Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: 🏗️ Build Backend
+        run: ./gradlew clean build -x test --build-cache
+        env:
+          SPRING_PROFILES_ACTIVE: test
+
+      # ★ 운영이 받을 SQL 을 진짜 MySQL 8 에 그대로 먹인다. 빈 스키마를 따로 만들어 쓴다 —
+      #   테스트용 스키마(kovil_test)를 쓰면 다른 스텝과 섞인다.
+      #   테스트 쪽 안전장치가 이 이름이 아니면 아무것도 하지 않는다(FlywayMigrationTest).
+      # ★ 스키마는 드라이버가 만든다(createDatabaseIfNotExist) — mysql CLI 에 기대지 않는다.
+      #   ubuntu-latest 러너 이미지에서 MySQL 클라이언트가 빠질 수 있다(24.04 에서 제거됐다).
+      # ★ V28(임대 요청을 파트너스로)의 이관과 **잠금 탐침**도 여기서 돈다(RentalRequestV28MigrationMySqlTest) —
+      #   맡은 사무소 FK 가 (office_id) 단독 인덱스(idx_rr_office_fk)에 얹혀 상태만 바꾸는 UPDATE 가 잠긴 사무소 행을
+      #   기다리지 않는지, 잡기 이력의 행위자 칸에 FK 가 없는지를 실 MySQL 의 잠금으로 본다. 그 인덱스는 복합 인덱스와
+      #   겹쳐 "중복"으로 지워지기 쉽고, 지우면 교착이 조용히 돌아온다(게이트는 H2 라 그린이다). 자기 빈 스키마를 쓴다.
+      - name: 🗄️ Verify Migrations (real MySQL)
+        run: |
+          ./gradlew test --tests '*FlywayMigrationTest' --tests '*RentalRequestV28MigrationMySqlTest'
+          # ★ 조건부 테스트(@EnabledIfEnvironmentVariable)의 최대 위험은 **조용히 건너뛰는 것**이다 —
+          #   환경변수 이름 하나 어긋나면 초록인데 아무것도 검증하지 않는다. 그건 지금까지의
+          #   상태와 똑같다. 실제로 돌았는지를 여기서 확인한다(보고서가 없어도 실패다).
+          for report in \
+            build/test-results/test/TEST-com.kovil.common.config.FlywayMigrationTest.xml \
+            build/test-results/test/TEST-com.kovil.domain.rentalrequest.RentalRequestV28MigrationMySqlTest.xml; do
+            grep -q 'skipped="0"' "$report" || {
+              echo "::error::실 MySQL 검증이 실행되지 않았다($report) — MIGRATION_DB_URL · RR_MIGRATION_DB_URL 을 확인하라"
+              exit 1
+            }
+          done
+        env:
+          SPRING_PROFILES_ACTIVE: test
+          MIGRATION_DB_URL: jdbc:mysql://127.0.0.1:3306/wjf_migration_check?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+          MIGRATION_DB_USER: root
+          MIGRATION_DB_PASSWORD: root
+          RR_MIGRATION_DB_URL: jdbc:mysql://127.0.0.1:3306/wjf_rr_migration?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+          RR_MIGRATION_DB_USER: root
+          RR_MIGRATION_DB_PASSWORD: root
+
+      # ★ 임대 요청 잡기 · 놓기 · 종료 · 대기 복귀의 동시성을 진짜 JPA + MySQL(InnoDB)에 고정한다 — 선착순(하나만 이긴다) ·
+      #   사무소 상한 · 교착 없음 · 잡기 이력이 상태와 맞는지. H2 · 목 리포지토리는 행 잠금도 교착 탐지도 흉내 내지 못한다.
+      #   스프링을 이 MySQL 에 붙여 띄우고 Flyway 로 최신까지 올린다(자기 스키마 — 테스트가 이름을 확인한다).
+      #   로컬 실측 15초 남짓(MySQL 9.5) — 게이트 시간에 비해 짧아 매번 돌린다.
+      - name: 🔒 Rental Request Lock Races (real MySQL)
+        run: |
+          ./gradlew test --tests '*PartnerRentalRequestClaimRaceMySqlTest'
+          report=build/test-results/test/TEST-com.kovil.domain.rentalrequest.PartnerRentalRequestClaimRaceMySqlTest.xml
+          grep -q 'skipped="0"' "$report" || {
+            echo "::error::임대 요청 경합 테스트가 실행되지 않았다 — RR_RACE_DB_URL 을 확인하라"
+            exit 1
+          }
+        env:
+          SPRING_PROFILES_ACTIVE: test
+          RR_RACE_DB_URL: jdbc:mysql://127.0.0.1:3306/wjf_rr_race?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+          RR_RACE_DB_USER: root
+          RR_RACE_DB_PASSWORD: root
+
+      # ★ 매물 반경 판정을 진짜 MySQL 에 고정한다 — H2 와 MySQL 은 DECIMAL 곱셈 자릿수 · 파라미터 형 추론이 다르다.
+      #   저장한 구역 20개 상한의 동시 저장 경합도 같은 스키마에서 본다(H2 는 행 잠금을 흉내 내지 못한다).
+      #   기준 데이터 dml/*.sql 도 여기서 CD 와 같은 순서로 두 번 적용한다 — 운영엔 ddl-auto 가 없어 마이그레이션 칸과
+      #   DML 이 어긋나면 배포 뒤 DML 단계에서야 터진다.
+      - name: 📍 Listing Radius (real MySQL)
+        run: |
+          ./gradlew test --tests '*ListingRadiusMySqlTest' --tests '*SavedAreaLimitRaceMySqlTest' --tests '*MasterDataDmlMySqlTest'
+          for report in build/test-results/test/TEST-com.kovil.domain.listing.ListingRadiusMySqlTest.xml \
+                        build/test-results/test/TEST-com.kovil.domain.listing.SavedAreaLimitRaceMySqlTest.xml \
+                        build/test-results/test/TEST-com.kovil.domain.university.MasterDataDmlMySqlTest.xml; do
+            grep -q 'skipped="0"' "$report" || {
+              echo "::error::매물 영역 MySQL 테스트가 실행되지 않았다($report) — LISTING_RADIUS_DB_URL 을 확인하라"
+              exit 1
+            }
+          done
+        env:
+          SPRING_PROFILES_ACTIVE: test
+          LISTING_RADIUS_DB_URL: jdbc:mysql://127.0.0.1:3306/wjf_listing_radius?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+          LISTING_RADIUS_DB_USER: root
+          LISTING_RADIUS_DB_PASSWORD: root
+
+      - name: 🧪 Run Tests
+        run: ./gradlew test
+        env:
+          SPRING_PROFILES_ACTIVE: test
+
+      - name: 📦 Upload Test Reports on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports-${{ github.run_number }}
+          path: |
+            **/build/reports/tests/test/
+            **/build/test-results/
+          retention-days: 7
