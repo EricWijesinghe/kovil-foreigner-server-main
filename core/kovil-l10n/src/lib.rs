@@ -4,6 +4,7 @@
 //! This crate supplies that guidance ([`prompt`]) and checks the result ([`validate`]) so a bad
 //! translation is caught before it reaches a user.
 
+pub mod app_catalog;
 pub mod catalog;
 pub mod glossary;
 pub mod profile;

@@ -9,3 +9,4 @@ description = "KOVIL localization core: locale tone profiles, Korea housing glos
 [dependencies]
 serde = { version = "1.0.229", features = ["derive"] }
 toml = "0.9.8"
+serde_json = "1.0.154"

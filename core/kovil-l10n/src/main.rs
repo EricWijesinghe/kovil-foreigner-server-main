@@ -1,13 +1,14 @@
 use std::path::Path;
 use std::process::ExitCode;
 
-use kovil_l10n::{Context, Issue, Severity, catalog, profile, prompt, validate};
+use kovil_l10n::{Context, Issue, Severity, app_catalog, catalog, profile, prompt, validate};
 
 const USAGE: &str = "usage:
   kovil-l10n locales
   kovil-l10n prompt <locale> <legal|transactional|support|community> <source text>
   kovil-l10n check  <locale> <source text> <translation> [max_chars]
-  kovil-l10n lint   <messages dir>";
+  kovil-l10n lint   <messages dir>
+  kovil-l10n app-lint <app catalogs dir>   (mobile app src/i18n/catalogs, en.json = source)";
 
 fn main() -> ExitCode {
     let args: Vec<String> = std::env::args().skip(1).collect();
@@ -37,6 +38,11 @@ fn main() -> ExitCode {
                 .map_err(|e| e.to_string())
         }
         ["lint", dir] => catalog::lint_dir(Path::new(dir))
+            .map(|found| {
+                report(found.iter().map(|f| (format!("{} {}: ", f.file, f.key.as_deref().unwrap_or("-")), &f.issue)))
+            })
+            .map_err(|e| format!("{dir}: {e}")),
+        ["app-lint", dir] => app_catalog::lint_dir(Path::new(dir))
             .map(|found| {
                 report(found.iter().map(|f| (format!("{} {}: ", f.file, f.key.as_deref().unwrap_or("-")), &f.issue)))
             })
