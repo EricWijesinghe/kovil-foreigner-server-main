@@ -8,6 +8,8 @@ pub mod config;
 pub mod domain;
 pub mod geo;
 pub mod i18n;
+pub mod ratelimit;
+pub mod translation;
 
 use std::sync::Arc;
 
@@ -15,11 +17,13 @@ use axum::Router;
 use axum::extract::State;
 use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
-use axum::routing::{get, put};
+use axum::routing::{get, post, put};
 use sqlx::MySqlPool;
 
 use api::{ApiError, ErrorCode};
 use i18n::{Lang, Messages};
+use ratelimit::RateLimiter;
+use translation::Engine;
 
 #[derive(Clone)]
 pub struct AppState {
@@ -30,15 +34,35 @@ pub struct AppState {
     pub areas: domain::area::SharedAreas,
     /// Default rejects every token; main installs the real verifier and revocation list.
     pub auth: Arc<auth::Auth>,
+    /// Default is the fake engine; main installs the one `TRANSLATION_PROVIDER` selects.
+    pub translator: Arc<dyn Engine>,
+    /// Default never limits; main connects it to Redis so counters are shared with Java.
+    pub limiter: Arc<RateLimiter>,
 }
 
 impl AppState {
     pub fn new(db: MySqlPool, messages: Messages) -> Self {
-        Self { db, messages: Arc::new(messages), app_policies: Arc::default(), areas: Arc::default(), auth: Arc::default() }
+        Self {
+            db,
+            messages: Arc::new(messages),
+            app_policies: Arc::default(),
+            areas: Arc::default(),
+            auth: Arc::default(),
+            translator: Arc::new(translation::Fake),
+            limiter: Arc::new(RateLimiter::disabled()),
+        }
     }
 
     pub fn with_auth(self, auth: auth::Auth) -> Self {
         Self { auth: Arc::new(auth), ..self }
+    }
+
+    pub fn with_translator(self, translator: Arc<dyn Engine>) -> Self {
+        Self { translator, ..self }
+    }
+
+    pub fn with_rate_limiter(self, limiter: RateLimiter) -> Self {
+        Self { limiter: Arc::new(limiter), ..self }
     }
 }
 
@@ -53,6 +77,7 @@ pub fn router(state: AppState) -> Router {
         .route("/api/v1/areas/resolve", get(domain::area::resolve))
         .route("/api/v1/areas/dongs/{code}/boundary", get(domain::area::boundary))
         .route("/api/v1/regions/{code}/dongs", get(domain::area::list_in_region))
+        .route("/api/v1/listings/{listingUuid}/description/translate", post(domain::listing_translation::translate))
         .route("/api/v1/admin/app-update-policies/{app}", get(domain::app_update_admin::list))
         .route("/api/v1/admin/app-update-policies/{app}/{platform}", put(domain::app_update_admin::update))
         .route("/actuator/health", get(health))

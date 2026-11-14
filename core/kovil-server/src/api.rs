@@ -1,7 +1,7 @@
 //! Response envelope and errors. Mirrors `common/dto/response/ApiResponse.java` and `GlobalExceptionHandler`.
 
 use axum::Json;
-use axum::http::StatusCode;
+use axum::http::{HeaderValue, StatusCode, header::RETRY_AFTER};
 use axum::response::{IntoResponse, Response};
 use serde::Serialize;
 
@@ -38,6 +38,9 @@ pub enum ErrorCode {
     AppUpdateVersionInvalid,
     AppUpdateMinAboveLatest,
     AppUpdateStoreUrlInvalid,
+    RateLimited,
+    ListingNotFound,
+    LanguageNotSupported,
 }
 
 impl ErrorCode {
@@ -52,6 +55,9 @@ impl ErrorCode {
             Self::AppUpdateVersionInvalid => "APP_UPDATE_VERSION_INVALID",
             Self::AppUpdateMinAboveLatest => "APP_UPDATE_MIN_ABOVE_LATEST",
             Self::AppUpdateStoreUrlInvalid => "APP_UPDATE_STORE_URL_INVALID",
+            Self::RateLimited => "RATE_LIMITED",
+            Self::ListingNotFound => "LISTING_NOT_FOUND",
+            Self::LanguageNotSupported => "LANGUAGE_NOT_SUPPORTED",
         }
     }
 
@@ -66,6 +72,9 @@ impl ErrorCode {
             Self::AppUpdateVersionInvalid => StatusCode::BAD_REQUEST,
             Self::AppUpdateMinAboveLatest => StatusCode::BAD_REQUEST,
             Self::AppUpdateStoreUrlInvalid => StatusCode::BAD_REQUEST,
+            Self::RateLimited => StatusCode::TOO_MANY_REQUESTS,
+            Self::ListingNotFound => StatusCode::NOT_FOUND,
+            Self::LanguageNotSupported => StatusCode::BAD_REQUEST,
         }
     }
 
@@ -80,6 +89,9 @@ impl ErrorCode {
             Self::AppUpdateVersionInvalid => "Version must be numbers in 1.2.3 form.",
             Self::AppUpdateMinAboveLatest => "Minimum supported version cannot be higher than the latest version.",
             Self::AppUpdateStoreUrlInvalid => "Store URL must start with https://.",
+            Self::RateLimited => "Too many requests. Please try again shortly.",
+            Self::ListingNotFound => "Listing not found.",
+            Self::LanguageNotSupported => "That language is not supported.",
         }
     }
 }
@@ -89,11 +101,17 @@ impl ErrorCode {
 pub struct ApiError {
     code: ErrorCode,
     message: String,
+    /// Seconds until a rate-limited caller may retry; sent as the `Retry-After` header.
+    retry_after: Option<u64>,
 }
 
 impl ApiError {
     pub fn new(state: &AppState, lang: &Lang, code: ErrorCode) -> Self {
-        Self { code, message: state.messages.resolve(code.code(), &lang.0, code.default_message()) }
+        Self { code, message: state.messages.resolve(code.code(), &lang.0, code.default_message()), retry_after: None }
+    }
+
+    pub fn rate_limited(state: &AppState, lang: &Lang, retry_after: u64) -> Self {
+        Self { retry_after: Some(retry_after), ..Self::new(state, lang, ErrorCode::RateLimited) }
     }
 
     /// Logs the cause (never sent to the client) and returns a generic 500.
@@ -112,7 +130,13 @@ impl IntoResponse for ApiError {
             error_code: Some(self.code.code()),
             validation_errors: None,
         };
-        (self.code.status(), Json(body)).into_response()
+        let mut res = (self.code.status(), Json(body)).into_response();
+        if let Some(secs) = self.retry_after
+            && let Ok(v) = HeaderValue::from_str(&secs.to_string())
+        {
+            res.headers_mut().insert(RETRY_AFTER, v);
+        }
+        res
     }
 }
 

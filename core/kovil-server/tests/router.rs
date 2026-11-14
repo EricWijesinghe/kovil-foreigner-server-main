@@ -131,3 +131,81 @@ async fn unknown_dong_boundary_is_not_found() {
     let (status, _) = call("GET", "/api/v1/areas/dongs/0000000000/boundary", None).await;
     assert_eq!(status, StatusCode::NOT_FOUND);
 }
+
+const KEY: &str = "a292aWwtcnVzdC1nb2xkZW4tdGVzdC1rZXktMzJieXQ=";
+const TRANSLATE: &str = "/api/v1/listings/3f1c2b9e-0000-4000-8000-000000000001/description/translate";
+
+/// Real JWT verifier, no revocation list (no Redis in this suite). Rate limits stay off.
+fn signed_in_app() -> axum::Router {
+    use kovil_server::auth::{Auth, JwtVerifier};
+    let db = MySqlPoolOptions::new().connect_lazy("mysql://u:p@127.0.0.1:9/none").expect("lazy pool");
+    let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../src/main/resources/messages");
+    let auth = Auth { jwt: Some(JwtVerifier::new(KEY, "kovil").unwrap()), revocations: None };
+    router(AppState::new(db, Messages::load(&dir).expect("bundles")).with_auth(auth))
+}
+
+fn user_token() -> String {
+    use base64::Engine;
+    let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_secs();
+    let raw = base64::engine::general_purpose::STANDARD.decode(KEY).unwrap();
+    jsonwebtoken::encode(
+        &jsonwebtoken::Header::default(),
+        &json!({"jti": "router-user", "iss": "kovil", "sub": "router-user-uuid", "role": "USER", "iat": now, "exp": now + 600}),
+        &jsonwebtoken::EncodingKey::from_secret(&raw),
+    )
+    .unwrap()
+}
+
+async fn post_translate(uri: &str, bearer: Option<String>, lang: Option<&str>) -> (StatusCode, Value) {
+    let mut req = Request::builder().method("POST").uri(uri);
+    if let Some(t) = bearer {
+        req = req.header("Authorization", format!("Bearer {t}"));
+    }
+    if let Some(l) = lang {
+        req = req.header("Accept-Language", l);
+    }
+    let res = signed_in_app().oneshot(req.body(Body::empty()).unwrap()).await.unwrap();
+    let status = res.status();
+    let bytes = res.into_body().collect().await.unwrap().to_bytes();
+    (status, serde_json::from_slice(&bytes).unwrap())
+}
+
+#[tokio::test]
+async fn translate_anonymous_is_401_whatever_the_query() {
+    for uri in [TRANSLATE.to_owned(), format!("{TRANSLATE}?language=en"), format!("{TRANSLATE}?language=")] {
+        let (status, body) = post_translate(&uri, None, None).await;
+        assert_eq!(status, StatusCode::UNAUTHORIZED, "{uri}");
+        assert_eq!(body["errorCode"], "UNAUTHORIZED_ACCESS", "{uri}");
+    }
+}
+
+#[tokio::test]
+async fn translate_bad_token_is_401() {
+    let (status, body) = post_translate(&format!("{TRANSLATE}?language=en"), Some("not-a-jwt".to_owned()), None).await;
+    assert_eq!(status, StatusCode::UNAUTHORIZED);
+    assert_eq!(body["errorCode"], "UNAUTHORIZED_ACCESS");
+}
+
+#[tokio::test]
+async fn translate_missing_language_is_invalid_request_after_auth() {
+    let (status, body) = post_translate(TRANSLATE, Some(user_token()), None).await;
+    assert_eq!(status, StatusCode::BAD_REQUEST);
+    assert_eq!(body["errorCode"], "INVALID_REQUEST");
+}
+
+#[tokio::test]
+async fn translate_blank_language_is_not_supported_before_any_query() {
+    for q in ["language=", "language=%20%20"] {
+        let (status, body) = post_translate(&format!("{TRANSLATE}?{q}"), Some(user_token()), None).await;
+        assert_eq!(status, StatusCode::BAD_REQUEST, "{q}");
+        assert_eq!(body["errorCode"], "LANGUAGE_NOT_SUPPORTED", "{q}");
+        assert_eq!(body["message"], "That language is not supported.", "{q}");
+    }
+}
+
+#[tokio::test]
+async fn translate_language_error_is_localized() {
+    let (_, body) = post_translate(&format!("{TRANSLATE}?language=%20"), Some(user_token()), Some("ko")).await;
+    assert_eq!(body["errorCode"], "LANGUAGE_NOT_SUPPORTED");
+    assert_ne!(body["message"], "That language is not supported.", "Korean bundle should answer");
+}

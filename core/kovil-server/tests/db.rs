@@ -3,6 +3,8 @@
 //! The database `kovil_rust_test` is dropped and recreated on every run. Never point this at a real server.
 
 use std::path::Path;
+use std::sync::Arc;
+use std::sync::atomic::{AtomicUsize, Ordering};
 
 use axum::body::Body;
 use axum::http::{Request, StatusCode};
@@ -13,6 +15,7 @@ use sqlx::{AssertSqlSafe, MySqlPool};
 use tower::ServiceExt;
 
 use kovil_server::i18n::Messages;
+use kovil_server::translation::{Engine, EngineFuture};
 use kovil_server::{AppState, router};
 
 const TEST_DB: &str = "kovil_rust_test";
@@ -91,6 +94,7 @@ async fn endpoints_against_real_schema() {
     app_version(&app, &db).await;
     admin_app_update(&db).await;
     areas(&db).await;
+    listing_translation(&db).await;
 }
 
 async fn universities(app: &axum::Router, db: &MySqlPool) {
@@ -308,4 +312,170 @@ async fn admin_app_update(db: &MySqlPool) {
     );
     let (_, body) = get(&app, "/api/v1/app-version/check?platform=ios&version=1.0.0", "en").await;
     assert_eq!(body["data"]["verdict"], "FORCE", "cache evicted after the edit");
+}
+
+/// Stands in for the vendor: counts calls and answers a fixed text.
+struct Scripted {
+    calls: Arc<AtomicUsize>,
+    reply: &'static str,
+}
+
+impl Engine for Scripted {
+    fn name(&self) -> &'static str {
+        "scripted"
+    }
+
+    fn complete<'a>(&'a self, _system: &'a str, _text: &'a str) -> EngineFuture<'a> {
+        Box::pin(async move {
+            self.calls.fetch_add(1, Ordering::SeqCst);
+            Ok(self.reply.to_owned())
+        })
+    }
+}
+
+const TR_KEY: &str = "a292aWwtcnVzdC1nb2xkZW4tdGVzdC1rZXktMzJieXQ=";
+
+/// Signed-in tenant token, minted with the same key the app verifies with.
+fn user_token() -> String {
+    use base64::Engine;
+    let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_secs();
+    let raw = base64::engine::general_purpose::STANDARD.decode(TR_KEY).unwrap();
+    jsonwebtoken::encode(
+        &jsonwebtoken::Header::default(),
+        &serde_json::json!({"jti": "db-tr", "iss": "kovil", "sub": "db-tenant-uuid", "role": "USER", "iat": now, "exp": now + 600}),
+        &jsonwebtoken::EncodingKey::from_secret(&raw),
+    )
+    .unwrap()
+}
+
+fn translate_app(db: &MySqlPool, engine: Arc<dyn Engine>) -> axum::Router {
+    use kovil_server::auth::{Auth, JwtVerifier};
+    let auth = Auth { jwt: Some(JwtVerifier::new(TR_KEY, "kovil").unwrap()), revocations: None };
+    let messages = Messages::load(&repo().join("src/main/resources/messages")).unwrap();
+    router(AppState::new(db.clone(), messages).with_auth(auth).with_translator(engine))
+}
+
+async fn post_as_user(app: &axum::Router, uri: &str) -> (StatusCode, Value) {
+    let req = Request::post(uri).header("Authorization", format!("Bearer {}", user_token())).body(Body::empty()).unwrap();
+    let res = app.clone().oneshot(req).await.unwrap();
+    let status = res.status();
+    let bytes = res.into_body().collect().await.unwrap().to_bytes();
+    (status, serde_json::from_slice(&bytes).unwrap())
+}
+
+async fn count_rows(db: &MySqlPool, listing_id: i64, lang: &str, version: i32) -> i64 {
+    sqlx::query_scalar::<_, i64>(
+        "SELECT COUNT(*) FROM listing_description_translations WHERE listing_id = ? AND language_code = ? AND source_version = ?",
+    )
+    .bind(listing_id)
+    .bind(lang)
+    .bind(version)
+    .fetch_one(db)
+    .await
+    .unwrap()
+}
+
+const TR_LISTING: i64 = 9401;
+const TR_UUID: &str = "66666666-6666-4666-8666-666666666666";
+const KOREAN_V1: &str = "보증금 1,000,000원, 월세 50만원. 전세 계약 가능.";
+const KOREAN_V2: &str = "보증금 1,000,000원, 월세 50만원. 반려동물 가능.";
+const ENGLISH: &str = "Deposit 1,000,000 won, monthly rent 500,000 won. Lease contract available.";
+
+/// Listing translation cache: miss, hit, version bump, stale fake row, gate rejection, visibility and language checks.
+async fn listing_translation(db: &MySqlPool) {
+    sqlx::query("INSERT INTO users (id, uuid, role, status) VALUES (9301, '33333333-3333-4333-8333-333333333333', 'PARTNER', 'ACTIVE')")
+        .execute(db)
+        .await
+        .expect("insert broker user");
+    sqlx::query("INSERT INTO brokerage_offices (id, uuid, reg_no, name, ceo_name, address, tel) VALUES (9302, '44444444-4444-4444-8444-444444444444', 'TR-TEST-0001', '테스트중개', '홍길동', '서울 강남', '02-000-0000')")
+        .execute(db)
+        .await
+        .expect("insert office");
+    sqlx::query("INSERT INTO broker_profiles (user_id, office_id) VALUES (9301, 9302)").execute(db).await.expect("broker profile");
+    sqlx::query("INSERT INTO partner_divisions (uuid, user_id, division, status) VALUES ('55555555-5555-4555-8555-555555555555', 9301, 'REAL_ESTATE_BROKER', 'APPROVED')")
+        .execute(db)
+        .await
+        .expect("approved division");
+    sqlx::query(
+        "INSERT INTO listings (id, uuid, listing_no, office_id, created_by_user_id, category, room_type, title, description, \
+         description_version, selling_type, deposit, monthly_rent, exclusive_area, real_lat, real_lng, display_lat, display_lng, \
+         address_jibun, status) VALUES (?, ?, 'LS-TEST-0001', 9302, 9301, 'APT', 'ONE_ROOM', '테스트', ?, 1, 'MONTHLY_RENT', \
+         1000000, 500000, 20.00, 37.5000000, 127.0000000, 37.5000000, 127.0000000, '서울 강남', 'ACTIVE')",
+    )
+    .bind(TR_LISTING)
+    .bind(TR_UUID)
+    .bind(KOREAN_V1)
+    .execute(db)
+    .await
+    .expect("insert listing");
+
+    let calls = Arc::new(AtomicUsize::new(0));
+    let good = Arc::new(Scripted { calls: calls.clone(), reply: ENGLISH });
+    let app = translate_app(db, good);
+    let en = format!("/api/v1/listings/{TR_UUID}/description/translate?language=en");
+
+    // Miss: one vendor call, stored under the engine name.
+    let (status, body) = post_as_user(&app, &en).await;
+    assert_eq!(status, StatusCode::OK, "{body}");
+    assert_eq!(
+        body["data"],
+        serde_json::json!({"languageCode": "en", "content": ENGLISH, "engine": "scripted", "cached": false, "translated": true})
+    );
+    assert_eq!(calls.load(Ordering::SeqCst), 1);
+    assert_eq!(count_rows(db, TR_LISTING, "en", 1).await, 1);
+
+    // Hit: same answer from the table, vendor not called again.
+    let (_, body) = post_as_user(&app, &en).await;
+    assert_eq!(body["data"]["cached"], true, "{body}");
+    assert_eq!(body["data"]["content"], ENGLISH);
+    assert_eq!(calls.load(Ordering::SeqCst), 1);
+
+    // Korean target: the original, never a vendor call.
+    let (_, body) = post_as_user(&app, &format!("/api/v1/listings/{TR_UUID}/description/translate?language=KO")).await;
+    assert_eq!(body["data"], serde_json::json!({"languageCode": "ko", "content": KOREAN_V1, "engine": null, "cached": false, "translated": false}));
+    assert_eq!(calls.load(Ordering::SeqCst), 1);
+
+    // The broker edits the description: version 2 is a miss; the version 1 row stays.
+    sqlx::query("UPDATE listings SET description = ?, description_version = description_version + 1 WHERE id = ?")
+        .bind(KOREAN_V2)
+        .bind(TR_LISTING)
+        .execute(db)
+        .await
+        .unwrap();
+    let (_, body) = post_as_user(&app, &en).await;
+    assert_eq!(body["data"]["cached"], false, "{body}");
+    assert_eq!(calls.load(Ordering::SeqCst), 2);
+    assert_eq!(count_rows(db, TR_LISTING, "en", 1).await, 1);
+    assert_eq!(count_rows(db, TR_LISTING, "en", 2).await, 1);
+
+    // A fake row left by the Java dev stack is replaced, not served, once a real engine is configured.
+    sqlx::query("INSERT INTO listing_description_translations (listing_id, language_code, source_version, content, engine, created_at) VALUES (?, 'vi', 2, '[FAKE vi] x', 'fake', NOW(6))")
+        .bind(TR_LISTING)
+        .execute(db)
+        .await
+        .unwrap();
+    let (_, body) = post_as_user(&app, &format!("/api/v1/listings/{TR_UUID}/description/translate?language=vi")).await;
+    assert_eq!(body["data"]["cached"], false, "{body}");
+    assert_eq!(body["data"]["engine"], "scripted", "{body}");
+    assert_eq!(count_rows(db, TR_LISTING, "vi", 2).await, 1);
+
+    // Vendor changes a deposit: the original is shown, nothing is stored, and the vendor was asked twice.
+    sqlx::query("UPDATE listings SET description_version = 3 WHERE id = ?").bind(TR_LISTING).execute(db).await.unwrap();
+    let bad_calls = Arc::new(AtomicUsize::new(0));
+    let bad = Arc::new(Scripted { calls: bad_calls.clone(), reply: "Deposit 100,000 won, monthly rent 500,000 won." });
+    let (status, body) = post_as_user(&translate_app(db, bad), &en).await;
+    assert_eq!(status, StatusCode::OK, "{body}");
+    assert_eq!(body["data"], serde_json::json!({"languageCode": "en", "content": KOREAN_V2, "engine": null, "cached": false, "translated": false}));
+    assert_eq!(bad_calls.load(Ordering::SeqCst), 2);
+    assert_eq!(count_rows(db, TR_LISTING, "en", 3).await, 0);
+
+    // Hidden listing: 404 even with a valid language.
+    sqlx::query("UPDATE listings SET status = 'HIDDEN' WHERE id = ?").bind(TR_LISTING).execute(db).await.unwrap();
+    let (status, body) = post_as_user(&app, &en).await;
+    assert_eq!((status, body["errorCode"].clone()), (StatusCode::NOT_FOUND, Value::from("LISTING_NOT_FOUND")));
+    sqlx::query("UPDATE listings SET status = 'ACTIVE' WHERE id = ?").bind(TR_LISTING).execute(db).await.unwrap();
+
+    // Language with no active row: 400, and the listing is never looked up.
+    let (status, body) = post_as_user(&app, &format!("/api/v1/listings/{TR_UUID}/description/translate?language=xx")).await;
+    assert_eq!((status, body["errorCode"].clone()), (StatusCode::BAD_REQUEST, Value::from("LANGUAGE_NOT_SUPPORTED")));
 }

@@ -3,6 +3,7 @@ pub mod app_version;
 pub mod area;
 pub mod country;
 pub mod language;
+pub mod listing_translation;
 pub mod region;
 pub mod transit;
 pub mod university;

@@ -20,7 +20,7 @@ use crate::i18n::Lang;
 const JTI_PREFIX: &str = "blacklist:jti:";
 const USER_PREFIX: &str = "blacklist:user:";
 /// Every authenticated request makes one Redis round trip; prod Java uses 500 ms too (application-prod.yml).
-const REDIS_TIMEOUT: Duration = Duration::from_millis(500);
+pub(crate) const REDIS_TIMEOUT: Duration = Duration::from_millis(500);
 /// JJWT `Keys.hmacShaKeyFor` refuses keys under 256 bits.
 const MIN_KEY_BYTES: usize = 32;
 
@@ -183,16 +183,21 @@ pub enum Rejection {
 #[derive(Clone)]
 pub struct Revocations(ConnectionManager);
 
+/// Lazy connection shared by revocation checks and rate limits. Nothing connects until the first command.
+pub(crate) fn redis_manager(redis_url: &str) -> Result<ConnectionManager, String> {
+    let client = redis::Client::open(redis_url).map_err(|e| format!("REDIS_URL: {e}"))?;
+    let config = ConnectionManagerConfig::new()
+        .set_connection_timeout(Some(REDIS_TIMEOUT))
+        .set_response_timeout(Some(REDIS_TIMEOUT))
+        // Reconnects happen in the background; a request must not wait out the default 6 retries.
+        .set_number_of_retries(1);
+    client.get_connection_manager_lazy(config).map_err(|e| format!("redis: {e}"))
+}
+
 impl Revocations {
     /// Lazy: the server starts and serves while Redis is down, like Spring's lazy Lettuce connection.
     pub fn lazy(redis_url: &str) -> Result<Self, String> {
-        let client = redis::Client::open(redis_url).map_err(|e| format!("REDIS_URL: {e}"))?;
-        let config = ConnectionManagerConfig::new()
-            .set_connection_timeout(Some(REDIS_TIMEOUT))
-            .set_response_timeout(Some(REDIS_TIMEOUT))
-            // Reconnects happen in the background; a request must not wait out the default 6 retries.
-            .set_number_of_retries(1);
-        client.get_connection_manager_lazy(config).map(Self).map_err(|e| format!("redis: {e}"))
+        redis_manager(redis_url).map(Self)
     }
 
     /// Fail-open on Redis errors (PO decision 2026-09-17): signature checks still hold; the ERROR log is the

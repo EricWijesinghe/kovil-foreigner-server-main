@@ -8,6 +8,8 @@ use kovil_server::auth::{Auth, JwtVerifier, Revocations};
 use kovil_server::config::Config;
 use kovil_server::domain::area;
 use kovil_server::i18n::Messages;
+use kovil_server::ratelimit::RateLimiter;
+use kovil_server::translation;
 use kovil_server::{AppState, router};
 
 /// Startup and per-request wait for a DB connection: a dead database should fail the deploy, not hang it.
@@ -40,7 +42,13 @@ async fn run() -> Result<(), String> {
         jwt: Some(JwtVerifier::new(&cfg.jwt_secret, &cfg.jwt_issuer)?),
         revocations: Some(Revocations::lazy(&cfg.redis_url)?),
     };
-    let state = AppState::new(db, messages).with_auth(auth);
+    let translator = translation::build(&cfg.translation)?;
+    let limiter = match &cfg.rate_limit {
+        Some(rules) => RateLimiter::connect(&cfg.redis_url, rules.clone())?,
+        None => RateLimiter::disabled(),
+    };
+    tracing::info!(translation = cfg.translation.name(), rate_limits = cfg.rate_limit.is_some(), "features configured");
+    let state = AppState::new(db, messages).with_auth(auth).with_translator(translator).with_rate_limiter(limiter);
     area::reload(&state.db, &state.areas).await;
     let (db, areas) = (state.db.clone(), state.areas.clone());
     tokio::spawn(async move {
